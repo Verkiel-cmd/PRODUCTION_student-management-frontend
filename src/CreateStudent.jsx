@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Webstyles/createstyle.css';
 import './Webstyles/bootstrapError_style.css';
+import config from './config'; // Adjust the path as needed
 
 function CreateStudent() {
 
@@ -91,7 +92,7 @@ function CreateStudent() {
     if (isValid) {
       try {
         console.log('Sending data to API:', { name, email, phone, address }); // Log the data being sent
-        const response = await fetch(`${apiUrl}/students`, {
+        const response = await fetch(`${config.REACT_APP_API_URL}/students`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

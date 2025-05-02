@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Webstyles/DES_side.css';
 import './Webstyles/bootstrapError_style.css';
-import  config from'./config';
+import config from './config'; // Adjust the path as needed
 
 
 
