@@ -61,7 +61,7 @@ function ListStud() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`${config.REACT_APP_API_URL}/students/${id}`, {
+      const response = await fetch(`${config.API_URL}/students/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ function ListStud() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${config.REACT_APP_API_URL}/students?search=${searchTerm}`);
+        const response = await fetch(`${config.API_URL}/students?search=${searchTerm}`);
         const data = await response.json();
         setStudents(data);
         setFilteredStudents(data);
@@ -151,7 +151,7 @@ function ListStud() {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const res = await fetch(`${config.REACT_APP_API_URL}/api/user-details`, { credentials: 'include' });
+        const res = await fetch(`${config.API_URL}/api/user-details`, { credentials: 'include' });
         if (!res.ok) throw new Error('Failed to fetch user details');
         const data = await res.json();
         setLoggedInUser(data.user);  // ✅ Correctly stores user details

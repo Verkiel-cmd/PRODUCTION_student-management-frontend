@@ -92,7 +92,7 @@ function CreateStudent() {
     if (isValid) {
       try {
         console.log('Sending data to API:', { name, email, phone, address }); // Log the data being sent
-        const response = await fetch(`${config.REACT_APP_API_URL}/students`, {
+        const response = await fetch(`${config.API_URL}/students`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -22,7 +22,7 @@ function Dashboard() {
   const handleLogout = async () => {
     try {
       // Send request to backend to destroy session
-      await fetch(`${config.REACT_APP_API_URL}/logout`, {
+      await fetch(`${config.API_URL}/logout`, {
         method: 'POST',
         credentials: 'include' // Ensures cookies/sessions are sent
       });
@@ -79,7 +79,7 @@ function Dashboard() {
     const fetchTotalStudents = async () => {
       try {
         console.log('Fetching total students...');
-        const response = await fetch(`${config.REACT_APP_API_URL}/total-students`);
+        const response = await fetch(`${config.API_URL}/total-students`);
         console.log('Response status:', response.status);
 
         if (!response.ok) {
@@ -102,7 +102,7 @@ function Dashboard() {
     const fetchTotalClasses = async () => {
       try {
         console.log('Fetching total students...');
-        const response = await fetch(`${config.REACT_APP_API_URL}/class-students`);
+        const response = await fetch(`${config.API_URL}/class-students`);
         console.log('Response status:', response.status);
 
         if (!response.ok) {
@@ -123,7 +123,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const res = await fetch(`${config.REACT_APP_API_URL}/api/user-details`, { credentials: 'include' });
+        const res = await fetch(`${config.API_URL}/api/user-details`, { credentials: 'include' });
 
 
         const text = await res.text();

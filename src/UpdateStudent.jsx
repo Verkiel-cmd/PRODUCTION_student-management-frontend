@@ -57,7 +57,7 @@ function UpdateStudent() {
   useEffect(() => {
     const fetchStudentData = async () => {
       try {
-        const response = await fetch(`${config.REACT_APP_API_URL}/students/${id}`);
+        const response = await fetch(`${config.API_URL}/students/${id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -139,7 +139,7 @@ function UpdateStudent() {
 
 
     try {
-      const response = await fetch(`${config.REACT_APP_API_URL}/students/${id}`, {
+      const response = await fetch(`${config.API_URL}/students/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
