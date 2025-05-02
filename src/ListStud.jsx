@@ -7,7 +7,7 @@ import  config from'./config';
 
 function ListStud() {
 
-  const apiUrl = process.env.REACT_APP_API_URL;
+  
   
   const [students, setStudents] = useState('');
   const [searchTerm, setSearchTerm] = useState('');

@@ -9,7 +9,7 @@ import  config from'./config';
 
 const Frontlog = () => {
 
-    const apiUrl = process.env.REACT_APP_API_URL; 
+    
 
     // Add state variables for login form
     const [email, setEmail] = useState('');

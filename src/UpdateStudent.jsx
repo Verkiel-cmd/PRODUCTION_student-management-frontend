@@ -6,7 +6,7 @@ import  config from'./config';
 
 function UpdateStudent() {
 
-  const apiUrl = process.env.REACT_APP_API_URL;
+  
 
   const { id } = useParams();
   const navigate = useNavigate();

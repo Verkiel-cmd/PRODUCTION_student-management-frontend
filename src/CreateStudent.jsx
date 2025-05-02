@@ -7,7 +7,7 @@ import config from './config'; // Adjust the path as needed
 
 function CreateStudent() {
 
-  const apiUrl = process.env.REACT_APP_API_URL;
+  
 
   const [isError, setIsError] = useState(false);
   const [touched, setTouched] = useState(false);

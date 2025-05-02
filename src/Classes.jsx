@@ -9,7 +9,7 @@ import config from './config'; // Adjust the path as needed
 
 function Classes() {
 
-    const apiUrl = process.env.REACT_APP_API_URL;
+    
 
     const [classes, setClasses] = useState([]);
     const [isSidebarExpanded, setIsSidebarExpanded] = useState(() => localStorage.getItem("sidebarState") === "expanded");

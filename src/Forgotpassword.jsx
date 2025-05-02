@@ -6,7 +6,7 @@ import  config from'./config';
 
 const Forgotpassword = () => {
 
-    const apiUrl = process.env.REACT_APP_API_URL; 
+    
 
     const [email, setEmail] = useState('');
     const [otp, setOtp] = useState('');

@@ -6,7 +6,7 @@ import  config from'./config';
 
 function Dashboard() {
 
-  const apiUrl = process.env.REACT_APP_API_URL; 
+   
 
   const [totalStudents, setTotalStudents] = useState(0);
   const [totalClass, setTotalClass] = useState(0);
