@@ -9,7 +9,7 @@ import  config from'./config';
 
 const Frontlog = () => {
 
-    console.log('API URL:', config.REACT_APP_API_URL);
+    console.log('API URL:', config.VITE_API_URL);
 
     
 
