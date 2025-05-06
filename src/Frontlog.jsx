@@ -92,6 +92,8 @@ const Frontlog = () => {
             email: emailRegister,
             password: passwordRegister,
             agreedToTerms: agreedToTerms
+        }, { withCredentials: true
+
         })
             .then(response => {
                 console.log('Registration success:', response.data);
@@ -104,29 +106,8 @@ const Frontlog = () => {
                         email: emailRegister
                     });
 
-                    // Update the local session
-                    axios.post(`${config.API_URL}/session`, {
-                        userId: response.data.userId,
-                        username: username,
-                        email: emailRegister
-                    })
-                        .then(() => {
-                            console.log('Session updated successfully');
-
-                            // Retrieve the username from the session
-                            axios.get(`${config.API_URL}/session`)
-                                .then(response => {
-                                    const username = response.data.username;
-                                    setLoggedInUser({ ...loggedInUser, username });
-                                })
-                                .catch(error => {
-                                    console.error('Error retrieving session:', error);
-                                });
-                        })
-                        .catch(error => {
-                            console.error('Error updating session:', error);
-                        });
-
+                   
+                    
                     // Optionally, store the user info in localStorage for persistence
                     localStorage.setItem('loggedInUser', JSON.stringify({
                         id: response.data.userId,
