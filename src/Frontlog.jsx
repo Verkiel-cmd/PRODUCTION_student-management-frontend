@@ -5,8 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Webstyles/login_style.css';
 import config from './config';
 
-// Set up axios defaults
-axios.defaults.withCredentials = true;
+// Configure axios defaults
+axios.defaults.withCredentials = true; // This is crucial for session cookies
 axios.defaults.baseURL = config.API_URL;
 
 const Frontlog = () => {
@@ -111,6 +111,25 @@ const Frontlog = () => {
         };
     }, []);
 
+    // Add useEffect to check session status
+    useEffect(() => {
+        const checkSession = async () => {
+            try {
+                const response = await axios.get('/api/user-details');
+                if (response.data.success) {
+                    setLoggedInUser({
+                        username: response.data.user.username
+                    });
+                }
+            } catch (error) {
+                console.error('Session check failed:', error);
+                setLoggedInUser(null);
+            }
+        };
+
+        checkSession();
+    }, []);
+
     const handleLoginSubmit = (event) => {
         event.preventDefault();
 
@@ -121,20 +140,16 @@ const Frontlog = () => {
             .then(response => {
                 console.log('Login response:', response.data);
                 if (response.data.success) {
-                    // Store the token
-                    localStorage.setItem('token', response.data.token);
-                    
                     const userData = {
-                        id: response.data.userId,
-                        username: response.data.username,
-                        email: email
+                        username: response.data.username
                     };
                     
-                    // Set the logged in user state
                     setLoggedInUser(userData);
-                    localStorage.setItem('loggedInUser', JSON.stringify(userData));
+                    setSuccessMessage('Login successful! Redirecting...');
 
-                    window.location.href = response.data.redirectUrl;
+                    setTimeout(() => {
+                        window.location.href = response.data.redirectUrl;
+                    }, 1000);
                 } else {
                     setEmailErrorType(null);
                     setemailErrorMessage(response.data.message || 'Unexpected error occurred.');
@@ -173,19 +188,11 @@ const Frontlog = () => {
             .then(response => {
                 console.log('Registration response:', response.data);
                 if (response.data.success) {
-                    // Store the token
-                    localStorage.setItem('token', response.data.token);
-                    
                     const userData = {
-                        id: response.data.userId,
-                        username: username,
-                        email: emailRegister
+                        username: username
                     };
                     
-                    // Set the logged in user state
                     setLoggedInUser(userData);
-                    localStorage.setItem('loggedInUser', JSON.stringify(userData));
-
                     setRegisterErrorType(null);
                     setSuccessMessage('User registered successfully! Redirecting...');
 
@@ -300,23 +307,6 @@ const Frontlog = () => {
         console.error('Google Sign-In error:', response);
         setgoogleErrorMessage('Google Sign-In was unsuccessful. Please try again.');
     };
-
-    // Add useEffect to check for existing user session
-    useEffect(() => {
-        console.log('Checking for stored user...');
-        const storedUser = localStorage.getItem('loggedInUser');
-        console.log('Stored user from localStorage:', storedUser);
-        if (storedUser) {
-            try {
-                const parsedUser = JSON.parse(storedUser);
-                console.log('Parsed user data:', parsedUser);
-                setLoggedInUser(parsedUser);
-            } catch (error) {
-                console.error('Error parsing stored user:', error);
-                localStorage.removeItem('loggedInUser');
-            }
-        }
-    }, []);
 
     // Add a debug log for the current loggedInUser state
     useEffect(() => {
