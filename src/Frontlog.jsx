@@ -13,8 +13,6 @@ const Frontlog = () => {
 
     console.log('API URL:', config.API_URL);
 
-    
-
     // Add state variables for login form
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -45,9 +43,6 @@ const Frontlog = () => {
     const [agreedToTerms, setAgreedToTerms] = useState(false);
     const [usernameError, setUsernameError] = useState(false);
     const [usernameErrortype, setUsernameErrorType] = useState(false);
-
-
-    
 
     const toggleForm = () => {
         const logregBox = document.querySelector('.log-reg-box');
@@ -228,41 +223,20 @@ const Frontlog = () => {
         }
 
         try {
-
-            const response = await axios.post('/check-username', { username: newUsername });
-
+            const response = await axios.post(`${config.API_URL}/check-username`, { username: newUsername });
 
             if (response.data.exists) {
                 setUsernameError('Username already taken');
                 setUsernameErrorType('username');
             } else {
-
                 setUsernameError('');
                 setUsernameErrorType(null);
             }
         } catch (error) {
-
             console.error('Error checking username:', error);
             setUsernameErrorType('username');
         }
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     const handleGoogleSuccess = (response) => {
         console.log('Google Sign-In response:', response);
@@ -276,12 +250,7 @@ const Frontlog = () => {
     
         // Send the token to the backend for verification
         axios
-            .post('/google-login', { token }, { 
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
-            })
+            .post(`${config.API_URL}/google-login`, { token }, { withCredentials: true })
             .then((res) => {
                 if (res.data.success) {
                     // Store the user info in localStorage
@@ -299,10 +268,8 @@ const Frontlog = () => {
                 if (error.response) {
                     console.error('Response data:', error.response.data);
                     setgoogleErrorMessage(error.response.data.message || 'Google Sign-In failed. Please try again.');
-                } else if (error.request) {
-                    setgoogleErrorMessage('No response received from server.');
                 } else {
-                    setgoogleErrorMessage('An unexpected error occurred. Please try again.');
+                    setgoogleErrorMessage('An unexpected error occurred. \nPlease try again.');
                 }
             });
     };
