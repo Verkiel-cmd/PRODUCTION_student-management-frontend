@@ -149,9 +149,22 @@ const Frontlog = () => {
             .then(response => {
                 console.log('Login success:', response.data);
                 if (response.data.success) {
+                    // Set the logged in user state
+                    setLoggedInUser({
+                        id: response.data.userId,
+                        username: response.data.username,
+                        email: email
+                    });
+
+                    // Store in localStorage
+                    localStorage.setItem('loggedInUser', JSON.stringify({
+                        id: response.data.userId,
+                        username: response.data.username,
+                        email: email
+                    }));
+
                     window.location.href = response.data.redirectUrl;
                 } else {
-
                     setEmailErrorType(null);
                     setemailErrorMessage(response.data.message || 'Unexpected error occurred.');
                     setpasswordErrorMessage(response.data.message || 'Unexpected error occurred.');
@@ -279,6 +292,20 @@ const Frontlog = () => {
         console.error('Google Sign-In error:', response);
         setgoogleErrorMessage('Google Sign-In was unsuccessful. Please try again.');
     };
+
+    // Add useEffect to check for existing user session
+    useEffect(() => {
+        const storedUser = localStorage.getItem('loggedInUser');
+        if (storedUser) {
+            try {
+                const parsedUser = JSON.parse(storedUser);
+                setLoggedInUser(parsedUser);
+            } catch (error) {
+                console.error('Error parsing stored user:', error);
+                localStorage.removeItem('loggedInUser');
+            }
+        }
+    }, []);
 
     return (
 
