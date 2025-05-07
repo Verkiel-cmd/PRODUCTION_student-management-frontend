@@ -3,9 +3,11 @@ import axios from 'axios';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Webstyles/login_style.css';
-import  config from'./config';
+import config from './config';
 
-
+// Set up axios defaults
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = config.API_URL;
 
 const Frontlog = () => {
 
@@ -72,96 +74,65 @@ const Frontlog = () => {
         }
     };
 
-    const handleRegisterSubmit = (event) => {
-        event.preventDefault();
-
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-
-
-        if (!emailRegex.test(emailRegister)) {
-            setRegisterErrorType("email");
-            setErrorRegister("Please enter a valid email address.");
-            return;
-        }
-
-
-        
-        axios.post(`${config.API_URL}/register`, {
-            username: username,
-            email: emailRegister,
-            password: passwordRegister,
-            agreedToTerms: agreedToTerms
-        }, { withCredentials: true
-
-        })
-            .then(response => {
-                console.log('Registration success:', response.data);
-                if (response.data.success) {
-
-                    // Update loggedInUser state with the new user's information
-                    setLoggedInUser({
-                        id: response.data.userId, // Assuming the backend returns userId
-                        username: username,
-                        email: emailRegister
-                    });
-
-                   
-                    
-                    // Optionally, store the user info in localStorage for persistence
-                    localStorage.setItem('loggedInUser', JSON.stringify({
-                        id: response.data.userId,
-                        username: username,
-                        email: emailRegister
-                    }));
-
-                    setRegisterErrorType(null);
-                    setSuccessMessage('User registered successfully! Redirecting...');
-
-                    setTimeout(() => {
-                        window.location.href = response.data.redirectUrl;
-                    }, 2000);
-
-                } else {
-                    setRegisterErrorType(response.data.message);
+    // Add useEffect to set up axios interceptor
+    useEffect(() => {
+        // Add request interceptor
+        const requestInterceptor = axios.interceptors.request.use(
+            (config) => {
+                const token = localStorage.getItem('token');
+                if (token) {
+                    config.headers.Authorization = `Bearer ${token}`;
                 }
-            })
-            .catch(error => {
-                if (error.response) {
-                    console.error('Registration error:', error.response.data);
-                    setNetworkErrorRegister(error.response.data.message || 'Something went wrong during registration');
-                } else {
-                    console.error('Network error:', error);
-                    setNetworkErrorRegister('Network error');
-                }
-            });
-    };
+                return config;
+            },
+            (error) => {
+                return Promise.reject(error);
+            }
+        );
 
+        // Add response interceptor
+        const responseInterceptor = axios.interceptors.response.use(
+            (response) => response,
+            (error) => {
+                if (error.response?.status === 401) {
+                    // Clear local storage and redirect to login
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('loggedInUser');
+                    window.location.href = '/';
+                }
+                return Promise.reject(error);
+            }
+        );
+
+        // Cleanup interceptors
+        return () => {
+            axios.interceptors.request.eject(requestInterceptor);
+            axios.interceptors.response.eject(responseInterceptor);
+        };
+    }, []);
 
     const handleLoginSubmit = (event) => {
         event.preventDefault();
 
-
-        axios.post(`${config.API_URL}/login`, {
+        axios.post('/login', {
             email: email,
             password: password
-        }, { withCredentials: true })
+        })
             .then(response => {
-                console.log('Login success:', response.data);
+                console.log('Login response:', response.data);
                 if (response.data.success) {
+                    // Store the token
+                    localStorage.setItem('token', response.data.token);
+                    
+                    const userData = {
+                        id: response.data.userId,
+                        username: response.data.username,
+                        email: email
+                    };
+                    
                     // Set the logged in user state
-                    setLoggedInUser({
-                        id: response.data.userId,
-                        username: response.data.username,
-                        email: email
-                    });
-
-                    // Store in localStorage
-                    localStorage.setItem('loggedInUser', JSON.stringify({
-                        id: response.data.userId,
-                        username: response.data.username,
-                        email: email
-                    }));
+                    setLoggedInUser(userData);
+                    localStorage.setItem('loggedInUser', JSON.stringify(userData));
 
                     window.location.href = response.data.redirectUrl;
                 } else {
@@ -171,31 +142,69 @@ const Frontlog = () => {
                 }
             })
             .catch((error) => {
-                console.log('Caught error:', error);
-
-                if (!error.response) {
-                    console.error('Network error detected:', error);
-                    setnetworkErrorMessage('Network error');
-                } else if (error.response && error.response.data) {
-
-                    const { messageEmail, messagePassword, field } = error.response.data;
-
-
-                    console.log(`Error from server: message="${messageEmail}", "${messagePassword}", field="${field}"`);
-
-
-                    setEmailErrorType(field);
-                    setPasswordErrorType(field);
-                    setemailErrorMessage(messageEmail);
-                    setpasswordErrorMessage(messagePassword);
+                console.error('Login error:', error);
+                if (error.response) {
+                    setEmailErrorType(error.response.data.field);
+                    setemailErrorMessage(error.response.data.messageEmail);
+                    setpasswordErrorMessage(error.response.data.messagePassword);
                 } else {
-
-                    console.error('Unexpected error:', error);
-                    setnetworkErrorMessage('An unexpected error occurred. \nPlease try again.');
+                    setnetworkErrorMessage('Network error. Please try again.');
                 }
             });
     };
 
+    const handleRegisterSubmit = (event) => {
+        event.preventDefault();
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!emailRegex.test(emailRegister)) {
+            setRegisterErrorType("email");
+            setErrorRegister("Please enter a valid email address.");
+            return;
+        }
+
+        axios.post('/register', {
+            username: username,
+            email: emailRegister,
+            password: passwordRegister,
+            agreedToTerms: agreedToTerms
+        })
+            .then(response => {
+                console.log('Registration response:', response.data);
+                if (response.data.success) {
+                    // Store the token
+                    localStorage.setItem('token', response.data.token);
+                    
+                    const userData = {
+                        id: response.data.userId,
+                        username: username,
+                        email: emailRegister
+                    };
+                    
+                    // Set the logged in user state
+                    setLoggedInUser(userData);
+                    localStorage.setItem('loggedInUser', JSON.stringify(userData));
+
+                    setRegisterErrorType(null);
+                    setSuccessMessage('User registered successfully! Redirecting...');
+
+                    setTimeout(() => {
+                        window.location.href = response.data.redirectUrl;
+                    }, 2000);
+                } else {
+                    setRegisterErrorType(response.data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Registration error:', error);
+                if (error.response) {
+                    setNetworkErrorRegister(error.response.data.message || 'Something went wrong during registration');
+                } else {
+                    setNetworkErrorRegister('Network error');
+                }
+            });
+    };
 
     const handleUsernameChange = async (e) => {
         const newUsername = e.target.value;
@@ -209,7 +218,7 @@ const Frontlog = () => {
 
         try {
 
-            const response = await axios.post(`${config.API_URL}/check-username`, { username: newUsername });
+            const response = await axios.post('/check-username', { username: newUsername });
 
 
             if (response.data.exists) {
@@ -256,8 +265,7 @@ const Frontlog = () => {
     
         // Send the token to the backend for verification
         axios
-            .post(`${config.API_URL}/google-login`, { token }, { 
-                withCredentials: true,
+            .post('/google-login', { token }, { 
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -295,10 +303,13 @@ const Frontlog = () => {
 
     // Add useEffect to check for existing user session
     useEffect(() => {
+        console.log('Checking for stored user...');
         const storedUser = localStorage.getItem('loggedInUser');
+        console.log('Stored user from localStorage:', storedUser);
         if (storedUser) {
             try {
                 const parsedUser = JSON.parse(storedUser);
+                console.log('Parsed user data:', parsedUser);
                 setLoggedInUser(parsedUser);
             } catch (error) {
                 console.error('Error parsing stored user:', error);
@@ -306,6 +317,11 @@ const Frontlog = () => {
             }
         }
     }, []);
+
+    // Add a debug log for the current loggedInUser state
+    useEffect(() => {
+        console.log('Current loggedInUser state:', loggedInUser);
+    }, [loggedInUser]);
 
     return (
 
