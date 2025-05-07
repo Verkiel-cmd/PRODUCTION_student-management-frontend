@@ -241,22 +241,17 @@ const Frontlog = () => {
     const handleGoogleSuccess = (response) => {
         console.log('Google Sign-In response:', response);
     
-        // Extract the token from the response
         const token = response.credential;
         if (!token) {
             setgoogleErrorMessage('Google Sign-In failed. No token received.');
             return;
         }
     
-        // Send the token to the backend for verification
         axios
             .post(`${config.API_URL}/google-login`, { token }, { withCredentials: true })
             .then((res) => {
                 if (res.data.success) {
-                    // Store the user info in localStorage
                     localStorage.setItem('loggedInUser', JSON.stringify(res.data.user));
-    
-                    // Redirect to the protected route
                     window.location.href = '/ListStud';
                 } else {
                     setgoogleErrorMessage(res.data.message || 'Google Sign-In failed. Please try again.');
