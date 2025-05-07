@@ -6,7 +6,7 @@ import './Webstyles/login_style.css';
 import config from './config';
 
 // Configure axios defaults
-axios.defaults.withCredentials = true; // This is crucial for session cookies
+axios.defaults.withCredentials = true;
 axios.defaults.baseURL = config.API_URL;
 
 const Frontlog = () => {
@@ -69,15 +69,11 @@ const Frontlog = () => {
         }
     };
 
-    // Remove the axios interceptors useEffect and replace with a simpler session check
+    // Simplified session check without cache-control header
     useEffect(() => {
         const checkSession = async () => {
             try {
-                const response = await axios.get('/api/user-details', {
-                    headers: {
-                        'Cache-Control': 'no-cache'
-                    }
-                });
+                const response = await axios.get('/api/user-details');
                 if (response.data.success) {
                     setLoggedInUser({
                         username: response.data.user.username
@@ -90,7 +86,7 @@ const Frontlog = () => {
         };
 
         checkSession();
-    }, []); // Only run once on mount
+    }, []);
 
     const handleLoginSubmit = (event) => {
         event.preventDefault();
@@ -101,6 +97,7 @@ const Frontlog = () => {
         })
             .then(response => {
                 if (response.data.success) {
+                    setLoggedInUser(response.data.user);
                     window.location.href = response.data.redirectUrl;
                 } else {
                     setEmailErrorType(null);
@@ -110,7 +107,7 @@ const Frontlog = () => {
             })
             .catch((error) => {
                 if (!error.response) {
-                    setnetworkErrorMessage('Network error');
+                    setnetworkErrorMessage('Network error. Please check your connection.');
                 } else if (error.response && error.response.data) {
                     const { messageEmail, messagePassword, field } = error.response.data;
                     setEmailErrorType(field);
@@ -191,38 +188,32 @@ const Frontlog = () => {
     };
 
     const handleGoogleSuccess = (response) => {
-        console.log('Google Sign-In response:', response);
-    
         const token = response.credential;
         if (!token) {
             setgoogleErrorMessage('Google Sign-In failed. No token received.');
             return;
         }
-    
-        axios
-            .post(`${config.API_URL}/google-login`, { token }, { withCredentials: true })
+
+        axios.post('/google-login', { token })
             .then((res) => {
                 if (res.data.success) {
-                    localStorage.setItem('loggedInUser', JSON.stringify(res.data.user));
+                    setLoggedInUser(res.data.user);
                     window.location.href = '/ListStud';
                 } else {
                     setgoogleErrorMessage(res.data.message || 'Google Sign-In failed. Please try again.');
                 }
             })
             .catch((error) => {
-                console.error('Google Sign-In failed:', error);
-    
                 if (error.response) {
-                    console.error('Response data:', error.response.data);
                     setgoogleErrorMessage(error.response.data.message || 'Google Sign-In failed. Please try again.');
                 } else {
-                    setgoogleErrorMessage('An unexpected error occurred. \nPlease try again.');
+                    setgoogleErrorMessage('Network error. Please check your connection.');
                 }
             });
     };
 
-    const handleGoogleFailure = (response) => {
-        console.error('Google Sign-In error:', response);
+    const handleGoogleFailure = (error) => {
+        console.error('Google Sign-In error:', error);
         setgoogleErrorMessage('Google Sign-In was unsuccessful. Please try again.');
     };
 
@@ -402,16 +393,14 @@ const Frontlog = () => {
                             )}
 
                             <div className="google-login">
-                                <GoogleLogin
-                                    clientId="824956744352-a4sj5egukjh1csk8galsalp6v4i73gbq.apps.googleusercontent.com"
-                                    buttonText="Sign in with Google"
-                                    onSuccess={handleGoogleSuccess}
-                                    onFailure={handleGoogleFailure}
-                                    cookiePolicy={'single_host_origin'}
-                                    className="google-login-button"
-                                    useOneTap={false}
-                                    flow="implicit"
-                                />
+                                <GoogleOAuthProvider clientId="824956744352-a4sj5egukjh1csk8galsalp6v4i73gbq.apps.googleusercontent.com">
+                                    <GoogleLogin
+                                        onSuccess={handleGoogleSuccess}
+                                        onError={handleGoogleFailure}
+                                        useOneTap={false}
+                                        flow="implicit"
+                                    />
+                                </GoogleOAuthProvider>
                             </div>
 
 
