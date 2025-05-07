@@ -69,80 +69,37 @@ const Frontlog = () => {
         }
     };
 
-    // Add useEffect to set up axios interceptor
+    // Remove the axios interceptors useEffect and replace with a simpler session check
     useEffect(() => {
-        // Add request interceptor
-        const requestInterceptor = axios.interceptors.request.use(
-            (config) => {
-                const token = localStorage.getItem('token');
-                if (token) {
-                    config.headers.Authorization = `Bearer ${token}`;
-                }
-                return config;
-            },
-            (error) => {
-                return Promise.reject(error);
-            }
-        );
-
-        // Add response interceptor
-        const responseInterceptor = axios.interceptors.response.use(
-            (response) => response,
-            (error) => {
-                if (error.response?.status === 401) {
-                    // Clear local storage and redirect to login
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('loggedInUser');
-                    window.location.href = '/';
-                }
-                return Promise.reject(error);
-            }
-        );
-
-        // Cleanup interceptors
-        return () => {
-            axios.interceptors.request.eject(requestInterceptor);
-            axios.interceptors.response.eject(responseInterceptor);
-        };
-    }, []);
-
-    // Fix the session check to prevent infinite loop
-    useEffect(() => {
-        let isMounted = true;
-
         const checkSession = async () => {
             try {
-                const response = await axios.get('/api/user-details');
-                if (response.data.success && isMounted) {
+                const response = await axios.get('/api/user-details', {
+                    headers: {
+                        'Cache-Control': 'no-cache'
+                    }
+                });
+                if (response.data.success) {
                     setLoggedInUser({
                         username: response.data.user.username
                     });
                 }
             } catch (error) {
                 console.error('Session check failed:', error);
-                if (isMounted) {
-                    setLoggedInUser(null);
-                }
+                setLoggedInUser(null);
             }
         };
 
         checkSession();
-
-        // Cleanup function
-        return () => {
-            isMounted = false;
-        };
-    }, []); // Empty dependency array to run only once on mount
+    }, []); // Only run once on mount
 
     const handleLoginSubmit = (event) => {
         event.preventDefault();
 
-        axios.post(`${config.API_URL}/login`, {
+        axios.post('/login', {
             email: email,
             password: password
-        }, { withCredentials: true })
+        })
             .then(response => {
-                console.log('Login success:', response.data);
                 if (response.data.success) {
                     window.location.href = response.data.redirectUrl;
                 } else {
@@ -152,21 +109,16 @@ const Frontlog = () => {
                 }
             })
             .catch((error) => {
-                console.log('Caught error:', error);
-
                 if (!error.response) {
-                    console.error('Network error detected:', error);
                     setnetworkErrorMessage('Network error');
                 } else if (error.response && error.response.data) {
                     const { messageEmail, messagePassword, field } = error.response.data;
-                    console.log(`Error from server: message="${messageEmail}", "${messagePassword}", field="${field}"`);
                     setEmailErrorType(field);
                     setPasswordErrorType(field);
                     setemailErrorMessage(messageEmail);
                     setpasswordErrorMessage(messagePassword);
                 } else {
-                    console.error('Unexpected error:', error);
-                    setnetworkErrorMessage('An unexpected error occurred. \nPlease try again.');
+                    setnetworkErrorMessage('An unexpected error occurred. Please try again.');
                 }
             });
     };
