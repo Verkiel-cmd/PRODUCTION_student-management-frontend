@@ -156,9 +156,8 @@ const Frontlog = () => {
                     setLoggedInUser(userData);
                     setSuccessMessage('Login successful! Redirecting...');
 
-                    setTimeout(() => {
-                        window.location.href = response.data.redirectUrl;
-                    }, 1000);
+                    // Redirect immediately
+                    window.location.href = response.data.redirectUrl;
                 } else {
                     setEmailErrorType(null);
                     setemailErrorMessage(response.data.message || 'Unexpected error occurred.');
@@ -205,9 +204,8 @@ const Frontlog = () => {
                     setRegisterErrorType(null);
                     setSuccessMessage('User registered successfully! Redirecting...');
 
-                    setTimeout(() => {
-                        window.location.href = response.data.redirectUrl;
-                    }, 2000);
+                    // Redirect immediately
+                    window.location.href = response.data.redirectUrl;
                 } else {
                     setRegisterErrorType(response.data.message);
                 }
