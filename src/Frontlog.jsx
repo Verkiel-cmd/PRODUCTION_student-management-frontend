@@ -268,7 +268,7 @@ const Frontlog = () => {
                     console.error('Response data:', error.response.data);
                     setgoogleErrorMessage(error.response.data.message || 'Google Sign-In failed. Please try again.');
                 } else if (error.request) {
-                    setgoogleErrorMessage('No response received from server. Please check your internet connection.');
+                    setgoogleErrorMessage('No response received from server.');
                 } else {
                     setgoogleErrorMessage('An unexpected error occurred. Please try again.');
                 }
