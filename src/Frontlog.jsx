@@ -142,21 +142,13 @@ const Frontlog = () => {
     const handleLoginSubmit = (event) => {
         event.preventDefault();
 
-        axios.post('/login', {
+        axios.post(`${config.API_URL}/login`, {
             email: email,
             password: password
-        })
+        }, { withCredentials: true })
             .then(response => {
-                console.log('Login response:', response.data);
+                console.log('Login success:', response.data);
                 if (response.data.success) {
-                    const userData = {
-                        username: response.data.username
-                    };
-                    
-                    setLoggedInUser(userData);
-                    setSuccessMessage('Login successful! Redirecting...');
-
-                    // Redirect immediately
                     window.location.href = response.data.redirectUrl;
                 } else {
                     setEmailErrorType(null);
@@ -165,13 +157,21 @@ const Frontlog = () => {
                 }
             })
             .catch((error) => {
-                console.error('Login error:', error);
-                if (error.response) {
-                    setEmailErrorType(error.response.data.field);
-                    setemailErrorMessage(error.response.data.messageEmail);
-                    setpasswordErrorMessage(error.response.data.messagePassword);
+                console.log('Caught error:', error);
+
+                if (!error.response) {
+                    console.error('Network error detected:', error);
+                    setnetworkErrorMessage('Network error');
+                } else if (error.response && error.response.data) {
+                    const { messageEmail, messagePassword, field } = error.response.data;
+                    console.log(`Error from server: message="${messageEmail}", "${messagePassword}", field="${field}"`);
+                    setEmailErrorType(field);
+                    setPasswordErrorType(field);
+                    setemailErrorMessage(messageEmail);
+                    setpasswordErrorMessage(messagePassword);
                 } else {
-                    setnetworkErrorMessage('Network error. Please try again.');
+                    console.error('Unexpected error:', error);
+                    setnetworkErrorMessage('An unexpected error occurred. \nPlease try again.');
                 }
             });
     };
@@ -187,34 +187,31 @@ const Frontlog = () => {
             return;
         }
 
-        axios.post('/register', {
+        axios.post(`${config.API_URL}/register`, {
             username: username,
             email: emailRegister,
             password: passwordRegister,
             agreedToTerms: agreedToTerms
-        })
+        }, { withCredentials: true })
             .then(response => {
-                console.log('Registration response:', response.data);
+                console.log('Registration success:', response.data);
                 if (response.data.success) {
-                    const userData = {
-                        username: username
-                    };
-                    
-                    setLoggedInUser(userData);
                     setRegisterErrorType(null);
                     setSuccessMessage('User registered successfully! Redirecting...');
 
-                    // Redirect immediately
-                    window.location.href = response.data.redirectUrl;
+                    setTimeout(() => {
+                        window.location.href = response.data.redirectUrl;
+                    }, 2000);
                 } else {
                     setRegisterErrorType(response.data.message);
                 }
             })
             .catch(error => {
-                console.error('Registration error:', error);
                 if (error.response) {
+                    console.error('Registration error:', error.response.data);
                     setNetworkErrorRegister(error.response.data.message || 'Something went wrong during registration');
                 } else {
+                    console.error('Network error:', error);
                     setNetworkErrorRegister('Network error');
                 }
             });
