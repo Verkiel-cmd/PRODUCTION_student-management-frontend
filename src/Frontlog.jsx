@@ -111,24 +111,33 @@ const Frontlog = () => {
         };
     }, []);
 
-    // Add useEffect to check session status
+    // Fix the session check to prevent infinite loop
     useEffect(() => {
+        let isMounted = true;
+
         const checkSession = async () => {
             try {
                 const response = await axios.get('/api/user-details');
-                if (response.data.success) {
+                if (response.data.success && isMounted) {
                     setLoggedInUser({
                         username: response.data.user.username
                     });
                 }
             } catch (error) {
                 console.error('Session check failed:', error);
-                setLoggedInUser(null);
+                if (isMounted) {
+                    setLoggedInUser(null);
+                }
             }
         };
 
         checkSession();
-    }, []);
+
+        // Cleanup function
+        return () => {
+            isMounted = false;
+        };
+    }, []); // Empty dependency array to run only once on mount
 
     const handleLoginSubmit = (event) => {
         event.preventDefault();
