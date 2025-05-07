@@ -235,7 +235,7 @@ const Frontlog = () => {
         console.log('Google Sign-In response:', response);
     
         // Extract the token from the response
-        const token = response.credential; // Use `credential` for @react-oauth/google
+        const token = response.credential;
         if (!token) {
             setgoogleErrorMessage('Google Sign-In failed. No token received.');
             return;
@@ -243,7 +243,13 @@ const Frontlog = () => {
     
         // Send the token to the backend for verification
         axios
-            .post(`${config.API_URL}/google-login`, { token }, { withCredentials: true })
+            .post(`${config.API_URL}/google-login`, { token }, { 
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            })
             .then((res) => {
                 if (res.data.success) {
                     // Store the user info in localStorage
@@ -261,8 +267,10 @@ const Frontlog = () => {
                 if (error.response) {
                     console.error('Response data:', error.response.data);
                     setgoogleErrorMessage(error.response.data.message || 'Google Sign-In failed. Please try again.');
+                } else if (error.request) {
+                    setgoogleErrorMessage('No response received from server. Please check your internet connection.');
                 } else {
-                    setgoogleErrorMessage('An unexpected error occurred. \nPlease try again.');
+                    setgoogleErrorMessage('An unexpected error occurred. Please try again.');
                 }
             });
     };
@@ -450,6 +458,8 @@ const Frontlog = () => {
                                     onFailure={handleGoogleFailure}
                                     cookiePolicy={'single_host_origin'}
                                     className="google-login-button"
+                                    useOneTap={false}
+                                    flow="implicit"
                                 />
                             </div>
 
