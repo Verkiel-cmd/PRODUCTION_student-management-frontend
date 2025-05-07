@@ -3,13 +3,11 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Webstyles/DES_side.css';
 import DeleteModal from './DeleteModel';
-import  config from'./config';
+import config from './config';
+import axios from 'axios';
 
 function ListStud() {
-
-  
-  
-  const [students, setStudents] = useState('');
+  const [students, setStudents] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [error, setError] = useState('');
@@ -18,30 +16,22 @@ function ListStud() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(() => localStorage.getItem("sidebarState") === "expanded");
   const [isAuthDropdownOpen, setIsAuthDropdownOpen] = useState(() => localStorage.getItem("authDropdownState") === "expanded");
   const [isMultiDropdownOpen, setIsMultiDropdownOpen] = useState(() => localStorage.getItem("multiDropdownState") === "expanded");
-  const [loggedInUser, setLoggedInUser] = useState([]); // Store logged-in user details
+  const [loggedInUser, setLoggedInUser] = useState(null);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Clear the user data from localStorage
     localStorage.removeItem('loggedInUser');
-
-    // Optionally, clear session cookies if used
     axios.post(`${config.API_URL}/logout`, {}, { withCredentials: true })
-        .then(() => {
-            console.log('User logged out successfully');
-        })
-        .catch((error) => {
-            console.error('Error during logout:', error);
-        });
-
-
-    // Redirect to the login page
-    window.location.href = '/Frontlog';
-};
-
-
+      .then(() => {
+        console.log('User logged out successfully');
+        navigate('/Frontlog');
+      })
+      .catch((error) => {
+        console.error('Error during logout:', error);
+      });
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -72,7 +62,6 @@ function ListStud() {
         throw new Error('Failed to delete student');
       }
 
-
       const updatedStudents = students.filter((student) => student.id !== id);
       setStudents(updatedStudents);
       setFilteredStudents(updatedStudents);
@@ -83,7 +72,6 @@ function ListStud() {
     }
   };
 
-
   const toggleSidebar = () => {
     setIsSidebarExpanded((prev) => {
       const newState = !prev;
@@ -92,47 +80,35 @@ function ListStud() {
     });
   };
 
-  // Toggle profile dropdown
   const toggleProfileDropdown = () => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
   };
-
-
 
   const handleAuthDropdownClick = () => {
     setIsAuthDropdownOpen(prev => {
       const newState = !prev;
       localStorage.setItem("authDropdownState", newState ? "expanded" : "collapsed");
-
-
       if (isMultiDropdownOpen) {
         setIsMultiDropdownOpen(false);
         localStorage.setItem("multiDropdownState", "collapsed");
       }
-
       return newState;
     });
   };
-
 
   const handleMultiDropdownClick = () => {
     setIsMultiDropdownOpen(prev => {
       const newState = !prev;
       localStorage.setItem("multiDropdownState", newState ? "expanded" : "collapsed");
-
-
       if (isAuthDropdownOpen) {
         setIsAuthDropdownOpen(false);
         localStorage.setItem("authDropdownState", "collapsed");
       }
-
       return newState;
     });
   };
 
-
-
-
+  // Fetch students data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -145,25 +121,29 @@ function ListStud() {
       }
     };
     fetchData();
-  }, []);
+  }, [searchTerm]); // Only re-fetch when searchTerm changes
 
-
+  // Fetch user details
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const res = await fetch(`${config.API_URL}/api/user-details`, { credentials: 'include' });
+        const res = await fetch(`${config.API_URL}/api/user-details`, { 
+          credentials: 'include',
+          headers: {
+            'Cache-Control': 'no-cache'
+          }
+        });
         if (!res.ok) throw new Error('Failed to fetch user details');
         const data = await res.json();
-        setLoggedInUser(data.user);  // ✅ Correctly stores user details
+        setLoggedInUser(data.user);
       } catch (error) {
         console.error('Error fetching user details:', error);
+        setLoggedInUser(null);
       }
     };
 
-    fetchUserDetails(); // ✅ Runs only on mount
-  }, []); // ✅ Runs once on component mount
-
-
+    fetchUserDetails();
+  }, []); // Only run once on mount
 
   return (
     <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""}`}>
