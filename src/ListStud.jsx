@@ -21,16 +21,17 @@ function ListStud() {
 
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    axios.post(`${config.API_URL}/logout`, {}, { withCredentials: true })
-      .then(() => {
-        console.log('User logged out successfully');
-        navigate('/Frontlog');
-      })
-      .catch((error) => {
-        console.error('Error during logout:', error);
-      });
+  const handleLogout = async () => {
+    try {
+      await axios.post(`${config.API_URL}/logout`, {}, { withCredentials: true });
+      localStorage.removeItem('user');
+      navigate('/Frontlog', { replace: true });
+    } catch (error) {
+      console.error('Error during logout:', error);
+      // Still clear local storage and redirect even if the API call fails
+      localStorage.removeItem('user');
+      navigate('/Frontlog', { replace: true });
+    }
   };
 
   const handleSearch = (e) => {
@@ -127,33 +128,50 @@ function ListStud() {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
+        // First check localStorage
         const userStr = localStorage.getItem('user');
         if (userStr) {
-          const userData = JSON.parse(userStr);
-          setLoggedInUser(userData);
-        } else {
-          const res = await fetch(`${config.API_URL}/api/user-details`, { 
-            credentials: 'include',
-            headers: {
-              'Cache-Control': 'no-cache'
+          try {
+            const userData = JSON.parse(userStr);
+            if (userData && typeof userData === 'object') {
+              setLoggedInUser(userData);
+              return;
             }
-          });
-          if (!res.ok) throw new Error('Failed to fetch user details');
-          const data = await res.json();
-          if (data.user) {
-            setLoggedInUser(data.user);
-            localStorage.setItem('user', JSON.stringify(data.user));
+          } catch (e) {
+            console.error('Error parsing stored user data:', e);
+            localStorage.removeItem('user');
           }
+        }
+
+        // If no valid user in localStorage, try API
+        const res = await fetch(`${config.API_URL}/api/user-details`, { 
+          credentials: 'include',
+          headers: {
+            'Cache-Control': 'no-cache'
+          }
+        });
+
+        if (!res.ok) {
+          throw new Error('Failed to fetch user details');
+        }
+
+        const data = await res.json();
+        if (data.user) {
+          setLoggedInUser(data.user);
+          localStorage.setItem('user', JSON.stringify(data.user));
+        } else {
+          throw new Error('No user data in response');
         }
       } catch (error) {
         console.error('Error fetching user details:', error);
         setLoggedInUser(null);
         localStorage.removeItem('user');
+        navigate('/Frontlog', { replace: true });
       }
     };
 
     fetchUserDetails();
-  }, []); // Only run once on mount
+  }, [navigate]); // Add navigate to dependencies
 
   return (
     <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""}`}>

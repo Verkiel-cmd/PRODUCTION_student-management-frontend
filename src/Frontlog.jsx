@@ -86,19 +86,21 @@ const Frontlog = () => {
                 password: password
             });
 
-            if (response.data.success) {
+            if (response.data.success && response.data.user) {
+                // Store the complete user object
                 const userData = response.data.user;
-                setLoggedInUser(userData);
                 localStorage.setItem('user', JSON.stringify(userData));
+                setLoggedInUser(userData);
                 
-                // Use navigate instead of window.location
-                navigate('/ListStud');
+                // Use navigate for redirection
+                navigate('/ListStud', { replace: true });
             } else {
                 setEmailErrorType('email');
-                setemailErrorMessage(response.data.message || 'Invalid credentials');
-                setpasswordErrorMessage(response.data.message || 'Invalid credentials');
+                setemailErrorMessage('Invalid credentials');
+                setpasswordErrorMessage('Invalid credentials');
             }
         } catch (error) {
+            console.error('Login error:', error);
             if (!error.response) {
                 setnetworkErrorMessage('Network error. Please check your connection.');
             } else if (error.response.status === 401) {
@@ -106,11 +108,9 @@ const Frontlog = () => {
                 setemailErrorMessage('Invalid email or password');
                 setpasswordErrorMessage('Invalid email or password');
             } else {
-                const { messageEmail, messagePassword, field } = error.response.data;
-                setEmailErrorType(field);
-                setPasswordErrorType(field);
-                setemailErrorMessage(messageEmail);
-                setpasswordErrorMessage(messagePassword);
+                setEmailErrorType('email');
+                setemailErrorMessage(error.response.data.message || 'Login failed');
+                setpasswordErrorMessage(error.response.data.message || 'Login failed');
             }
         }
     };
@@ -191,22 +191,19 @@ const Frontlog = () => {
 
         try {
             const res = await axios.post('/google-login', { token });
-            if (res.data.success) {
+            if (res.data.success && res.data.user) {
                 const userData = res.data.user;
-                setLoggedInUser(userData);
                 localStorage.setItem('user', JSON.stringify(userData));
+                setLoggedInUser(userData);
                 
-                // Use navigate instead of window.location
-                navigate('/ListStud');
+                // Use navigate for redirection
+                navigate('/ListStud', { replace: true });
             } else {
-                setgoogleErrorMessage(res.data.message || 'Google Sign-In failed. Please try again.');
+                setgoogleErrorMessage('Google Sign-In failed. Please try again.');
             }
         } catch (error) {
-            if (error.response) {
-                setgoogleErrorMessage(error.response.data.message || 'Google Sign-In failed. Please try again.');
-            } else {
-                setgoogleErrorMessage('Network error. Please check your connection.');
-            }
+            console.error('Google login error:', error);
+            setgoogleErrorMessage(error.response?.data?.message || 'Google Sign-In failed. Please try again.');
         }
     };
 
@@ -214,11 +211,6 @@ const Frontlog = () => {
         console.error('Google Sign-In error:', error);
         setgoogleErrorMessage('Google Sign-In was unsuccessful. Please try again.');
     };
-
-    // Add a debug log for the current loggedInUser state
-    useEffect(() => {
-        console.log('Current loggedInUser state:', loggedInUser);
-    }, [loggedInUser]);
 
     return (
 
