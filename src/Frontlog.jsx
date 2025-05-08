@@ -69,27 +69,29 @@ const Frontlog = () => {
         }
     };
 
-    // Modified session check to handle unauthorized state
+    // Modified session check to prevent redirect loops
     useEffect(() => {
         const checkSession = async () => {
             try {
                 const response = await axios.get('/api/user-details');
                 if (response.data.success) {
                     setLoggedInUser(response.data.user);
-                    // If user is already logged in, redirect to ListStud
+                    // Only redirect if we're on the login page and have a valid session
                     if (window.location.pathname === '/') {
                         window.location.href = '/ListStud';
                     }
                 }
             } catch (error) {
-                // Only set loggedInUser to null if we're not on the login page
-                if (window.location.pathname !== '/') {
-                    setLoggedInUser(null);
-                }
+                // Don't redirect on 401, just clear the user state
+                setLoggedInUser(null);
+                localStorage.removeItem('user');
             }
         };
 
-        checkSession();
+        // Only check session if we're on the login page
+        if (window.location.pathname === '/') {
+            checkSession();
+        }
     }, []);
 
     const handleLoginSubmit = async (event) => {
@@ -106,11 +108,15 @@ const Frontlog = () => {
             });
 
             if (response.data.success) {
-                setLoggedInUser(response.data.user);
-                // Store user data in localStorage
-                localStorage.setItem('user', JSON.stringify(response.data.user));
-                // Redirect to ListStud
-                window.location.href = '/ListStud';
+                // Store the complete user object
+                const userData = response.data.user;
+                setLoggedInUser(userData);
+                localStorage.setItem('user', JSON.stringify(userData));
+                
+                // Add a small delay before redirect to ensure state is updated
+                setTimeout(() => {
+                    window.location.href = '/ListStud';
+                }, 100);
             } else {
                 setEmailErrorType('email');
                 setemailErrorMessage(response.data.message || 'Invalid credentials');
@@ -210,9 +216,14 @@ const Frontlog = () => {
         try {
             const res = await axios.post('/google-login', { token });
             if (res.data.success) {
-                setLoggedInUser(res.data.user);
-                localStorage.setItem('user', JSON.stringify(res.data.user));
-                window.location.href = '/ListStud';
+                const userData = res.data.user;
+                setLoggedInUser(userData);
+                localStorage.setItem('user', JSON.stringify(userData));
+                
+                // Add a small delay before redirect to ensure state is updated
+                setTimeout(() => {
+                    window.location.href = '/ListStud';
+                }, 100);
             } else {
                 setgoogleErrorMessage(res.data.message || 'Google Sign-In failed. Please try again.');
             }
