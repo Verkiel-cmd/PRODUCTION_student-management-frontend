@@ -117,8 +117,8 @@ const Frontlog = () => {
             } else {
                 setEmailErrorType('email');
                 setPasswordErrorType('password');
-                setemailErrorMessage(error.response.data.message || 'Invalid email');
-                setpasswordErrorMessage(error.response.data.message || 'Invalid password');
+                setemailErrorMessage('Invalid email');
+                setpasswordErrorMessage('Invalid password');
             }
         }
     };
