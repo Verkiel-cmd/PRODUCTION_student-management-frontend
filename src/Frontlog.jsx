@@ -81,18 +81,20 @@ const Frontlog = () => {
         setnetworkErrorMessage('');
 
         try {
-            const response = await axios.post('/login', {
+            const response = await axios.post(`${config.API_URL}/api/login`, {
                 email: email,
                 password: password
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             });
 
             if (response.data.success && response.data.user) {
-                // Store the complete user object
                 const userData = response.data.user;
                 localStorage.setItem('user', JSON.stringify(userData));
                 setLoggedInUser(userData);
-                
-                // Use navigate for redirection
                 navigate('/ListStud', { replace: true });
             } else {
                 setEmailErrorType('email');
@@ -126,7 +128,7 @@ const Frontlog = () => {
             return;
         }
 
-        axios.post(`${config.API_URL}/register`, {
+        axios.post(`${config.API_URL}/api/register`, {
             username: username,
             email: emailRegister,
             password: passwordRegister,
