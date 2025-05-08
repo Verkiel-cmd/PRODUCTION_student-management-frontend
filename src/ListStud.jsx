@@ -22,7 +22,7 @@ function ListStud() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('loggedInUser');
+    localStorage.removeItem('user');
     axios.post(`${config.API_URL}/logout`, {}, { withCredentials: true })
       .then(() => {
         console.log('User logged out successfully');
@@ -127,18 +127,28 @@ function ListStud() {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const res = await fetch(`${config.API_URL}/api/user-details`, { 
-          credentials: 'include',
-          headers: {
-            'Cache-Control': 'no-cache'
+        const userStr = localStorage.getItem('user');
+        if (userStr) {
+          const userData = JSON.parse(userStr);
+          setLoggedInUser(userData);
+        } else {
+          const res = await fetch(`${config.API_URL}/api/user-details`, { 
+            credentials: 'include',
+            headers: {
+              'Cache-Control': 'no-cache'
+            }
+          });
+          if (!res.ok) throw new Error('Failed to fetch user details');
+          const data = await res.json();
+          if (data.user) {
+            setLoggedInUser(data.user);
+            localStorage.setItem('user', JSON.stringify(data.user));
           }
-        });
-        if (!res.ok) throw new Error('Failed to fetch user details');
-        const data = await res.json();
-        setLoggedInUser(data.user);
+        }
       } catch (error) {
         console.error('Error fetching user details:', error);
         setLoggedInUser(null);
+        localStorage.removeItem('user');
       }
     };
 
