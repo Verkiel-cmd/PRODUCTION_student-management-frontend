@@ -69,36 +69,6 @@ const Frontlog = () => {
         }
     };
 
-    // Modified session check to only run when needed
-    useEffect(() => {
-        const checkSession = async () => {
-            try {
-                const response = await axios.get('/api/user-details');
-                if (response.data.success) {
-                    const userData = response.data.user;
-                    setLoggedInUser(userData);
-                    localStorage.setItem('user', JSON.stringify(userData));
-                    
-                    if (window.location.pathname === '/') {
-                        window.location.href = '/ListStud';
-                    }
-                }
-            } catch (error) {
-                // Only clear user data if we're not on the login page
-                if (window.location.pathname !== '/') {
-                    setLoggedInUser(null);
-                    localStorage.removeItem('user');
-                }
-            }
-        };
-
-        // Only check session if we have a stored user
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-            checkSession();
-        }
-    }, []);
-
     const handleLoginSubmit = async (event) => {
         event.preventDefault();
         
