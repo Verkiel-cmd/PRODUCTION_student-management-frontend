@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 // Configure axios defaults
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = config.API_URL;
+axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 const Frontlog = () => {
 
@@ -81,14 +82,9 @@ const Frontlog = () => {
         setnetworkErrorMessage('');
 
         try {
-            const response = await axios.post(`${config.API_URL}/api/login`, {
+            const response = await axios.post('/api/login', {
                 email: email,
                 password: password
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                withCredentials: true
             });
 
             if (response.data.success && response.data.user) {
