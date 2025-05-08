@@ -79,18 +79,16 @@ const Frontlog = () => {
         setemailErrorMessage('');
         setpasswordErrorMessage('');
         setnetworkErrorMessage('');
+        setPasswordErrorType(null);
 
         try {
-            const response = await axios.post(`${config.API_URL}/api/login`, {
+            console.log('Attempting login with:', { email });
+            const response = await axios.post(`${config.API_URL}/login`, {
                 email: email,
                 password: password
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                withCredentials: true
             });
 
+            console.log('Login response:', response.data);
             if (response.data.success && response.data.user) {
                 const userData = response.data.user;
                 localStorage.setItem('user', JSON.stringify(userData));
@@ -98,6 +96,7 @@ const Frontlog = () => {
                 navigate('/ListStud', { replace: true });
             } else {
                 setEmailErrorType('email');
+                setPasswordErrorType('password');
                 setemailErrorMessage('Invalid credentials');
                 setpasswordErrorMessage('Invalid credentials');
             }
@@ -107,10 +106,12 @@ const Frontlog = () => {
                 setnetworkErrorMessage('Network error. Please check your connection.');
             } else if (error.response.status === 401) {
                 setEmailErrorType('email');
+                setPasswordErrorType('password');
                 setemailErrorMessage('Invalid email or password');
                 setpasswordErrorMessage('Invalid email or password');
             } else {
                 setEmailErrorType('email');
+                setPasswordErrorType('password');
                 setemailErrorMessage(error.response.data.message || 'Login failed');
                 setpasswordErrorMessage(error.response.data.message || 'Login failed');
             }
@@ -128,7 +129,7 @@ const Frontlog = () => {
             return;
         }
 
-        axios.post(`${config.API_URL}/api/register`, {
+        axios.post(`${config.API_URL}/register`, {
             username: username,
             email: emailRegister,
             password: passwordRegister,
