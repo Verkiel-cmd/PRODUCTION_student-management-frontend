@@ -154,20 +154,7 @@ function Classes() {
         fetchClasses();
     }, []);
 
-    useEffect(() => {
-        const fetchUserDetails = async () => {
-            try {
-                const res = await fetch(`${config.API_URL}/api/user-details`, { credentials: 'include' });
-                if (!res.ok) throw new Error('Failed to fetch user details');
-                const data = await res.json();
-                setLoggedInUser(data.user);
-            } catch (error) {
-                console.error('Error fetching user details:', error);
-            }
-        };
-
-        fetchUserDetails();
-    }, []);
+   
 
 
     const handleOperationSuccess = (message) => {
@@ -368,6 +355,55 @@ function Classes() {
             setErrorMessage('Error while deleting class: ' + error.message);
         }
     };
+
+    // Fetch user details
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        // First check localStorage
+        const userStr = localStorage.getItem('user');
+        if (userStr) {
+          try {
+            const userData = JSON.parse(userStr);
+            if (userData && typeof userData === 'object') {
+              setLoggedInUser(userData);
+              return;
+            }
+          } catch (e) {
+            console.error('Error parsing stored user data:', e);
+            localStorage.removeItem('user');
+          }
+        }
+
+        // If no valid user in localStorage, try API
+        const res = await fetch(`${config.API_URL}/api/user-details`, { 
+          credentials: 'include',
+          headers: {
+            'Cache-Control': 'no-cache'
+          }
+        });
+
+        if (!res.ok) {
+          throw new Error('Failed to fetch user details');
+        }
+
+        const data = await res.json();
+        if (data.user) {
+          setLoggedInUser(data.user);
+          localStorage.setItem('user', JSON.stringify(data.user));
+        } else {
+          throw new Error('No user data in response');
+        }
+      } catch (error) {
+        console.error('Error fetching user details:', error);
+        setLoggedInUser(null);
+        localStorage.removeItem('user');
+        navigate('/Frontlog', { replace: true });
+      }
+    };
+
+    fetchUserDetails();
+  }, [navigate]); // Add navigate to dependencies
 
 
     return (
