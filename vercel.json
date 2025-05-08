@@ -1,22 +1,3 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
-  "headers": [
-      {
-          "source": "/(.*)",
-          "headers": [
-              {
-                  "key": "Content-Security-Policy",
-                  "value": "default-src 'self'; script-src 'self' https://accounts.google.com https://cdn.jsdelivr.net; connect-src 'self' https://play.google.com https://accounts.google.com https://student-management-backend-a2q4.onrender.com; style-src 'self' 'unsafe-inline'; frame-src https://accounts.google.com; frame-ancestors 'self' https://accounts.google.com;"
-              },
-              {
-                  "key": "Cross-Origin-Opener-Policy",
-                  "value": "same-origin-allow-popups"
-              },
-              {
-                  "key": "Cross-Origin-Embedder-Policy",
-                  "value": "unsafe-none"
-              }
-          ]
-      }
-  ]
-}
+    "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  }
