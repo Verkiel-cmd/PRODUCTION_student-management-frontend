@@ -69,38 +69,38 @@ const Frontlog = () => {
         }
     };
 
-    // Modified session check with better error handling
+    // Modified session check to only run when needed
     useEffect(() => {
         const checkSession = async () => {
             try {
-                console.log('Checking session...');
                 const response = await axios.get('/api/user-details');
-                console.log('Session check response:', response.data);
-                
                 if (response.data.success) {
                     const userData = response.data.user;
-                    console.log('User data received:', userData);
                     setLoggedInUser(userData);
                     localStorage.setItem('user', JSON.stringify(userData));
                     
                     if (window.location.pathname === '/') {
-                        console.log('Redirecting to ListStud...');
                         window.location.href = '/ListStud';
                     }
                 }
             } catch (error) {
-                console.log('Session check error:', error);
-                setLoggedInUser(null);
-                localStorage.removeItem('user');
+                // Only clear user data if we're not on the login page
+                if (window.location.pathname !== '/') {
+                    setLoggedInUser(null);
+                    localStorage.removeItem('user');
+                }
             }
         };
 
-        checkSession();
+        // Only check session if we have a stored user
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            checkSession();
+        }
     }, []);
 
     const handleLoginSubmit = async (event) => {
         event.preventDefault();
-        console.log('Login attempt with:', { email });
         
         setEmailErrorType(null);
         setemailErrorMessage('');
@@ -108,30 +108,24 @@ const Frontlog = () => {
         setnetworkErrorMessage('');
 
         try {
-            console.log('Sending login request...');
             const response = await axios.post('/login', {
                 email: email,
                 password: password
             });
-            console.log('Login response:', response.data);
 
             if (response.data.success) {
                 const userData = response.data.user;
-                console.log('Login successful, user data:', userData);
-                
                 setLoggedInUser(userData);
                 localStorage.setItem('user', JSON.stringify(userData));
                 
-                // Force a page reload to ensure all state is cleared
+                // Redirect to ListStud
                 window.location.href = '/ListStud';
             } else {
-                console.log('Login failed:', response.data.message);
                 setEmailErrorType('email');
                 setemailErrorMessage(response.data.message || 'Invalid credentials');
                 setpasswordErrorMessage(response.data.message || 'Invalid credentials');
             }
         } catch (error) {
-            console.log('Login error:', error);
             if (!error.response) {
                 setnetworkErrorMessage('Network error. Please check your connection.');
             } else if (error.response.status === 401) {
@@ -216,34 +210,25 @@ const Frontlog = () => {
     };
 
     const handleGoogleSuccess = async (response) => {
-        console.log('Google sign-in response:', response);
         const token = response.credential;
-        
         if (!token) {
             setgoogleErrorMessage('Google Sign-In failed. No token received.');
             return;
         }
 
         try {
-            console.log('Sending Google login request...');
             const res = await axios.post('/google-login', { token });
-            console.log('Google login response:', res.data);
-
             if (res.data.success) {
                 const userData = res.data.user;
-                console.log('Google login successful, user data:', userData);
-                
                 setLoggedInUser(userData);
                 localStorage.setItem('user', JSON.stringify(userData));
                 
-                // Force a page reload to ensure all state is cleared
+                // Redirect to ListStud
                 window.location.href = '/ListStud';
             } else {
-                console.log('Google login failed:', res.data.message);
                 setgoogleErrorMessage(res.data.message || 'Google Sign-In failed. Please try again.');
             }
         } catch (error) {
-            console.log('Google login error:', error);
             if (error.response) {
                 setgoogleErrorMessage(error.response.data.message || 'Google Sign-In failed. Please try again.');
             } else {
