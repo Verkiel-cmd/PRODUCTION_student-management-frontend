@@ -107,18 +107,27 @@ const Frontlog = () => {
             }
         } catch (error) {
             console.error('Login error:', error);
+        
             if (!error.response) {
                 setnetworkErrorMessage('Network error. Please check your connection.');
-            } else if (error.response.status === 401) {
-                setEmailErrorType('email');
-                setPasswordErrorType('password');
-                setemailErrorMessage('Invalid email or password');
-                setpasswordErrorMessage('Invalid email or password');
+            } else if (error.response.status === 400) {
+                const { field, messageEmail, messagePassword } = error.response.data;
+        
+                if (field === 'email') {
+                    setEmailErrorType('email');
+                    setemailErrorMessage(messageEmail || 'Invalid email');
+                } else if (field === 'password') {
+                    setPasswordErrorType('password');
+                    setpasswordErrorMessage(messagePassword || 'Invalid password');
+                } else {
+                    // Fallback
+                    setEmailErrorType('email');
+                    setPasswordErrorType('password');
+                    setemailErrorMessage('Invalid email or password');
+                    setpasswordErrorMessage('Invalid email or password');
+                }
             } else {
-                setEmailErrorType('email');
-                setPasswordErrorType('password');
-                setemailErrorMessage('Invalid email');
-                setpasswordErrorMessage('Invalid password');
+                setnetworkErrorMessage('An unexpected error occurred. Please try again later.');
             }
         }
     };
