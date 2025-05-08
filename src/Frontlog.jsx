@@ -83,14 +83,19 @@ const Frontlog = () => {
 
         try {
             console.log('Attempting login with:', { email });
-            const response = await axios.post(`${config.API_URL}/login`, {
+            const response = await axios.post('/login', {
                 email: email,
                 password: password
             });
 
             console.log('Login response:', response.data);
-            if (response.data.success && response.data.user) {
-                const userData = response.data.user;
+            if (response.data.success) {
+                // Create user object from response data
+                const userData = {
+                    id: response.data.userId,
+                    username: response.data.username,
+                    email: email
+                };
                 localStorage.setItem('user', JSON.stringify(userData));
                 setLoggedInUser(userData);
                 navigate('/ListStud', { replace: true });
