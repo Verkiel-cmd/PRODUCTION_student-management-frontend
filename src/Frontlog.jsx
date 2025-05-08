@@ -4,6 +4,7 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Webstyles/login_style.css';
 import config from './config';
+import { useNavigate } from 'react-router-dom';
 
 // Configure axios defaults
 axios.defaults.withCredentials = true;
@@ -43,6 +44,8 @@ const Frontlog = () => {
     const [agreedToTerms, setAgreedToTerms] = useState(false);
     const [usernameError, setUsernameError] = useState(false);
     const [usernameErrortype, setUsernameErrorType] = useState(false);
+
+    const navigate = useNavigate();
 
     const toggleForm = () => {
         const logregBox = document.querySelector('.log-reg-box');
@@ -88,8 +91,8 @@ const Frontlog = () => {
                 setLoggedInUser(userData);
                 localStorage.setItem('user', JSON.stringify(userData));
                 
-                // Redirect to ListStud
-                window.location.href = '/ListStud';
+                // Use navigate instead of window.location
+                navigate('/ListStud');
             } else {
                 setEmailErrorType('email');
                 setemailErrorMessage(response.data.message || 'Invalid credentials');
@@ -193,8 +196,8 @@ const Frontlog = () => {
                 setLoggedInUser(userData);
                 localStorage.setItem('user', JSON.stringify(userData));
                 
-                // Redirect to ListStud
-                window.location.href = '/ListStud';
+                // Use navigate instead of window.location
+                navigate('/ListStud');
             } else {
                 setgoogleErrorMessage(res.data.message || 'Google Sign-In failed. Please try again.');
             }
