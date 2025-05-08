@@ -83,7 +83,7 @@ const Frontlog = () => {
 
         try {
             console.log('Attempting login with:', { email });
-            const response = await axios.post('/login', {
+            const response = await axios.post(`${config.API_URL}/login`, {
                 email: email,
                 password: password
             });
@@ -117,8 +117,8 @@ const Frontlog = () => {
             } else {
                 setEmailErrorType('email');
                 setPasswordErrorType('password');
-                setemailErrorMessage(error.response.data.message || 'Login failed');
-                setpasswordErrorMessage(error.response.data.message || 'Login failed');
+                setemailErrorMessage(error.response.data.message || 'Invalid email');
+                setpasswordErrorMessage(error.response.data.message || 'Invalid password');
             }
         }
     };
