@@ -69,55 +69,68 @@ const Frontlog = () => {
         }
     };
 
-    // Simplified session check without cache-control header
+    // Modified session check to handle unauthorized state
     useEffect(() => {
         const checkSession = async () => {
             try {
                 const response = await axios.get('/api/user-details');
                 if (response.data.success) {
-                    setLoggedInUser({
-                        username: response.data.user.username
-                    });
+                    setLoggedInUser(response.data.user);
+                    // If user is already logged in, redirect to ListStud
+                    if (window.location.pathname === '/') {
+                        window.location.href = '/ListStud';
+                    }
                 }
             } catch (error) {
-                console.error('Session check failed:', error);
-                setLoggedInUser(null);
+                // Only set loggedInUser to null if we're not on the login page
+                if (window.location.pathname !== '/') {
+                    setLoggedInUser(null);
+                }
             }
         };
 
         checkSession();
     }, []);
 
-    const handleLoginSubmit = (event) => {
+    const handleLoginSubmit = async (event) => {
         event.preventDefault();
+        setEmailErrorType(null);
+        setemailErrorMessage('');
+        setpasswordErrorMessage('');
+        setnetworkErrorMessage('');
 
-        axios.post('/login', {
-            email: email,
-            password: password
-        })
-            .then(response => {
-                if (response.data.success) {
-                    setLoggedInUser(response.data.user);
-                    window.location.href = response.data.redirectUrl;
-                } else {
-                    setEmailErrorType(null);
-                    setemailErrorMessage(response.data.message || 'Unexpected error occurred.');
-                    setpasswordErrorMessage(response.data.message || 'Unexpected error occurred.');
-                }
-            })
-            .catch((error) => {
-                if (!error.response) {
-                    setnetworkErrorMessage('Network error. Please check your connection.');
-                } else if (error.response && error.response.data) {
-                    const { messageEmail, messagePassword, field } = error.response.data;
-                    setEmailErrorType(field);
-                    setPasswordErrorType(field);
-                    setemailErrorMessage(messageEmail);
-                    setpasswordErrorMessage(messagePassword);
-                } else {
-                    setnetworkErrorMessage('An unexpected error occurred. Please try again.');
-                }
+        try {
+            const response = await axios.post('/login', {
+                email: email,
+                password: password
             });
+
+            if (response.data.success) {
+                setLoggedInUser(response.data.user);
+                // Store user data in localStorage
+                localStorage.setItem('user', JSON.stringify(response.data.user));
+                // Redirect to ListStud
+                window.location.href = '/ListStud';
+            } else {
+                setEmailErrorType('email');
+                setemailErrorMessage(response.data.message || 'Invalid credentials');
+                setpasswordErrorMessage(response.data.message || 'Invalid credentials');
+            }
+        } catch (error) {
+            if (!error.response) {
+                setnetworkErrorMessage('Network error. Please check your connection.');
+            } else if (error.response.status === 401) {
+                setEmailErrorType('email');
+                setemailErrorMessage('Invalid email or password');
+                setpasswordErrorMessage('Invalid email or password');
+            } else {
+                const { messageEmail, messagePassword, field } = error.response.data;
+                setEmailErrorType(field);
+                setPasswordErrorType(field);
+                setemailErrorMessage(messageEmail);
+                setpasswordErrorMessage(messagePassword);
+            }
+        }
     };
 
     const handleRegisterSubmit = (event) => {
@@ -187,29 +200,29 @@ const Frontlog = () => {
         }
     };
 
-    const handleGoogleSuccess = (response) => {
+    const handleGoogleSuccess = async (response) => {
         const token = response.credential;
         if (!token) {
             setgoogleErrorMessage('Google Sign-In failed. No token received.');
             return;
         }
 
-        axios.post('/google-login', { token })
-            .then((res) => {
-                if (res.data.success) {
-                    setLoggedInUser(res.data.user);
-                    window.location.href = '/ListStud';
-                } else {
-                    setgoogleErrorMessage(res.data.message || 'Google Sign-In failed. Please try again.');
-                }
-            })
-            .catch((error) => {
-                if (error.response) {
-                    setgoogleErrorMessage(error.response.data.message || 'Google Sign-In failed. Please try again.');
-                } else {
-                    setgoogleErrorMessage('Network error. Please check your connection.');
-                }
-            });
+        try {
+            const res = await axios.post('/google-login', { token });
+            if (res.data.success) {
+                setLoggedInUser(res.data.user);
+                localStorage.setItem('user', JSON.stringify(res.data.user));
+                window.location.href = '/ListStud';
+            } else {
+                setgoogleErrorMessage(res.data.message || 'Google Sign-In failed. Please try again.');
+            }
+        } catch (error) {
+            if (error.response) {
+                setgoogleErrorMessage(error.response.data.message || 'Google Sign-In failed. Please try again.');
+            } else {
+                setgoogleErrorMessage('Network error. Please check your connection.');
+            }
+        }
     };
 
     const handleGoogleFailure = (error) => {
