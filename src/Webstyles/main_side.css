@@ -452,8 +452,7 @@ a.sidebar-link:hover {
     border-radius: 8px;
     padding: 2.5rem;
     max-width: 330px;
-    margin-left: 1100px;
-    margin: 50px 50px 50px;
+    margin: 50px;
     display: inline-block;
 }
 
@@ -524,8 +523,7 @@ a.sidebar-link:hover {
     .total_statistics {
         max-width: auto;
         width: 90%;
-        margin: 50px 50px 50px;
-        margin-left:  1100px;
+        margin: 50px;
         display: flex;
         flex-direction: column;
     }
