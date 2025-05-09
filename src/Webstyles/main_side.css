@@ -447,11 +447,10 @@ a.sidebar-link:hover {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem; /* Consistent spacing between cards */
-    padding: 2rem 1rem; /* Add left/right padding, including 1rem on left */
+    padding: 2rem;
     background-color: #f4f7fa; /* Light background for contrast */
     max-width: 1200px;
-    margin: 70px auto 0; /* Margin-top to clear the header (60px + some buffer) */
-    min-height: calc(100vh - 70px);
+    margin: 0 auto; /* Center the container */
 }
 
 .total_statistics {
@@ -530,12 +529,6 @@ a.sidebar-link:hover {
     /* Adjust table */
     .table {
         font-size: small;
-    }
-    .parent-container-statistics {
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem; /* Reduced padding on mobile */
-        margin-top: 60px; /* Adjust to match header height */
     }
 
     /* Adjust statistics container */
