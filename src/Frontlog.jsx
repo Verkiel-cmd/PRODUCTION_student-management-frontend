@@ -231,7 +231,7 @@ const Frontlog = () => {
     
     // Initialize Google Sign-In
     useEffect(() => {
-        if (!GOOGLE_PRIVATE_KEY) {
+        if (!config.GOOGLE_CLIENT_ID) {
             console.error('Google Client ID is not defined. Please set REACT_APP_GOOGLE_CLIENT_ID.');
             setgoogleErrorMessage('Configuration error. Please contact support.');
             return;
