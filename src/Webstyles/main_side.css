@@ -445,7 +445,7 @@ a.sidebar-link:hover {
 .parent-container-statistics {
     text-align: left;
     padding-top: 1.5rem;
-    padding-left: 1.5rem;
+    padding-left: 5rem;
 }
 
 .total_statistics {
@@ -528,7 +528,7 @@ a.sidebar-link:hover {
 
     /* Adjust statistics container */
     .total_statistics {
-        padding: 1.5rem; /* Reduce padding for mobile */
+        padding: 2rem; /* Reduce padding for mobile */
         max-width: 100%; /* Full width on mobile */
         width: 90%;
         display: flex;
