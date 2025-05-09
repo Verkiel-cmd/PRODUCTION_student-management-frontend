@@ -525,7 +525,7 @@ a.sidebar-link:hover {
         max-width: auto;
         width: 90%;
         margin: 10px auto;
-        padding: 1.5rem;
+        padding: 3rem;
         display: flex;
         flex-direction: column;
     }
