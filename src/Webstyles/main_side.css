@@ -445,14 +445,14 @@ a.sidebar-link:hover {
 .parent-container-statistics {
     text-align: left;
     padding-top: 1.5rem;
-    padding-left: 5rem;
+    padding-left: 3rem;
 }
 
 .total_statistics {
     background: rgb(34, 193, 195);
     background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(237, 251, 255, 1) 100%);
     border-radius: 8px;
-    padding: 2rem;
+    padding: 1rem;
     width: 100%;
     max-width: 350px;
     text-align: center; /* Center text inside cards */
