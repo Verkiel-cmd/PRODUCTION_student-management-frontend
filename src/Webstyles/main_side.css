@@ -445,6 +445,7 @@ a.sidebar-link:hover {
 .parent-container-statistics {
     text-align: left;
     padding-top: 1.5rem;
+    padding-left: 10rem;
 }
 
 .total_statistics {
