@@ -447,7 +447,7 @@ a.sidebar-link:hover {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem; /* Consistent spacing between cards */
-    padding: 5rem 1rem; /* Add left/right padding, including 1rem on left */
+    padding: 2rem 1rem; /* Add left/right padding, including 1rem on left */
     max-width: 1200px;
     margin: 70px auto 0; /* Margin-top to clear the header (60px + some buffer) */
     min-height: calc(100vh - 70px);
