@@ -525,6 +525,8 @@ a.sidebar-link:hover {
         max-width: 100%;
         margin: 10px auto;
         padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
     }
 
     /* Adjust schedule container */
