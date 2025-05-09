@@ -452,13 +452,13 @@ a.sidebar-link:hover {
     background: rgb(34, 193, 195);
     background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(237, 251, 255, 1) 100%);
     border-radius: 8px;
-    padding: 1rem;
+    padding: 2rem;
     width: 100%;
     max-width: 350px;
     text-align: center; /* Center text inside cards */
     max-width: 350px;
     flex-direction: column; /* Stack content inside each card vertically */
-    margin: 1rem; /* Consistent margin on all sides */
+    margin: 5px; /* Consistent margin on all sides */
     vertical-align: top; /* Align cards to the top to avoid misalignment */
     display: inline-block;
 }
