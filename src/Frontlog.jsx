@@ -209,10 +209,15 @@ const Frontlog = () => {
         try {
             const res = await axios.post('/google-login', { token });
             if (res.data.success && res.data.user) {
-                const userData = res.data.user;
-                localStorage.setItem('user', JSON.stringify(userData));
-                setLoggedInUser(userData);
-                
+                // Extract user data directly from res.data
+            const userData = {
+                userId: res.data.userId,
+                username: res.data.username,
+                email: res.data.email,
+                picture: res.data.picture
+            };
+            localStorage.setItem('user', JSON.stringify(userData));
+            setLoggedInUser(userData);
                 // Use navigate for redirection
                 navigate('/ListStud', { replace: true });
             } else {
