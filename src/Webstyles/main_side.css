@@ -524,8 +524,7 @@ a.sidebar-link:hover {
     .total_statistics {
         max-width: auto;
         width: 90%;
-        margin: 10px auto;
-        padding: 3rem;
+        margin: 30px auto;
         display: flex;
         flex-direction: column;
     }
