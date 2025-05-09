@@ -443,7 +443,14 @@ a.sidebar-link:hover {
 
 
 .parent-container-statistics {
-    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem; /* Consistent spacing between cards */
+    padding: 2rem;
+    background-color: #f4f7fa; /* Light background for contrast */
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
 }
 
 .total_statistics {
