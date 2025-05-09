@@ -14,7 +14,7 @@ axios.defaults.baseURL = config.API_URL;
 const Frontlog = () => {
 
     console.log('API URL:', config.API_URL);
-        const buttonRef = useRef(null);
+      
     // Add state variables for login form
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -230,52 +230,7 @@ const Frontlog = () => {
         setgoogleErrorMessage('Google Sign-In was unsuccessful. Please try again.');
     };
     
-    // Initialize Google Sign-In
-    useEffect(() => {
-        if (!config.GOOGLE_CLIENT_ID) {
-            console.error('Google Client ID is not defined. Please set REACT_APP_GOOGLE_CLIENT_ID.');
-            setgoogleErrorMessage('Configuration error. Please contact support.');
-            return;
-        }
-
-        // Load Google Sign-In script dynamically
-        const script = document.createElement('script');
-        script.src = 'https://accounts.google.com/gsi/client';
-        script.async = true;
-        script.defer = true;
-        document.body.appendChild(script);
-
-        script.onload = () => {
-            window.google.accounts.id.initialize({
-                client_id: config.GOOGLE_CLIENT_ID,
-                callback: handleGoogleSuccess,
-                auto_select: false,
-                context: 'signin',
-                ux_mode: 'popup', // Explicitly use popup for COOP compatibility
-            });
-
-           // Ensure button div exists before rendering
-           if (buttonRef.current) {
-            window.google.accounts.id.renderButton(buttonRef.current, {
-                theme: 'outline',
-                size: 'large',
-                text: 'signin_with',
-                shape: 'rectangular',
-            });
-        } else {
-            console.error('Button div not found for Google Sign-In');
-            setgoogleErrorMessage('Failed to render Google Sign-In button.');
-        }
-
-    };
-
-        return () => {
-            if (script.parentNode) {
-                document.body.removeChild(script);
-            }
-        };
-    }, []);
-
+   
     return (
 
         <div>
