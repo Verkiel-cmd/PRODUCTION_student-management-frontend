@@ -447,8 +447,7 @@ a.sidebar-link:hover {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem; /* Consistent spacing between cards */
-    padding: 2rem 1rem; /* Add left/right padding, including 1rem on left */
-    background-color: #f4f7fa; /* Light background for contrast */
+    padding: 5rem 1rem; /* Add left/right padding, including 1rem on left */
     max-width: 1200px;
     margin: 70px auto 0; /* Margin-top to clear the header (60px + some buffer) */
     min-height: calc(100vh - 70px);
@@ -534,7 +533,7 @@ a.sidebar-link:hover {
     .parent-container-statistics {
         flex-direction: column;
         align-items: center;
-        padding: 1rem; /* Reduced padding on mobile */
+        padding: 5rem; /* Reduced padding on mobile */
         margin-top: 60px; /* Adjust to match header height */
     }
 
@@ -542,7 +541,7 @@ a.sidebar-link:hover {
     .total_statistics {
         display: flex; /* Switch to flex for stacking */
         flex-direction: column;
-        padding: 1.5rem; /* Reduce padding for mobile */
+        padding: 5rem; /* Reduce padding for mobile */
         max-width: 100%; /* Full width on mobile */
         width: 90%; /* Slightly less than full width for better spacing */
         margin: 0.5rem auto; /* Center cards on mobile with smaller margin */
