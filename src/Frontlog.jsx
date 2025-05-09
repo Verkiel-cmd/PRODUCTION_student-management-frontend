@@ -246,7 +246,7 @@ const Frontlog = () => {
 
         script.onload = () => {
             window.google.accounts.id.initialize({
-                client_id: GOOGLE_CLIENT_ID,
+                client_id: config.GOOGLE_CLIENT_ID,
                 callback: handleGoogleSuccess,
                 auto_select: false,
                 context: 'signin',
