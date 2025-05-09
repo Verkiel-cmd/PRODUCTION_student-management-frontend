@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Webstyles/login_style.css';
 import config from './config';
 import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
 // Configure axios defaults
 axios.defaults.withCredentials = true;
@@ -13,7 +14,7 @@ axios.defaults.baseURL = config.API_URL;
 const Frontlog = () => {
 
     console.log('API URL:', config.API_URL);
-
+        const buttonRef = useRef(null);
     // Add state variables for login form
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -253,25 +254,20 @@ const Frontlog = () => {
                 ux_mode: 'popup', // Explicitly use popup for COOP compatibility
             });
 
-            window.google.accounts.id.renderButton(
-                document.getElementById('googleSignInButton'),
-                {
-                    theme: 'outline',
-                    size: 'large',
-                    text: 'signin_with',
-                    shape: 'rectangular',
-                }
-            );
-
-            // Optional: Show Google One-Tap prompt
-            window.google.accounts.id.prompt((notification) => {
-                if (notification.isNotDisplayed()) {
-                    console.warn('Google One-Tap not displayed:', notification.getNotDisplayedReason());
-                } else if (notification.isSkippedMoment()) {
-                    console.warn('Google One-Tap skipped:', notification.getSkippedReason());
-                }
+           // Ensure button div exists before rendering
+           if (buttonRef.current) {
+            window.google.accounts.id.renderButton(buttonRef.current, {
+                theme: 'outline',
+                size: 'large',
+                text: 'signin_with',
+                shape: 'rectangular',
             });
-        };
+        } else {
+            console.error('Button div not found for Google Sign-In');
+            setgoogleErrorMessage('Failed to render Google Sign-In button.');
+        }
+
+    };
 
         return () => {
             if (script.parentNode) {
