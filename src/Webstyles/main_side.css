@@ -455,11 +455,11 @@ a.sidebar-link:hover {
     padding: 2rem;
     width: 100%;
     max-width: 350px;
-    text-align: center; /* Center text inside cards */
+    text-align: center; 
     max-width: 350px;
-    flex-direction: column; /* Stack content inside each card vertically */
-    margin: 5px; /* Consistent margin on all sides */
-    vertical-align: top; /* Align cards to the top to avoid misalignment */
+    flex-direction: column;
+    margin: 5px; 
+    vertical-align: top; 
     display: inline-block;
 }
 
@@ -528,8 +528,8 @@ a.sidebar-link:hover {
 
     /* Adjust statistics container */
     .total_statistics {
-        padding: 1.5rem; /* Reduce padding for mobile */
-        max-width: 100%; /* Full width on mobile */
+        padding: 2rem; 
+        max-width: 100%; 
         width: 90%;
         display: flex;
         flex-direction: column;
