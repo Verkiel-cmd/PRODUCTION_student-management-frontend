@@ -451,8 +451,9 @@ a.sidebar-link:hover {
     background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(237, 251, 255, 1) 100%);
     border-radius: 8px;
     padding: 2.5rem;
-    max-width: auto;
+    max-width: 330px;
     margin-top: 50px;
+    margin-left: 10px;
     display: inline-block;
 }
 
