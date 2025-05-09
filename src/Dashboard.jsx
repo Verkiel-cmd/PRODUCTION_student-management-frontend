@@ -317,7 +317,7 @@ function Dashboard() {
             </div>
 
 
-            <div className="parent-container-statistics" style={{ marginInlineStart: '8rem' }}>
+            <div className="parent-container-statistics" style={{ marginInlineStart: '3rem' }}>
 
 
 
