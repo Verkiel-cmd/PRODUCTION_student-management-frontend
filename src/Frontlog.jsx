@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Webstyles/login_style.css';
 import config from './config';
 import { useNavigate } from 'react-router-dom';
-import { useRef } from 'react';
 
 // Configure axios defaults
 axios.defaults.withCredentials = true;
