@@ -228,6 +228,57 @@ const Frontlog = () => {
         console.error('Google Sign-In error:', error);
         setgoogleErrorMessage('Google Sign-In was unsuccessful. Please try again.');
     };
+    
+    // Initialize Google Sign-In
+    useEffect(() => {
+        if (!GOOGLE_PRIVATE_KEY) {
+            console.error('Google Client ID is not defined. Please set REACT_APP_GOOGLE_CLIENT_ID.');
+            setgoogleErrorMessage('Configuration error. Please contact support.');
+            return;
+        }
+
+        // Load Google Sign-In script dynamically
+        const script = document.createElement('script');
+        script.src = 'https://accounts.google.com/gsi/client';
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+
+        script.onload = () => {
+            window.google.accounts.id.initialize({
+                client_id: GOOGLE_CLIENT_ID,
+                callback: handleGoogleSuccess,
+                auto_select: false,
+                context: 'signin',
+                ux_mode: 'popup', // Explicitly use popup for COOP compatibility
+            });
+
+            window.google.accounts.id.renderButton(
+                document.getElementById('googleSignInButton'),
+                {
+                    theme: 'outline',
+                    size: 'large',
+                    text: 'signin_with',
+                    shape: 'rectangular',
+                }
+            );
+
+            // Optional: Show Google One-Tap prompt
+            window.google.accounts.id.prompt((notification) => {
+                if (notification.isNotDisplayed()) {
+                    console.warn('Google One-Tap not displayed:', notification.getNotDisplayedReason());
+                } else if (notification.isSkippedMoment()) {
+                    console.warn('Google One-Tap skipped:', notification.getSkippedReason());
+                }
+            });
+        };
+
+        return () => {
+            if (script.parentNode) {
+                document.body.removeChild(script);
+            }
+        };
+    }, [GOOGLE_CLIENT_ID]);
 
     return (
 
