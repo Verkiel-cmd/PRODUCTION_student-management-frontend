@@ -574,7 +574,7 @@ function Classes() {
 
 
 
-                        <h2 className="fw-bold text-start mb-4" >Add Class</h2>
+                        <h2 className="fw-bold text-start" >Add Class</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="row mb-3 fw-medium">
                                 <label className="col-sm-0 col-form-label text-start">Class Name</label>
