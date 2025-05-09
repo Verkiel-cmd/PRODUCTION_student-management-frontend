@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Webstyles/DES_side.css';
+import './Webstyles/main_side.css';
 import DeleteModal from './DeleteModel';
 import config from './config';
 import axios from 'axios';
