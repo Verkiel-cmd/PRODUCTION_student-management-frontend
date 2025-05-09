@@ -751,6 +751,7 @@ function Classes() {
           style={{ 
             paddingTop: '10px', 
             paddingBottom: '1rem', 
+            width: 'auto',
             color: 'white'
             }}>Class List</h5>
                      
