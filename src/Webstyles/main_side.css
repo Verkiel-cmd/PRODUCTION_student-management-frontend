@@ -452,6 +452,7 @@ a.sidebar-link:hover {
     border-radius: 8px;
     padding: 3rem;
     width: 100%;
+    margin: auto;
     max-width: 350px;
     display: inline-block;
 }
