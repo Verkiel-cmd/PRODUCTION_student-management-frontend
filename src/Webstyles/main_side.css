@@ -452,8 +452,12 @@ a.sidebar-link:hover {
     border-radius: 8px;
     padding: 2rem;
     width: 100%;
-
     max-width: 350px;
+    text-align: center; /* Center text inside cards */
+    max-width: 350px;
+    flex-direction: column; /* Stack content inside each card vertically */
+    margin: 1rem; /* Consistent margin on all sides */
+    vertical-align: top; /* Align cards to the top to avoid misalignment */
     display: inline-block;
 }
 
@@ -522,11 +526,12 @@ a.sidebar-link:hover {
 
     /* Adjust statistics container */
     .total_statistics {
-        padding: 3rem;
-        width: 100%;
-        max-width: 350px;
-        display: flex;
+        display: flex; /* Switch to flex for stacking */
         flex-direction: column;
+        padding: 1.5rem; /* Reduce padding for mobile */
+        max-width: 100%; /* Full width on mobile */
+        width: 90%; /* Slightly less than full width for better spacing */
+        margin: 0.5rem auto; /* Center cards on mobile with smaller margin */
     }
 
     /* Adjust schedule container */
