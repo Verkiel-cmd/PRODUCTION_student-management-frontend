@@ -525,7 +525,9 @@ a.sidebar-link:hover {
     .table {
         font-size: small;
     }
-
+    .container_class{
+        width: 100%;
+    }
     /* Adjust statistics container */
     .total_statistics {
         padding: 2rem; 
