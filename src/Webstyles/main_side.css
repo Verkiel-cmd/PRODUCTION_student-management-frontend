@@ -528,6 +528,9 @@ a.sidebar-link:hover {
     .container_class{
         width: 100%;
     }
+    .class_list{
+        width: 100%;
+    }
     /* Adjust statistics container */
     .total_statistics {
         padding: 2rem; 
