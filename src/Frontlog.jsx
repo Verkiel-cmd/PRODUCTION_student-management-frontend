@@ -12,7 +12,6 @@ axios.defaults.baseURL = config.API_URL;
 
 const Frontlog = () => {
 
-    console.log('API URL:', config.API_URL);
       
     // Add state variables for login form
     const [email, setEmail] = useState('');
