@@ -246,7 +246,7 @@ const Frontlog = () => {
 
         script.onload = () => {
             window.google.accounts.id.initialize({
-                client_id: 824956744352-a4sj5egukjh1csk8galsalp6v4i73gbq.apps.googleusercontent.com,
+                client_id: config.GOOGLE_CLIENT_ID,
                 callback: handleGoogleSuccess,
                 auto_select: false,
                 context: 'signin',
@@ -278,7 +278,7 @@ const Frontlog = () => {
                 document.body.removeChild(script);
             }
         };
-    }, [GOOGLE_CLIENT_ID]);
+    }, []);
 
     return (
 
