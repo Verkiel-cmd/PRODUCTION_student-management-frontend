@@ -126,7 +126,7 @@ const Frontlog = () => {
                     setpasswordErrorMessage('Invalid email or password');
                 }
             } else {
-                setnetworkErrorMessage('An unexpected error occurred. Please try again later.');
+                setnetworkErrorMessage('An unexpected error occurred\n Please try again later.');
             }
         }
     };
@@ -152,7 +152,7 @@ const Frontlog = () => {
                 console.log('Registration success:', response.data);
                 if (response.data.success) {
                     setRegisterErrorType(null);
-                    setSuccessMessage('User registered successfully! Redirecting...');
+                    setSuccessMessage('User registered successfully! \nRedirecting...');
 
                     setTimeout(() => {
                         window.location.href = response.data.redirectUrl;
