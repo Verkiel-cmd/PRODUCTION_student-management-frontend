@@ -108,7 +108,7 @@ const Frontlog = () => {
             console.error('Login error:', error);
         
             if (!error.response) {
-                setnetworkErrorMessage('Network error. Please check your connection.');
+                setnetworkErrorMessage('Network error \nPlease check your connection.');
             } else if (error.response.status === 400) {
                 const { field, messageEmail, messagePassword } = error.response.data;
         
@@ -201,7 +201,7 @@ const Frontlog = () => {
     const handleGoogleSuccess = async (response) => {
         const token = response.credential;
         if (!token) {
-            setgoogleErrorMessage('Google Sign-In failed. No token received.');
+            setgoogleErrorMessage('Google Sign-In failed  \nNo token received.');
             return;
         }
 
@@ -220,17 +220,17 @@ const Frontlog = () => {
                 // Use navigate for redirection
                 navigate('/ListStud', { replace: true });
             } else {
-                setgoogleErrorMessage('Google Sign-In failed. Please try again.');
+                setgoogleErrorMessage('Google Sign-In failed  \nPlease try again.');
             }
         } catch (error) {
             console.error('Google login error:', error);
-            setgoogleErrorMessage(error.response?.data?.message || 'Google Sign-In failed. Please try again.');
+            setgoogleErrorMessage(error.response?.data?.message || 'Google Sign-In failed  \nPlease try again.');
         }
     };
 
     const handleGoogleFailure = (error) => {
         console.error('Google Sign-In error:', error);
-        setgoogleErrorMessage('Google Sign-In was unsuccessful. Please try again.');
+        setgoogleErrorMessage('Google Sign-In was unsuccessful  \nPlease try again.');
     };
     
    
