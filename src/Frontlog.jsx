@@ -164,7 +164,7 @@ const Frontlog = () => {
             .catch(error => {
                 if (error.response) {
                     console.error('Registration error:', error.response.data);
-                    setNetworkErrorRegister(error.response.data.message || 'Something went wrong during registration');
+                    setNetworkErrorRegister(error.response.data.message || 'Something went wrong \nduring registration');
                 } else {
                     console.error('Network error:', error);
                     setNetworkErrorRegister('Network error');
