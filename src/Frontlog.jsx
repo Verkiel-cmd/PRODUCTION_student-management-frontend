@@ -156,7 +156,7 @@ const Frontlog = () => {
                     setSuccessMessage('User registered successfully! \nRedirecting...');
 
                     setTimeout(() => {
-                        window.location.href = response.data.redirectUrl;
+                        navigate('/ListStud', { replace: true }); // Use navigate, not window.location.href
                     }, 2000);
                 } else {
                     setRegisterErrorType(response.data.message);
