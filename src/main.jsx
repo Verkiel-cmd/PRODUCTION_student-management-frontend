@@ -67,6 +67,14 @@ root.render(
               </ProtectedRoute>
             }
           />
+          <Route
+          path="/ProtectedRoute"
+          element={
+            <ProtectedRoute>
+              <ProtectedRoute/>
+            </ProtectedRoute>
+          }
+          />
         </Routes>
       </BrowserRouter>
     </GoogleOAuthProvider>
