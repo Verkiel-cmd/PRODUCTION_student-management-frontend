@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ProtectedRoute = ({ children }) => {
-  const userStr = localStorage.getItem('user');
-  let isAuthenticated = false;
+  const [authChecked, setAuthChecked] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  try {
-    if (userStr) {
-      const user = JSON.parse(userStr);
-      isAuthenticated = !!user;
-    }
-  } catch (error) {
-    console.error('Error parsing user data:', error);
-    localStorage.removeItem('user'); // Clean up invalid data
-  }
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const res = await axios.get('https://student-management-backend-a2q4.onrender.com/auth/validate', {
+          withCredentials: true
+        });
+        setIsAuthenticated(res.data.authenticated);
+      } catch (err) {
+        console.error('Auth check failed:', err);
+      } finally {
+        setAuthChecked(true);
+      }
+    };
+
+    checkAuth();
+  }, []);
+
+  if (!authChecked) return null; // or loader/spinner
 
   if (!isAuthenticated) {
     return <Navigate to="/Frontlog" replace />;
