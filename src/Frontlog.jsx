@@ -85,7 +85,8 @@ const Frontlog = () => {
             const response = await axios.post(`${config.API_URL}/login`, {
                 email: email,
                 password: password
-            });
+                }, { withCredentials: true });
+           
 
             console.log('Login response:', response.data);
             if (response.data.success) {
