@@ -206,7 +206,8 @@ const Frontlog = () => {
         }
 
         try {
-            const res = await axios.post('/google-login', { token });
+           const res = await axios.post('https://student-management-backend-a2q4.onrender.com/google-login',
+             { token }, { withCredentials: true });
             if (res.data.success && res.data.user) {
                 // Extract user data directly from res.data
             const userData = {
