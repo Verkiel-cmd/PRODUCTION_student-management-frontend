@@ -151,16 +151,22 @@ const Frontlog = () => {
         }, { withCredentials: true })
             .then(response => {
                 console.log('Registration success:', response.data);
-                if (response.data.success) {
-                    setRegisterErrorType(null);
-                    setSuccessMessage('User registered successfully! \nRedirecting...');
+               if (response.data.success) {
+    // Set user state and localStorage from backend response
+    const userData = {
+        id: response.data.userId,
+        username: response.data.username,
+        email: response.data.email
+    };
+    setLoggedInUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
 
-                    setTimeout(() => {
-                        navigate('/ListStud', { replace: true }); // Use navigate, not window.location.href
-                    }, 2000);
-                } else {
-                    setRegisterErrorType(response.data.message);
-                }
+    setRegisterErrorType(null);
+    setSuccessMessage('User registered successfully! \nRedirecting...');
+    setTimeout(() => {
+        navigate('/ListStud', { replace: true });
+    }, 2000);
+}
             })
             .catch(error => {
                 if (error.response) {
