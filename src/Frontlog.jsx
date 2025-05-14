@@ -71,6 +71,53 @@ const Frontlog = () => {
         }
     };
 
+      const handleRegisterSubmit = (event) => {
+        event.preventDefault();
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!emailRegex.test(emailRegister)) {
+            setRegisterErrorType("email");
+            setErrorRegister("Please enter a valid email address.");
+            return;
+        }
+
+        axios.post(`${config.API_URL}/register`, {
+            username: username,
+            email: emailRegister,
+            password: passwordRegister,
+            agreedToTerms: agreedToTerms
+        }, { withCredentials: true })
+            .then(response => {
+                console.log('Registration success:', response.data);
+               if (response.data.success) {
+    // Set user state and localStorage from backend response
+    const userData = {
+        id: response.data.userId,
+        username: response.data.username,
+        email: response.data.email
+    };
+    setLoggedInUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
+
+    setRegisterErrorType(null);
+    setSuccessMessage('User registered successfully! \nRedirecting...');
+    setTimeout(() => {
+        navigate('/ListStud', { replace: true });
+    }, 2000);
+}
+            })
+            .catch(error => {
+                if (error.response) {
+                    console.error('Registration error:', error.response.data);
+                    setNetworkErrorRegister(error.response.data.message || 'Something went wrong \nduring registration');
+                } else {
+                    console.error('Network error:', error);
+                    setNetworkErrorRegister('Network error');
+                }
+            });
+    };
+
     const handleLoginSubmit = async (event) => {
         event.preventDefault();
         
@@ -132,52 +179,7 @@ const Frontlog = () => {
         }
     };
 
-    const handleRegisterSubmit = (event) => {
-        event.preventDefault();
-
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-        if (!emailRegex.test(emailRegister)) {
-            setRegisterErrorType("email");
-            setErrorRegister("Please enter a valid email address.");
-            return;
-        }
-
-        axios.post(`${config.API_URL}/register`, {
-            username: username,
-            email: emailRegister,
-            password: passwordRegister,
-            agreedToTerms: agreedToTerms
-        }, { withCredentials: true })
-            .then(response => {
-                console.log('Registration success:', response.data);
-               if (response.data.success) {
-    // Set user state and localStorage from backend response
-    const userData = {
-        id: response.data.userId,
-        username: response.data.username,
-        email: response.data.email
-    };
-    setLoggedInUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
-
-    setRegisterErrorType(null);
-    setSuccessMessage('User registered successfully! \nRedirecting...');
-    setTimeout(() => {
-        navigate('/ListStud', { replace: true });
-    }, 2000);
-}
-            })
-            .catch(error => {
-                if (error.response) {
-                    console.error('Registration error:', error.response.data);
-                    setNetworkErrorRegister(error.response.data.message || 'Something went wrong \nduring registration');
-                } else {
-                    console.error('Network error:', error);
-                    setNetworkErrorRegister('Network error');
-                }
-            });
-    };
+  
 
     const handleUsernameChange = async (e) => {
         const newUsername = e.target.value;
