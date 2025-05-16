@@ -341,7 +341,7 @@ function ListStud() {
           style={{ 
             marginBottom: '-15px', }}>
 
-            <Link className="btn btn-primary d-flex justify-content-center align-items-center" to="/createStudent" role="button">
+            <Link className="btn btn-primary d-flex justify-content-center align-items-center" to="/Student_lists/CreateStudent" role="button">
               New Student
             </Link>
             <br />
