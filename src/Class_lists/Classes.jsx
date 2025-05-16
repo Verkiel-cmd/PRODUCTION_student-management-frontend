@@ -408,93 +408,93 @@ function Classes() {
 
     return (
         <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""}`}>
-            <aside id="sidebar" className={isSidebarExpanded ? "expand" : ""}>
-                <div className="d-flex">
-                    <button id="toggle-btn" type="button" onClick={toggleSidebar}>
-                        <i className="lni lni-grid-alt"></i>
-                    </button>
-                    <div className="sidebar-logo">
-                        <a href="#">Veracity</a>
-                    </div>
-                </div>
-                <ul className="sidebar-nav">
-
-                    <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Dashboard" : ""} >
-                        <Link to="/Dashboard" className="sidebar-link">
-                            <i className="lni lni-users"></i>
-                            <span>Dashboard</span>
-                        </Link>
-                    </li>
-
-                    <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Classes" : ""}>
-                        <Link to="/Classes" className="sidebar-link">
-                            <i className="lni lni-layout"></i>
-                            <span>Classes</span>
-                        </Link>
-                    </li>
-
-
-                    <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Lists" : ""}>
-                        <Link to="/ListStud" className="sidebar-link">
-                            <i className="lni lni-agenda"></i>
-                            <span>Lists</span>
-                        </Link>
-                    </li>
-
-                    <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Auth" : ""}>
-                        <a href="#" className="sidebar-link has-dropdown" onClick={handleAuthDropdownClick}>
-                            <i className="lni lni-protection"></i>
-                            <span>Auth</span>
-                            {isSidebarExpanded && (
-                                <i className={`lni lni-chevron-${isAuthDropdownOpen ? 'up' : 'down'}`} style={{ fontSize: '0.75rem', marginLeft: '-3rem' }}></i>
-                            )}
-                        </a>
-                        <ul className={`sidebar-dropdown list-unstyled ${isAuthDropdownOpen ? 'show' : ''}`}>
-                            <li className="sidebar-item">
-                                <a href="#" className="sidebar-link">Login</a>
-                            </li>
-                            <li className="sidebar-item">
-                                <a href="#" className="sidebar-link">Register</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Multi" : ""}>
-                        <a href="#" className="sidebar-link has-dropdown" onClick={handleMultiDropdownClick}>
-                            <i className="lni lni-layout"></i>
-                            <span>Multi</span>
-                            {isSidebarExpanded && (
-                                <i className={`lni lni-chevron-${isMultiDropdownOpen ? 'up' : 'down'}`} style={{ fontSize: '0.75rem', marginLeft: '-3rem' }}></i>
-                            )}
-                        </a>
-                        <ul className={`sidebar-dropdown list-unstyled ${isMultiDropdownOpen ? 'show' : ''}`}>
-                            <li className="sidebar-item">
-                                <a href="#" className="sidebar-link">Link 1</a>
-                            </li>
-                            <li className="sidebar-item">
-                                <a href="#" className="sidebar-link">Link 2</a>
-                            </li>
-                        </ul>
-                    </li>
-
-
-                    <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Notification" : ""}>
-                        <a href="#" className="sidebar-link">
-                            <i className="lni lni-popup"></i>
-                            <span>Notification</span>
-                        </a>
-                    </li>
-
-                    <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Settings" : ""}>
-                        <a href="#" className="sidebar-link">
-                            <i className="lni lni-cog"></i>
-                            <span>Settings</span>
-                        </a>
-                    </li>
-                </ul>
-
-
-            </aside>
+             <aside id="sidebar" className={isSidebarExpanded ? "expand" : ""}>
+               <div className="d-flex">
+                 <button id="toggle-btn" type="button" onClick={toggleSidebar}>
+                   <i className="lni lni-grid-alt"></i>
+                 </button>
+                 <div className="sidebar-logo">
+                   <a href="#">Veracity</a>
+                 </div>
+               </div>
+               <ul className="sidebar-nav">
+       
+                 <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Dashboard" : ""} >
+                   <Link to="/dashboard_section/Dashboard" className="sidebar-link">
+                     <i className="lni lni-users"></i>
+                     <span>Dashboard</span>
+                   </Link>
+                 </li>
+       
+                 <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Classes" : ""}>
+                   <Link to="/Class_lists/Classes" className="sidebar-link">
+                     <i className="lni lni-layout"></i>
+                     <span>Classes</span>
+                   </Link>
+                 </li>
+       
+       
+                 <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Lists" : ""}>
+                   <Link to="/Student_lists/ListStud" className="sidebar-link">
+                     <i className="lni lni-agenda"></i>
+                     <span>Lists</span>
+                   </Link>
+                 </li>
+       
+                 <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Auth" : ""}>
+                   <a href="#" className="sidebar-link has-dropdown" onClick={handleAuthDropdownClick}>
+                     <i className="lni lni-protection"></i>
+                     <span>Auth</span>
+                     {isSidebarExpanded && (
+                       <i className={`lni lni-chevron-${isAuthDropdownOpen ? 'up' : 'down'}`} style={{ fontSize: '0.75rem', marginLeft: '-3rem' }}></i>
+                     )}
+                   </a>
+                   <ul className={`sidebar-dropdown list-unstyled ${isAuthDropdownOpen ? 'show' : ''}`}>
+                     <li className="sidebar-item">
+                       <a href="#" className="sidebar-link">Login</a>
+                     </li>
+                     <li className="sidebar-item">
+                       <a href="#" className="sidebar-link">Register</a>
+                     </li>
+                   </ul>
+                 </li>
+       
+                 <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Multi" : ""}>
+                   <a href="#" className="sidebar-link has-dropdown" onClick={handleMultiDropdownClick}>
+                     <i className="lni lni-layout"></i>
+                     <span>Multi</span>
+                     {isSidebarExpanded && (
+                       <i className={`lni lni-chevron-${isMultiDropdownOpen ? 'up' : 'down'}`} style={{ fontSize: '0.75rem', marginLeft: '-3rem' }}></i>
+                     )}
+                   </a>
+                   <ul className={`sidebar-dropdown list-unstyled ${isMultiDropdownOpen ? 'show' : ''}`}>
+                     <li className="sidebar-item">
+                       <a href="#" className="sidebar-link">Link 1</a>
+                     </li>
+                     <li className="sidebar-item">
+                       <a href="#" className="sidebar-link">Link 2</a>
+                     </li>
+                   </ul>
+                 </li>
+       
+       
+                 <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Notification" : ""}>
+                   <a href="#" className="sidebar-link">
+                     <i className="lni lni-popup"></i>
+                     <span>Notification</span>
+                   </a>
+                 </li>
+       
+                 <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Settings" : ""}>
+                   <a href="#" className="sidebar-link">
+                     <i className="lni lni-cog"></i>
+                     <span>Settings</span>
+                   </a>
+                 </li>
+               </ul>
+       
+       
+             </aside>
 
             <div className="TOP">
                 <div className="text-center">
