@@ -3,15 +3,14 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import './Webstyles/tailwind.css';
-import Frontlog from './Frontlog';
-import ListStud from './ListStud';
-import CreateStudent from './CreateStudent';
-import UpdateStudent from './UpdateStudent';
-import Dashboard from './Dashboard';
-import Classes from './Classes';
-import Forgotpassword from './Forgotpassword';
-import ProtectedRoute from './ProtectedRoute'; 
-
+import Frontlog from './auth_section/Frontlog';
+import ListStud from './Student_lists/ListStud';
+import CreateStudent from './Student_lists/CreateStudent';
+import UpdateStudent from './Student_lists/UpdateStudent';
+import Dashboard from './dashboard_section/Dashboard';
+import Classes from './Class_lists/Classes';
+import Forgotpassword from './auth_section/Forgotpassword';
+import ProtectedRoute from './auth_section/ProtectedRoute'; 
 
 
 
@@ -23,12 +22,12 @@ root.render(
     <GoogleOAuthProvider clientId="824956744352-a4sj5egukjh1csk8galsalp6v4i73gbq.apps.googleusercontent.com">
       <BrowserRouter>
         <Routes>
-          <Route path="/Frontlog" element={<Frontlog />} />
-          <Route path="/Forgotpassword" element={<Forgotpassword />} />
+          <Route path="/auth_section/Frontlog" element={<Frontlog />} />
+          <Route path="/auth_section/Forgotpassword" element={<Forgotpassword />} />
           <Route path="/" element={<Frontlog />} />
           {/* Protected Routes */}
           <Route
-            path="/ListStud"
+            path="/Student_lists/ListStud"
             element={
               <ProtectedRoute>
                 <ListStud />
@@ -36,7 +35,7 @@ root.render(
             }
           />
           <Route
-            path="/CreateStudent"
+            path="/Student_lists/CreateStudent"
             element={
               <ProtectedRoute>
                 <CreateStudent />
@@ -44,7 +43,7 @@ root.render(
             }
           />
           <Route
-            path="/UpdateStudent/:id"
+            path="/Student_lists/UpdateStudent/:id"
             element={
               <ProtectedRoute>
                 <UpdateStudent />
@@ -52,7 +51,7 @@ root.render(
             }
           />
           <Route
-            path="/Dashboard"
+            path="/dashboard_section/Dashboard"
             element={
               <ProtectedRoute>
                 <Dashboard />
@@ -60,7 +59,7 @@ root.render(
             }
           />
           <Route
-            path="/Classes"
+            path="/Class_lists/Classes"
             element={
               <ProtectedRoute>
                 <Classes />
@@ -68,7 +67,7 @@ root.render(
             }
           />
           <Route
-          path="/ProtectedRoute"
+          path="/auth_section/ProtectedRoute"
           element={
             <ProtectedRoute>
               <ProtectedRoute/>

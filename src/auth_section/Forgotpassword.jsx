@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import  config from'./config';
+import  config from'../auth_section/config';
 
 const Forgotpassword = () => {
 
@@ -60,7 +60,7 @@ const Forgotpassword = () => {
             if (response.data.success) {
                 setSuccess('Password reset successfully');
                 setTimeout(() => {
-                    window.location.href = '/Frontlog';
+                    window.location.href = '/auth_section/Frontlog';
                 }, 2000);
             }
         } catch (err) {

@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Webstyles/main_side.css';
+import '../Webstyles/main_side.css';
 import DeleteModal from './DeleteModel';
-import config from './config';
+import config from '../auth_section/config';
 import axios from 'axios';
 
 function ListStud() {
@@ -25,12 +25,12 @@ function ListStud() {
     try {
       await axios.post(`${config.API_URL}/logout`, {}, { withCredentials: true });
       localStorage.removeItem('user');
-      navigate('/Frontlog', { replace: true });
+      navigate('/auth_section/Frontlog', { replace: true });
     } catch (error) {
       console.error('Error during logout:', error);
       // Still clear local storage and redirect even if the API call fails
       localStorage.removeItem('user');
-      navigate('/Frontlog', { replace: true });
+      navigate('/auth_section/Frontlog', { replace: true });
     }
   };
 
@@ -166,7 +166,7 @@ function ListStud() {
         console.error('Error fetching user details:', error);
         setLoggedInUser(null);
         localStorage.removeItem('user');
-        navigate('/Frontlog', { replace: true });
+        navigate('/auth_section/Frontlog', { replace: true });
       }
     };
 
@@ -174,7 +174,7 @@ function ListStud() {
   }, [navigate]); // Add navigate to dependencies
 
   return (
-    <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""}`}>
+      <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""}`}>
       <aside id="sidebar" className={isSidebarExpanded ? "expand" : ""}>
         <div className="d-flex">
           <button id="toggle-btn" type="button" onClick={toggleSidebar}>
@@ -187,14 +187,14 @@ function ListStud() {
         <ul className="sidebar-nav">
 
           <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Dashboard" : ""} >
-            <Link to="/Dashboard" className="sidebar-link">
+            <Link to="/dashboard_section/Dashboard" className="sidebar-link">
               <i className="lni lni-users"></i>
               <span>Dashboard</span>
             </Link>
           </li>
 
           <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Classes" : ""}>
-            <Link to="/Classes" className="sidebar-link">
+            <Link to="/Class_lists/Classes" className="sidebar-link">
               <i className="lni lni-layout"></i>
               <span>Classes</span>
             </Link>
@@ -202,7 +202,7 @@ function ListStud() {
 
 
           <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Lists" : ""}>
-            <Link to="/ListStud" className="sidebar-link">
+            <Link to="/Student_lists/ListStud" className="sidebar-link">
               <i className="lni lni-agenda"></i>
               <span>Lists</span>
             </Link>

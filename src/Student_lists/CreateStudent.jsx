@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Webstyles/createstyle.css';
-import './Webstyles/bootstrapError_style.css';
-import config from './config'; // Adjust the path as needed
+import '../Webstyles/createstyle.css';
+import '../Webstyles/bootstrapError_style.css';
+import config from '../auth_section/config'; // Adjust the path as needed
 
 function CreateStudent() {
 
@@ -344,7 +344,7 @@ function CreateStudent() {
           <button
             type="button"
             className="btn btn-secondary d-flex justify-content-center align-items-center"
-            onClick={() => navigate('/ListStud')}
+            onClick={() => navigate('/Student_lists/ListStud')}
           >
             Back
           </button>

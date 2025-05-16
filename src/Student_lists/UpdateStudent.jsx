@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Webstyles/bootstrapError_style.css';
-import  config from'./config';
+import '../Webstyles/bootstrapError_style.css';
+import  config from'../auth_section/config';
 
 function UpdateStudent() {
 
@@ -385,7 +385,7 @@ function UpdateStudent() {
           <button
             type="button"
             className="btn btn-secondary"
-            onClick={() => navigate('/ListStud')}
+            onClick={() => navigate('/Student_lists/ListStud')}
           >
             Back
           </button>

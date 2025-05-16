@@ -26,7 +26,7 @@ const ProtectedRoute = ({ children }) => {
   if (!authChecked) return null; // or loader/spinner
 
   if (!isAuthenticated) {
-    return <Navigate to="/Frontlog" replace />;
+    return <Navigate to="/auth_section/Frontlog" replace />;
   }
 
   return children;

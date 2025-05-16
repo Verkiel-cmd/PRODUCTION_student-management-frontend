@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Webstyles/login_style.css';
-import config from './config';
+import '../Webstyles/login_style.css';
+import config from '../auth_section/config';
 import { useNavigate } from 'react-router-dom';
 
 // Configure axios defaults
@@ -103,7 +103,7 @@ const Frontlog = () => {
     setRegisterErrorType(null);
     setSuccessMessage('User registered successfully! \nRedirecting...');
     setTimeout(() => {
-        navigate('/ListStud', { replace: true });
+        navigate('/Student_lists/ListStud', { replace: true });
     }, 2000);
 }
             })
@@ -145,7 +145,7 @@ const Frontlog = () => {
                 };
                 localStorage.setItem('user', JSON.stringify(userData));
                 setLoggedInUser(userData);
-                navigate('/ListStud', { replace: true });
+                navigate('/Student_lists/ListStud', { replace: true });
             } else {
                 setEmailErrorType('email');
                 setPasswordErrorType('password');
@@ -228,7 +228,7 @@ const Frontlog = () => {
             localStorage.setItem('user', JSON.stringify(userData));
             setLoggedInUser(userData);
                 // Use navigate for redirection
-                navigate('/ListStud', { replace: true });
+                navigate('/Student_lists/ListStud', { replace: true });
             } else {
                 setgoogleErrorMessage('Google Sign-In failed  \nPlease try again.');
             }
@@ -436,7 +436,7 @@ const Frontlog = () => {
                                     />
                                     Remember me
                                 </label>
-                                <a href="/Forgotpassword">Forgot Password?</a>
+                                <a href="/auth_section/Forgotpassword">Forgot Password?</a>
                             </div>
                             <button type="submit" className="btn">Sign in</button>
 

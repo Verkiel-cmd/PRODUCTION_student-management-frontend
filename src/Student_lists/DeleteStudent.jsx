@@ -29,7 +29,7 @@ function DeleteStudent() {
       }
 
 
-      history.push('/ListStud');
+      history.push('/Student_lists/ListStud');
     } catch (error) {
       console.error('Error:', error.message);
     }

@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Webstyles/main_side.css';
-import './Webstyles/bootstrapError_style.css';
-import config from './config'; // Adjust the path as needed
+import '../Webstyles/main_side.css';
+import '../Webstyles/bootstrapError_style.css';
+import config from '../auth_section/config'; // Adjust the path as needed
 
 
 
