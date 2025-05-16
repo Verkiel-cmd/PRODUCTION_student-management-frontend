@@ -411,7 +411,7 @@ function ListStud() {
                       <td>{student.created}</td>
                       <td>
                         <div className="d-flex align-items-center">
-                          <Link className="btn btn-primary btn-sm me-2 d-flex justify-content-center align-items-center" to={`/UpdateStudent/${student.id}`}>
+                          <Link className="btn btn-primary btn-sm me-2 d-flex justify-content-center align-items-center" to={`/Student_lists/UpdateStudent/${student.id}`}>
                             Update
                           </Link>
                           <button
