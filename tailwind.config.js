@@ -1,10 +1,8 @@
-export default {
-    content: [
-      "./src/**/*.{html,js,jsx,ts,tsx}", // Adjust based on your project structure
-      "./public/index.html",
-    ],
-    theme: {
-      extend: {},
-    },
-    plugins: [],
-  };
+// tailwind.config.js
+export const content = [
+  "./src/**/*.{js,jsx,ts,tsx}", // Add this line
+];
+export const theme = {
+  extend: {},
+};
+export const plugins = [];
