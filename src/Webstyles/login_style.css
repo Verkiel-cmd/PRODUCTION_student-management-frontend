@@ -10,6 +10,9 @@
 body {
   background: black;
 }
+body, *, *::before, *::after, input, button, textarea, select {
+  font-family: "Segoe UI", sans-serif !important;
+}
 
 .header {
   position: fixed;
