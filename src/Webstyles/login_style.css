@@ -10,10 +10,6 @@
 body {
   background: black;
 }
-body, *, *::before, *::after, input, button, textarea, select {
-  font-family: "Segoe UI", sans-serif !important;
-}
-
 .header {
   position: fixed;
   top: 0;
@@ -68,7 +64,7 @@ body, *, *::before, *::after, input, button, textarea, select {
   border: none;
   outline: none;
   font-size: 16px;
-  font-family: "Varela Round", sans-serif;
+  font-family: "Segoe UI";
   color: white;
 }
 .search-bar input::placeholder {
@@ -115,14 +111,14 @@ body, *, *::before, *::after, input, button, textarea, select {
 .text-sci h2 {
   font-size: 40px;
   line-height: 1;
-  font-family: "Varela Round";
+  font-family: "Segoe UI";
 }
 .text-sci h2 span {
   font-size: 25px;
-  font-family: "Varela Round";
+  font-family: "Segoe UI";
 }
 .text-sci p {
-  font-family: "Varela Round";
+  font-family: "Segoe UI";
   font-size: 16px;
   margin: 20px 0;
 }
