@@ -20,11 +20,6 @@ h1 {
     font-size: 1.5rem;
 }
 
-body {
-    font-family: 'Poppins',
-
-}
-
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -102,7 +97,6 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #0e0e0e;
-    font-family: 'Poppins', sans-serif;
     font-weight: 500;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;

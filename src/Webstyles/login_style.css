@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI";
 }
 
 body {
@@ -64,12 +63,10 @@ body {
   border: none;
   outline: none;
   font-size: 16px;
-  font-family: "Segoe UI";
   color: white;
 }
 .search-bar input::placeholder {
   color: white;
-  font-family: "Segoe UI";
 }
 .search-bar button {
   width: 40px;
@@ -111,14 +108,13 @@ body {
 .text-sci h2 {
   font-size: 40px;
   line-height: 1;
-  font-family: "Segoe UI";
+
 }
 .text-sci h2 span {
   font-size: 25px;
-  font-family: "Segoe UI";
+
 }
 .text-sci p {
-  font-family: "Segoe UI";
   font-size: 16px;
   margin: 20px 0;
 }
