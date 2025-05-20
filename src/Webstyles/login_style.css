@@ -297,6 +297,7 @@ body {
   display: inline-block;
 }
 .dropbtn {
+  font-family: "Segoe UI";
   background-color: grey;
   border-radius: 10px;
   color: white;
