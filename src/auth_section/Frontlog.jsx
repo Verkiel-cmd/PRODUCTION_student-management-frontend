@@ -247,6 +247,7 @@ const Frontlog = () => {
     return (
 
         <div>
+            <p className="font-sans text-2xl">This should be Segoe UI</p>
             <header className="header">
                 <nav className="navbar">
                     <a href="#">Home</a>
