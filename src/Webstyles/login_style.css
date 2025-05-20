@@ -8,6 +8,7 @@
 
 body {
   background: black;
+  font-family: "Segoe UI";
 }
 .header {
   position: fixed;
