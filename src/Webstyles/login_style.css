@@ -57,6 +57,7 @@ body {
   align-items: center;
 }
 .search-bar input {
+  font-family: "Segoe UI";
   width: 100%;
   padding-left: 15px;
   background: #205781;
@@ -297,6 +298,7 @@ body {
   display: inline-block;
 }
 .dropbtn {
+  font-family: "Segoe UI";
   background-color: grey;
   border-radius: 10px;
   color: white;
