@@ -201,11 +201,12 @@ const Frontlog = () => {
                 setUsernameError('');
                 setUsernameErrorType(null);
             }
-        } catch (error) {
-            console.error('Error checking username:', error);
-            setUsernameErrorType('username');
-        }
-    };
+       } catch (error) {
+        setUsernameError('Error checking username');
+        setUsernameErrorType('username');
+        console.error('Error checking username:', error);
+    }
+};
 
     const handleGoogleSuccess = async (response) => {
         const token = response.credential;
