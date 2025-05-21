@@ -57,6 +57,7 @@ body {
   align-items: center;
 }
 .search-bar input {
+  font-family: "Segoe UI";
   width: 100%;
   padding-left: 15px;
   background: #205781;
