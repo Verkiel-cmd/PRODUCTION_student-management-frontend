@@ -333,7 +333,17 @@ a.sidebar-link:hover {
     opacity: 1;
     transform: translateY(-50%) scale(1);
 }
+.dropdown-menu .dropdown-item {
+  transition: box-shadow 0.2s, background 0.2s, border-radius 0.2s;
+  border-radius: 8px; /* Rounded corners by default */
+}
 
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+  background: grey !important;      /* Light grey background */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12); /* Soft shadow */
+  border-radius: 12px;                 /* More pronounced on hover */
+}
 
 
 
