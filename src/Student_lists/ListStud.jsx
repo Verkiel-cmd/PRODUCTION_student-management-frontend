@@ -286,31 +286,32 @@ function ListStud() {
             <i className={`lni lni-chevron-${isProfileDropdownOpen ? "up" : "down"} fs-5`}></i>
           </button>
 
-          {/* Dropdown Menu */}
+            {/* Dropdown Menu */}
           {isProfileDropdownOpen && (
             <ul
               className="dropdown-menu show position-absolute end-0 mt-2 bg-white shadow-lg rounded border border-gray-300"
               style={{ zIndex: 3100 }}
             >
               <li>
-               <a
-  href="#"
-  className="dropdown-item px-3 py-2 text-dark"
->
-  Settings
-</a>
-<a
-  href="/"
-  className="dropdown-item px-3 py-2 text-dark"
-  onClick={handleLogout}
->
-  Logout
-</a>
+                <a
+                  href="#"
+                  className="dropdown-item px-3 py-2 text-dark"
+                >
+                  Settings
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="dropdown-item px-3 py-2 text-dark"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </a>
               </li>
             </ul>
           )}
         </div>
-
 
 
 
@@ -332,7 +333,7 @@ function ListStud() {
           style={{ 
             paddingTop: '20px', 
             paddingBottom: '1rem', 
-            color: 'white'
+            color: 'black'
             }}>List of Students</h5>
 
           <div className="gap" 
@@ -367,7 +368,7 @@ function ListStud() {
             </div>
           </form>
 
-          <div className="table-responsive" 
+         <div className="table-responsive" 
           style=
           {{ maxHeight: '700px',
             overflowY: 'auto',
@@ -375,7 +376,10 @@ function ListStud() {
             borderBottomLeftRadius: '10px',
             borderBottomRightRadius: '10px',
             borderTopRightRadius: '10px',   }}>
-            <table className="table" >
+
+            <table className="table" 
+            style={{
+            }} >
               <thead>
                 <tr>
                   <th>ID</th>

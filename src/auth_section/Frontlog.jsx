@@ -255,24 +255,6 @@ const Frontlog = () => {
                     <a href="#">Service</a>
                     <a href="#">Contact</a>
                 </nav>
-
-                <div className="dropdown">
-                    <button className="dropbtn" onClick={toggleDropdown}>Courses</button>
-                    <div className="dropdown-content">
-                        <div className="dropdown-line"></div>
-                        <a href="#">Link 1</a>
-                        <div className="dropdown-line"></div>
-                        <a href="#">Link 2</a>
-                        <div className="dropdown-line"></div>
-                        <a href="#">Link 3</a>
-                        <div className="dropdown-line"></div>
-                    </div>
-                </div>
-
-                <form action="#" className="search-bar">
-                    <input type="text" placeholder="Search" />
-                    <button type="submit"><i className="bx bx-search-alt-2"></i></button>
-                </form>
             </header>
 
             <div className="background"></div>

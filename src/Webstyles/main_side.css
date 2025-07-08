@@ -376,13 +376,14 @@ a.sidebar-link:hover {
 
 
 
+
 .table thead th {
     position: sticky;
     top: 0;
-    background-color: #f8f9fa;
+    color: white;
+    background-color: #28282B ;
     z-index: 2001;
 }
-
 .table {
     font-weight: 500;
     font-size: large;

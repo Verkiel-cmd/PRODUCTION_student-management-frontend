@@ -545,9 +545,16 @@ function Classes() {
 
                     <div className="container_class" 
                     style={{
-                         marginTop: '10vh', 
-                         background: '#28282B', 
-                         color: 'white' }}>
+                         marginTop: '13vh', 
+                         background: 'white', 
+                         color: 'black',
+                         padding: '20px',
+                         width: 'auto',
+                         backgroundColor: 'whitesmoke',
+                         borderRadius: '10px',
+                         boxShadow: '0 0px 10px rgba(0, 0, 0, 0.20)',
+                         marginLeft: '8rem',
+                         marginRight: '1rem' }}>
 
                         {/* Success Message */}
                         {successMessage && (
