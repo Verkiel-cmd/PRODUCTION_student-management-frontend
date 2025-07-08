@@ -4,6 +4,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import  config from'../auth_section/config';
 
+
 const Forgotpassword = () => {
     
     const [email, setEmail] = useState('');
