@@ -1,4 +1,4 @@
-Due to database service timeout, the connection through my website was interupted, the Authentication is also affected and will throw an network/system error.
+# Due to database service timeout, the connection through my website was interupted, the Authentication is also affected and will throw an network/system error.
 In this trial I used:
 — Free trial:
 [Railway] - service timeout ❌
