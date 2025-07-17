@@ -1,11 +1,14 @@
 # Due to database service timeout, the connection through my website was interupted, the Authentication is also affected and will throw an network/system error.
-In this trial I used:
-— Free trial:
-[Railway] - service timeout ❌
-[Render] - running ✅
-[Netlify] - running ✅
+### 🔍 Current Hosting Trial Status:
+| Platform  | Status         |
+|-----------|----------------|
+| Railway   | ❌ Service timeout |
+| Render    | ✅ Running          |
+| Netlify   | ✅ Running          |
 
-To consistently used the features of my website, you can give some support by giving us donation.
+---
+
+For consistently used of our website and it's features, you can give us support by giving donation.
 ==================================================================================================================================================================================
 
 # React + Vite
