@@ -1,3 +1,16 @@
+# Due to database service timeout, the connection through my website was interupted, the Authentication is also affected and will throw an network/system error.
+### 🔍 Current Hosting Trial Status:
+| Platform  | Status         |
+|-----------|----------------|
+| Railway   | ❌ Service timeout |
+| Render    | ✅ Running          |
+| Netlify   | ✅ Running          |
+
+---
+
+For consistently used of our website and it's features, you can give us support by giving donation.
+==================================================================================================================================================================================
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
