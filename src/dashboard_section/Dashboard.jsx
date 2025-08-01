@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/main_side.css';
 import  config from'../auth_section/config';
+import Chart from 'chart.js/auto';
+let barChartInstance = null;
 
 function Dashboard() {
 
@@ -174,7 +176,49 @@ function Dashboard() {
 }, [navigate]); // Add navigate to dependencies
 
 
+useEffect(() => {
+  if (!barChartInstance) {
+    const ctx = document.getElementById('barChart').getContext('2d');
 
+    barChartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Colleagues', 'Added Classes'],
+        datasets: [{
+          label: 'Total',
+          data: [totalStudents, totalClass],
+          backgroundColor: ['#4CAF50', '#2196F3']
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { stepSize: 1 }
+          }
+        },
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+  } else {
+    // Update chart if already initialized
+    barChartInstance.data.datasets[0].data = [totalStudents, totalClass];
+    barChartInstance.update();
+  }
+}, [totalStudents, totalClass]); // 👈 watch for changes
+
+
+useEffect(() => {
+  return () => {
+    if (barChartInstance) {
+      barChartInstance.destroy();
+      barChartInstance = null;
+    }
+  };
+}, []);
 
   return (
 
@@ -326,6 +370,11 @@ function Dashboard() {
               <div className="total_statistics">
                 <h1>Added Classes {totalClass}</h1>
               </div>
+
+              
+              <div className="dashboard" style={{ width: '100%'}}>
+           <canvas id="barChart" width="400" height="100"></canvas>
+             </div>
 
             </div>
 
