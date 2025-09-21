@@ -1,5 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/main_side.css';
 import '../Webstyles/bootstrapError_style.css';
@@ -8,10 +10,8 @@ import config from '../auth_section/config'; // Adjust the path as needed
 
 
 function Classes() {
-
-    
-
     const [classes, setClasses] = useState([]);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [isSidebarExpanded, setIsSidebarExpanded] = useState(() => localStorage.getItem("sidebarState") === "expanded");
     const [isAuthDropdownOpen, setIsAuthDropdownOpen] = useState(() => localStorage.getItem("authDropdownState") === "expanded");
     const [isMultiDropdownOpen, setIsMultiDropdownOpen] = useState(() => localStorage.getItem("multiDropdownState") === "expanded");
@@ -301,7 +301,18 @@ function Classes() {
     };
 
 
+const handleDeleteClick = (id) => {
+    setCurrentDeletingId(id);
+    setShowDeleteModal(false);
+    setShowDeleteModal(true);
+  };
 
+
+
+ const handleClose = () => {
+    setShowDeleteModal(false);
+    setCurrentDeletingId(null);
+  };
 
 
 
@@ -788,8 +799,8 @@ function Classes() {
                                         <td>{cls.classteacher}</td>
                                         <td>{cls.studentlimit}</td>
                                         <td style={{ display: 'flex', gap: '10px' }}>
-                                            <button className="btn btn-primary btn-sm" onClick={() => handleEdit(cls.classid)}>Edit</button>
-                                            <button className="btn btn-danger btn-sm" onClick={() => handleDelete(cls.classid)}>Delete</button>
+                                            <Button variant="primary" size="sm" onClick={() => handleEdit(cls.classid)}>Update</Button>
+                                            <Button variant="primary" size="sm" onClick={() => handleDeleteClick(cls.classid)}>Delete</Button>
                                         </td>
                                     </tr>
                                 ))
@@ -819,34 +830,26 @@ function Classes() {
 
 
         </div >
-         {/* Bootstrap Delete Modal - Add this at the end of your return */}
-         <div className="modal fade" id="deleteModal" tabIndex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" style={{ zIndex: 5000 }}>
-
-<div className="modal-dialog">
-    <div className="modal-content">
-        <div className="modal-header">
-            <h5 className="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div className="modal-body">
-            Are you sure you want to delete this class?
-        </div>
-        <div className="modal-footer">
-            <button type="button" className="btn btn-danger" onClick={confirmDelete}>Delete</button>
-            <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-
-        </div>
+         {/* React Bootstrap Modal */}
+      <Modal show={showDeleteModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Deletion</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Are you sure you want to delete this class?
+        </Modal.Body>
+        <Modal.Footer className="d-flex flex-row flex-nowrap justify-content-end gap-2">
+          <Button variant="danger" onClick={confirmDelete}>Delete</Button>
+          <Button variant="primary" onClick={handleClose}>Cancel</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
-</div>
-</div>
-       
-</div>
-
-
-
-    );
-
+  );
 }
+
+
+
+
 
 
 
