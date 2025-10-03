@@ -247,7 +247,7 @@ const Frontlog = () => {
     
    
     return (
-
+        <GoogleOAuthProvider clientId={config.GOOGLE_CLIENT_ID}>
         <div>
             <header className="header">
                 <nav className="navbar">
@@ -622,7 +622,8 @@ const Frontlog = () => {
                         </form>
                     </div>
                 </div>
-            </div >
+            </div>
+            </GoogleOAuthProvider>
         
     );
 };
