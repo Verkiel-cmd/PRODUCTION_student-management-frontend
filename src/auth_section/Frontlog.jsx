@@ -218,13 +218,14 @@ const Frontlog = () => {
         try {
            const res = await axios.post('https://student-management-backend-a2q4.onrender.com/google-login',
              { token }, { withCredentials: true });
-            if (res.data.success && res.data.user) {
+
+            if (res.data.success) {
                 // Extract user data directly from res.data
             const userData = {
-                userId: res.data.userId,
-                username: res.data.username,
-                email: res.data.email,
-                picture: res.data.picture
+                 id: res.data.userId,          
+                 username: res.data.username,   
+                 email: res.data.email,         
+                 picture: res.data.picture 
             };
             localStorage.setItem('user', JSON.stringify(userData));
             setLoggedInUser(userData);
