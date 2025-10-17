@@ -20,6 +20,12 @@ function Classes() {
     const [editingId, setEditingId] = useState(null);
     const [] = useState(null);
 
+      /*dakrmode*/
+    const [darkMode, setDarkMode] = useState(false);
+    const [showSettings, setShowSettings] = useState(false);
+    const toggleSettings = () => setShowSettings(!showSettings);
+    const toggleDark = () => setDarkMode(!darkMode);
+
     const navigate = useNavigate();
 
     const handleLogout = async () => {
@@ -507,12 +513,17 @@ const handleDeleteClick = (id) => {
        
              </aside>
 
-            <div className="TOP">
-                <div className="text-center">
-                    <div className="top-bar">
-                        <h1 className="title">UNIVERSITY VERACITY</h1>
-
-                    </div>
+             <div className="TOP" style={{
+                   backgroundColor: darkMode ? '#0a0a0a' : 'white'
+            }}>
+        <div className="text-center">
+          <div className="top-bar">
+            <h1 className="title"  style={{
+                color: darkMode ? '#ffffff' : 'white'
+              }}>UNIVERSITY VERACITY</h1>
+          </div>
+    
+                    
 
                     <div className="position-fixed top-0 end-0 mt-2 me-3" style={{ zIndex: 3100 }}>
                         {/* Profile Button */}
@@ -535,20 +546,21 @@ const handleDeleteClick = (id) => {
                                 className="dropdown-menu show position-absolute end-0 mt-2 bg-white shadow-lg rounded border border-gray-300"
                                 style={{ zIndex: 3100 }}
                             >
+                                    <li>
+                                             <button
+                                             onClick={toggleSettings}
+                                             className="dropdown-item px-3 py-2 text-dark w-100 text-start" >
+                                             Settings
+                                         </button>
+                                     </li>
                                 <li>
-                                   <a
-  href="#"
-  className="dropdown-item px-3 py-2 text-dark"
->
-  Settings
-</a>
-<a
-  href="/"
-  className="dropdown-item px-3 py-2 text-dark"
-  onClick={handleLogout}
->
-  Logout
-</a>
+                                    <a
+                                        href="/"
+                                        className="dropdown-item px-3 py-2 text-dark"
+                                        onClick={handleLogout}
+                                    >
+                                        Logout
+                                    </a>
                                 </li>
                             </ul>
                         )}
@@ -590,7 +602,7 @@ const handleDeleteClick = (id) => {
 
 
 
-                        <h2 className="fw-bold text-start" >Add Class</h2>
+                        <h2 className="fw-bold text-start mb-4" >Add Class</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="row mb-3 fw-medium">
                                 <label className="col-sm-0 col-form-label text-start">Class Name</label>
@@ -757,18 +769,17 @@ const handleDeleteClick = (id) => {
           marginInlineEnd: '3rem',
           maxHeight: '700px', 
           overflowY: 'auto',
-          background: '#28282B', 
+          background: darkMode ? '#1a1a1a' : 'white',  
           borderRadius: '10px', 
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 0px 10px rgba(0, 0, 0, 0.20)',
           padding: '30px'}}>
 
             
           <h5 className="text-start " 
           style={{ 
             paddingTop: '10px', 
+            color: darkMode ? '#ffffff' : 'black',
             paddingBottom: '1rem', 
-            width: 'auto',
-            color: 'white'
             }}>Class List</h5>
                      
                 <div className="table-responsive" 
@@ -780,7 +791,10 @@ const handleDeleteClick = (id) => {
             borderBottomRightRadius: '10px',
             borderTopRightRadius: '10px',   }}>
                         
-                    <table className="table" >
+                    <table className="table" style={{
+                           color: darkMode ? '#ffffff' : '#000000',  // Apply dark mode to table text
+                           backgroundColor: darkMode ? '#1a1a1a' : 'white'
+                 }}> 
                         <thead>
                             <tr>
                                 <th >Class ID</th>
@@ -800,7 +814,7 @@ const handleDeleteClick = (id) => {
                                         <td>{cls.studentlimit}</td>
                                         <td style={{ display: 'flex', gap: '10px' }}>
                                             <Button variant="primary" size="sm" onClick={() => handleEdit(cls.classid)}>Update</Button>
-                                            <Button variant="primary" size="sm" onClick={() => handleDeleteClick(cls.classid)}>Delete</Button>
+                                            <Button variant="danger" size="sm" onClick={() => handleDeleteClick(cls.classid)}>Delete</Button>
                                         </td>
                                     </tr>
                                 ))
@@ -820,14 +834,93 @@ const handleDeleteClick = (id) => {
 
             </div>
             
+            {/* ====== SETTINGS MODAL ====== */}
+{showSettings && (
+  <div
+    className="settings-modal-overlay"
+    onClick={() => setShowSettings(false)}
+  >
+    <div
+      className="settings-modal-content"
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
+        color: darkMode ? '#ffffff' : '#000000'
+      }}
+    >
+      <h3>Appearance Settings</h3>
+
+     <p className="mt-3">
+        {darkMode ? "Dark Mode Enabled 🌙" : "Light Mode Enabled ☀️"}
+      </p>
+
+
+      <label className="switch">
+        <input type="checkbox" checked={darkMode} onChange={toggleDark} />
+        <span className="slider"></span>
+      </label>
+
+ 
+      <button
+        onClick={() => setShowSettings(false)}
+        className="btn btn-secondary mt-3"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
+
 
            
             <div className="doggy">
                     <h1>scroll_test</h1>
+
+                    
                 </div>
                
                  
+   {/* ====== SETTINGS MODAL ====== */}
+{showSettings && (
+  <div
+    className="settings-modal-overlay"
+    onClick={() => setShowSettings(false)}
+  >
+    <div
+      className="settings-modal-content"
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
+        color: darkMode ? '#ffffff' : '#000000'
+      }}
+    >
+      <h3>Appearance Settings</h3>
 
+     <p className="mt-3">
+        {darkMode ? "Dark Mode Enabled 🌙" : "Light Mode Enabled ☀️"}
+      </p>
+
+
+      <label className="switch">
+        <input type="checkbox" checked={darkMode} onChange={toggleDark} />
+        <span className="slider"></span>
+      </label>
+
+ 
+      <button
+        onClick={() => setShowSettings(false)}
+        className="btn btn-secondary mt-3"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
+
+    
+    
 
         </div >
          {/* React Bootstrap Modal */}
@@ -844,12 +937,12 @@ const handleDeleteClick = (id) => {
         </Modal.Footer>
       </Modal>
     </div>
+
+    
+
+    
   );
 }
-
-
-
-
 
 
 

@@ -19,6 +19,12 @@ function Dashboard() {
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null);
 
+  /*dakrmode*/
+  const [darkMode, setDarkMode] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const toggleSettings = () => setShowSettings(!showSettings);
+  const toggleDark = () => setDarkMode(!darkMode);
+
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -313,12 +319,19 @@ useEffect(() => {
 
 
 
-      <div className="TOP">
+    <div className="TOP" style={{
+           backgroundColor: darkMode ? '#0a0a0a' : 'white'
+      }}>
         <div className="text-center">
           <div className="top-bar">
-            <h1 className="title">UNIVERSITY VERACITY</h1>
+            <h1 className="title"  style={{
+                color: darkMode ? '#ffffff' : 'white'
+              }}>UNIVERSITY VERACITY</h1>
+          </div>
+        </div>
+       
 
-            <div className="position-fixed top-0 end-0 mt-2 me-3" style={{ zIndex: 3100 }}>
+            <div className="position-fixed top-0 end-0 mt-2 me-3" style={{ zIndex: 3100, pointerEvents: 'auto' }}>
               {/* Profile Button */}
               <button
                 className="d-flex justify-between align-items-center px-3 py-2 rounded shadow-lg bg-white text-dark border border-gray-300"
@@ -336,32 +349,32 @@ useEffect(() => {
               {/* Dropdown Menu */}
               {isProfileDropdownOpen && (
                 <ul
-                  className="dropdown-menu show position-absolute end-0 mt-2 bg-white shadow-lg rounded border border-gray-300"
-                  style={{ zIndex: 3100 }}
-                >
+                  className="dropdown-menu show position-absolute end-0 mt-2 bg-white shadow-lg rounded border border-gray-300" 
+                  style={{ right: '1rem' }}>
+                <li>
+            <button
+                onClick={toggleSettings}
+                 className="dropdown-item px-3 py-2 text-dark w-100 text-start" >
+                   Settings
+                  </button>
+                </li>
                   <li>
-                   <a
-  href="#"
-  className="dropdown-item px-3 py-2 text-dark"
->
-  Settings
-</a>
-<a
-  href="/"
-  className="dropdown-item px-3 py-2 text-dark"
-  onClick={handleLogout}
->
-  Logout
-</a>
+                    <a
+                      href="/"
+                      className="dropdown-item px-3 py-2 text-dark"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </a>
                   </li>
                 </ul>
               )}
             </div>
+            </div>
+
 
 
             <div className="parent-container-statistics">
-
-
 
               <div className="total_statistics">
                 <h1>Colleagues {totalStudents}</h1>
@@ -371,38 +384,53 @@ useEffect(() => {
                 <h1>Added Classes {totalClass}</h1>
               </div>
 
-              
               <div className="dashboard" style={{ width: '100%'}}>
            <canvas id="barChart" width="400" height="100"></canvas>
              </div>
+             
+         
 
-            </div>
+{/* ====== SETTINGS MODAL ====== */}
+{showSettings && (
+  <div
+    className="settings-modal-overlay"
+    onClick={() => setShowSettings(false)}
+  >
+    <div
+      className="settings-modal-content"
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
+        color: darkMode ? '#ffffff' : '#000000'
+      }}
+    >
+      <h3>Appearance Settings</h3>
 
-
-          </div>
-
-        </div>
-      </div>
-    </div >
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+     <p className="mt-3">
+        {darkMode ? "Dark Mode Enabled 🌙" : "Light Mode Enabled ☀️"}
+      </p>
 
 
+      <label className="switch">
+        <input type="checkbox" checked={darkMode} onChange={toggleDark} />
+        <span className="slider"></span>
+      </label>
 
-
+ 
+      <button
+        onClick={() => setShowSettings(false)}
+        className="btn btn-secondary mt-3"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+  
+)}
+</div>
+</div>
+  
+  
 
   );
 

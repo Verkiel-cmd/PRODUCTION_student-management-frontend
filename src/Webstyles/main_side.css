@@ -20,12 +20,14 @@ h1 {
     font-size: 1.5rem;
 }
 
+
 .wrapper {
     display: flex;
     flex-direction: column;
     height: 100vh;
     overflow-y: auto;
     position: relative;
+    background-color: white;
 }
 
 @media (min-width: 768px) {
@@ -44,12 +46,12 @@ h1 {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 999;
+     pointer-events: none;
 }
 
 
 .main {
     position: relative;
-    height: 100vh;
     min-height: 100vh;
     width: 100%;
     overflow-x: hidden;
@@ -62,14 +64,15 @@ h1 {
 .TOP {
     position: fixed;
     height: 100vh;
-    min-height: 100vh;
     width: 100%;
     transition: all 0.35s ease-in-out;
-    background-color: #152029;
+    background-color: white;
     overflow-y: auto;
-
+    pointer-events: none; 
 }
-
+.TOP > * {
+  pointer-events: auto; /* 👈 re-enable clicks only on actual content inside (buttons, etc.) */
+}
 
 .top-bar {
     background-color: #28282B;
@@ -97,11 +100,12 @@ h1 {
     display: flex;
     flex-direction: column;
     background-color: #0e0e0e;
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
     position: relative;
-    height: 100vh; /* Full height of the screen */
+    height: 100vh; 
 }
 
 
@@ -298,7 +302,7 @@ a.sidebar-link:hover {
     transform: rotate(360deg);
 }
 
-/* Tooltip only when sidebar is collapsed and data-tooltip is not empty */
+
 .sidebar-item[data-tooltip]:hover::after {
     content: attr(data-tooltip);
     position: absolute;
@@ -335,16 +339,15 @@ a.sidebar-link:hover {
 }
 .dropdown-menu .dropdown-item {
   transition: box-shadow 0.2s, background 0.2s, border-radius 0.2s;
-  border-radius: 8px; /* Rounded corners by default */
+  border-radius: 8px; 
 }
 
 .dropdown-menu .dropdown-item:hover,
 .dropdown-menu .dropdown-item:focus {
-  background: grey !important;      /* Light grey background */
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12); /* Soft shadow */
-  border-radius: 12px;                 /* More pronounced on hover */
+  background: grey !important;    
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12); 
+  border-radius: 12px;                
 }
-
 
 
 
@@ -382,8 +385,9 @@ a.sidebar-link:hover {
     top: 0;
     color: white;
     background-color: #28282B ;
-    z-index: 2001;
+    z-index: 500;
 }
+
 .table {
     font-weight: 500;
     font-size: large;
@@ -440,17 +444,13 @@ a.sidebar-link:hover {
     background-color: gray;
 }
 
-
-
-
-
-
-
-
 .parent-container-statistics {
     text-align: left;
-    padding-top: 1.5rem;
+    padding-top: 7rem;
     padding-left: 5rem;
+    flex-wrap: wrap;
+    position: fixed;
+    display: inline-flex;
 }
 
 .total_statistics {
@@ -461,11 +461,10 @@ a.sidebar-link:hover {
     width: 100%;
     max-width: 350px;
     text-align: center; 
-    max-width: 350px;
     flex-direction: column;
     margin: 5px; 
     vertical-align: top; 
-    display: inline-block;
+    
 }
 
 .total_statistics h1 {
@@ -478,17 +477,200 @@ a.sidebar-link:hover {
 }
 
 
-.container_class {
-    padding: 20px;
-    width: auto;
-    background-color: whitesmoke;
-    border-radius: 10px;
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.20);
-    margin-left: 8rem;
-    margin-right: 8rem;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== SETTINGS MODAL ===== */
+.settings-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    z-index: 10000;
+  pointer-events: auto;
 }
 
 
+.settings-modal-content {
+  border-radius: 12px;
+  padding: 2rem;
+  width: 320px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  animation: fadeInUp 0.25s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; 
+  align-items: center; 
+    pointer-events: auto;
+  cursor: auto;
+}
+
+
+.settings-modal-content h3 {
+  margin-bottom: 0; 
+  margin-right: 1rem; 
+}
+
+
+
+.switch {
+  position: relative;
+  display: inline-flex;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 26px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* ===== DARK MODE ===== */
+
+
+.dark-mode body {
+  background-color: #0d0d0d !important;
+  color: #ffffff !important;
+}
+
+
+
+.dark-mode .sidebar-link,
+.dark-mode .sidebar-item span,
+.dark-mode .sidebar-logo a {
+  color: #ffffff !important;
+}
+
+.dark-mode a.sidebar-link:hover {
+  background-color: #1f1f1f !important;
+  border-left-color: #007bff !important;
+}
+
+
+.dark-mode .top-bar {
+  background-color: #1a1a1a !important;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.8);
+}
+
+.dark-mode .title {
+  color: #ffffff !important;
+}
+
+
+.dark-mode .container_class,
+.dark-mode .class_list,
+.dark-mode .parent-container-statistics {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0px 10px rgba(255, 255, 255, 0.05);
+}
+
+
+.dark-mode table,
+.dark-mode .table thead th,
+.dark-mode .table tbody tr {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border-color: #333 !important;
+}
+
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+  background-color: #222 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+}
+
+
+/* Scrollbars */
+.dark-mode ::-webkit-scrollbar {
+  width: 10px;
+}
+.dark-mode ::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 5px;
+}
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.dark-mode .TOP,
+.dark-mode .wrapper,
+.dark-mode .main {
+  background-color: #0d0d0d !important;
+  color: #ffffff !important;
+}
 
 
 
@@ -515,18 +697,18 @@ a.sidebar-link:hover {
         width: 200px;
     }
 
-    /* Adjust main content */
+   
     .main {
         margin-left: 60px;
     }
 
-    /* Adjust buttons */
+    
     .btn {
         font-size: 0.8rem;
         padding: 0.5rem 1rem;
     }
 
-    /* Adjust table */
+    
     .table {
         font-size: small;
     }
@@ -539,50 +721,52 @@ a.sidebar-link:hover {
     .list_table{
         width: 100%;
     }
-    /* Adjust statistics container */
+    
     .total_statistics {
         padding: 2rem; 
         max-width: 100%; 
         width: 90%;
         display: flex;
         flex-direction: column;
+        
     }
 
-    /* Adjust schedule container */
+   
     .schedule {
         margin-left: 1rem;
         margin-right: 1rem;
         padding: 1rem;
     }
 
-    /* Adjust title */
+  
     .title {
         font-size: 1rem;
         letter-spacing: 2px;
     }
 
-    /* Hide elements if needed */
+ 
     .doggy {
-        display: none; /* Example: Hide this element on mobile */
+        display: none; 
     }
+    
 }
-/* Styles for smaller screens (e.g., tablets and mobile) */
+
 @media (max-width: 768px) {
     .position-fixed.top-0.end-0.mt-2.me-3 button {
-        font-size: 0.8rem; /* Reduce font size */
-        padding: 0.5rem 1rem; /* Adjust padding */
-        border-radius: 5px; /* Smaller border radius */
+        font-size: 0.8rem; 
+        padding: 0.5rem 1rem; 
+        border-radius: 5px; 
     }
 
     .position-fixed.top-0.end-0.mt-2.me-3 button span {
-        display: none; /* Hide the username text on smaller screens */
+        display: none; 
     }
 
     .position-fixed.top-0.end-0.mt-2.me-3 button i {
-        font-size: 1rem; /* Adjust icon size */
+        font-size: 1rem; 
     }
     .main {
         margin-left: 70px;
-        /* Adjust main content spacing */
+        
     }
 }

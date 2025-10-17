@@ -19,6 +19,12 @@ function ListStud() {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
+  /*dakrmode*/
+  const [darkMode, setDarkMode] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const toggleSettings = () => setShowSettings(!showSettings);
+  const toggleDark = () => setDarkMode(!darkMode);
+
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -174,7 +180,9 @@ function ListStud() {
   }, [navigate]); // Add navigate to dependencies
 
   return (
-      <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""}`}>
+    
+
+     <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""} ${darkMode ? "dark-mode" : ""}`}>
       <aside id="sidebar" className={isSidebarExpanded ? "expand" : ""}>
         <div className="d-flex">
           <button id="toggle-btn" type="button" onClick={toggleSidebar}>
@@ -264,12 +272,20 @@ function ListStud() {
       </aside>
 
 
-      <div className="TOP">
+    <div className="TOP" style={{
+           backgroundColor: darkMode ? '#0a0a0a' : 'white'
+      }}>
         <div className="text-center">
           <div className="top-bar">
-            <h1 className="title">UNIVERSITY VERACITY</h1>
+            <h1 className="title"  style={{
+                color: darkMode ? '#ffffff' : 'white'
+              }}>UNIVERSITY VERACITY</h1>
           </div>
         </div>
+        
+
+        
+
 
         <div className="position-fixed top-0 end-0 mt-2 me-3" style={{ zIndex: 3100 }}>
           {/* Profile Button */}
@@ -285,21 +301,24 @@ function ListStud() {
             </span>
             <i className={`lni lni-chevron-${isProfileDropdownOpen ? "up" : "down"} fs-5`}></i>
           </button>
+          
 
-            {/* Dropdown Menu */}
+          {/* Dropdown Menu */}
           {isProfileDropdownOpen && (
             <ul
               className="dropdown-menu show position-absolute end-0 mt-2 bg-white shadow-lg rounded border border-gray-300"
               style={{ zIndex: 3100 }}
             >
-              <li>
-                <a
-                  href="#"
-                  className="dropdown-item px-3 py-2 text-dark"
-                >
-                  Settings
-                </a>
-              </li>
+
+             <li>
+           <button
+               onClick={toggleSettings}
+               className="dropdown-item px-3 py-2 text-dark w-100 text-start"
+            >
+                 Settings
+             </button>
+            </li>
+
               <li>
                 <a
                   href="/"
@@ -313,6 +332,7 @@ function ListStud() {
           )}
         </div>
 
+        
 
 
 
@@ -324,17 +344,19 @@ function ListStud() {
           marginInlineEnd: '3rem',
           maxHeight: '700px', 
           overflowY: 'auto',
-          background: '#28282B', 
+          background: darkMode ? '#1a1a1a' : 'white', 
           borderRadius: '10px', 
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 0px 10px rgba(0, 0, 0, 0.20)',
           padding: '30px'}}>
 
-          <h5 className="text-start " 
-          style={{ 
-            paddingTop: '20px', 
-            paddingBottom: '1rem', 
-            color: 'black'
-            }}>List of Students</h5>
+          <h5 className="text-start" 
+           style={{ 
+           paddingTop: '20px', 
+           paddingBottom: '1rem', 
+           color: darkMode ? 'white' : 'black'
+          }}>
+          List of Students
+         </h5>
 
           <div className="gap" 
           style={{ 
@@ -368,7 +390,7 @@ function ListStud() {
             </div>
           </form>
 
-         <div className="table-responsive" 
+          <div className="table-responsive" 
           style=
           {{ maxHeight: '700px',
             overflowY: 'auto',
@@ -377,11 +399,13 @@ function ListStud() {
             borderBottomRightRadius: '10px',
             borderTopRightRadius: '10px',   }}>
 
-            <table className="table" 
-            style={{
-            }} >
+            <table className="table" style={{
+             color: darkMode ? 'white' : 'black'
+           }}> 
               <thead>
-                <tr>
+                <tr style={{
+                    backgroundColor: darkMode ? '#000000' : '#28282B'
+          }}>
                   <th>ID</th>
                   <th>Name</th>
                   <th>Email</th>
@@ -400,6 +424,7 @@ function ListStud() {
                     </td>
                   </tr>
                 )}
+
 
 
                 {filteredStudents.length > 0 ? (
@@ -452,14 +477,61 @@ function ListStud() {
               studentId={studentToDelete}
             />
 
+            
+
 
           </div>
         </div>
         <div className="doggy">
             <h1>scroll_test</h1>
           </div>
+
+
+
+
+
+{/* ====== SETTINGS MODAL ====== */}
+{showSettings && (
+  <div
+    className="settings-modal-overlay"
+    onClick={() => setShowSettings(false)}
+  >
+    <div
+      className="settings-modal-content"
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
+        color: darkMode ? '#ffffff' : '#000000'
+      }}
+    >
+      <h3>Appearance Settings</h3>
+
+     <p className="mt-3">
+        {darkMode ? "Dark Mode Enabled 🌙" : "Light Mode Enabled ☀️"}
+      </p>
+
+
+      <label className="switch">
+        <input type="checkbox" checked={darkMode} onChange={toggleDark} />
+        <span className="slider"></span>
+      </label>
+
+ 
+      <button
+        onClick={() => setShowSettings(false)}
+        className="btn btn-secondary mt-3"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
+
       </div>
     </div>
+    
+ 
   );
 }
 
