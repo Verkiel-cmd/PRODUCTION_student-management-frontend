@@ -319,9 +319,12 @@ useEffect(() => {
 
 
 
-    <div className="TOP" style={{
-           backgroundColor: darkMode ? '#0a0a0a' : 'white'
-      }}>
+
+   <div className="TOP" style={{
+  backgroundColor: darkMode ? '#0a0a0a' : 'white',
+  pointerEvents: 'none'
+}}>
+    
         <div className="text-center">
           <div className="top-bar">
             <h1 className="title"  style={{
@@ -331,7 +334,7 @@ useEffect(() => {
         </div>
        
 
-            <div className="position-fixed top-0 end-0 mt-2 me-3" style={{ zIndex: 3100, pointerEvents: 'auto' }}>
+            <div className="position-fixed top-0 end-0 mt-2 me-3" style={{ zIndex: 9999, pointerEvents: 'auto' }}>
               {/* Profile Button */}
               <button
                 className="d-flex justify-between align-items-center px-3 py-2 rounded shadow-lg bg-white text-dark border border-gray-300"
@@ -350,7 +353,7 @@ useEffect(() => {
               {isProfileDropdownOpen && (
                 <ul
                   className="dropdown-menu show position-absolute end-0 mt-2 bg-white shadow-lg rounded border border-gray-300" 
-                  style={{ right: '1rem' }}>
+                  style={{ right: '1rem', zIndex: 9999 }}>
                 <li>
             <button
                 onClick={toggleSettings}
@@ -369,7 +372,6 @@ useEffect(() => {
                   </li>
                 </ul>
               )}
-            </div>
             </div>
 
 
@@ -427,6 +429,7 @@ useEffect(() => {
   </div>
   
 )}
+</div>
 </div>
 </div>
   
