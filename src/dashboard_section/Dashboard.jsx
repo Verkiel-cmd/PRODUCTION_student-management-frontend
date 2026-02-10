@@ -12,7 +12,7 @@ function Dashboard() {
 
   const [totalStudents, setTotalStudents] = useState(0);
   const [totalClass, setTotalClass] = useState(0);
-  const [setError] = useState(null);
+  const [error, setError] = useState(null);
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(() => localStorage.getItem("sidebarState") === "expanded");
   const [isAuthDropdownOpen, setIsAuthDropdownOpen] = useState(() => localStorage.getItem("authDropdownState") === "expanded");
   const [isMultiDropdownOpen, setIsMultiDropdownOpen] = useState(() => localStorage.getItem("multiDropdownState") === "expanded");

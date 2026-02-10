@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import config from '../auth_section/config';
 
 function DeleteStudent() {
 
-  const apiUrl = process.env.REACT_APP_API_URL; 
-
   const { id } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (id) {
@@ -29,7 +28,7 @@ function DeleteStudent() {
       }
 
 
-      history.push('/Student_lists/ListStud');
+      navigate('/Student_lists/ListStud');
     } catch (error) {
       console.error('Error:', error.message);
     }

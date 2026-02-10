@@ -18,7 +18,6 @@ function Classes() {
     const [loggedInUser, setLoggedInUser] = useState(null); // Store logged-in user details
     const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
     const [editingId, setEditingId] = useState(null);
-    const [] = useState(null);
 
       /*dakrmode*/
     const [darkMode, setDarkMode] = useState(false);

@@ -40,10 +40,7 @@ function UpdateStudent() {
     }));
 
     setIsError(false);
-    if (value.trim()) {
-      setTouched(false);
-    }
-
+    setTouched(false);
   };
 
 
