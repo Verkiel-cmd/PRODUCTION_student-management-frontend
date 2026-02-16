@@ -331,6 +331,11 @@ useEffect(() => {
                 color: darkMode ? '#ffffff' : 'white'
               }}>UNIVERSITY VERACITY</h1>
           </div>
+          {error && (
+            <div className="container mt-2">
+              <div className="alert alert-danger" role="alert">{error}</div>
+            </div>
+          )}
         </div>
        
 

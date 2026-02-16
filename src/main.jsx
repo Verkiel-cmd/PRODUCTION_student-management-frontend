@@ -10,6 +10,7 @@ import Dashboard from './dashboard_section/Dashboard';
 import Classes from './Class_lists/Classes';
 import Forgotpassword from './auth_section/Forgotpassword';
 import ProtectedRoute from './auth_section/ProtectedRoute'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 

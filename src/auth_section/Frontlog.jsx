@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -27,7 +27,7 @@ const Frontlog = () => {
     const [PassworderrorType, setPasswordErrorType] = useState(null);
     const [passwordErrorMessage, setpasswordErrorMessage] = useState('');
     const [networkErrorMessage, setnetworkErrorMessage] = useState(null);
-    const [loggedInUser, setLoggedInUser] = useState(null);
+    const [, setLoggedInUser] = useState(null);
 
     // Add state variables for registration form
     const [isUsernameFocusedRegister, setIsUsernameFocusedRegister] = useState(false);
@@ -51,10 +51,7 @@ const Frontlog = () => {
         logregBox.classList.toggle('active');
     };
 
-    const toggleDropdown = () => {
-        const dropdownContent = document.querySelector('.dropdown-content');
-        dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-    };
+    // `toggleDropdown` was unused and removed to satisfy lint rules
 
     const togglePasswordVisibility = () => {
         setIsPasswordVisible(!isPasswordVisible);

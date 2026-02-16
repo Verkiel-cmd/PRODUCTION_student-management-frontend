@@ -123,7 +123,8 @@ function ListStud() {
         const data = await response.json();
         setStudents(data);
         setFilteredStudents(data);
-      } catch (err) {
+      } catch (error) {
+        console.error(error);
         setError('Error fetching student data.');
       }
     };

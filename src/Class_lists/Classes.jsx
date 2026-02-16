@@ -1,8 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import * as bootstrap from 'bootstrap';
 import '../Webstyles/main_side.css';
 import '../Webstyles/bootstrapError_style.css';
 import config from '../auth_section/config'; // Adjust the path as needed
@@ -322,13 +322,11 @@ const handleDeleteClick = (id) => {
 
 
 
-    const handleDelete = async (id) => {
-
-        setCurrentDeletingId(id);
-
-        const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-        deleteModal.show();
-    };
+    /*
+      Note: deletion is handled via `handleDeleteClick` -> `confirmDelete` using
+      the React state `showDeleteModal` and `confirmDelete`. The old
+      `handleDelete` function was unused and caused a lint error, so it's removed.
+    */
 
 
     const confirmDelete = async () => {

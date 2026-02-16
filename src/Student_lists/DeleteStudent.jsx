@@ -9,30 +9,26 @@ function DeleteStudent() {
 
   useEffect(() => {
     if (id) {
+      (async () => {
+        try {
+          const response = await fetch(`${config.API_URL}/students/${id}`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
 
-      deleteStudent(id);
+          if (!response.ok) {
+            throw new Error('Failed to delete student');
+          }
+
+          navigate('/Student_lists/ListStud');
+        } catch (error) {
+          console.error('Error:', error.message);
+        }
+      })();
     }
-  }, [id]);
-
-  const deleteStudent = async () => {
-    try {
-      const response = await fetch(`${config.API_URL}/students/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to delete student');
-      }
-
-
-      navigate('/Student_lists/ListStud');
-    } catch (error) {
-      console.error('Error:', error.message);
-    }
-  };
+  }, [id, navigate]);
 
   return (
     <div>
