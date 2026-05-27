@@ -577,27 +577,26 @@ a.sidebar-link:hover {
 
 
 .settings-modal-content {
-  width: 100%;
-  max-width: 350px;
-  min-width: 0;
-  box-sizing: border-box;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 2rem;
+  width: 320px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
   animation: fadeInUp 0.25s ease-in-out;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-around; 
+  align-items: center; 
   pointer-events: auto;
   cursor: auto;
 }
 
 @media (max-width: 576px) {
   .settings-modal-content {
-    max-width: 100%;
+    max-width: min(320px, calc(100vw - 2rem));
     width: 100%;
     padding: 1rem;
+    margin-left: 4rem;
+    position: relative;
   }
 }
 
