@@ -421,7 +421,7 @@ const handleDeleteClick = (id) => {
 
 
     return (
-        <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""}`}>
+        <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""} ${darkMode ? "dark-mode" : ""}`}>
              <aside id="sidebar" className={isSidebarExpanded ? "expand" : ""}>
                <div className="d-flex">
                  <button id="toggle-btn" type="button" onClick={toggleSidebar}>
