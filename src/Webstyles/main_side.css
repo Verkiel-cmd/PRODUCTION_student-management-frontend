@@ -578,7 +578,7 @@ a.sidebar-link:hover {
 
 .settings-modal-content {
   width: 100%;
-  max-width: 380px;
+  max-width: 350px;
   min-width: 0;
   box-sizing: border-box;
   border-radius: 12px;
