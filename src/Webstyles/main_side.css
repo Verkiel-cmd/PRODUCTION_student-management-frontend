@@ -571,23 +571,34 @@ a.sidebar-link:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-    z-index: 10000;
+  z-index: 10000;
   pointer-events: auto;
 }
 
 
 .settings-modal-content {
+  width: 100%;
+  max-width: 380px;
+  min-width: 0;
+  box-sizing: border-box;
   border-radius: 12px;
-  padding: 2rem;
-  width: 320px;
+  padding: 1rem;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
   animation: fadeInUp 0.25s ease-in-out;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around; 
-  align-items: center; 
-    pointer-events: auto;
+  justify-content: space-around;
+  align-items: center;
+  pointer-events: auto;
   cursor: auto;
+}
+
+@media (max-width: 576px) {
+  .settings-modal-content {
+    max-width: 100%;
+    width: 100%;
+    padding: 1rem;
+  }
 }
 
 
