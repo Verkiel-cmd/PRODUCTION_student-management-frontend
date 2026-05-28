@@ -314,7 +314,7 @@ function ListStud() {
              <li>
            <button
                onClick={toggleSettings}
-               className="dropdown-item px-3 py-2 text-dark w-100 text-start"
+               className="dropdown-item px-3 py-2 text-dark w-100 fs-6 text-start"
             >
                  Settings
              </button>

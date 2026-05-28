@@ -517,6 +517,20 @@ a.sidebar-link:hover {
     display: inline-flex;
 }
 
+@media (max-width: 700px)
+{
+    .parent-container-statistics{
+    width: 100%;
+    text-align: left;
+    padding-top: 7rem;
+    padding-left: 5rem;
+    flex-wrap: wrap;
+    position: fixed;
+    display: inline-flex;
+    position: relative;
+    }
+}
+
 .total_statistics {
     background: rgb(34, 193, 195);
     background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(237, 251, 255, 1) 100%);
