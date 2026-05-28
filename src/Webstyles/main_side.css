@@ -579,7 +579,7 @@ a.sidebar-link:hover {
 .settings-modal-content {
   border-radius: 12px;
   padding: 2rem;
-  width: 320px;
+  width: 300px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
   animation: fadeInUp 0.25s ease-in-out;
   display: flex;
@@ -594,8 +594,8 @@ a.sidebar-link:hover {
   .settings-modal-content {
     max-width: min(320px, calc(100vw - 2rem));
     width: 100%;
+    margin: 0 0.5rem 0 5rem;
     padding: 1rem;
-    margin-left: 4rem;
     position: relative;
   }
 }
