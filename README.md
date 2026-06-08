@@ -1,14 +1,11 @@
-# Due to database service timeout, the connection through my website was interupted, the Authentication is also affected and will throw an network/system error.
 ### 🔍 Current Hosting Trial Status:
 | Platform  | Status         |
 |-----------|----------------|
-| Railway   | ❌ Service timeout |
-| Render    | ✅ Running          |
-| Netlify   | ✅ Running          |
+| Aiven     | ✅ Running    |
+| Render    | ✅ Running    |      
+| Netlify   | ✅ Running    |      
 
 ---
-
-For consistently used of our website and it's features, you can give us support by giving donation.
 ==================================================================================================================================================================================
 
 # React + Vite
