@@ -6,6 +6,9 @@
 | Netlify   | ✅ Running    |      
 
 ---
+🚀 Live Demo
+You can view and interact with the live deployment here: 
+👉 [student-management-st.netlify.app](https://student-management-st.netlify.app)
 
 # React + Vite
 
