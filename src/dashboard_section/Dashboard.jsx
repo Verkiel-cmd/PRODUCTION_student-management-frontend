@@ -16,14 +16,21 @@ function Dashboard() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(() => localStorage.getItem("sidebarState") === "expanded");
   const [isAuthDropdownOpen, setIsAuthDropdownOpen] = useState(() => localStorage.getItem("authDropdownState") === "expanded");
   const [isMultiDropdownOpen, setIsMultiDropdownOpen] = useState(() => localStorage.getItem("multiDropdownState") === "expanded");
-  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  /* darkmode state */
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
 
   /*dakrmode*/
-  const [darkMode, setDarkMode] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const toggleSettings = () => setShowSettings(!showSettings);
-  const toggleDark = () => setDarkMode(!darkMode);
+  const toggleDark = () => {
+    setDarkMode((prev) => {
+        const nextState = !prev;
+        localStorage.setItem("darkModeState", nextState ? "enabled" : "disabled");
+        return nextState;
+    });
+};
 
   const navigate = useNavigate();
 
