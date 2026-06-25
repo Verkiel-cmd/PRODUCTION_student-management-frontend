@@ -472,7 +472,9 @@ const Frontlog = () => {
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    gap: '8px'
+                                    gap: '8px',
+                                    width: '100%',
+                                    boxSizing: 'border-box'
                                 }}>
                                     <i className='bx bx-check-circle' style={{ fontSize: '20px' }}></i> {/* Success icon */}
                                     {success}
