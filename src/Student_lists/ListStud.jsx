@@ -443,7 +443,7 @@ function ListStud() {
                       <td>{student.email}</td>
                       <td>{student.phone}</td>
                       <td>{student.address}</td>
-                      <td>{student.created}</td>
+                      <td>{student.created_at}</td>
                       <td>
                         <div className="d-flex align-items-center">
                           <Link className="btn btn-primary btn-sm me-2 d-flex justify-content-center align-items-center" to={`/Student_lists/UpdateStudent/${student.id}`}>
