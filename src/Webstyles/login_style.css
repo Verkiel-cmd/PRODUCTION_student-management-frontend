@@ -358,7 +358,7 @@ body {
     font-size: 16px;
     color: white;
     font-weight: 500;
-    padding: 0 40px 0 15px; /* Left padding for text, right for icon */
+    padding: 0 40px 0 0px; 
   }
 
   .remember-forgot {
@@ -409,11 +409,6 @@ body {
 
   .form-box h2 {
     font-size: 20px;
-  }
-
-  .input-box input {
-    font-size: 14px;
-    padding: 10px 35px 10px 12px;
   }
 
   .remember-forgot {
