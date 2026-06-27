@@ -16,7 +16,7 @@ function DeleteModal({ show, handleClose, handleDelete, studentId, darkMode }) {
         <Modal.Title>Confirm Delete</Modal.Title>
       </Modal.Header>
       <Modal.Body>Are you sure you want to delete this record?</Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer className="d-flex flex-row flex-nowrap justify-content-end gap-2">
         <Button
           variant="danger"
           onClick={() => {
