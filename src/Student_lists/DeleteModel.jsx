@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
-function DeleteModal({ show, handleClose, handleDelete, studentId }) {
+function DeleteModal({ show, handleClose, handleDelete, studentId, darkMode }) {
 
   console.log(`DeleteModal received studentId: ${studentId}`);
 
