@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import config from './auth_section/config';
 import Frontlog from './auth_section/Frontlog';
 import ListStud from './Student_lists/ListStud';
 import CreateStudent from './Student_lists/CreateStudent';
