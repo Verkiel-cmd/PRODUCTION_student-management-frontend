@@ -7,8 +7,12 @@ function DeleteModal({ show, handleClose, handleDelete, studentId }) {
   console.log(`DeleteModal received studentId: ${studentId}`);
 
   return (
-    <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
+        <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton style={{
+        backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
+        color: darkMode ? '#ffffff' : '#000000',
+        borderColor: darkMode ? '#333' : '#dee2e6'
+      }}>
         <Modal.Title>Confirm Delete</Modal.Title>
       </Modal.Header>
       <Modal.Body>Are you sure you want to delete this record?</Modal.Body>

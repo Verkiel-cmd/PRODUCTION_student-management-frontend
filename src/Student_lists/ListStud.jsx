@@ -483,6 +483,7 @@ function ListStud() {
               handleClose={() => setShowModal(false)}
               handleDelete={handleDelete}
               studentId={studentToDelete}
+              darkMode={darkMode}
             />
 
             
