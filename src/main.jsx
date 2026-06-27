@@ -19,7 +19,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <GoogleOAuthProvider clientId="824956744352-a4sj5egukjh1csk8galsalp6v4i73gbq.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={config.GOOGLE_CLIENT_ID}>
       <BrowserRouter>
         <Routes>
           <Route path="/auth_section/Frontlog" element={<Frontlog />} />
