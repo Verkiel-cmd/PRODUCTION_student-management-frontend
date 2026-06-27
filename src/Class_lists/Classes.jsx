@@ -929,7 +929,11 @@ const handleDeleteClick = (id) => {
         </div >
          {/* React Bootstrap Modal */}
       <Modal show={showDeleteModal} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton style={{
+                backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
+                color: darkMode ? '#ffffff' : '#000000',
+                borderColor: darkMode ? '#333' : '#dee2e6'
+              }}>
           <Modal.Title>Confirm Deletion</Modal.Title>
         </Modal.Header>
         <Modal.Body>
