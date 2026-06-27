@@ -812,6 +812,24 @@ input:checked + .slider:before {
   color: #ffffff !important;
 }
 
+/* Bootstrap Delete Modal */
+.dark-mode .modal-content {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border-color: #333 !important;
+}
+
+.dark-mode .modal-header {
+  border-bottom-color: #333 !important;
+}
+
+.dark-mode .modal-footer {
+  border-top-color: #333 !important;
+}
+
+.dark-mode .btn-close {
+  filter: invert(1) !important;
+}
 
 
 
