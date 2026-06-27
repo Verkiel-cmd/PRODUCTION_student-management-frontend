@@ -37,6 +37,14 @@ function ListStud() {
     });
 };
 
+useEffect(() => {
+    if (darkMode) {
+        document.body.classList.add("dark-mode-body");
+    } else {
+        document.body.classList.remove("dark-mode-body");
+    }
+}, [darkMode]);
+
   const navigate = useNavigate();
 
   const handleLogout = async () => {
