@@ -28,9 +28,22 @@ function Classes() {
     setDarkMode((prev) => {
         const nextState = !prev;
         localStorage.setItem("darkModeState", nextState ? "enabled" : "disabled");
+        if (nextState) {
+            document.body.classList.add("dark-mode-body");
+        } else {
+            document.body.classList.remove("dark-mode-body");
+        }
         return nextState;
     });
 };
+
+useEffect(() => {
+    if (darkMode) {
+        document.body.classList.add("dark-mode-body");
+    } else {
+        document.body.classList.remove("dark-mode-body");
+    }
+}, [darkMode]);
 
     const navigate = useNavigate();
 
