@@ -3,7 +3,6 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: whitesmoke;
 }
 
 
@@ -16,10 +15,11 @@ body {
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.20);
   margin: auto;
 }
-
+html.dark-mode-body,
 body.dark-mode-body {
-  background-color: #121212;
-  color: #f5f5f5;
+  background-color: #121212 !important;
+  color: #f5f5f5 !important;
+  min-height: 100%;
 }
 
 .container_listud.dark-mode {
