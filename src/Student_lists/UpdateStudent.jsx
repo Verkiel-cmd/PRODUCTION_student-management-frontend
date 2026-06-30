@@ -1,4 +1,4 @@
-import React, { usEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/main_side.css';
@@ -27,7 +27,7 @@ function UpdateStudent() {
   });
 
   /* darkmode state */
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
+  const [darkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
