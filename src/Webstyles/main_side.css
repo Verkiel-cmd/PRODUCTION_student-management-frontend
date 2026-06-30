@@ -37,7 +37,12 @@ h1 {
     height: 100vh;
     overflow-y: auto;
     position: relative;
-    background-color: white;
+}
+.wrapper.dark-mode,
+.wrapper.dark-mode .TOP,
+.wrapper.dark-mode .main {
+    background-color: #0d0d0d !important;
+    color: #ffffff !important;
 }
 
 @media (min-width: 768px) {
