@@ -79,22 +79,11 @@ h1 {
     background-color: white;
     overflow-y: auto;
 }
-
-body.dark-mode .wrapper,
-body.dark-mode .wrapper .main,
-body.dark-mode .wrapper .TOP,
-html.dark-mode-body .wrapper,
-html.dark-mode-body .wrapper .main,
-html.dark-mode-body .wrapper .TOP,
 .wrapper.dark-mode .main,
-.wrapper.dark-mode .TOP,
-.dark-mode .wrapper,
-.dark-mode .main,
-.dark-mode .TOP {
+.wrapper.dark-mode .TOP {
     background-color: #0d0d0d !important;
     color: #ffffff !important;
 }
-
 .top-bar {
     background-color: #28282B;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
