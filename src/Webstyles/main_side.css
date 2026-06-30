@@ -722,13 +722,17 @@ input:checked + .slider:before {
 
 
 /*===== DARK MODE ================================================================================*/
-.dark-mode body {
-  background-color: #0d0d0d !important;
-  color: #ffffff !important;
+html,
+body {
+  background-color: whitesmoke;
+  color: #000;
 }
 
-
-
+html.dark-mode-body,
+body.dark-mode-body {
+  background-color: #121212 !important;
+  color: #f5f5f5 !important;
+}
 .dark-mode .sidebar-link,
 .dark-mode .sidebar-item span,
 .dark-mode .sidebar-logo a {
@@ -739,8 +743,6 @@ input:checked + .slider:before {
   background-color: #1f1f1f !important;
   border-left-color: #007bff !important;
 }
-
-
 .dark-mode .top-bar {
   background-color: #1a1a1a !important;
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.8);
@@ -749,8 +751,6 @@ input:checked + .slider:before {
 .dark-mode .title {
   color: #ffffff !important;
 }
-
-
 .dark-mode .container_class,
 .dark-mode .class_list,
 .dark-mode .parent-container-statistics {
@@ -758,8 +758,6 @@ input:checked + .slider:before {
   color: #ffffff !important;
   box-shadow: 0 0px 10px rgba(255, 255, 255, 0.05);
 }
-
-
 .dark-mode table,
 .dark-mode .table thead th,
 .dark-mode .table tbody tr {
@@ -767,8 +765,6 @@ input:checked + .slider:before {
   color: #ffffff !important;
   border-color: #333 !important;
 }
-
-
 .dark-mode input,
 .dark-mode select,
 .dark-mode textarea {
