@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Webstyles/main_side.css';
 import '../Webstyles/createstyle.css';
 import '../Webstyles/bootstrapError_style.css';
 import config from '../auth_section/config'; // Adjust the path as needed
@@ -141,7 +140,7 @@ function CreateStudent() {
 
 
 
-    <div className={`container_listud my-5 bg-color${darkMode ? "dark-mode" : ""}`} style={{
+    <div className={`container_listud my-5 bg-color ${darkMode ? "dark-mode" : ""}`} style={{
          backgroundColor: darkMode ? "#121212" : "#ffffff",
          color: darkMode ? "#f5f5f5" : "#000000"}}>
       {successMessage && (
