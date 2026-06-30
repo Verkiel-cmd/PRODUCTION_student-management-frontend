@@ -25,19 +25,23 @@ function Classes() {
     const [showSettings, setShowSettings] = useState(false);
     const toggleSettings = () => setShowSettings(!showSettings);
     const toggleDark = () => {
-      setDarkMode((prev) => {
-        const next = !prev;
-        localStorage.setItem("darkModeState", next ? "enabled" : "disabled");
-        document.body.classList.toggle("dark-mode-body", next);
-        document.body.classList.toggle("dark-mode", next);
-        return next;
-      });
-    };
-    
-    useEffect(() => {
-      document.body.classList.toggle("dark-mode-body", darkMode);
-      document.body.classList.toggle("dark-mode", darkMode);
-    }, [darkMode]);
+  setDarkMode((prev) => {
+    const next = !prev;
+    localStorage.setItem("darkModeState", next ? "enabled" : "disabled");
+    document.documentElement.classList.toggle("dark-mode-body", darkMode);
+    document.documentElement.classList.toggle("dark-mode", darkMode);
+    document.body.classList.toggle("dark-mode-body", next);
+    document.body.classList.toggle("dark-mode", next);
+    return next;
+  });
+};
+
+useEffect(() => {
+    document.documentElement.classList.toggle("dark-mode-body", darkMode);
+    document.documentElement.classList.toggle("dark-mode", darkMode);
+    document.body.classList.toggle("dark-mode-body", darkMode);
+    document.body.classList.toggle("dark-mode", darkMode);
+}, [darkMode]);
     
 
     const navigate = useNavigate();
