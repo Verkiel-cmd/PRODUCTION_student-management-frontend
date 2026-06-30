@@ -28,6 +28,8 @@ function ListStud() {
   setDarkMode((prev) => {
     const next = !prev;
     localStorage.setItem("darkModeState", next ? "enabled" : "disabled");
+    document.documentElement.classList.toggle("dark-mode-body", darkMode);
+    document.documentElement.classList.toggle("dark-mode", darkMode);
     document.body.classList.toggle("dark-mode-body", next);
     document.body.classList.toggle("dark-mode", next);
     return next;
@@ -35,8 +37,10 @@ function ListStud() {
 };
 
 useEffect(() => {
-  document.body.classList.toggle("dark-mode-body", darkMode);
-  document.body.classList.toggle("dark-mode", darkMode);
+    document.documentElement.classList.toggle("dark-mode-body", darkMode);
+    document.documentElement.classList.toggle("dark-mode", darkMode);
+    document.body.classList.toggle("dark-mode-body", darkMode);
+    document.body.classList.toggle("dark-mode", darkMode);
 }, [darkMode]);
 
   const navigate = useNavigate();
