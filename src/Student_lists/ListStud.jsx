@@ -25,24 +25,18 @@ function ListStud() {
   const [showSettings, setShowSettings] = useState(false);
   const toggleSettings = () => setShowSettings(!showSettings);
   const toggleDark = () => {
-    setDarkMode((prev) => {
-        const nextState = !prev;
-        localStorage.setItem("darkModeState", nextState ? "enabled" : "disabled");
-        if (nextState) {
-            document.body.classList.add("dark-mode-body");
-        } else {
-            document.body.classList.remove("dark-mode-body");
-        }
-        return nextState;
-    });
+  setDarkMode((prev) => {
+    const next = !prev;
+    localStorage.setItem("darkModeState", next ? "enabled" : "disabled");
+    document.body.classList.toggle("dark-mode-body", next);
+    document.body.classList.toggle("dark-mode", next);
+    return next;
+  });
 };
 
 useEffect(() => {
-    if (darkMode) {
-        document.body.classList.add("dark-mode-body");
-    } else {
-        document.body.classList.remove("dark-mode-body");
-    }
+  document.body.classList.toggle("dark-mode-body", darkMode);
+  document.body.classList.toggle("dark-mode", darkMode);
 }, [darkMode]);
 
   const navigate = useNavigate();
