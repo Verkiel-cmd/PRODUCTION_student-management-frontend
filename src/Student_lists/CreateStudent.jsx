@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { usEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/main_side.css';
@@ -9,7 +9,8 @@ import config from '../auth_section/config'; // Adjust the path as needed
 function CreateStudent() {
 
   
-
+/* darkmode state */
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
   const [isError, setIsError] = useState(false);
   const [touched, setTouched] = useState(false);
 
@@ -28,6 +29,11 @@ function CreateStudent() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+  document.body.classList.toggle("dark-mode-body", darkMode);
+  document.body.classList.toggle("dark-mode", darkMode);
+}, [darkMode]);
 
   const handleCloseError = (errorType) => {
     if (errorType === 'name') {
@@ -135,7 +141,9 @@ function CreateStudent() {
 
 
 
-    <div className="container_listud my-5 bg-color">
+    <div className={`container_listud my-5 bg-color${darkMode ? "dark-mode" : ""}`} style={{
+         backgroundColor: darkMode ? "#121212" : "#ffffff",
+         color: darkMode ? "#f5f5f5" : "#000000"}}>
       {successMessage && (
         <div className="row mb-3">
           <div className="col-sm-6">

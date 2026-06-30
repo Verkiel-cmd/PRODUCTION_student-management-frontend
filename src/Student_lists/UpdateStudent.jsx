@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { usEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/main_side.css';
@@ -26,13 +26,18 @@ function UpdateStudent() {
     addressError: '',
   });
 
+  /* darkmode state */
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const [isError, setIsError] = useState(false);
   const [touched, setTouched] = useState(false);
 
-
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode-body", darkMode);
+    document.body.classList.toggle("dark-mode", darkMode);
+  }, [darkMode]);
 
   const handleCloseError = (errorType) => {
     setErrors((prevErrors) => ({
@@ -169,7 +174,10 @@ function UpdateStudent() {
   };
 
   return (
-    <div className="container_listud my-5">
+    <div className={`container_listud my-5${darkMode ? "dark-mode" : ""}`} style={{
+         backgroundColor: darkMode ? "#121212" : "#ffffff",
+         color: darkMode ? "#f5f5f5" : "#000000"
+     }}>
       {successMessage && (
         <div className="row mb-3">
           <div className="offset-sm-0 col-sm-6">
