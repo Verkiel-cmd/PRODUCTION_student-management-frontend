@@ -26,11 +26,19 @@ function Dashboard() {
   const toggleSettings = () => setShowSettings(!showSettings);
   const toggleDark = () => {
     setDarkMode((prev) => {
-        const nextState = !prev;
-        localStorage.setItem("darkModeState", nextState ? "enabled" : "disabled");
-        return nextState;
+      const next = !prev;
+      localStorage.setItem("darkModeState", next ? "enabled" : "disabled");
+      document.body.classList.toggle("dark-mode-body", next);
+      document.body.classList.toggle("dark-mode", next);
+      return next;
     });
-};
+  };
+  
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode-body", darkMode);
+    document.body.classList.toggle("dark-mode", darkMode);
+  }, [darkMode]);
+  
 
   const navigate = useNavigate();
 

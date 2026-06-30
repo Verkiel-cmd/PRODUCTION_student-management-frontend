@@ -79,8 +79,14 @@ h1 {
     background-color: white;
     overflow-y: auto;
 }
+html.dark-mode-body .wrapper,
+body.dark-mode-body .wrapper,
+body.dark-mode .wrapper,
+.dark-mode .wrapper,
 .wrapper.dark-mode .main,
-.wrapper.dark-mode .TOP {
+.wrapper.dark-mode .TOP,
+.dark-mode .main,
+.dark-mode .TOP {
     background-color: #0d0d0d !important;
     color: #ffffff !important;
 }
