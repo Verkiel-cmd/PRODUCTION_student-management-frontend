@@ -932,7 +932,7 @@ body.dark-mode-body .btn-close {
     padding-left: 300px;
 }
 
-
+/*===== RESPOSIVE DESIGN ==============================*/
 @media (max-width: 768px) {
 
     #sidebar {
@@ -1006,8 +1006,9 @@ body.dark-mode-body .btn-close {
         border-radius: 5px; 
     }
 
+    /*USER PROFILE NAME SHOW ON/OFF*/
     .position-fixed.top-0.end-0.mt-2.me-3 button span {
-        display: none; 
+        display: inline;
     }
 
     .position-fixed.top-0.end-0.mt-2.me-3 button i {

@@ -137,10 +137,7 @@ function CreateStudent() {
   };
 
   return (
-
-
-
-    <div className={`container_listud my-5 bg-color ${darkMode ? "dark-mode" : ""}`} style={{
+    <div className={`container_listud my-5 ${darkMode ? "dark-mode" : ""}`} style={{
          backgroundColor: darkMode ? "#121212" : "#ffffff",
          color: darkMode ? "#f5f5f5" : "#000000"}}>
       {successMessage && (
