@@ -18,6 +18,8 @@ function Classes() {
     const [editingId, setEditingId] = useState(null);
     const [loggedInUser, setLoggedInUser] = useState(null); // Store logged-in user details
     const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     /* darkmode state */
     const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
     
@@ -42,6 +44,14 @@ useEffect(() => {
     document.body.classList.toggle("dark-mode-body", darkMode);
     document.body.classList.toggle("dark-mode", darkMode);
 }, [darkMode]);
+
+
+useEffect(() => {
+    if (closeBtnRef.current) {
+        closeBtnRef.current.style.setProperty('filter', 'none', 'important');
+    }
+}, [successMessage]);
+
     
 
     const navigate = useNavigate();
@@ -601,7 +611,7 @@ const handleDeleteClick = (id) => {
                                 <div className="col-sm-6">
                                     <div className="alert alert-success alert-dismissible fade show text-start" role="alert">
                                         <strong>{successMessage}</strong>
-                                        <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <button ref={closeBtnRef} type="button" className="btn-close" style={{ filter: 'none' }} data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
                                 </div>
                             </div>
