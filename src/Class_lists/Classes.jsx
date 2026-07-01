@@ -20,6 +20,7 @@ function Classes() {
     const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const closeBtnRef = useRef(null);
     /* darkmode state */
     const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
     
