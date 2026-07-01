@@ -26,6 +26,7 @@ function CreateStudent() {
 
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const closeBtnRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -33,6 +34,12 @@ function CreateStudent() {
   document.body.classList.toggle("dark-mode-body", darkMode);
   document.body.classList.toggle("dark-mode", darkMode);
 }, [darkMode]);
+
+  useEffect(() => {
+      if (closeBtnRef.current) {
+          closeBtnRef.current.style.setProperty('filter', 'none', 'important');
+      }
+  }, [successMessage]);
 
   const handleCloseError = (errorType) => {
     if (errorType === 'name') {
@@ -145,7 +152,7 @@ function CreateStudent() {
           <div className="col-sm-6">
             <div className="alert alert-success alert-dismissible fade show " role="alert">
               <strong>{successMessage}</strong>
-              <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              <button ref={closeBtnRef} type="button" className="btn-close" style={{ filter: 'none' }} data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           </div>
         </div>

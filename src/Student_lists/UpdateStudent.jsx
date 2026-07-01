@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/updatestyle.css';
@@ -30,6 +30,7 @@ function UpdateStudent() {
   const [darkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const closeBtnRef = useRef(null);
 
   const [isError, setIsError] = useState(false);
   const [touched, setTouched] = useState(false);
@@ -38,6 +39,12 @@ function UpdateStudent() {
     document.body.classList.toggle("dark-mode-body", darkMode);
     document.body.classList.toggle("dark-mode", darkMode);
   }, [darkMode]);
+
+      useEffect(() => {
+        if (closeBtnRef.current) {
+            closeBtnRef.current.style.setProperty('filter', 'none', 'important');
+        }
+    }, [successMessage]);
 
   const handleCloseError = (errorType) => {
     setErrors((prevErrors) => ({
@@ -183,7 +190,7 @@ function UpdateStudent() {
           <div className="offset-sm-0 col-sm-6">
             <div className="alert alert-success alert-dismissible fade show" role="alert">
               <strong>{successMessage}</strong>
-              <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              <button ref={closeBtnRef} type="button" className="btn-close" style={{ filter: 'none' }} data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           </div>
         </div>
