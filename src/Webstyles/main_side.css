@@ -932,8 +932,16 @@ body.dark-mode-body .btn-close {
 }
 
 /*===== RESPOSIVE DESIGN ==============================*/
-@media (max-width: 768px) {
 
+@media (max-width: 480px) {
+    .title {
+        padding: 1.5rem 5rem 0 0;
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width: 768px) {
     #sidebar {
         width: 70px;
         min-width: 70px;
@@ -944,7 +952,6 @@ body.dark-mode-body .btn-close {
         width: 200px;
     }
 
-   
     .main {
         margin-left: 60px;
     }
@@ -975,24 +982,12 @@ body.dark-mode-body .btn-close {
         width: 90%;
         display: flex;
         flex-direction: column;
-        
     }
-
-   
     .schedule {
         margin-left: 1rem;
         margin-right: 1rem;
         padding: 1rem;
     }
-
-  
-    .title {
-        padding: 1.5rem 5rem 0 0;
-        font-size: 0.6rem;
-        letter-spacing: 2px;
-    }
-
- 
     .doggy {
         display: none; 
     }
