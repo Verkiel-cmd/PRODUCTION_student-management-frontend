@@ -9,8 +9,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite + React</title>
 
-
-
+  <script>
+    (function () {
+      const saved = localStorage.getItem("darkModeState");
+      if (saved === "enabled") {
+        document.documentElement.classList.add("dark-mode");
+        document.documentElement.classList.add("dark-mode-body");
+      }
+    })();
+  </script>
   
   <!-- Lineicons CSS -->
   <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
