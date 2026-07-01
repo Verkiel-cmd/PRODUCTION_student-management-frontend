@@ -932,11 +932,58 @@ body.dark-mode-body .btn-close {
 }
 
 /*===== RESPOSIVE DESIGN ==============================*/
-
-@media (max-width: 480px) {
+@media (min-width: 700px) and (max-width: 800px) {
     .title {
-        padding: 1.5rem 5rem 0 0;
+        padding: 1.2rem 5rem 0 0;
+        font-size: 1.2rem;
+        letter-spacing: 10px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 700px) {
+    .title {
+        padding: 1.2rem 5rem 0 0;
+        font-size: 1rem;
+        letter-spacing: 10px;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 600px) {
+    .title {
+        padding: 1.2rem 5rem 0 0;
+        font-size: 1rem;
+        letter-spacing: 5px;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 500px) {
+    .title {
+        padding: 1.3rem 5rem 0 0;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+    }
+}
+
+@media (min-width: 390px) and (max-width: 400px) {
+    .title {
+        padding: 1.5rem 4rem 0 0;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width: 389px) {
+    .title {
+        padding: 1.5rem 4rem 0 0;
         font-size: 0.6rem;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width: 384px) {
+    .title {
+        padding: 1.5rem 4rem 0 0;
+        font-size: 0.5rem;
         letter-spacing: 2px;
     }
 }
