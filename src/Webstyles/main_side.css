@@ -796,11 +796,9 @@ body.dark-mode-body {
 .dark-mode input,
 .dark-mode select,
 .dark-mode textarea {
-  background-color: #222 !important;
-  color: #fff !important;
-  border: 1px solid #555 !important;
+  background: transparent !important;
+  color: white !important;
 }
-
 
 /* Scrollbars */
 .dark-mode ::-webkit-scrollbar {
