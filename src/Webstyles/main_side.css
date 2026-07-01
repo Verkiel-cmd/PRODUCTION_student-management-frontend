@@ -795,7 +795,8 @@ body.dark-mode-body {
 }
 .dark-mode input,
 .dark-mode select,
-.dark-mode textarea {
+.dark-mode textarea,
+.dark-mode ::placeholder {
   background: transparent !important;
   color: white !important;
 }
@@ -986,6 +987,7 @@ body.dark-mode-body .btn-close {
 
   
     .title {
+        padding: 1.5rem 4rem 0 0;
         font-size: 1rem;
         letter-spacing: 2px;
     }
