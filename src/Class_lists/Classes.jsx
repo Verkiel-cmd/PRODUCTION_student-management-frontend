@@ -130,9 +130,6 @@ useEffect(() => {
     const [classnameError, setClassnameError] = useState('');
     const [classteacherError, setClassteacherError] = useState('');
     const [studentlimitError, setStudentlimitError] = useState('');
-
-    const [successMessage, setSuccessMessage] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
     const [currentDeletingId, setCurrentDeletingId] = useState(null);
 
     const resetForm = () => {
