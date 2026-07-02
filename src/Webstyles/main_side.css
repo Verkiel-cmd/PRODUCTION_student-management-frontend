@@ -800,6 +800,20 @@ body.dark-mode-body {
   background: transparent !important;
   color: white !important;
 }
+.forgot-password-page input,
+.forgot-password-page select,
+.forgot-password-page textarea,
+.dark-mode .forgot-password-page input,
+.dark-mode .forgot-password-page select,
+.dark-mode .forgot-password-page textarea {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+.forgot-password-page,
+.forgot-password-page * {
+    color: #000 !important;
+}
 
 /* Scrollbars */
 .dark-mode ::-webkit-scrollbar {
