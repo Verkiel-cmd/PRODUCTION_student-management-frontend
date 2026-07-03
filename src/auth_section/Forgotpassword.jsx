@@ -151,7 +151,7 @@ const Forgotpassword = () => {
     );
 
     return (
-        <Container className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+        <Container className="forgot-password-page d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
             <Row>
                 <Col md={12}>
                     <div className="p-4 border rounded shadow">
