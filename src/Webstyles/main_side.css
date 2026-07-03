@@ -572,7 +572,6 @@ a.sidebar-link:hover {
     position: relative;
     }
 }
-
 .total_statistics {
     background: rgb(34, 193, 195);
     background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(237, 251, 255, 1) 100%);
@@ -595,6 +594,19 @@ a.sidebar-link:hover {
     margin-bottom: 0;
     line-height: 1.5;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -779,14 +791,8 @@ body.dark-mode-body {
 .dark-mode .title {
   color: #ffffff !important;
 }
-.dark-mode .container_class,
-.dark-mode .class_list,
-.dark-mode .parent-container-statistics {
-  background-color: #121212 !important;
-  color: #ffffff !important;
-  box-shadow: 0 0px 10px rgba(255, 255, 255, 0.05);
-}
 .dark-mode table,
+.dark-mode .table td,
 .dark-mode .table thead th,
 .dark-mode .table tbody tr {
   background-color: #1a1a1a !important;
@@ -808,6 +814,14 @@ body.dark-mode-body {
 .dark-mode .forgot-password-page textarea {
   color: #000 !important;
   background-color: #fff !important;
+}
+.dark-mode .container_class,
+.dark-mode .list_table,
+.dark-mode .class_list,
+.dark-mode .parent-container-statistics {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0px 10px rgba(255, 255, 255, 0.05);
 }
 
 .forgot-password-page,
