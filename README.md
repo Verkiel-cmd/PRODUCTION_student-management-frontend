@@ -5,9 +5,6 @@
 | Render    | ✅ Running    |      
 | Netlify   | ✅ Running    |      
 
-### 🚀 Deployment Status
-![Last Update](https://img.shields.io/github/last-commit/Verkiel-cmd/PRODUCTION_student-management-frontend?style=for-the-badge&logo=react&logoColor=white&color=61dafb&label=Last%20Updated)
-![License](https://img.shields.io/github/license/Verkiel-cmd/PRODUCTION_student-management-frontend?style=for-the-badge&color=green)    
 
 ---
 ## 🚀 Live Demo
