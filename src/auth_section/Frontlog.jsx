@@ -207,6 +207,22 @@ const Frontlog = () => {
     }
 };
 
+
+//GOOGLE SIGN IN SAVE SESSION DISPLAY LAST USED EMAIL
+useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+        try {
+            const parsedUser = JSON.parse(storedUser);
+            if (parsedUser?.email) {
+                setLastUsedEmail(parsedUser.email);
+            }
+        } catch (err) {
+            console.error('Failed to parse stored user:', err);
+        }
+    }
+}, []);
+
     const handleGoogleSuccess = async (response) => {
         const token = response.credential;
         if (!token) {
