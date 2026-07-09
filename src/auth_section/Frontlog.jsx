@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import googleIcon from '../assets/google-icon.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/login_style.css';
 import config from '../auth_section/config';
@@ -394,17 +395,31 @@ const Frontlog = () => {
                                     {googleErrorMessage}
                                 </div>
                             )}
-
                             <div className="google-login">
-                                <GoogleOAuthProvider clientId="824956744352-a4sj5egukjh1csk8galsalp6v4i73gbq.apps.googleusercontent.com">
-                                    <GoogleLogin
-                                        onSuccess={handleGoogleSuccess}
-                                        onError={handleGoogleFailure}
-                                        useOneTap={false}
-                                        flow="implicit"
-                                    />
-                                </GoogleOAuthProvider>
-                            </div>
+    <div style={{ display: 'none' }}>
+        <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={handleGoogleFailure}
+        />
+    </div>
+
+    <button
+        type="button"
+        className="google-login-button"
+        onClick={() => {
+            const hiddenButton = document.querySelector(
+                '.google-login div[style*="display: none"] div[role="button"]'
+            );
+            if (hiddenButton) hiddenButton.click();
+        }}
+    >
+        <img src={googleIcon} alt="" className="google-icon" />
+        Sign in with Google
+        {lastUsedEmail && (
+            <span className="last-used-account">Last used</span>
+        )}
+    </button>
+</div>
 
 
 
