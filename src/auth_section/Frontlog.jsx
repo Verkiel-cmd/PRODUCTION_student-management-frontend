@@ -4,7 +4,7 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import googleIcon from '../assets/google-icon.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/login_style.css';
-import config from '../auth_section/config';
+import config from './config';
 import { useNavigate } from 'react-router-dom';
 
 // Configure axios defaults

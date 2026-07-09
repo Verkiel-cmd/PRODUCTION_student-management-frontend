@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import config from './auth_section/config';
-import Frontlog from './auth_section/Frontlog';
+import config from './Auth_section/config';
+import Frontlog from './Auth_section/Frontlog';
 import ListStud from './Student_lists/ListStud';
 import CreateStudent from './Student_lists/CreateStudent';
 import UpdateStudent from './Student_lists/UpdateStudent';
 import Dashboard from './Dashboard_section/Dashboard';
 import Classes from './Class_lists/Classes';
-import Forgotpassword from './auth_section/Forgotpassword';
-import ProtectedRoute from './auth_section/ProtectedRoute'; 
+import Forgotpassword from './Auth_section/Forgotpassword';
+import ProtectedRoute from './Auth_section/ProtectedRoute'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 

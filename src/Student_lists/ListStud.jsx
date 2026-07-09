@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/main_side.css';
 import DeleteModal from './DeleteModel';
-import config from '../auth_section/config';
+import config from '../Auth_section/config';
 import axios from 'axios';
 
 function ListStud() {
