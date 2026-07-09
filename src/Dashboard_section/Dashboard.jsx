@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/main_side.css';
-import  config from'../auth_section/config';
+import  config from'../Auth_section/config';
 import Chart from 'chart.js/auto';
 let barChartInstance = null;
 

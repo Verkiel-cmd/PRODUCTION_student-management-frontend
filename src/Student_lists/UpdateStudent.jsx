@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/updatestyle.css';
 import '../Webstyles/bootstrapError_style.css';
-import  config from'../auth_section/config';
+import  config from'../Auth_section/config';
 
 function UpdateStudent() {
 

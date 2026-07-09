@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/createstyle.css';
 import '../Webstyles/bootstrapError_style.css';
-import config from '../auth_section/config'; // Adjust the path as needed
+import config from '../Auth_section/config'; // Adjust the path as needed
 
 function CreateStudent() {
 
