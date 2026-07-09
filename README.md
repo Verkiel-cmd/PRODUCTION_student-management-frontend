@@ -1,9 +1,10 @@
-### 🔍 Current Hosting Trial Status:
+### 🔍 Current Hosting Free Trial Status:
 | Platform  | Status         |
 |-----------|----------------|
 | Aiven     | ✅ Running    |
 | Render    | ✅ Running    |      
 | Netlify   | ✅ Running    |      
+
 
 ---
 ## 🚀 Live Demo
