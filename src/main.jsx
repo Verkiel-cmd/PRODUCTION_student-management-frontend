@@ -7,7 +7,7 @@ import Frontlog from './auth_section/Frontlog';
 import ListStud from './Student_lists/ListStud';
 import CreateStudent from './Student_lists/CreateStudent';
 import UpdateStudent from './Student_lists/UpdateStudent';
-import Dashboard from './dashboard_section/Dashboard';
+import Dashboard from './Dashboard_section/Dashboard';
 import Classes from './Class_lists/Classes';
 import Forgotpassword from './auth_section/Forgotpassword';
 import ProtectedRoute from './auth_section/ProtectedRoute'; 
