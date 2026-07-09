@@ -44,6 +44,7 @@ const Frontlog = () => {
     const [agreedToTerms, setAgreedToTerms] = useState(false);
     const [usernameError, setUsernameError] = useState(false);
     const [usernameErrortype, setUsernameErrorType] = useState(false);
+    const [lastUsedEmail, setLastUsedEmail] = useState(null);
 
     const navigate = useNavigate();
 
