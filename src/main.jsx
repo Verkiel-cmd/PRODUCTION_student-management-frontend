@@ -23,8 +23,8 @@ root.render(
     <GoogleOAuthProvider clientId={config.GOOGLE_CLIENT_ID}>
       <BrowserRouter>
         <Routes>
-          <Route path="/auth_section/Frontlog" element={<Frontlog />} />
-          <Route path="/auth_section/Forgotpassword" element={<Forgotpassword />} />
+          <Route path="/Auth_section/Frontlog" element={<Frontlog />} />
+          <Route path="/Auth_section/Forgotpassword" element={<Forgotpassword />} />
           <Route path="/" element={<Frontlog />} />
           {/* Protected Routes */}
           <Route
@@ -68,7 +68,7 @@ root.render(
             }
           />
           <Route
-          path="/auth_section/ProtectedRoute"
+          path="/Auth_section/ProtectedRoute"
           element={
             <ProtectedRoute>
               <ProtectedRoute/>
