@@ -549,46 +549,51 @@ const handleDeleteClick = (id) => {
     
                     
 
-                    <div className="position-fixed top-0 end-0 mt-2 me-3" style={{ zIndex: 3100 }}>
-                        {/* Profile Button */}
-                        <button
-                            className="d-flex justify-between align-items-center px-3 py-2 rounded shadow-lg bg-white text-dark border border-gray-300"
-                            onClick={toggleProfileDropdown}
-                        >
-                            <span
-                                className="fw-semibold text-dark bg-white px-2 py-0.5 rounded-lg"
-                                style={{ marginRight: '8px' }}
-                            >
-                                {loggedInUser?.username || "Guest"}
-                            </span>
-                            <i className={`lni lni-chevron-${isProfileDropdownOpen ? "up" : "down"} fs-5`}></i>
-                        </button>
+ {/*PROFILE USERNAME DESIGN AND DROPDOWN*/}
+        <div className="position-fixed top-0 end-0 mt-2 me-3" style={{ zIndex: 3100 }}>
+          {/* Profile Button */}
+          <button
+            className="profile-btn d-flex justify-between align-items-center px-3 py-2 rounded shadow-lg bg-white text-dark border border-gray-300"
+            onClick={toggleProfileDropdown}
+          >
+            <span
+              className="username-badge fw-semibold text-dark bg-white px-2 py-0.5 rounded-lg"
+              style={{ marginRight: '8px' }}
+            >
+              {loggedInUser?.username || "Guest"}
+            </span>
+            <i className={`lni lni-chevron-${isProfileDropdownOpen ? "up" : "down"} fs-5`}></i>
+          </button>
+          
 
-                        {/* Dropdown Menu */}
-                        {isProfileDropdownOpen && (
-                            <ul
-                                className="dropdown-menu show position-absolute end-0 mt-2 bg-white shadow-lg rounded border border-gray-300"
-                                style={{ zIndex: 3100 }}
-                            >
-                                    <li>
-                                             <button
-                                             onClick={toggleSettings}
-                                             className="dropdown-item px-3 py-2 text-dark w-100 fs-6 text-start" >
-                                             Settings
-                                         </button>
-                                     </li>
-                                <li>
-                                    <a
-                                        href="/"
-                                        className="dropdown-item px-3 py-2 text-dark"
-                                        onClick={handleLogout}
-                                    >
-                                        Logout
-                                    </a>
-                                </li>
-                            </ul>
-                        )}
-                    </div>
+          {/* Dropdown Menu */}
+          {isProfileDropdownOpen && (
+            <ul
+              className="profile-dropdown dropdown-menu show position-absolute end-0 mt-2 bg-white shadow-lg rounded border border-gray-300"
+              style={{ zIndex: 3100 }}
+            >
+
+             <li>
+           <button
+               onClick={toggleSettings}
+               className="dropdown-item px-3 py-2 text-dark w-100 fs-6 text-start"
+            >
+                 Settings
+             </button>
+            </li>
+
+              <li>
+                <a
+                  href="/"
+                  className="dropdown-item px-3 py-2 text-dark"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </a>
+              </li>
+            </ul>
+          )}
+        </div>
 
                     <div className="container_class" 
                     style={{
