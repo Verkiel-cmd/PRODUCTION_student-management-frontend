@@ -236,7 +236,7 @@ useEffect(() => {
             return;
         }
 
-        setisGoogleLoading(true);
+        setIsGoogleLoading(true);
 
         try {
            const res = await axios.post('https://student-management-backend-a2q4.onrender.com/google-login',
@@ -660,9 +660,9 @@ useEffect(() => {
                             <button
                                 type="submit"
                                 className="btn"
-                                disabled={!agreedToTerms || isloading}
+                                disabled={!agreedToTerms || isLoading}
                             >
-                                {isloading ? (
+                                {isLoading ? (
                                     <>
                                     <span className="loader"></span>
                                     </>
