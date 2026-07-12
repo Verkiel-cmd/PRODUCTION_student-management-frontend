@@ -126,8 +126,13 @@ const Forgotpassword = () => {
                 />
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="w-100">
-                Verify OTP
+            <Button variant="primary" type="submit" className="opt-label w-100 d-flex justify-content-center align-items-center" disabled={isLoading}>
+                {isLoading ? (
+                    
+                    <span className="otp loader"/>
+                    ):(
+                    'Verify OTP'
+                   )}
             </Button>
         </Form>
     );
@@ -160,8 +165,13 @@ const Forgotpassword = () => {
                 />
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="w-100">
-                Reset Password
+             <Button variant="primary" type="submit" className="opt-label w-100 d-flex justify-content-center align-items-center" disabled={isLoading}>
+                {isLoading ? (
+                    
+                    <span className="otp loader"/>
+                    ):(
+                    'Reset Password'
+                   )}
             </Button>
         </Form>
     );
