@@ -442,19 +442,15 @@ useEffect(() => {
         disabled={GoogleLoading}
     >
     {GoogleLoading ? (
-        <>
-        <span className="google-icon" aria-hidden="true"/>
-        <span className="loader"></span>
-        </>
-    ):(
-        <>
+        
+        <span className="google-icon loader" aria-hidden="true"/>
+        ):(
         <img src={googleIcon} alt="" className="google-icon" />
-        Sign in with Google
+        )}
+        <span>Sign in with Google</span>
         {lastUsedEmail && (
             <span className="last-used-account">Last used</span>
         )}
-        </>
-    )}
     </button>
 </div>
 
