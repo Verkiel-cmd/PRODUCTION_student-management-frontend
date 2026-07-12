@@ -320,21 +320,21 @@ body {
 }
 
 /* ===== LOADER STYLES =========================================== */ 
+.google-icon.loader {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  border: 2px solid #d1d5db;
+  border-top-color: #6b7280;
+  border-radius: 50%;
+  animation: spin89345 1s linear infinite;
+}
+
 .google-login-button:disabled {
   background-color: #e5e7eb !important;
   color: #6b7280 !important;
   cursor: not-allowed;
   opacity: 0.95;
-}
-
-.google-login-button .google-icon .loader {
-  width: 14px;
-  height: 14px;
-  border-width: 2px;
-  margin: 0;
-  display: block;
-  border-color: #d1d5db;
-  border-top-color: #6b7280;
 }
 .loader {
   border: 4px solid rgba(69, 162, 238, 0.7);
