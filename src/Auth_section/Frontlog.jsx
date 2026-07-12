@@ -467,7 +467,20 @@ useEffect(() => {
                                 </label>
                                 <a href="/auth_section/Forgotpassword">Forgot Password?</a>
                             </div>
-                            <button type="submit" className="btn">Sign in</button>
+                              <button
+                                type="submit"
+                                className="btn"
+                                disabled={!agreedToTerms || isLoading}
+                            >
+                                {isLoading ? (
+                                    <>
+                                    <span className="loader"></span>
+                                    </>
+                                
+                            ):(
+                                'Sign In'
+                            )}
+                            </button>
 
                             <div className="login_register">
                                 <p>Don't have an account? <a href="#" className="register-link" onClick={toggleForm}>Sign Up</a>

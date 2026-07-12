@@ -408,10 +408,8 @@ a.sidebar-link:hover {
   height: 18px;
   display: inline-block;
   border: 2px solid rgba(0, 0, 0, 0.3) !important;
+  border-radius: 50%;
   border-top-color: rgba(69, 162, 238, 0.9) !important;
-}
-.loader {
-  display: block;
 }
 .otp.loader {
   width: 18px;
