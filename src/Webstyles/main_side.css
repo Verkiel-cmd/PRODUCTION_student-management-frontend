@@ -410,6 +410,7 @@ a.sidebar-link:hover {
   border: 2px solid rgba(0, 0, 0, 0.3) !important;
   border-radius: 50%;
   border-top-color: rgba(69, 162, 238, 0.9) !important;
+  animation: spin89345 1s linear infinite;
 }
 .otp.loader {
   width: 18px;
