@@ -125,6 +125,7 @@ const Frontlog = () => {
 
     const handleLoginSubmit = async (event) => {
         event.preventDefault();
+        setIsLoading(true);
         
         setEmailErrorType(null);
         setemailErrorMessage('');
@@ -180,9 +181,11 @@ const Frontlog = () => {
                 }
             } else {
                 setnetworkErrorMessage('An unexpected error occurred\n Please try again later.');
-            }
-        }
-    };
+               }
+    } finally {
+        setIsLoading(false);
+    }
+};
 
   
 
@@ -470,7 +473,7 @@ useEffect(() => {
                               <button
                                 type="submit"
                                 className="btn"
-                                disabled={!agreedToTerms || isLoading}
+                                disabled={isLoading}
                             >
                                 {isLoading ? (
                                     <>
