@@ -28,7 +28,7 @@ const Frontlog = () => {
     const [PassworderrorType, setPasswordErrorType] = useState(null);
     const [passwordErrorMessage, setpasswordErrorMessage] = useState('');
     const [networkErrorMessage, setnetworkErrorMessage] = useState(null);
-    const [isloading, setIsloading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [GoogleLoading, setIsGoogleLoading] = useState(false);
     const [, setLoggedInUser] = useState(null);
 
@@ -83,7 +83,7 @@ const Frontlog = () => {
             return;
         }
         
-        setisLoading(true);
+        setIsLoading(true);
 
         axios.post(`${config.API_URL}/register`, {
             username: username,
