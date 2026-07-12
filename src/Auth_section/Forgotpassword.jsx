@@ -16,6 +16,7 @@ const Forgotpassword = () => {
     const [stage, setStage] = useState('email');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSendOTP = async (e) => {
         e.preventDefault();
@@ -28,6 +29,8 @@ const Forgotpassword = () => {
             }
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to send OTP');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -42,6 +45,8 @@ const Forgotpassword = () => {
             }
         } catch (err) {
             setError(err.response?.data?.message || 'Invalid OTP');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -51,6 +56,8 @@ const Forgotpassword = () => {
             setError('Passwords do not match');
             return;
         }
+
+        setIsLoading(true);
 
         try {
             const response = await axios.post(`${config.API_URL}/reset-password`, {
@@ -66,6 +73,8 @@ const Forgotpassword = () => {
             }
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to reset password');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -86,8 +95,14 @@ const Forgotpassword = () => {
                 />
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="w-100">
-                Send OTP
+            <Button variant="primary" type="submit" className="w-100" disabled={isLoading}>
+                {isLoading ? (
+                    <>
+                    <span className="loader"></span>
+                    </>
+                ):(
+                    'Send OTP'
+                )}
             </Button>
         </Form>
     );

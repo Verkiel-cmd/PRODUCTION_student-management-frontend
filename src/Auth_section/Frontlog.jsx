@@ -28,6 +28,8 @@ const Frontlog = () => {
     const [PassworderrorType, setPasswordErrorType] = useState(null);
     const [passwordErrorMessage, setpasswordErrorMessage] = useState('');
     const [networkErrorMessage, setnetworkErrorMessage] = useState(null);
+    const [isloading, setIsloading] = useState(false);
+    const [GoogleLoading, setIsGoogleLoading] = useState(false);
     const [, setLoggedInUser] = useState(null);
 
     // Add state variables for registration form
@@ -80,6 +82,8 @@ const Frontlog = () => {
             setErrorRegister("Please enter a valid email address.");
             return;
         }
+        
+        setisLoading(true);
 
         axios.post(`${config.API_URL}/register`, {
             username: username,
@@ -114,6 +118,8 @@ const Frontlog = () => {
                     console.error('Network error:', error);
                     setNetworkErrorRegister('Network error');
                 }
+            }).finally(() => {
+                setIsLoading(false);
             });
     };
 
@@ -230,6 +236,8 @@ useEffect(() => {
             return;
         }
 
+        setisGoogleLoading(true);
+
         try {
            const res = await axios.post('https://student-management-backend-a2q4.onrender.com/google-login',
              { token }, { withCredentials: true });
@@ -252,6 +260,8 @@ useEffect(() => {
         } catch (error) {
             console.error('Google login error:', error);
             setgoogleErrorMessage(error.response?.data?.message || 'Google Sign-In failed  \nPlease try again.');
+        } finally {
+            setIsGoogleLoading(false);
         }
     };
 
@@ -429,12 +439,21 @@ useEffect(() => {
             );
             if (hiddenButton) hiddenButton.click();
         }}
+        disabled={GoogleLoading}
     >
+    {GoogleLoading ? (
+        <>
+        <span className="loader"></span>
+        </>
+    ):(
+        <>
         <img src={googleIcon} alt="" className="google-icon" />
         Sign in with Google
         {lastUsedEmail && (
             <span className="last-used-account">Last used</span>
         )}
+        </>
+    )}
     </button>
 </div>
 
@@ -641,9 +660,16 @@ useEffect(() => {
                             <button
                                 type="submit"
                                 className="btn"
-                                disabled={!agreedToTerms}
+                                disabled={!agreedToTerms || isloading}
                             >
-                                Sign Up
+                                {isLoading ? (
+                                    <>
+                                    <span className="loader"></span>
+                                    </>
+                                
+                            ):(
+                                'Sign Up'
+                            )}
                             </button>
 
                             <div className="login_register">
