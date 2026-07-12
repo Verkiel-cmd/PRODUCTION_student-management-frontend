@@ -443,9 +443,8 @@ useEffect(() => {
     >
     {GoogleLoading ? (
         <>
-        <span className="google-icon" aria-hidden="true"></span>
-        <span className="loader">
-            </span>
+        <span className="google-icon" aria-hidden="true"/>
+        <span className="loader"></span>
         </>
     ):(
         <>
