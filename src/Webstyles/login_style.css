@@ -348,8 +348,8 @@ display: block;
   width: 18px;
   height: 18px;
   display: inline-block;
-  border: 2px solid #d1d5db !important;
-  border-top-color: #6b7280 !important;
+  border: 2px solid rgba(69, 162, 238, 0.3) !important;
+  border-top-color: rgba(69, 162, 238, 0.9) !important;
   border-radius: 50%;
   animation: spin89345 1s linear infinite;
 }
