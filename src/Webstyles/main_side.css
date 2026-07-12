@@ -427,6 +427,21 @@ a.sidebar-link:hover {
 display: block;
   margin-top: 10px;
 }
+.otp.loader {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  border: 2px solid #d1d5db !important;
+  border-top-color: #6b7280 !important;
+  border-radius: 50%;
+  animation: spin89345 1s linear infinite;
+}
+.opt-label:disabled {
+  background-color: #e5e7eb !important;
+  color: #6b7280 !important;
+  cursor: not-allowed;
+  opacity: 0.95;
+}
 
 @keyframes spin89345 {
   0% {

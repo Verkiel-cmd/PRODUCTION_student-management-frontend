@@ -320,21 +320,6 @@ body {
 }
 
 /* ===== LOADER STYLES =========================================== */ 
-.google-icon.loader {
-  width: 18px;
-  height: 18px;
-  display: inline-block;
-  border: 2px solid #d1d5db !important;
-  border-top-color: #6b7280 !important;
-  border-radius: 50%;
-  animation: spin89345 1s linear infinite;
-}
-.google-login-button:disabled {
-  background-color: #e5e7eb !important;
-  color: #6b7280 !important;
-  cursor: not-allowed;
-  opacity: 0.95;
-}
 .loader {
   border: 4px solid rgba(69, 162, 238, 0.7);
   border-left-color: black;
@@ -358,6 +343,21 @@ body {
 .loader {
 display: block;
   margin-top: 10px;
+}
+.google-icon.loader {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  border: 2px solid #d1d5db !important;
+  border-top-color: #6b7280 !important;
+  border-radius: 50%;
+  animation: spin89345 1s linear infinite;
+}
+.google-login-button:disabled {
+  background-color: #e5e7eb !important;
+  color: #6b7280 !important;
+  cursor: not-allowed;
+  opacity: 0.95;
 }
 
 @keyframes spin89345 {
