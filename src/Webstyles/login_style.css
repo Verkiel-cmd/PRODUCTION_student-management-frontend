@@ -319,6 +319,42 @@ body {
   outline: 1px solid rgb(42, 174, 226);
 }
 
+/* ===== LOADER STYLES =========================================== */ 
+.loader {
+  border: 4px solid rgba(69, 162, 238, 0.7);
+  border-left-color: black;
+  border-radius: 50%;
+}
+
+.loader {
+  border: 4px solid rgba(69, 162, 238, 0.7);
+  border-left-color: black;
+  width: 36px;
+  height: 36px;
+}
+
+.loader {
+  border: 4px solid rgba(69, 162, 238, 0.7);
+  border-left-color: black;
+  width: 36px;
+  height: 36px;
+  animation: spin89345 1s linear infinite;
+}
+.loader {
+display: block;
+  margin-top: 10px;
+}
+
+@keyframes spin89345 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /*MOBILE DEVICE*/
 
 @media (max-width: 1080px) {
