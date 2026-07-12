@@ -20,6 +20,7 @@ const Forgotpassword = () => {
 
     const handleSendOTP = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         try {
             const response = await axios.post(`${config.API_URL}/send-otp`, { email });
             if (response.data.success) {
@@ -52,6 +53,7 @@ const Forgotpassword = () => {
 
     const handleResetPassword = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         if (newPassword !== confirmPassword) {
             setError('Passwords do not match');
             return;
