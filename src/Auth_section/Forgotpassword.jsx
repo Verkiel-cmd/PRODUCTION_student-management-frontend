@@ -97,15 +97,13 @@ const Forgotpassword = () => {
                 />
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="opt-label w-100" disabled={isLoading}>
+            <Button variant="primary" type="submit" className="opt-label w-100 d-flex justify-content-center align-items-center" disabled={isLoading}>
                 {isLoading ? (
                     
-                    <span className="otp-loader"/>
+                    <span className="otp loader"/>
                     ):(
-                    <span className="loader"/>
-                    )}
-                    <span>Send OTP</span>
-                
+                    'Send OTP'
+                   )}
             </Button>
         </Form>
     );
