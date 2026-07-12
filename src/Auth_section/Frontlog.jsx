@@ -662,7 +662,7 @@ useEffect(() => {
                                 className="btn"
                                 disabled={!agreedToTerms || isloading}
                             >
-                                {isLoading ? (
+                                {isloading ? (
                                     <>
                                     <span className="loader"></span>
                                     </>
