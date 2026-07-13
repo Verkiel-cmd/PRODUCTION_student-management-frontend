@@ -1396,27 +1396,6 @@ body.dark-mode-body .btn-close {
     }
     
 }
-/* ============ Gap behavior fixed for desktop mode =========================================== */
-@media (max-width: 992px) {
-  .TOP {
-    position: relative !important;
-    height: auto !important;
-    min-height: 100vh !important;
-  }
-
-  .top-bar {
-    position: sticky !important;
-    top: 0 !important;
-    width: 100% !important;
-  }
-
-  .list_table {
-    margin-top: 6rem !important;
-  }
-  .class_list {
-    margin-top: 6rem !important;
-  }
-}
 
 @media (max-width: 768px) {
     .position-fixed.top-0.end-0.mt-2.me-3 button {
