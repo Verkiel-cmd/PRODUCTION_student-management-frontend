@@ -787,7 +787,7 @@ a.sidebar-link:hover {
 
 
 
-/*===== BUTTON STYLES ================================================================================*/
+/*===== DASHBOARD AND BUTTON STYLES ================================================================================*/
 .btn.btn-primary {
     background-color: whitesmoke;
 }
@@ -814,8 +814,8 @@ a.sidebar-link:hover {
 
 .parent-container-statistics {
     text-align: left;
-    padding-top: 7rem;
-    padding-left: 5rem;
+    padding-top: 5.3rem;
+    padding-left: 7.3rem;
     flex-wrap: wrap;
     position: fixed;
     display: inline-flex;
@@ -823,11 +823,11 @@ a.sidebar-link:hover {
 
 @media (max-width: 700px)
 {
-    .parent-container-statistics{
+  .parent-container-statistics{
     width: 100%;
     text-align: left;
-    padding-top: 7rem;
-    padding-left: 5rem;
+    padding-top: 5.3rem;
+    padding-left: 7.3rem;
     flex-wrap: wrap;
     position: fixed;
     display: inline-flex;
