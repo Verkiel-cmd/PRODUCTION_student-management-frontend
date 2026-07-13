@@ -394,7 +394,41 @@ a.sidebar-link:hover {
 
 
 
+/*===== PROFILE USERNAME STYLES ================================================================================*/
+.profile-btn {
+  width: auto;
+  min-width: 0;
+  max-width: 221px !important;
+  overflow: hidden;
+  flex-shrink: 1;
+}
 
+.profile-btn .username-badge {
+  display: inline-block;
+  max-width: 120px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.top-bar {
+  padding-right: 240px;
+}
+
+@media (max-width: 768px) {
+  .profile-btn {
+    max-width: 120px !important;
+  }
+
+  .profile-btn .username-badge {
+    max-width: 90px;
+  }
+
+  .top-bar {
+    padding-right: 0;
+  }
+}
 
 
 
@@ -1079,12 +1113,9 @@ body.dark-mode-body .btn-close {
 
 
 
-.doggy {
-    padding-top: 900px;
-    padding-left: 300px;
-}
 
-/*===== RESPOSIVE DESIGN ==============================*/
+
+/*===== TOP TITLE RESPOSIVE DESIGN ==============================*/
 @media (min-width: 700px) and (max-width: 800px) {
     .title {
         padding: 1.2rem 5rem 0 0;
@@ -1188,8 +1219,10 @@ body.dark-mode-body .btn-close {
         margin-right: 1rem;
         padding: 1rem;
     }
+    /* SCROLL TEST MOBILE SCALE */
     .doggy {
-        display: none; 
+        padding-top: 900px;
+        padding-left: 300px;
     }
     
 }
@@ -1241,4 +1274,10 @@ body.dark-mode-body .btn-close {
 
 .otp-box:focus {
   border-color: #007bff;
+}
+
+/* SCROLL TEST*/
+.doggy {
+    padding-top: 900px;
+    padding-left: 300px;
 }

@@ -365,12 +365,19 @@ useEffect(() => {
             className="profile-btn d-flex justify-between align-items-center px-3 py-2 rounded shadow-lg bg-white text-dark border border-gray-300"
             onClick={toggleProfileDropdown}
           >
-            <span
+           <span
               className="username-badge fw-semibold text-dark bg-white px-2 py-0.5 rounded-lg"
-              style={{ marginRight: '8px' }}
-            >
-              {loggedInUser?.username || "Guest"}
-            </span>
+              style={{
+                 marginRight: '8px',
+                 maxWidth: '140px',
+                 display: 'inline-block',
+                 overflow: 'hidden',
+                 textOverflow: 'ellipsis',
+                 whiteSpace: 'nowrap',
+               }}
+          >
+             {loggedInUser?.username || "Guest"}
+          </span>
             <i className={`lni lni-chevron-${isProfileDropdownOpen ? "up" : "down"} fs-5`}></i>
           </button>
           
