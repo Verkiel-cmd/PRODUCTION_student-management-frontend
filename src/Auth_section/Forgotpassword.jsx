@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import '../Webstyles/main_side.css';
@@ -17,6 +17,33 @@ const Forgotpassword = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+
+     //OTP VARIABLES
+    const [otpValues, setOtpValues] = useState(['', '', '', '', '', '']);
+    const otpRefs = useRef([]);
+    const [resendCooldown, setResendCooldown] = useState(0);
+
+    useEffect(() => {
+    if (resendCooldown === 0) return;
+
+    const timer = setInterval(() => {
+        setResendCooldown((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+}, [resendCooldown]);
+
+     //RESEND OTP FUNCTION
+     const handleOTPChange = (index, e) => {
+        const newValues = [...otpValues];
+        newValues[index] = e.target.value;
+        setOtpValues(newValues);
+        setOtp(newValues.join(''));
+
+        if (e.target.value && index < 5) {
+            otpRefs.current[index + 1].focus();
+        }
+    };
 
     const handleSendOTP = async (e) => {
         e.preventDefault();
@@ -50,6 +77,18 @@ const Forgotpassword = () => {
             setIsLoading(false);
         }
     };
+
+        const handleResendOTP = async () => {
+    try {
+        const response = await axios.post(`${config.API_URL}/send-otp`, { email });
+        if (response.data.success) {
+            setSuccess('OTP resent to your email');
+            setResendCooldown(30); //30-second countdown
+        }
+    } catch (err) {
+        setError(err.response?.data?.message || 'Failed to resend OTP');
+    }
+};
 
     const handleResetPassword = async (e) => {
         e.preventDefault();
@@ -108,7 +147,7 @@ const Forgotpassword = () => {
         </Form>
     );
 
-    const renderOTPStage = () => (
+        const renderOTPStage = () => (
         <Form onSubmit={handleVerifyOTP}>
             <h2 className="text-center mb-4">Verify OTP</h2>
             {error && <Alert variant="danger">{error}</Alert>}
@@ -116,23 +155,41 @@ const Forgotpassword = () => {
 
             <Form.Group className="mb-3">
                 <Form.Label>OTP</Form.Label>
+                <div className="d-flex gap-2 justify-content-between">
+                    {otpValues.map((value, i) => (
                 <Form.Control
+                    key={i}
                     type="text"
+                    value={value}
                     placeholder="Enter 6-digit OTP"
-                    value={otp}
-                    onChange={(e) => setOtp(e.target.value)}
-                    maxLength="6"
-                    required
+                    onChange={(e) => handleOTPChange(i,e)}
+                    ref={(el) => (otpRefs.current[i] = el)}
+                    maxLength="1"
+                    className="otp-box"
                 />
+                    ))}
+                </div>
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="opt-label w-100 d-flex justify-content-center align-items-center" disabled={isLoading}>
-                {isLoading ? (
-                    
-                    <span className="otp loader"/>
-                    ):(
-                    'Verify OTP'
-                   )}
+<div className="mb-3">
+    <span
+        onClick={!resendCooldown ? handleResendOTP : undefined}
+        style={{
+            color: resendCooldown > 0 ? '#b3b3b3' : '#007bff',
+            cursor: resendCooldown > 0 ? 'not-allowed' : 'pointer',
+            fontSize: '14px',
+            textDecoration: 'none',
+            background: 'none',
+            border: 'none',
+            padding: 0,
+        }}
+    >
+        {resendCooldown > 0 ? `Resend OTP in ${resendCooldown}s` : 'Resend OTP'}
+    </span>
+</div>
+
+            <Button variant="primary" type="submit" className="w-100">
+                Verify OTP
             </Button>
         </Form>
     );
