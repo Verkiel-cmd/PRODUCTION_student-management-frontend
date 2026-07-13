@@ -112,7 +112,18 @@ body.dark-mode .wrapper,
     background-color: white;
     overflow-y: auto;
 }
-
+.title {
+    position: absolute;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+    color: white !important;
+    font-style: 'Tahoma';
+    letter-spacing: 10px;
+}
 .top-bar {
     background-color: #28282B;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
@@ -503,6 +514,34 @@ a.sidebar-link:hover {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ===== LOADER STYLES =========================================== */ 
 .loader {
   width: 18px;
@@ -538,6 +577,22 @@ a.sidebar-link:hover {
     transform: rotate(360deg);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -641,6 +696,22 @@ a.sidebar-link:hover {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== TABLE LISTED ================================================================================*/
 .table thead th {
     position: sticky;
@@ -665,16 +736,24 @@ a.sidebar-link:hover {
 }
 
 
-.title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 15px;
-    color: white;
-    font-style: 'Tahoma';
-    letter-spacing: 10px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
