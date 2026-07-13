@@ -366,7 +366,7 @@ useEffect(() => {
 
         <div className="list_table" 
         style={{ 
-          marginTop: '10vh',
+          marginTop: '90px',
           marginInlineStart: '8rem',
           marginInlineEnd: '3rem',
           maxHeight: '700px', 
