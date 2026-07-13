@@ -1398,12 +1398,17 @@ body.dark-mode-body .btn-close {
 }
 /* ============ GAP FIXED IN DESKTOP MODE MOBILE SCALE =================================== */
 @media (max-width: 992px) {
+  .list_table {
+    margin-top: 10vh !important;
+    margin-left: 1.5rem !important;
+    margin-right: 1.5rem !important;
+    padding: 1rem !important;
+  }
+
   .list_table,
   .container_class,
   .class_list {
-    margin-top: 70px !important;
-    margin-inline-start: 1rem !important;
-    margin-inline-end: 1rem !important;
+    width: auto !important;
   }
 }
 
