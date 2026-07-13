@@ -608,7 +608,7 @@ const handleDeleteClick = (id) => {
                          background: 'white', 
                          color: 'black',
                          padding: '20px',
-                         width: 'auto',
+                         width: '100%',
                          backgroundColor: 'whitesmoke',
                          borderRadius: '10px',
                          boxShadow: '0 0px 10px rgba(0, 0, 0, 0.20)',
