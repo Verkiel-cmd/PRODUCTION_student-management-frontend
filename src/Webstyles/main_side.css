@@ -1396,6 +1396,16 @@ body.dark-mode-body .btn-close {
     }
     
 }
+/* ============ GAP FIXED IN DESKTOP MODE MOBILE SCALE =================================== */
+@media (max-width: 992px) {
+  .list_table,
+  .container_class,
+  .class_list {
+    margin-top: 70px !important;
+    margin-inline-start: 1rem !important;
+    margin-inline-end: 1rem !important;
+  }
+}
 
 @media (max-width: 768px) {
     .position-fixed.top-0.end-0.mt-2.me-3 button {
