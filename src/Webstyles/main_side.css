@@ -1396,21 +1396,6 @@ body.dark-mode-body .btn-close {
     }
     
 }
-/* ============ GAP FIXED IN DESKTOP MODE MOBILE SCALE =================================== */
-@media (max-width: 992px) {
-  .list_table {
-    margin-top: 10vh !important;
-    margin-left: 1.5rem !important;
-    margin-right: 1.5rem !important;
-    padding: 1rem !important;
-  }
-
-  .list_table,
-  .container_class,
-  .class_list {
-    width: auto !important;
-  }
-}
 
 @media (max-width: 768px) {
     .position-fixed.top-0.end-0.mt-2.me-3 button {

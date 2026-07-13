@@ -604,7 +604,7 @@ const handleDeleteClick = (id) => {
 
                     <div className="container_class" 
                     style={{
-                         marginTop: '13vh', 
+                         marginTop: '90px', 
                          background: 'white', 
                          color: 'black',
                          padding: '20px',
@@ -800,7 +800,7 @@ const handleDeleteClick = (id) => {
                 {/* Class List Table */}
                 <div className="class_list" 
         style={{ 
-          marginTop: '10vh',
+          marginTop: '90px',
           marginInlineStart: '8rem',
           marginInlineEnd: '3rem',
           maxHeight: '700px', 
