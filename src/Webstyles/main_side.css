@@ -1296,7 +1296,7 @@ body.dark-mode-body .btn-close {
 
 @media (min-width: 600px) and (max-width: 700px) {
     .title {
-        padding: 0.6rem 5rem 0 0;
+        padding: 0.6rem 4rem 0 0;
         font-size: 1rem;
         letter-spacing: 10px;
     }
@@ -1304,7 +1304,7 @@ body.dark-mode-body .btn-close {
 
 @media (min-width: 500px) and (max-width: 600px) {
     .title {
-        padding: 0.6rem 5rem 0 0;
+        padding: 0.6rem 4rem 0 0;
         font-size: 1rem;
         letter-spacing: 5px;
     }
