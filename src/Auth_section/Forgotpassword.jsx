@@ -35,6 +35,7 @@ const Forgotpassword = () => {
 
      //RESEND OTP FUNCTION
      const handleOTPChange = (index, e) => {
+        const value = e.target.value.replace(/[^0-9]/g, '').slice(-1);
         const newValues = [...otpValues];
         newValues[index] = e.target.value;
         setOtpValues(newValues);
@@ -159,15 +160,40 @@ const Forgotpassword = () => {
                     {otpValues.map((value, i) => (
                 <Form.Control
                     key={i}
+                    className="otp-box"
                     type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
                     value={value}
                     placeholder="Enter 6-digit OTP"
+                    //CHANGED PART - ON REVIEW
                     onChange={(e) => handleOTPChange(i,e)}
-                    ref={(el) => (otpRefs.current[i] = el)}
-                    maxLength="1"
-                    className="otp-box"
-                />
-                    ))}
+                    onKeyDown={(e) => {
+              if (e.key === 'Backspace' && !value && index > 0) {
+                    otpRefs.current[i - 1].focus();
+                 }
+              }}
+                //CHANGED PART - ON REVIEW
+                onPaste={(e) => {
+                    e.preventDefault();
+                    const pasted = e.clipboardData.getData('text').replace(/[^0-9]/g, '').slice(0, 6);
+                    const newValues = [...otpValues];
+                    for (let j = 0; j < pasted.length && i + j < 6; j++) {
+                        newValues[i + j] = pasted[j];
+                    }
+                    setOtpValues(newValues);
+                    setOtp(newValues.join(''));
+                    const nextEmpty = newValues.findIndex((v) => v === '');
+                    if (nextEmpty !== -1) otpRefs.current[nextEmpty].focus();
+                    else otpRefs.current[5].focus();
+                }}
+                ref={(el) => (otpRefs.current[i] = el)}
+                //CHANGED PART - ON REVIEW
+                maxLength="1"
+                className="otp-box"
+            />
+        ))}
+                
                 </div>
             </Form.Group>
 
