@@ -190,6 +190,7 @@ body.dark-mode .wrapper,
     margin: auto 0;
 }
 .sidebar-logo a {
+    font-family: 'Outfit', sans-serif;
     color: white;
     font-size: 1.15rem;
     font-weight: 600px;
@@ -197,6 +198,7 @@ body.dark-mode .wrapper,
 }
 
 .sidebar-link span {
+    font-size: 1.15rem;
     opacity: 0;
     transform: translateX(-10px);
     transition: all 0.7s ease-in-out;
