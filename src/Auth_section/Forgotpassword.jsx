@@ -169,7 +169,7 @@ const Forgotpassword = () => {
                     //CHANGED PART - ON REVIEW
                     onChange={(e) => handleOTPChange(i,e)}
                     onKeyDown={(e) => {
-              if (e.key === 'Backspace' && !value && index > 0) {
+              if (e.key === 'Backspace' && !value && i > 0) {
                     otpRefs.current[i - 1].focus();
                  }
               }}
@@ -190,7 +190,6 @@ const Forgotpassword = () => {
                 ref={(el) => (otpRefs.current[i] = el)}
                 //CHANGED PART - ON REVIEW
                 maxLength="1"
-                className="otp-box"
             />
         ))}
                 
