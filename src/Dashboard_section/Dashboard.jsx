@@ -200,7 +200,11 @@ useEffect(() => {
 
 useEffect(() => {
   if (!barChartInstance) {
-    const ctx = document.getElementById('barChart').getContext('2d');
+    //WRONG SYNTAX
+    //const ctx = document.getElementById('barChart').getContext('2d');
+    //REVISED SYNTAX
+    const canvas = document.getContext('barChart');
+    const ctx = canvas.getContext('2d');
 
     barChartInstance = new Chart(ctx, {
       type: 'bar',
