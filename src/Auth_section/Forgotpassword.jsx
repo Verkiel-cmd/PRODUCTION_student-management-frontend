@@ -165,7 +165,8 @@ const Forgotpassword = () => {
                     inputMode="numeric"
                     pattern="[0-9]*"
                     value={value}
-                    placeholder="Enter 6-digit OTP"
+                    //NO PLACEHOLDER NEED SINCE IT WAS NUMBER INPUT NOT WORDS
+                    //placeholder="Enter 6-digit OTP"
                     //CHANGED PART - ON REVIEW
                     onChange={(e) => handleOTPChange(i,e)}
                     onKeyDown={(e) => {
