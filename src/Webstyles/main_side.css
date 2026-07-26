@@ -856,6 +856,37 @@ a.sidebar-link:hover {
     margin-bottom: 0;
     line-height: 1.5;
 }
+.dashboard{
+  width: 100%;
+  min-height: 17.5rem;
+  display: flex;
+}
+.dashboard canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1003,6 +1034,38 @@ input:checked + .slider:before {
 .position-fixed.top-0.end-0.mt-2.me-3 button {
   pointer-events: auto !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

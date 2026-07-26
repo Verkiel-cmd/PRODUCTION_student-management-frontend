@@ -7,9 +7,6 @@ import Chart from 'chart.js/auto';
 let barChartInstance = null;
 
 function Dashboard() {
-
-   
-
   const [totalStudents, setTotalStudents] = useState(0);
   const [totalClass, setTotalClass] = useState(0);
   const [error, setError] = useState(null);
@@ -228,7 +225,16 @@ useEffect(() => {
         }
       }
     });
-  } else {
+    const autoResizechart = new autoResizechart(() => {
+      if (barChartInstance) {
+        barChartInstance.resize();
+      }
+    });
+    autoResizechart.observe(canvas.parentElement);
+    return () => {
+      autoResizechart.disconnect();
+    }
+  } else { 
     // Update chart if already initialized
     barChartInstance.data.datasets[0].data = [totalStudents, totalClass];
     barChartInstance.update();
@@ -424,7 +430,7 @@ useEffect(() => {
               </div>
 
               <div className="dashboard" style={{ width: '100%'}}>
-           <canvas id="barChart" width="400" height="100"></canvas>
+           <canvas id="barChart"></canvas>
              </div>
              
          

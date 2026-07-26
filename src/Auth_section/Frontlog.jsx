@@ -426,36 +426,36 @@ useEffect(() => {
                                 </div>
                             )}
                             <div className="google-login">
-    <div style={{ display: 'none' }}>
-        <GoogleLogin
-            onSuccess={handleGoogleSuccess}
-            onError={handleGoogleFailure}
-        />
-    </div>
+                            <div style={{ display: 'none' }}>
+                                <GoogleLogin
+                                    onSuccess={handleGoogleSuccess}
+                                    onError={handleGoogleFailure}
+                                />
+                            </div>
 
-    <button
-        type="button"
-        className="google-login-button"
-        onClick={() => {
-            const hiddenButton = document.querySelector(
-                '.google-login div[style*="display: none"] div[role="button"]'
-            );
-            if (hiddenButton) hiddenButton.click();
-        }}
-        disabled={GoogleLoading}
-    >
-    {GoogleLoading ? (
-        
-        <span className="google-icon loader" aria-hidden="true"/>
-        ):(
-        <img src={googleIcon} alt="" className="google-icon" />
-        )}
-        <span>Sign in with Google</span>
-        {lastUsedEmail && (
-            <span className="last-used-account">Last used</span>
-        )}
-    </button>
-</div>
+                            <button
+                                type="button"
+                                className="google-login-button"
+                                onClick={() => {
+                                    const hiddenButton = document.querySelector(
+                                        '.google-login div[style*="display: none"] div[role="button"]'
+                                    );
+                                    if (hiddenButton) hiddenButton.click();
+                                }}
+                                disabled={GoogleLoading}
+                            >
+                            {GoogleLoading ? (
+                                
+                                <span className="google-icon loader" aria-hidden="true"/>
+                                ):(
+                                <img src={googleIcon} alt="" className="google-icon" />
+                                )}
+                                <span>Sign in with Google</span>
+                                {lastUsedEmail && (
+                                    <span className="last-used-account">Last used</span>
+                                )}
+                            </button>
+                        </div>
 
 
 
