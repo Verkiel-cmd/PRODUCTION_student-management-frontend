@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 ::after,
 ::before {
     box-sizing: border-box;
@@ -200,6 +201,7 @@ body.dark-mode .wrapper,
     transform: translateX(-10px);
     transition: all 0.7s ease-in-out;
     margin-left: 10px;
+    font-family: 'Outfit', sans-serif;
 }
 
 .sidebar-link.has-dropdown span {

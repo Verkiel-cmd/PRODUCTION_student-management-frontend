@@ -233,7 +233,7 @@ useEffect(() => {
     barChartInstance.data.datasets[0].data = [totalStudents, totalClass];
     barChartInstance.update();
   }
-}, [totalStudents, totalClass]); // 👈 watch for changes
+}, [totalStudents, totalClass]); // watch for changes
 
 
 useEffect(() => {
