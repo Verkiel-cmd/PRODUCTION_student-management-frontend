@@ -37,7 +37,7 @@ const Forgotpassword = () => {
      const handleOTPChange = (index, e) => {
         const value = e.target.value.replace(/[^0-9]/g, '').slice(-1);
         const newValues = [...otpValues];
-        newValues[index] = e.target.value;
+        newValues[index] = value;
         setOtpValues(newValues);
         setOtp(newValues.join(''));
 
