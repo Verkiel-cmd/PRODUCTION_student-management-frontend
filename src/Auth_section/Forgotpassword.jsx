@@ -193,8 +193,8 @@ const Forgotpassword = () => {
             />
         ))}
                 
-                </div>
-            </Form.Group>
+        </div>
+    </Form.Group>
 
 <div className="mb-3">
     <span
