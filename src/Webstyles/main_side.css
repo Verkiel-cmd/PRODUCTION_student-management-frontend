@@ -150,8 +150,8 @@ body.dark-mode .wrapper,
     flex: 1 1 auto;
 }
 #sidebar {
-    width: 74px;
-    min-width: 74px;
+    width: 4.625rem;
+    min-width: 4.625rem;
     z-index: 1000;
     transition: all .3s ease-in-out;
     display: flex;
@@ -165,7 +165,7 @@ body.dark-mode .wrapper,
     height: 100vh; 
 }
 #sidebar.expand {
-    width: 260px;
+    width: 16.25rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
     z-index: 1001;
 }
@@ -1435,23 +1435,16 @@ body.dark-mode-body .btn-close {
         width: 4.5rem;
         min-width: 4.5rem;
     }
-    
-
     #sidebar.expand {
         width: 15rem;
     }
-
     .main {
         margin-left: 60px;
     }
-
-    
     .btn {
         font-size: 0.8rem;
         padding: 0.5rem 1rem;
     }
-
-    
     .table {
         font-size: small;
     }
