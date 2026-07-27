@@ -30,8 +30,8 @@ const Forgotpassword = () => {
         setResendCooldown((prev) => prev - 1);
     }, 1000);
 
-    return () => clearInterval(timer);
-}, [resendCooldown]);
+        return () => clearInterval(timer);
+    }, [resendCooldown]);
 
      //RESEND OTP FUNCTION
      const handleOTPChange = (index, e) => {
