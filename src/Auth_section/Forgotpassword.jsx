@@ -6,9 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import  config from'./config';
 
 const Forgotpassword = () => {
-
-    
-
     const [email, setEmail] = useState('');
     const [otp, setOtp] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -22,6 +19,7 @@ const Forgotpassword = () => {
     const [otpValues, setOtpValues] = useState(['', '', '', '', '', '']);
     const otpRefs = useRef([]);
     const [resendCooldown, setResendCooldown] = useState(0);
+    const [resetToken, setResetToken] = useState('');
 
     useEffect(() => {
     if (resendCooldown === 0) return;
@@ -69,6 +67,8 @@ const Forgotpassword = () => {
         try {
             const response = await axios.post(`${config.API_URL}/verify-otp`, { email, otp });
             if (response.data.success) {
+                /*Security token generate for unique ID*/ 
+                setResetToken(response.data.resetToken);
                 setStage('reset');
                 setSuccess('OTP verified successfully');
                 setError('');
@@ -104,7 +104,8 @@ const Forgotpassword = () => {
         try {
             const response = await axios.post(`${config.API_URL}/reset-password`, {
                 email,
-                newPassword
+                newPassword,
+                resetToken
             });
 
             if (response.data.success) {
