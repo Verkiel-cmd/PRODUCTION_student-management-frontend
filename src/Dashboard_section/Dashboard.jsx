@@ -197,13 +197,13 @@ useEffect(() => {
   fetchUserDetails();
 }, [navigate]); // Add navigate to dependencies
 
-
+//CHART BAR//
 useEffect(() => {
   if (!barChartInstance) {
     //WRONG SYNTAX
     //const ctx = document.getElementById('barChart').getContext('2d');
     //REVISED SYNTAX
-    const canvas = document.getContext('barChart');
+    const canvas = document.getElementById('barChart');
     const ctx = canvas.getContext('2d');
 
     barChartInstance = new Chart(ctx, {
@@ -229,14 +229,14 @@ useEffect(() => {
         }
       }
     });
-    const autoResizechart = new autoResizechart(() => {
+    const resizeObserver = new ResizeObserver(() => {
       if (barChartInstance) {
         barChartInstance.resize();
       }
     });
-    autoResizechart.observe(canvas.parentElement);
+    resizeObserver.observe(canvas.parentElement);
     return () => {
-      autoResizechart.disconnect();
+      resizeObserver.disconnect();
     }
   } else { 
     // Update chart if already initialized
