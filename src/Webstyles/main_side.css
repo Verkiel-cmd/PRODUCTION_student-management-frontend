@@ -1400,7 +1400,7 @@ body.dark-mode-body .btn-close {
 
 @media (min-width: 400px) and (max-width: 500px) {
     .title {
-        padding: 0.6rem 5rem 0 0;
+        padding: 0.6rem 4rem 0 0;
         font-size: 0.8rem;
         letter-spacing: 2px;
     }
@@ -1432,14 +1432,44 @@ body.dark-mode-body .btn-close {
 
 @media (max-width: 768px) {
     #sidebar {
+        /*width: 0;
+        min-width: 0;
+        top: 0;
+        left: 0;*/
+        top: rem;
+        left: -100%;
+        width: 15rem;
         width: 4.5rem;
         min-width: 4.5rem;
+        overflow: hidden;
+        z-index: 1000;
+        transition: left 0.5s cubic-bezier(0.65, 0, 0.35, 1);
     }
+    
     #sidebar.expand {
+        left: 0;
         width: 15rem;
     }
+    /*PIN THE TOGGLE BUTTON ON MOBILE */
+    #sidebar #toggle-btn {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3005; /* High z-index so it sits above top-bar & backdrop */
+        background-color: transparent;
+        transition: left 0.35s ease-in-out;
+    }
+    /*FIX OVERLAPPING LOGO Push logo text right to clear the fixed button */
+    #sidebar .sidebar-logo {
+        margin-left: 5rem !important; /* Offset for the floating toggle button */
+        padding-top: 1.2rem;
+    }
+    .sidebar-nav{
+      padding: 2.8rem 0;
+      flex: 1 1 auto;
+    }
     .main {
-        margin-left: 60px;
+        margin-left: 0;
     }
     .btn {
         font-size: 0.8rem;
