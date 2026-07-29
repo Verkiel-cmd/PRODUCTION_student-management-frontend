@@ -602,18 +602,7 @@ const handleDeleteClick = (id) => {
           )}
         </div>
 
-                    <div className="container_class" 
-                    style={{
-                         marginTop: '5.625rem', 
-                         background: 'white', 
-                         color: 'black',
-                         padding: '20px',
-                         width: '100%',
-                         backgroundColor: 'whitesmoke',
-                         borderRadius: '10px',
-                         boxShadow: '0 0px 10px rgba(0, 0, 0, 0.20)',
-                         marginLeft: '8rem',
-                         marginRight: '1rem' }}>
+                    <div className="container_class">
 
                         {/* Success Message */}
                         {successMessage && (
@@ -799,33 +788,25 @@ const handleDeleteClick = (id) => {
 
                 {/* Class List Table */}
                 <div className="class_list" 
-        style={{ 
-          marginTop: '5.625rem',
-          marginInlineStart: '8rem',
-          marginInlineEnd: '3rem',
-          maxHeight: '700px', 
-          overflowY: 'auto',
-          background: darkMode ? '#1a1a1a' : 'white',  
-          borderRadius: '10px', 
-          boxShadow: '0 0px 10px rgba(0, 0, 0, 0.20)',
-          padding: '30px'}}>
+                        style={{ 
+                        background: darkMode ? '#1a1a1a' : 'white', }}>
 
-            
-          <h5 className="text-start " 
-          style={{ 
-            paddingTop: '10px', 
-            color: darkMode ? '#ffffff' : 'black',
-            paddingBottom: '1rem', 
-            }}>Class List</h5>
-                     
-                <div className="table-responsive" 
-          style=
-          {{ maxHeight: '700px',
-            overflowY: 'auto',
-            borderRadius: '10px',
-            borderBottomLeftRadius: '10px',
-            borderBottomRightRadius: '10px',
-            borderTopRightRadius: '10px',   }}>
+                            
+                        <h5 className="text-start " 
+                        style={{ 
+                            paddingTop: '10px', 
+                            color: darkMode ? '#ffffff' : 'black',
+                            paddingBottom: '1rem', 
+                            }}>Class List</h5>
+                                    
+                                <div className="table-responsive" 
+                        style=
+                        {{ maxHeight: '700px',
+                            overflowY: 'auto',
+                            borderRadius: '10px',
+                            borderBottomLeftRadius: '10px',
+                            borderBottomRightRadius: '10px',
+                            borderTopRightRadius: '10px',   }}>
                         
                     <table className="table" style={{
                            color: darkMode ? '#ffffff' : '#000000',  // Apply dark mode to table text
@@ -886,7 +867,7 @@ const handleDeleteClick = (id) => {
     >
       <h3>Appearance Settings</h3>
 
-     <p className="mt-3">
+     <p className="dark-mode-enable mt-3">
         {darkMode ? "Dark Mode Enabled 🌙" : "Light Mode Enabled ☀️"}
       </p>
 

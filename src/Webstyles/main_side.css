@@ -437,6 +437,107 @@ a.sidebar-link:hover {
 
 
 
+/*===== WEB/DESKTOP VIEW RESPOSIVE DESIGN TABLES AND LISTS ==============================*/
+.container_class{
+  margin-top: 5.625rem;
+  color: black;
+  padding: 20px;
+  width: auto;
+  border-radius: 10px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.20);
+  margin-left: 7rem;
+  margin-right: 2rem;
+}
+.class_list{
+  margin-top: 5.625rem;
+  margin-inline-start: 7rem;
+  margin-inline-end: 2rem;
+  max-height: 700px;
+  width: auto;
+  overflow: auto;
+  border-radius: 10px;
+  box-shadow:  0px 10px rgba(0, 0, 0, 0.20);
+  padding: 30px;
+}
+.list_table{
+  margin-top: 5.625rem;
+  margin-inline-start: 7rem;
+  margin-inline-end: rem;
+  max-height: 700px;
+  width: auto;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.20);
+  padding: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*===== PROFILE USERNAME STYLES ================================================================================*/
 .profile-btn {
@@ -836,7 +937,6 @@ a.sidebar-link:hover {
 .btn.btn-secondary:hover {
     background-color: gray;
 }
-
 .parent-container-statistics {
     text-align: left;
     padding-top: 5.3rem;
@@ -844,20 +944,6 @@ a.sidebar-link:hover {
     flex-wrap: wrap;
     position: fixed;
     display: inline-flex;
-}
-
-@media (max-width: 700px)
-{
-  .parent-container-statistics{
-    width: 100%;
-    text-align: left;
-    padding-top: 5.3rem;
-    padding-left: 7.3rem;
-    flex-wrap: wrap;
-    position: fixed;
-    display: inline-flex;
-    position: relative;
-    }
 }
 .total_statistics {
     background: rgb(34, 193, 195);
@@ -870,9 +956,7 @@ a.sidebar-link:hover {
     flex-direction: column;
     margin: 5px; 
     vertical-align: top; 
-    
 }
-
 .total_statistics h1 {
     font-size: 1.7rem;
     font-weight: 630;
@@ -882,14 +966,33 @@ a.sidebar-link:hover {
     line-height: 1.5;
 }
 .dashboard{
-  width: 100%;
-  min-height: 17.5rem;
+  position: relative;
+  width: 100% !important;
+  min-height: 30rem;
   display: flex;
 }
 .dashboard canvas {
   width: 100% !important;
   height: 100% !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -960,12 +1063,10 @@ a.sidebar-link:hover {
   z-index: 10000;
   pointer-events: auto;
 }
-
-
 .settings-modal-content {
   border-radius: 12px;
   padding: 2rem;
-  width: 300px;
+  width: 18.75rem;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
   animation: fadeInUp 0.25s ease-in-out;
   display: flex;
@@ -975,25 +1076,27 @@ a.sidebar-link:hover {
   pointer-events: auto;
   cursor: auto;
 }
-
+/*MODAL FOR DARKMODE FLOAT*/
 @media (max-width: 576px) {
   .settings-modal-content {
     max-width: min(320px, calc(100vw - 2rem));
     width: 100%;
-    margin: 0 0.5rem 0 5rem;
+    margin: 0 2rem 0 2rem;
     padding: 1rem;
     position: relative;
   }
+  .settings-modal-content h3 {
+    margin-bottom: 0; 
+    margin-right: 2rem; 
+    margin-top: 1rem;
+  }
 }
-
-
 .settings-modal-content h3 {
   margin-bottom: 0; 
-  margin-right: 1rem; 
+  margin-right: 2.3rem; 
+  margin-top: 1rem;
 }
-
-
-
+/*MODAL FOR DARKMODE FLOAT*/
 .switch {
   position: relative;
   display: inline-flex;
@@ -1049,8 +1152,6 @@ input:checked + .slider:before {
     transform: translateY(0);
   }
 }
-
-
 
 .position-fixed.top-0.end-0.mt-2.me-3 {
   z-index: 3100!important;
@@ -1487,7 +1588,18 @@ body.dark-mode-body .btn-close {
     .list_table{
         width: 100%;
     }
-    
+    @media (min-width: 0px) and (max-width: 768px) {
+      .parent-container-statistics{
+        width: 100%;
+        text-align: left;
+        padding-top: 5.3rem;
+        padding-left: 1.5rem;
+        flex-wrap: wrap;
+        position: fixed;
+        display: inline-flex;
+        position: relative;
+        }
+    }
     .total_statistics {
         padding: 2rem; 
         max-width: 100%; 
@@ -1507,6 +1619,7 @@ body.dark-mode-body .btn-close {
       width: 100% !important;
       height: 100% !important;
     }
+    /*DASHBOARD MOBILE SCALE*/
     .schedule {
         margin-left: 1rem;
         margin-right: 1rem;
@@ -1540,6 +1653,130 @@ body.dark-mode-body .btn-close {
         
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*===== MOBILE RESPOSIVE DESIGN TABLES AND LISTS ==============================*/
+@media (max-width: 768px) {
+.container_class{
+  margin-top: 5.625rem;
+  color: black;
+  padding: 20px;
+  width: auto;
+  border-radius: 10px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.20);
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.class_list{
+  margin-top: 5.625rem;
+  margin-inline-start: 2rem;
+  margin-inline-end: 2rem;
+  max-height: 700px;
+  width: auto;
+  overflow: auto;
+  border-radius: 10px;
+  box-shadow:  0px 10px rgba(0, 0, 0, 0.20);
+  padding: 30px;
+}
+.list_table{
+  margin-top: 5.625rem;
+  margin-inline-start: 2rem;
+  margin-inline-end: 2rem;
+  max-height: 700px;
+  width: auto;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.20);
+  padding: 30px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
