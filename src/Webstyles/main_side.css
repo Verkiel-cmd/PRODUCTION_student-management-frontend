@@ -373,17 +373,42 @@ a.sidebar-link:hover {
     content: none;
     display: none;
 }
-
-
 .sidebar-item[data-tooltip]::after {
     opacity: 0;
     transform: translateY(-50%) scale(0.95);
+}
+
+/* Bootstrap utility classes used in the original JSX (d-flex, list-unstyled) */
+.d-flex {
+    display: flex;
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
 }
 
 .sidebar-item:hover[data-tooltip]::after {
     opacity: 1;
     transform: translateY(-50%) scale(1);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -616,6 +641,17 @@ a.sidebar-link:hover {
     padding-right: 0;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1659,7 +1695,6 @@ body.dark-mode-body .btn-close {
         min-width: 0;
         top: 0;
         left: 0;*/
-        top: rem;
         left: -100%;
         width: 15rem;
         width: 4.5rem;
@@ -1684,8 +1719,8 @@ body.dark-mode-body .btn-close {
     }
     /*FIX OVERLAPPING LOGO Push logo text right to clear the fixed button */
     #sidebar .sidebar-logo {
-        margin-left: 5rem !important; /* Offset for the floating toggle button */
-        padding-top: 1.2rem;
+        margin-left: 4.4rem !important; /* Offset for the floating toggle button */
+        padding-top: 1rem;
     }
     .sidebar-nav{
       padding: 2.8rem 0;
