@@ -213,11 +213,16 @@ useEffect(() => {
         datasets: [{
           label: 'Total',
           data: [totalStudents, totalClass],
-          backgroundColor: ['#4CAF50', '#2196F3']
+          backgroundColor: ['#4CAF50', '#2196F3'],
+          //DIRECT CHANGE ELEMENTS
+          borderRadius: 8,
+          barThickness: 70,
         }]
       },
+      //ADJUSTMENT SECTION
       options: {
         responsive: true,
+        maintainAspectRatio: false, //allow adjustment
         scales: {
           y: {
             beginAtZero: true,
@@ -433,7 +438,7 @@ useEffect(() => {
                 <h1>Added Classes {totalClass}</h1>
               </div>
 
-              <div className="dashboard" style={{ width: '100%'}}>
+              <div className="dashboard" style={{ width: '100%', height: '20rem', marginTop: '1.5rem' }}>
            <canvas id="barChart"></canvas>
              </div>
              
