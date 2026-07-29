@@ -393,6 +393,23 @@ a.sidebar-link:hover {
     opacity: 1;
     transform: translateY(-50%) scale(1);
 }
+/* ============================================================
+   .sidebar-top — Non-scrollable top container inside #sidebar
+   
+   This container holds the toggle button + logo and stays fixed
+   at the top of the sidebar. It does NOT scroll with the nav.
+   
+   #sidebar is a flex column (height: 100vh), so this uses
+   flex-shrink: 0 to keep its natural height and prevent it
+   from being compressed when .sidebar-nav overflows.
+   ============================================================ */
+/*.sidebar-top {
+    flex-shrink: 0;           /* Prevent shrinking when sibling scrolls */
+    /*display: flex;            /* Keep inner .d-flex layout intact */
+    /*flex-direction: column;   /* Stack content vertically if needed */
+    /*background-color: inherit;/* Match sidebar background (#0e0e0e) */
+/*}
+
 
 
 

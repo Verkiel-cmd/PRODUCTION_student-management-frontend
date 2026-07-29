@@ -449,16 +449,18 @@ const handleDeleteClick = (id) => {
 
     return (
         <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""} ${darkMode ? "dark-mode" : ""}`}>
-             <aside id="sidebar" className={isSidebarExpanded ? "expand" : ""}>
-               <div className="d-flex">
-                 <button id="toggle-btn" type="button" onClick={toggleSidebar}>
-                   <i className="lni lni-grid-alt"></i>
-                 </button>
-                 <div className="sidebar-logo">
-                   <a href="#">Veracity</a>
-                 </div>
-               </div>
-               <ul className="sidebar-nav">
+        <aside id="sidebar" className={isSidebarExpanded ? "expand" : ""}>
+        <div className="sidebar-top"> {/* NEW container — non-scrollable */}
+        <div className="d-flex">
+          <button id="toggle-btn" type="button" onClick={toggleSidebar}>
+            <i className="lni lni-grid-alt"></i>
+          </button>
+          <div className="sidebar-logo">
+            <a href="#">Veracity</a>
+          </div>
+        </div>
+      </div>{/* NEW container — non-scrollable */}
+    <ul className="sidebar-nav">
        
                  <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Dashboard" : ""} >
                    <Link to="/dashboard_section/Dashboard" className="sidebar-link">
@@ -852,41 +854,41 @@ const handleDeleteClick = (id) => {
             </div>
             
             {/* ====== SETTINGS MODAL ====== */}
-{showSettings && (
-  <div
-    className="settings-modal-overlay"
-    onClick={() => setShowSettings(false)}
-  >
-    <div
-      className="settings-modal-content"
-      onClick={(e) => e.stopPropagation()}
-      style={{
-        backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
-        color: darkMode ? '#ffffff' : '#000000'
-      }}
-    >
-      <h3>Appearance Settings</h3>
+            {showSettings && (
+                    <div
+                        className="settings-modal-overlay"
+                        onClick={() => setShowSettings(false)}
+                    >
+                        <div
+                        className="settings-modal-content"
+                        onClick={(e) => e.stopPropagation()}
+                        style={{
+                            backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
+                            color: darkMode ? '#ffffff' : '#000000'
+                        }}
+                        >
+                        <h3>Appearance Settings</h3>
 
-     <p className="dark-mode-enable mt-3">
-        {darkMode ? "Dark Mode Enabled 🌙" : "Light Mode Enabled ☀️"}
-      </p>
+                        <p className="dark-mode-enable mt-3">
+                            {darkMode ? "Dark Mode Enabled 🌙" : "Light Mode Enabled ☀️"}
+                        </p>
 
 
-      <label className="switch">
-        <input type="checkbox" checked={darkMode} onChange={toggleDark} />
-        <span className="slider"></span>
-      </label>
+                        <label className="switch">
+                            <input type="checkbox" checked={darkMode} onChange={toggleDark} />
+                            <span className="slider"></span>
+                        </label>
 
- 
-      <button
-        onClick={() => setShowSettings(false)}
-        className="btn btn-secondary mt-3"
-      >
-        Close
-      </button>
-    </div>
-  </div>
-)}
+                    
+                        <button
+                            onClick={() => setShowSettings(false)}
+                            className="btn btn-secondary mt-3"
+                        >
+                            Close
+                        </button>
+                        </div>
+                    </div>
+                    )}
 
 
 
@@ -896,50 +898,9 @@ const handleDeleteClick = (id) => {
 
                     
                 </div>
-               
-                 
-   {/* ====== SETTINGS MODAL ====== */}
-{showSettings && (
-  <div
-    className="settings-modal-overlay"
-    onClick={() => setShowSettings(false)}
-  >
-    <div
-      className="settings-modal-content"
-      onClick={(e) => e.stopPropagation()}
-      style={{
-        backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
-        color: darkMode ? '#ffffff' : '#000000'
-      }}
-    >
-      <h3>Appearance Settings</h3>
-
-     <p className="mt-3">
-        {darkMode ? "Dark Mode Enabled 🌙" : "Light Mode Enabled ☀️"}
-      </p>
-
-
-      <label className="switch">
-        <input type="checkbox" checked={darkMode} onChange={toggleDark} />
-        <span className="slider"></span>
-      </label>
-
- 
-      <button
-        onClick={() => setShowSettings(false)}
-        className="btn btn-secondary mt-3"
-      >
-        Close
-      </button>
-    </div>
-  </div>
-)}
-
-
-    
-    
-
         </div >
+
+
          {/* React Bootstrap Modal */}
       <Modal show={showDeleteModal} onHide={handleClose}>
         <Modal.Header closeButton style={{
