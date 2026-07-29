@@ -437,6 +437,27 @@ a.sidebar-link:hover {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== WEB/DESKTOP VIEW RESPOSIVE DESIGN TABLES AND LISTS ==============================*/
 .container_class{
   margin-top: 5.625rem;
@@ -470,6 +491,27 @@ a.sidebar-link:hover {
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.20);
   padding: 30px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -726,6 +768,30 @@ a.sidebar-link:hover {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== DROPDOWN MENU STYLES ================================================================================*/
 .dropdown-menu .dropdown-item {
   transition: all 0.3s ease;
@@ -822,6 +888,25 @@ a.sidebar-link:hover {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== TABLE LISTED ================================================================================*/
 .table thead th {
     position: sticky;
@@ -844,6 +929,24 @@ a.sidebar-link:hover {
     border-radius: 10px;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.20);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1160,6 +1263,25 @@ input:checked + .slider:before {
 .position-fixed.top-0.end-0.mt-2.me-3 button {
   pointer-events: auto !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

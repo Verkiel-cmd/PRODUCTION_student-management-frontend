@@ -366,15 +366,7 @@ useEffect(() => {
 
         <div className="list_table" 
         style={{ 
-          marginTop: '5.625rem',
-          marginInlineStart: '8rem',
-          marginInlineEnd: '3rem',
-          maxHeight: '700px', 
-          overflowY: 'auto',
-          background: darkMode ? '#1a1a1a' : 'white', 
-          borderRadius: '10px', 
-          boxShadow: '0 0px 10px rgba(0, 0, 0, 0.20)',
-          padding: '30px'}}>
+          background: darkMode ? '#1a1a1a' : 'white', }}>
 
           <h5 className="text-start" 
            style={{ 
