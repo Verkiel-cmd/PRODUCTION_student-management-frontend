@@ -1740,7 +1740,7 @@ body.dark-mode-body .btn-close {
         padding-top: 1rem;
     }
     .sidebar-nav{
-      padding: 2.8rem 0;
+      padding: 3rem 0;
       flex: 1 1 auto;
     }
     .main {
@@ -1885,6 +1885,30 @@ body.dark-mode-body .btn-close {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== MOBILE RESPOSIVE DESIGN TABLES AND LISTS ==============================*/
 @media (max-width: 768px) {
 .container_class{
@@ -1920,6 +1944,20 @@ body.dark-mode-body .btn-close {
   padding: 30px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
