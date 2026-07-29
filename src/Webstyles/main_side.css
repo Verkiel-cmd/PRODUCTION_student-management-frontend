@@ -1495,6 +1495,18 @@ body.dark-mode-body .btn-close {
         display: flex;
         flex-direction: column;
     }
+    /*DASHBOARD MOBILE SCALE*/
+    .dashboard{
+      position: relative;
+      width: 100% !important;
+      height: 3.7rem !important;
+      min-height: 1rem !important;
+      display: flex;
+    }
+    .dashboard canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
     .schedule {
         margin-left: 1rem;
         margin-right: 1rem;
