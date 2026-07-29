@@ -201,8 +201,9 @@ useEffect(() => {
   return (
     
 
-     <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""} ${darkMode ? "dark-mode" : ""}`}>
-      <aside id="sidebar" className={isSidebarExpanded ? "expand" : ""}>
+        <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""} ${darkMode ? "dark-mode" : ""}`}>
+        <aside id="sidebar" className={isSidebarExpanded ? "expand" : ""}>
+        <div className="sidebar-top"> {/* NEW container — non-scrollable */}
         <div className="d-flex">
           <button id="toggle-btn" type="button" onClick={toggleSidebar}>
             <i className="lni lni-grid-alt"></i>
@@ -211,6 +212,7 @@ useEffect(() => {
             <a href="#">Veracity</a>
           </div>
         </div>
+      </div>{/* NEW container — non-scrollable */}
         <ul className="sidebar-nav">
 
           <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Dashboard" : ""} >
