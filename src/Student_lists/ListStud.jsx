@@ -534,7 +534,7 @@ useEffect(() => {
     >
       <h3>Appearance Settings</h3>
 
-     <p className="mt-3">
+     <p className="dark-mode-enable mt-3">
         {darkMode ? "Dark Mode Enabled 🌙" : "Light Mode Enabled ☀️"}
       </p>
 
