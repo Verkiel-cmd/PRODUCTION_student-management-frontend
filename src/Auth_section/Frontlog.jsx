@@ -139,7 +139,15 @@ const Frontlog = () => {
             .catch(error => {
                 if (error.response) {
                     console.error('Registration error:', error.response.data);
-                    setNetworkErrorRegister(error.response.data.message || 'Something went wrong \nduring registration');
+                    const message = error.response.data.message || 'Something went wrong during registration';
+                    //setNetworkErrorRegister(error.response.data.message || 'Something went wrong \nduring registration');
+                if(message.toLowerCase().includes('email')) { //"includes - correct" - "include - wrong"
+                    setRegisterErrorType('email');
+                    setErrorRegister(message);
+                    setSuccessRegister(''); //clears "Valid email" message
+                }else{
+                    setNetworkErrorRegister(message);
+                }
                 } else {
                     console.error('Network error:', error);
                     setNetworkErrorRegister('Network error');
