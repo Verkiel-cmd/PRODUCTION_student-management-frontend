@@ -525,7 +525,7 @@ a.sidebar-link:hover {
 .list_table{
   margin-top: 5.625rem;
   margin-inline-start: 7rem;
-  margin-inline-end: rem;
+  margin-inline-end: 2rem;
   max-height: 700px;
   width: auto;
   overflow-y: auto;
