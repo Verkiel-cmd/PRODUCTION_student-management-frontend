@@ -147,14 +147,16 @@ body {
 .form-box .input-box:hover {
   border-bottom-color: #ff6bff;
 }
-
+/* Remove the default border from the parent */
 .form-box .input-box input.error {
   border-bottom: none;
-  /* Remove the default border from the parent */
 }
 /* Apply red border to the parent instead when error exists */
 .form-box .input-box.input-error {
   border-bottom: 2px solid red;
+}
+.form-box .input-box.input-valid {
+  border-bottom: 2px solid green;
 }
 
 .input-box input {
