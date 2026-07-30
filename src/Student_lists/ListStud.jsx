@@ -512,49 +512,49 @@ useEffect(() => {
 
 
 
-{/* ====== SETTINGS MODAL ====== */}
-{showSettings && (
-  <div
-    className="settings-modal-overlay"
-    onClick={() => setShowSettings(false)}
-  >
-    <div
-      className="settings-modal-content"
-      onClick={(e) => e.stopPropagation()}
-      style={{
-        backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
-        color: darkMode ? '#ffffff' : '#000000'
-      }}
-    >
-      <h3>Appearance Settings</h3>
+            {/* ====== SETTINGS MODAL ====== */}
+            {showSettings && (
+              <div
+                className="settings-modal-overlay"
+                onClick={() => setShowSettings(false)}
+              >
+                <div
+                  className="settings-modal-content"
+                  onClick={(e) => e.stopPropagation()}
+                  style={{
+                    backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
+                    color: darkMode ? '#ffffff' : '#000000'
+                  }}
+                >
+                  <h3>Appearance Settings</h3>
 
-     <p className="dark-mode-enable mt-3">
-        {darkMode ? "Dark Mode Enabled 🌙" : "Light Mode Enabled ☀️"}
-      </p>
-
-
-      <label className="switch">
-        <input type="checkbox" checked={darkMode} onChange={toggleDark} />
-        <span className="slider"></span>
-      </label>
-
- 
-      <button
-        onClick={() => setShowSettings(false)}
-        className="btn btn-secondary mt-3"
-      >
-        Close
-      </button>
-    </div>
-  </div>
-)}
+                <p className="dark-mode-enable mt-3">
+                    {darkMode ? "Dark Mode Enabled 🌙" : "Light Mode Enabled ☀️"}
+                  </p>
 
 
-      </div>
-    </div>
-    
- 
-  );
-}
+                  <label className="switch">
+                    <input type="checkbox" checked={darkMode} onChange={toggleDark} />
+                    <span className="slider"></span>
+                  </label>
+
+            
+                  <button
+                    onClick={() => setShowSettings(false)}
+                    className="btn btn-secondary mt-3"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            )}
+
+
+                  </div>
+                </div>
+                
+            
+              );
+            }
 
 export default ListStud;
