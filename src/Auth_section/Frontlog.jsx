@@ -23,17 +23,20 @@ const Frontlog = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
     const [EmailerrorType, setEmailErrorType] = useState(null);
-    const [emailErrorMessage, setemailErrorMessage] = useState('');
+    const [emailErrorMessageLogin, setemailErrorMessageLogin] = useState('');
     const [googleErrorMessage, setgoogleErrorMessage] = useState('');
     const [PassworderrorType, setPasswordErrorType] = useState(null);
-    const [passwordErrorMessage, setpasswordErrorMessage] = useState('');
-    const [networkErrorMessage, setnetworkErrorMessage] = useState(null);
+    const [passwordErrorMessageLogin, setpasswordErrorMessageLogin] = useState('');
+    //Network problem message at the very bottom
+    const [networkErrorMessageLogin, setnetworkErrorMessageLogin] = useState(null);
+    // ============================================================================
     const [isLoading, setIsLoading] = useState(false);
     const [GoogleLoading, setIsGoogleLoading] = useState(false);
     const [, setLoggedInUser] = useState(null);
 
     // Add state variables for registration form
     const [isUsernameFocusedRegister, setIsUsernameFocusedRegister] = useState(false);
+    // ===============================================================================
     const [isEmailFocusedRegister, setIsEmailFocusedRegister] = useState(false);
     const [isPasswordFocusedRegister, setIsPasswordFocusedRegister] = useState(false);
     const [isPasswordVisibleRegister, setIsPasswordVisibleRegister] = useState(false);
@@ -41,9 +44,12 @@ const Frontlog = () => {
 
     // Add state variables for "valid email"
     const [successRegister, setSuccessRegister] = useState('');
+    // ========================================================
     const [passwordRegister, setPasswordRegister] = useState('');
     const [errorRegister, setErrorRegister] = useState('');
+    //Network problem message at the very bottom - register
     const [NetworkerrorRegister, setNetworkErrorRegister] = useState(null);
+    // ====================================================================
     const [RegistererrorType, setRegisterErrorType] = useState(null);
     const [username, setUsername] = useState('');
     const [agreedToTerms, setAgreedToTerms] = useState(false);
@@ -162,9 +168,9 @@ const Frontlog = () => {
         setIsLoading(true);
         
         setEmailErrorType(null);
-        setemailErrorMessage('');
-        setpasswordErrorMessage('');
-        setnetworkErrorMessage('');
+        setemailErrorMessageLogin('');
+        setpasswordErrorMessageLogin('');
+        setnetworkErrorMessageLogin('');
         setPasswordErrorType(null);
 
         try {
@@ -196,7 +202,7 @@ const Frontlog = () => {
             console.error('Login error:', error);
         
             if (!error.response) {
-                setnetworkErrorMessage('Network error \nPlease check your connection.');
+                setnetworkErrorMessageLogin('Network error \nPlease check your connection.');
             } else if (error.response.status === 400) {
                 const { field, messageEmail, messagePassword } = error.response.data;
         
@@ -214,7 +220,7 @@ const Frontlog = () => {
                     setpasswordErrorMessage('Invalid email or password');
                 }
             } else {
-                setnetworkErrorMessage('An unexpected error occurred\n Please try again later.');
+                setnetworkErrorMessageLogin('An unexpected error occurred\n Please try again later.');
                }
     } finally {
         setIsLoading(false);
@@ -348,7 +354,7 @@ useEffect(() => {
                             </div>
 
                             {/* Display error message */}
-                            {emailErrorMessage && (
+                            {emailErrorMessageLogin && (
                                 <div style={{
                                     margin: '10px 0',
                                     marginBottom: '20px',
@@ -367,7 +373,7 @@ useEffect(() => {
                                     gap: '8px'
                                 }}>
                                     <i className='bx bx-error-circle' style={{ fontSize: '20px' }}></i> {/* Add an icon */}
-                                    {emailErrorMessage}
+                                    {emailErrorMessageLogin}
                                 </div>
                             )}
 
@@ -389,7 +395,7 @@ useEffect(() => {
                             </div>
 
                             {/* Display error message */}
-                            {passwordErrorMessage && (
+                            {passwordErrorMessageLogin && (
                                 <div style={{
                                     margin: '10px 0',
                                     marginBottom: '20px',
@@ -408,12 +414,12 @@ useEffect(() => {
                                     gap: '8px'
                                 }}>
                                     <i className='bx bx-error-circle' style={{ fontSize: '20px' }}></i> {/* Add an icon */}
-                                    {passwordErrorMessage}
+                                    {passwordErrorMessageLogin}
                                 </div>
                             )}
 
                             {/* Display error message */}
-                            {networkErrorMessage && (
+                            {networkErrorMessageLogin && (
                                 <div style={{
                                     margin: '10px 0',
                                     marginBottom: '20px',
@@ -432,7 +438,7 @@ useEffect(() => {
                                     gap: '8px'
                                 }}>
                                     <i className='bx bx-error-circle' style={{ fontSize: '20px' }}></i> {/* Add an icon */}
-                                    {networkErrorMessage}
+                                    {networkErrorMessageLogin}
                                 </div>
                             )}
 
