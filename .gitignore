@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Fixed: Hides your environment file
+# Environment files (Hides .env, .env.local, .env.production, etc.)
 .env
+.env.*
