@@ -195,8 +195,8 @@ const Frontlog = () => {
             } else {
                 setEmailErrorType('email');
                 setPasswordErrorType('password');
-                setemailErrorMessage('Invalid credentials');
-                setpasswordErrorMessage('Invalid credentials');
+                setemailErrorMessageLogin('Invalid credentials');
+                setpasswordErrorMessageLogin('Invalid credentials');
             }
         } catch (error) {
             console.error('Login error:', error);
@@ -208,16 +208,16 @@ const Frontlog = () => {
         
                 if (field === 'email') {
                     setEmailErrorType('email');
-                    setemailErrorMessage(messageEmail || 'Invalid email');
+                    setemailErrorMessageLogin(messageEmail || 'Invalid email');
                 } else if (field === 'password') {
                     setPasswordErrorType('password');
-                    setpasswordErrorMessage(messagePassword || 'Invalid password');
+                    setpasswordErrorMessageLogin(messagePassword || 'Invalid password');
                 } else {
                     // Fallback
                     setEmailErrorType('email');
                     setPasswordErrorType('password');
-                    setemailErrorMessage('Invalid email or password');
-                    setpasswordErrorMessage('Invalid email or password');
+                    setemailErrorMessageLogin('Invalid email or password');
+                    setpasswordErrorMessageLogin('Invalid email or password');
                 }
             } else {
                 setnetworkErrorMessageLogin('An unexpected error occurred\n Please try again later.');
