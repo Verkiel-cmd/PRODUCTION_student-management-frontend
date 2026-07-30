@@ -38,6 +38,9 @@ const Frontlog = () => {
     const [isPasswordFocusedRegister, setIsPasswordFocusedRegister] = useState(false);
     const [isPasswordVisibleRegister, setIsPasswordVisibleRegister] = useState(false);
     const [emailRegister, setEmailRegister] = useState('');
+
+    // Add state variables for "valid email"
+    const [successRegister, setSuccessRegister] = useState('');
     const [passwordRegister, setPasswordRegister] = useState('');
     const [errorRegister, setErrorRegister] = useState('');
     const [NetworkerrorRegister, setNetworkErrorRegister] = useState(null);
@@ -69,6 +72,29 @@ const Frontlog = () => {
             localStorage.setItem('rememberMe', 'true');
         } else {
             localStorage.removeItem('rememberMe');
+        }
+    };
+
+    const handleEmailRegisterChange = (e) => {
+        const value = e.target.value;
+        setEmailRegister(value);
+
+        if (!value.trim()) {
+            setErrorRegister('');
+            setSuccessRegister('');
+            setRegisterErrorType(null);
+            return;
+        }
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (emailRegex.test(value)) {
+            setSuccessRegister('Valid email');
+            setErrorRegister('');
+            setRegisterErrorType(null);
+        } else {
+            setErrorRegister('Invalid email');
+            setSuccessRegister('');
+            setRegisterErrorType('email');
         }
     };
 
@@ -581,19 +607,39 @@ useEffect(() => {
                                 </div>
                             )}
 
-                            <div className={`input-box ${RegistererrorType === 'email' ? 'input-error' : ''}`}>
+                            {/* Display success message if email is valid */}
+                            <div className={`input-box ${RegistererrorType === 'email' ? 'input-error' : ''} ${successRegister ? 'input-valid' : ''}`}>
                                 <span className="icon"><i className="bx bxs-envelope"></i></span>
                                 <input
                                     type="email"
                                     value={emailRegister}
                                     onFocus={() => setIsEmailFocusedRegister(true)}
                                     onBlur={() => setIsEmailFocusedRegister(false)}
-                                    onChange={(e) => setEmailRegister(e.target.value)}
+                                    onChange={handleEmailRegisterChange}
                                     required
                                 />
                                 <label className={emailRegister || isEmailFocusedRegister ? 'focused' : ''}>Email</label>
                             </div>
 
+                            {/* Display success message if email is valid */}
+                            {successRegister && (
+                                <div style={{
+                                    margin: '10px 0', 
+                                    marginBottom: '10px', 
+                                    marginTop: '-20px',
+                                    padding: '10px 15px', 
+                                    textAlign: 'center', 
+                                    color: 'green',
+                                    fontWeight: '500', 
+                                    backgroundColor: 'white',
+                                    border: '1px solid green', borderRadius: '8px',
+                                    display: 'flex', alignItems: 'center',
+                                    justifyContent: 'center', gap: '8px'
+                                }}>
+                                    <i className='bx bx-check-circle' style={{ fontSize: '20px' }}></i>
+                                    {successRegister}
+                                </div>
+                            )}
 
                             {/* Display error message if email is invalid */}
                             {errorRegister && (
