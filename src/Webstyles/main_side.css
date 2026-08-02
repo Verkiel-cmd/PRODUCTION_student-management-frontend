@@ -1801,6 +1801,7 @@ body.dark-mode-body .btn-close {
     .list_table{
         width: 100%;
     }
+    /*BETWEEN THE NEW STUDENT BUTTON AND THE SEARCH BAR*/
     .gap{
       margin-bottom: -30px !important;
     }
