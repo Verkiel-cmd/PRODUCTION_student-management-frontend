@@ -404,7 +404,7 @@ useEffect(() => {
                 aria-describedby="search-button"
               />
               <div className="mb-0">
-                <button className="btn btn-primary " type="submit" id="search-button" onClick={handleSearch} style={{ borderRadius: '3px' }}>
+                <button className="search-design btn btn-primary " type="submit" id="search-button" onClick={handleSearch}>
                   Search
                 </button>
               </div>
