@@ -467,6 +467,45 @@ a.sidebar-link:hover {
 
 
 
+/*===== FORM-CONTROL INPUT SEARCH VIEW RESPOSIVE DESIGN ==============================*/
+#search .input-group { 
+  flex-wrap: nowrap; 
+  align-items: center;
+}
+#search .form-control {
+  height: 2.5rem;
+  min-width: 0; 
+}
+#search #search-button { 
+  display: flex;
+  height: 2.5rem; 
+  align-items: center;
+  flex: 0 0 auto; white-space: nowrap;
+}
+.search-design{
+  border-radius: 0.1875rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1706,7 +1745,7 @@ body.dark-mode-body .btn-close {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     #sidebar {
         /*width: 0;
         min-width: 0;
@@ -1748,7 +1787,7 @@ body.dark-mode-body .btn-close {
     }
     .btn {
         font-size: 0.8rem;
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0.75rem;
     }
     .table {
         font-size: small;
@@ -1761,6 +1800,9 @@ body.dark-mode-body .btn-close {
     }
     .list_table{
         width: 100%;
+    }
+    .gap{
+      margin-bottom: -30px !important;
     }
     @media (min-width: 0px) and (max-width: 768px) {
       .parent-container-statistics{
