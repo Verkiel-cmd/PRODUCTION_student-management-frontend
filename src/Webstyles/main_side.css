@@ -406,12 +406,19 @@ a.sidebar-link:hover {
    flex-shrink: 0 to keep its natural height and prevent it
    from being compressed when .sidebar-nav overflows.
    ============================================================ */
-/*.sidebar-top {
+/* line 148 — the main rule, OUTSIDE any media query */
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+}
+.sidebar-top {
     flex-shrink: 0;           /* Prevent shrinking when sibling scrolls */
     /*display: flex;            /* Keep inner .d-flex layout intact */
     /*flex-direction: column;   /* Stack content vertically if needed */
     /*background-color: inherit;/* Match sidebar background (#0e0e0e) */
-/*}
+}
 
 
 
@@ -1817,6 +1824,7 @@ body.dark-mode-body .btn-close {
     .sidebar-nav{
       padding: 3rem 0;
       flex: 1 1 auto;
+      overflow-y: auto;
     }
     .main {
         margin-left: 0;
