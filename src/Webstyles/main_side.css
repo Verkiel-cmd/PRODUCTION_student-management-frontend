@@ -223,6 +223,11 @@ body.dark-mode .wrapper,
     visibility: visible;
     opacity: 1;
 }
+/* the only way to get vertical-only scrolling */
+#sidebar.expand .sidebar-nav {
+    overflow-y: auto;
+    overflow-x: hidden;   /* REQUIRED — without this, horizontal becomes auto too */
+}
 
 #toggle-btn {
     background-color: transparent;
@@ -246,16 +251,38 @@ a.sidebar-link {
     border-left: 3px solid transparent;
     text-decoration: none;
 }
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid skyblue;
+}
+/* the "bookmark" bar */
+/* the "bookmark" bar */
+a.sidebar-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 4px;
+    background-color: skyblue;
+    border-radius: 4px 0 0 4px;
+    opacity: 0;
+    transform: translateX(8px);          /* starts 8px off to the right */
+    transition:
+        opacity   0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;              /* tells browser to GPU-accelerate = smoother */
+    pointer-events: none;
+}
 
+a.sidebar-link:hover::after {
+    opacity: 1;
+    transform: translateX(0);            /* glides in from the right */
+}
 .sidebar-link i {
     font-size: 1.1rem;
     margin-right: .75rem;
     text-decoration: none;
-}
-
-a.sidebar-link:hover {
-    background-color: rgba(255, 255, 255, .075);
-    border-left: 3px solid skyblue;
 }
 
 .sidebar-item {
@@ -298,6 +325,9 @@ a.sidebar-link:hover {
     transform: translateX(-10px);
     visibility: hidden;
 
+}
+#sidebar:not(.expand) .sidebar-nav {
+    overflow: visible;   /* no scrollbar, no horizontal scroll */
 }
 
 .sidebar-link.has-dropdown.collap {
