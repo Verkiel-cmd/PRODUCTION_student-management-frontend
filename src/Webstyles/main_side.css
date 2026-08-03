@@ -325,7 +325,10 @@ a.sidebar-link:hover {
     padding-left: 1.5rem;
 
 }
-
+/*FOR NAV LINKS DROPDOWN*/
+.sidebar-dropdown .sidebar-link {
+  padding-left: 4.3rem;
+}
 .sidebar-item {
     margin: 10px 0;
 }

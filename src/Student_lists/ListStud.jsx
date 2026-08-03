@@ -202,18 +202,18 @@ useEffect(() => {
     
 
         <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""} ${darkMode ? "dark-mode" : ""}`}>
-        <aside id="sidebar" className={isSidebarExpanded ? "expand" : ""}>
-        <div className="sidebar-top"> {/* NEW container — non-scrollable */}
-        <div className="d-flex">
-          <button id="toggle-btn" type="button" onClick={toggleSidebar}>
-            <i className="lni lni-grid-alt"></i>
-          </button>
-          <div className="sidebar-logo">
-            <a href="#">Veracity</a>
+          <aside id="sidebar" className={isSidebarExpanded ? "expand" : ""}>
+          <div className="sidebar-top"> {/* NEW container — non-scrollable */}
+          <div className="d-flex">
+            <button id="toggle-btn" type="button" onClick={toggleSidebar}>
+              <i className="lni lni-grid-alt"></i>
+            </button>
+            <div className="sidebar-logo">
+              <a href="#">Veracity</a>
+            </div>
           </div>
-        </div>
-      </div>{/* NEW container — non-scrollable */}
-        <ul className="sidebar-nav">
+        </div>{/* NEW container — non-scrollable */}
+          <ul className="sidebar-nav">
 
           <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Dashboard" : ""} >
             <Link to="/dashboard_section/Dashboard" className="sidebar-link">
