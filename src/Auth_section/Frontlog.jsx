@@ -446,7 +446,7 @@ useEffect(() => {
                             {googleErrorMessage && (
                                 <div style={{
                                     margin: '10px 0',
-                                    marginBottom: '25.5px',
+                                    marginBottom: '27px',
                                     marginTop: '-20px',
                                     padding: '10px 15px',
                                     textAlign: 'center',
