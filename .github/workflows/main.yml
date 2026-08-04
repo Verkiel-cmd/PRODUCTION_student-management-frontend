@@ -23,6 +23,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+        #RUN tests first
+      - name: Run tests
+        run: npm test
+
       - name: Lint code
         run: npm run lint
 
@@ -35,3 +39,10 @@ jobs:
           name: frontend-build
           path: dist
           retention-days: 5
+
+        #DEPLOY ONLY IF BUILD SUCCEEDS
+      - name: Deploy
+        run: |
+          echo "Deploying to production..."
+
+      
