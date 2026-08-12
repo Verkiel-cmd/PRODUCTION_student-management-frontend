@@ -447,16 +447,72 @@ useEffect(() => {
                 )}
 
 
+                {/* DISPLAY DATA FROM API AND STYLE ADJUSTMENTS */}
+                {/* ===== required fix so rounded corners show ===== 
+                .table {
+                  border-collapse: separate;
+                  border-spacing: 0;
+                }
 
+                /* ===== each cell styled individually ===== 
+
+                /* line 1 — the ID cell 
+                .table tbody td.cell-id {
+                  background-color: rgba(0, 128, 0, 0.3);
+                  border: 2px solid green;
+                  border-radius: 10px;
+                  color: #0b5e0b;
+                }
+
+                /* line 2 — the Name cell 
+                .table tbody td.cell-name {
+                  background-color: rgba(0, 128, 0, 0.3);
+                  border: 2px solid green;
+                  border-radius: 10px;
+                  color: #0b5e0b;
+                }
+
+                /* line 3 — the Email cell 
+                .table tbody td.cell-email {
+                  background-color: rgba(0, 128, 0, 0.3);
+                  border: 2px solid green;
+                  border-radius: 10px;
+                  color: #0b5e0b;
+                }
+
+                /* line 4 — the Phone cell 
+                .table tbody td.cell-phone {
+                  background-color: rgba(0, 128, 0, 0.3);
+                  border: 2px solid green;
+                  border-radius: 10px;
+                  color: #0b5e0b;
+                }
+
+                /* line 5 — the Address cell 
+                .table tbody td.cell-address {
+                  background-color: rgba(0, 128, 0, 0.3);
+                  border: 2px solid green;
+                  border-radius: 10px;
+                  color: #0b5e0b;
+                }
+
+                /* line 6 — the Created At (date) cell 
+                .table tbody td.cell-date {
+                  background-color: rgba(0, 128, 0, 0.3);
+                  border: 2px solid green;
+                  border-radius: 10px;
+                  color: #0b5e0b;
+                }*/
+                }
                 {filteredStudents.length > 0 ? (
                   filteredStudents.map((student) => (
                     <tr key={student.id}>
-                      <td>{student.id}</td>
-                      <td>{student.name}</td>
-                      <td>{student.email}</td>
-                      <td>{student.phone}</td>
-                      <td>{student.address}</td>
-                      <td>{new Date(student.created_at).toLocaleDateString()}</td>
+                      <td className="cell-id">{student.id}</td>
+                      <td className="cell-name">{student.name}</td>
+                      <td className="cell-email">{student.email}</td>
+                      <td className="cell-phone">{student.phone}</td>
+                      <td className="cell-address">{student.address}</td>
+                      <td className="cell-date">{new Date(student.created_at).toLocaleDateString()}</td>
                       <td>
                         <div className="d-flex align-items-center">
                           <Link className="btn btn-primary btn-sm me-2 d-flex justify-content-center align-items-center" to={`/Student_lists/UpdateStudent/${student.id}`}>
