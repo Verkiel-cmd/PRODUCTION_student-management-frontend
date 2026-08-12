@@ -598,6 +598,33 @@ a.sidebar-link:hover::after {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== WEB/DESKTOP VIEW RESPOSIVE DESIGN TABLES AND LISTS ==============================*/
 .container_class{
   margin-top: 5.625rem;
@@ -1058,6 +1085,27 @@ a.sidebar-link:hover::after {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== TABLE LISTED ================================================================================*/
 .table thead th {
     position: sticky;
@@ -1070,6 +1118,8 @@ a.sidebar-link:hover::after {
 .table {
     font-weight: 500;
     font-size: large;
+    border-collapse: separate;   
+    border-spacing: 1.5rem;  
 }
 
 .schedule {
@@ -1080,6 +1130,18 @@ a.sidebar-link:hover::after {
     border-radius: 10px;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.20);
 }
+.table tbody td.cell-date {
+    background-color: rgba(11, 100, 11, 0.267);
+    border: 2px solid green;
+    border-radius: 70px;
+    color: #0b5e0b;
+    opacity: 3;
+    text-align: center;        
+    vertical-align: middle;    
+    font-size: 1rem;
+    padding: -22rem -22rem !important; 
+}
+
 
 
 
