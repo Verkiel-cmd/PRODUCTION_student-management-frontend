@@ -512,7 +512,11 @@ useEffect(() => {
                       <td className="cell-email">{student.email}</td>
                       <td className="cell-phone">{student.phone}</td>
                       <td className="cell-address">{student.address}</td>
-                      <td className="cell-date">{new Date(student.created_at).toLocaleDateString()}</td>
+                       <td className="cell-date">
+                         <span className="date-pill">
+                        {new Date(student.created_at).toLocaleDateString()}
+                        </span>
+                        </td>
                       <td>
                         <div className="d-flex align-items-center">
                           <Link className="btn btn-primary btn-sm me-2 d-flex justify-content-center align-items-center" to={`/Student_lists/UpdateStudent/${student.id}`}>
