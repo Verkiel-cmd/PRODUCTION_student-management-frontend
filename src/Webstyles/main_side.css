@@ -1131,16 +1131,24 @@ a.sidebar-link:hover::after {
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.20);
 }
 .table tbody td.cell-date {
+    text-align: center;
+    vertical-align: middle;
+    /* no background/border/padding here anymore */
+}
+.table thead th {
+  border-radius: 1.3rem;
+}
+
+.date-pill {
+    display: inline-block;
     background-color: rgba(11, 100, 11, 0.267);
     border: 2px solid green;
-    border-radius: 70px;
+    border-radius: 20px;
     color: #0b5e0b;
-    opacity: 3;
-    text-align: center;        
-    vertical-align: middle;    
-    font-size: 1rem;
-    padding: -22rem -22rem !important; 
+    font-size: 0.85rem;
+    padding: 4px 10px;
 }
+
 
 
 
@@ -1978,6 +1986,22 @@ body.dark-mode-body .btn-close {
         margin-right: 1rem;
         padding: 1rem;
     }
+      /*ADJUSTMENTS OUTSIDE THE CONTENT AND PADDINGS*/
+    .table tbody td.cell-date {
+        text-align: center;
+        vertical-align: middle;
+        /* no background/border/padding here anymore */
+    }
+    /*CUSTOM DESIGN FOR INSIDE*/
+    .date-pill {
+        display: inline-block;
+        background-color: rgba(11, 100, 11, 0.267);
+        border: 2px solid green;
+        border-radius: 20px;
+        color: #0b5e0b;
+        font-size: 0.85rem;
+        padding: 4px 10px;
+    } 
     /* SCROLL TEST MOBILE SCALE */
     .doggy {
         padding-top: 900px;
