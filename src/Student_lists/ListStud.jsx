@@ -293,22 +293,22 @@ useEffect(() => {
       </aside>
 
 
-    <div className="TOP" style={{
-           backgroundColor: darkMode ? '#0a0a0a' : 'white'
-      }}>
-        <div className="text-center">
-          <div className="top-bar">
-            <h1 className="title"  style={{
-                color: darkMode ? '#ffffff' : 'white'
-              }}>UNIVERSITY VERACITY</h1>
-          </div>
-        </div>
+        <div className="TOP" style={{
+              backgroundColor: darkMode ? '#0a0a0a' : 'white'
+          }}>
+            <div className="text-center">
+              <div className="top-bar">
+                <h1 className="title"  style={{
+                    color: darkMode ? '#ffffff' : 'white'
+                  }}>UNIVERSITY VERACITY</h1>
+              </div>
+            </div>
         
 
         
 
 
- {/*PROFILE USERNAME DESIGN AND DROPDOWN*/}
+        {/*PROFILE USERNAME DESIGN AND DROPDOWN*/}
         <div className="position-fixed top-0 end-0 mt-2 me-3" style={{ zIndex: 3100 }}>
           {/* Profile Button */}
           <button
@@ -328,7 +328,9 @@ useEffect(() => {
           >
              {loggedInUser?.username || "Guest"}
           </span>
+          <div className= "profile-link">
             <i className={`lni lni-chevron-${isProfileDropdownOpen ? "up" : "down"} fs-5`}></i>
+            </div>
           </button>
           
 

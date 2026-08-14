@@ -191,7 +191,7 @@ body.dark-mode .wrapper,
     font-weight: 600px;
     text-decoration: none;
 }
-
+/* CONTROL TO PADDING CONTENT (ORIG) */
 .sidebar-link span {
     font-size: 1.10rem;
     opacity: 0;
@@ -200,7 +200,7 @@ body.dark-mode .wrapper,
     margin-left: 10px;
     font-family: 'Outfit', sans-serif;
 }
-
+/* CONTROL TO PADDING CONTENT (ORIG) */
 .sidebar-link.has-dropdown span {
     flex: 1;
     margin-left: 10px;
@@ -240,6 +240,7 @@ body.dark-mode .wrapper,
     color: white;
     text-decoration: none;
 }
+/*PADDING ADUSTMENT FOR LINKS INSIDE OF THE CONTENT*/
 a.sidebar-link {
     font-size: 1.5rem;
     font-family: 'Outfit', sans-serif;
@@ -255,7 +256,6 @@ a.sidebar-link:hover {
     background-color: rgba(255, 255, 255, .075);
     border-left: 3px solid skyblue;
 }
-/* the "bookmark" bar */
 /* the "bookmark" bar */
 a.sidebar-link::after {
     content: '';
@@ -526,6 +526,44 @@ a.sidebar-link:hover::after {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== FORM-CONTROL INPUT SEARCH VIEW RESPOSIVE DESIGN ==============================*/
 #search .input-group { 
   flex-wrap: nowrap; 
@@ -544,6 +582,60 @@ a.sidebar-link:hover::after {
 .search-design{
   border-radius: 0.1875rem;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -748,6 +840,59 @@ a.sidebar-link:hover::after {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== PROFILE USERNAME STYLES ================================================================================*/
 .profile-btn {
   width: auto;
@@ -765,7 +910,18 @@ a.sidebar-link:hover::after {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
+/*ARROW ANIMATION PROFILE*/
+.profile-link .lni-chevron-up {
+  display: block;
+  transition: all 0.3s ease;
+  transform: rotate(360deg);
+}
+/*ARROW ANIMATION PROFILE*/
+.profile-link .lni-chevron-down {
+  display: block;
+  transition: all 0.3s ease;
+  transform: rotate(0deg);
+}
 .top-bar {
   padding-right: 240px;
 }
@@ -783,6 +939,62 @@ a.sidebar-link:hover::after {
     padding-right: 0;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -970,6 +1182,42 @@ a.sidebar-link:hover::after {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== DROPDOWN MENU STYLES ================================================================================*/
 .dropdown-menu .dropdown-item {
   transition: all 0.3s ease;
@@ -1004,6 +1252,30 @@ a.sidebar-link:hover::after {
   pointer-events: auto !important;
   position: absolute !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1237,6 +1509,37 @@ a.sidebar-link:hover::after {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== DASHBOARD AND BUTTON STYLES ================================================================================*/
 .btn.btn-primary {
     background-color: whitesmoke;
@@ -1299,6 +1602,23 @@ a.sidebar-link:hover::after {
   width: 100% !important;
   height: 100% !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1758,6 +2078,29 @@ body.dark-mode-body .btn-close {
 .dark-mode .settings-modal-content h3 {
   color: #ffffff !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
