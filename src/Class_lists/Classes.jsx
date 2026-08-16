@@ -820,7 +820,7 @@ const handleDeleteClick = (id) => {
 
 
 
-                    {/*TBAEL MAIN HEAD ADJUSTMENT INSIDE CLASS LIST*/}
+                    {/*TABEL MAIN HEAD ADJUSTMENT INSIDE CLASS LIST*/}
                     <table className="table" style={{
                            color: darkMode ? '#ffffff' : '#000000',  // Apply dark mode to table text
                            backgroundColor: darkMode ? '#1a1a1a' : 'white'
