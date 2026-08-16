@@ -422,6 +422,19 @@ useEffect(() => {
             borderBottomRightRadius: '10px',
             borderTopRightRadius: '10px',   }}>
 
+
+
+
+
+
+
+
+
+
+
+
+
+            {/*TBAEL MAIN HEAD ADJUSTMENT INSIDE LISTSTUD*/}
             <table className="table" style={{
              color: darkMode ? 'white' : 'black'
            }}> 

@@ -810,6 +810,17 @@ const handleDeleteClick = (id) => {
                             borderBottomRightRadius: '10px',
                             borderTopRightRadius: '10px',   }}>
                         
+
+
+
+
+
+
+
+
+
+
+                    {/*TBAEL MAIN HEAD ADJUSTMENT INSIDE CLASS LIST*/}
                     <table className="table" style={{
                            color: darkMode ? '#ffffff' : '#000000',  // Apply dark mode to table text
                            backgroundColor: darkMode ? '#1a1a1a' : 'white'
@@ -827,10 +838,10 @@ const handleDeleteClick = (id) => {
                             {classes.length > 0 ? (
                                 classes.map((cls) => (
                                     <tr key={cls.classid}>
-                                        <td>{cls.classid}</td>
-                                        <td>{cls.classname}</td>
-                                        <td>{cls.classteacher}</td>
-                                        <td>{cls.studentlimit}</td>
+                                        <td className="cell-id">{cls.classid}</td>
+                                        <td className="cell-name">{cls.classname}</td>
+                                        <td className="cell-teacher">{cls.classteacher}</td>
+                                        <td className="cell-limit">{cls.studentlimit}</td>
                                         <td style={{ display: 'flex', gap: '10px' }}>
                                             <Button variant="primary" size="sm" onClick={() => handleEdit(cls.classid)}>Update</Button>
                                             <Button variant="danger" size="sm" onClick={() => handleDeleteClick(cls.classid)}>Delete</Button>

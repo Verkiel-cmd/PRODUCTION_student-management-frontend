@@ -1407,6 +1407,30 @@ a.sidebar-link:hover::after {
     vertical-align: middle;
     /* no background/border/padding here anymore */
 }
+
+/*TABLE DEISGNS INSIDE OF CONTENT*/
+.table tbody td.cell-id {
+    vertical-align: middle;
+}
+.table tbody td.cell-name {
+    vertical-align: middle;
+}
+.table tbody td.cell-email {
+    vertical-align: middle;
+}
+.table tbody td.cell-phone {
+    vertical-align: middle;
+}
+.table tbody td.cell-address {
+    vertical-align: middle;
+}
+.table tbody td.cell-teacher {
+    vertical-align: middle;
+}
+.table tbody td.cell-limit {
+    vertical-align: middle;
+}
+
 .table thead th {
   border-radius: 1.3rem;
 }
@@ -1602,6 +1626,40 @@ a.sidebar-link:hover::after {
   width: 100% !important;
   height: 100% !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1913,6 +1971,45 @@ input:checked + .slider:before {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== DARK MODE ================================================================================*/
 html.dark-mode,
 html.dark-mode-body,
@@ -2078,6 +2175,73 @@ body.dark-mode-body .btn-close {
 .dark-mode .settings-modal-content h3 {
   color: #ffffff !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2455,6 +2619,33 @@ body.dark-mode-body .btn-close {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== MOBILE RESPOSIVE DESIGN TABLES AND LISTS ==============================*/
 @media (max-width: 768px) {
 .container_class{
@@ -2490,6 +2681,40 @@ body.dark-mode-body .btn-close {
   padding: 30px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
