@@ -434,7 +434,7 @@ useEffect(() => {
 
 
 
-            {/*TBAEL MAIN HEAD ADJUSTMENT INSIDE LISTSTUD*/}
+            {/*TABEL MAIN HEAD ADJUSTMENT INSIDE LISTSTUD*/}
             <table className="table" style={{
              color: darkMode ? 'white' : 'black'
            }}> 
