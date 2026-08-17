@@ -22,8 +22,8 @@ function ListStud() {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
 
   /*darkmode*/
-  const [showSettings, setShowSettings] = useState(false);
-  const toggleSettings = () => setShowSettings(!showSettings);
+  //const [showSettings, setShowSettings] = useState(false);
+  //const toggleSettings = () => setShowSettings(!showSettings);
   /*UNUSED/USED-VARIABLE_ RECYCLE——————————————————————————————————*/ 
   // eslint-disable-next-line no-unused-vars
   const toggleDark = () => {
