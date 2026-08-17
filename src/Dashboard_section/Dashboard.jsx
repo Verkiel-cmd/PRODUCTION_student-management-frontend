@@ -15,14 +15,15 @@ function Dashboard() {
   const [isMultiDropdownOpen, setIsMultiDropdownOpen] = useState(() => localStorage.getItem("multiDropdownState") === "expanded");
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-  /* darkmode state - UNUSED VARIABLE RECYCLED */
-  /*const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");*/
+  /* darkmode state - UNUSED/USED-VARIABLE RECYCLED */
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
 
   /*darkmode*/
   const [showSettings, setShowSettings] = useState(false);
   const toggleSettings = () => setShowSettings(!showSettings);
-  /*UNUSED VARIABLE_ RECYCLE——————————————————————————————————*/ 
-  /*const toggleDark = () => {
+  /*UNUSED/USED-VARIABLE_ RECYCLE——————————————————————————————————*/
+  // eslint-disable-next-line no-unused-vars
+  const toggleDark = () => {
   setDarkMode((prev) => {
     const next = !prev;
     localStorage.setItem("darkModeState", next ? "enabled" : "disabled");
@@ -32,7 +33,7 @@ function Dashboard() {
     document.body.classList.toggle("dark-mode", next);
     return next;
   });
-};*/
+};
 
 useEffect(() => {
     document.documentElement.classList.toggle("dark-mode-body", darkMode);
