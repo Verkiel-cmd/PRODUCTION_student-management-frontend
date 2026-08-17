@@ -419,13 +419,13 @@ useEffect(() => {
             </li>
 
               <li>
-                <a
+                <button
                   href="/"
                   className="dropdown-item px-3 py-2 text-dark"
                   onClick={handleLogout}
                 >
                   Logout
-                </a>
+                </button>
               </li>
             </ul>
           )}
