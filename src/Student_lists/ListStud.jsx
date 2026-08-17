@@ -18,8 +18,8 @@ function ListStud() {
   const [isMultiDropdownOpen, setIsMultiDropdownOpen] = useState(() => localStorage.getItem("multiDropdownState") === "expanded");
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-  /* darkmode state */
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
+  /* darkmode state - UNUSED VARIABLE RECYCLED */
+  /*const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");*/
 
   /*darkmode*/
   const [showSettings, setShowSettings] = useState(false);
