@@ -586,7 +586,8 @@ const handleDeleteClick = (id) => {
 
              <li>
            <button
-               onClick={toggleSettings}
+               //onClick={toggleSettings}
+               onClick={() => navigate('/Settings_section/Settings')}
                className="dropdown-item px-3 py-2 text-dark w-100 fs-6 text-start"
             >
                  Settings
