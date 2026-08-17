@@ -18,10 +18,11 @@ function Dashboard() {
   /* darkmode state */
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
 
-  /*dakrmode*/
+  /*darkmode*/
   const [showSettings, setShowSettings] = useState(false);
   const toggleSettings = () => setShowSettings(!showSettings);
-  const toggleDark = () => {
+  /*UNUSED VARIABLE_ RECYCLE——————————————————————————————————*/ 
+  /*const toggleDark = () => {
   setDarkMode((prev) => {
     const next = !prev;
     localStorage.setItem("darkModeState", next ? "enabled" : "disabled");
@@ -31,7 +32,7 @@ function Dashboard() {
     document.body.classList.toggle("dark-mode", next);
     return next;
   });
-};
+};*/
 
 useEffect(() => {
     document.documentElement.classList.toggle("dark-mode-body", darkMode);
