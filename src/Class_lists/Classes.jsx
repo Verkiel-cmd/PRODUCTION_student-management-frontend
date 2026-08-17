@@ -863,8 +863,13 @@ const handleDeleteClick = (id) => {
               
 
             </div>
+
+            <div className="doggy">
+                <h1>scroll_test</h1>
+            </div>
+        </div>
             
-            {/* ====== SETTINGS MODAL ====== */}
+            {/* ====== SETTINGS MODAL ======
             {showSettings && (
                     <div
                         className="settings-modal-overlay"
@@ -899,20 +904,10 @@ const handleDeleteClick = (id) => {
                         </button>
                         </div>
                     </div>
-                    )}
+                    )}*/}
 
 
-
-           
-            <div className="doggy">
-                    <h1>scroll_test</h1>
-
-                    
-                </div>
-        </div >
-
-
-         {/* React Bootstrap Modal */}
+    {/* React Bootstrap Modal */}
       <Modal show={showDeleteModal} onHide={handleClose}>
         <Modal.Header closeButton style={{
                 backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
@@ -931,18 +926,7 @@ const handleDeleteClick = (id) => {
       </Modal>
     </div>
 
-    
-
-    
   );
 }
-
-
-
-
-
-
-
-
 
 export default Classes;

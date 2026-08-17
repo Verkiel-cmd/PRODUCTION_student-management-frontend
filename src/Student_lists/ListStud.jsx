@@ -587,7 +587,7 @@ useEffect(() => {
 
 
 
-            {/* ====== SETTINGS MODAL ====== */}
+            {/* ====== SETTINGS MODAL ======
             {showSettings && (
               <div
                 className="settings-modal-overlay"
@@ -622,7 +622,7 @@ useEffect(() => {
                   </button>
                 </div>
               </div>
-            )}
+            )}*/}
 
 
                   </div>
