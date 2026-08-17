@@ -9,6 +9,7 @@ import CreateStudent from './Student_lists/CreateStudent';
 import UpdateStudent from './Student_lists/UpdateStudent';
 import Dashboard from './Dashboard_section/Dashboard';
 import Classes from './Class_lists/Classes';
+import Settings from './Settings_section/Settings';
 import Forgotpassword from './Auth_section/Forgotpassword';
 import ProtectedRoute from './Auth_section/ProtectedRoute'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -67,6 +68,16 @@ root.render(
               </ProtectedRoute>
             }
           />
+
+          <Route 
+            path="/Settings_section/Settings"
+            element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          } 
+        />
+
           <Route
           path="/Auth_section/ProtectedRoute"
           element={
