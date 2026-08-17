@@ -21,8 +21,8 @@ function Classes() {
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const closeBtnRef = useRef(null);
-    /* darkmode state */
-    const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
+    /* darkmode state - UNUSED VARIABLE RECYCLED */
+    /*const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");*/
     
     /*darkmode*/
     const [showSettings, setShowSettings] = useState(false);
