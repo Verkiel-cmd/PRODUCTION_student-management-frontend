@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState, useRef } from 'react';
 import '../Webstyles/main_side.css';
+import config from '../Auth_section/config';
 
 function Settings() {
 
@@ -55,7 +56,7 @@ function Settings() {
           } else {
               setUserMsg({ text: data.message, type: 'red' });
           }
-      } catch (err) {
+      } catch {
           setUserMsg({ text: 'Server error. Try again.', type: 'red' });
       } finally {
           setSavingUsername(false);
@@ -117,7 +118,7 @@ function Settings() {
             } else {
                 setPicMsg({ text: data.message, type: 'red' });
             }
-        } catch (err) {
+        } catch {
             setPicMsg({ text: 'Upload failed. Try again.', type: 'red' });
         } finally {
             setUploading(false);
