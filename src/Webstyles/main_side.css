@@ -1230,7 +1230,8 @@ a.sidebar-link:hover::after {
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
-  padding: 0 1.5rem;               /* horizontal only — row decides vertical */
+  padding: 0 1.5rem;
+  margin: 1rem 0 2rem 0;               /* horizontal only — row decides vertical */
   max-width: 40rem;                 /* keeps the card from stretching on ultra-wide */
 }
 
@@ -3216,6 +3217,15 @@ body.dark-mode-body .btn-close {
     }
     .main {
         margin-left: 0;
+    }
+    /*PROFILE SETING SECTIONS NAVIGATE MOBILE SCALE*/
+   .settings-section {
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 0 1.5rem;    
+        margin: 1rem 0 2rem 0;           /* horizontal only — row decides vertical */
+        max-width: 40rem;                 /* keeps the card from stretching on ultra-wide */
     }
     .btn {
         font-size: 0.8rem;
