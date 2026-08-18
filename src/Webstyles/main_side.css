@@ -3310,7 +3310,7 @@ body.dark-mode-body .btn-close {
 
 @media (max-width: 768px) {
     .position-fixed.top-0.end-0.mt-2.me-3 button {
-        font-size: 0.8rem; 
+        font-size: 0.8rem;
         padding: 0.5rem 1rem; 
         border-radius: 5px; 
     }
