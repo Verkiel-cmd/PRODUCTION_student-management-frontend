@@ -6,6 +6,7 @@ import config from '../Auth_section/config';
 function Settings() {
 
     const navigate = useNavigate();
+    const fileInputRef = useRef(null);
 
     const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
 
