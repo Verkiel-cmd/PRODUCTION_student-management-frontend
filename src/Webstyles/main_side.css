@@ -564,6 +564,56 @@ a.sidebar-link:hover::after {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== FORM-CONTROL INPUT SEARCH VIEW RESPOSIVE DESIGN ==============================*/
 #search .input-group { 
   flex-wrap: nowrap; 
@@ -582,6 +632,24 @@ a.sidebar-link:hover::after {
 .search-design{
   border-radius: 0.1875rem;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1069,6 +1137,57 @@ a.sidebar-link:hover::after {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ===== SETTINGS PAGE ===== */
 .settings-page {
   position: relative;
@@ -1264,6 +1383,56 @@ a.sidebar-link:hover::after {
 }
 .settings-msg-green { color: #198754; }
 .settings-msg-red   { color: #dc3545; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1738,6 +1907,57 @@ a.sidebar-link:hover::after {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== TABLE LISTED ================================================================================*/
 .table thead th {
     position: sticky;
@@ -1924,6 +2144,66 @@ a.sidebar-link:hover::after {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== DASHBOARD AND BUTTON STYLES ================================================================================*/
 .btn.btn-primary {
     background-color: whitesmoke;
@@ -1986,6 +2266,42 @@ a.sidebar-link:hover::after {
   width: 100% !important;
   height: 100% !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2370,6 +2686,62 @@ input:checked + .slider:before {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== DARK MODE ================================================================================*/
 html.dark-mode,
 html.dark-mode-body,
@@ -2535,6 +2907,55 @@ body.dark-mode-body .btn-close {
 .dark-mode .settings-modal-content h3 {
   color: #ffffff !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3006,6 +3427,57 @@ body.dark-mode-body .btn-close {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== MOBILE RESPOSIVE DESIGN TABLES AND LISTS ==============================*/
 @media (max-width: 768px) {
 .container_class{
@@ -3041,6 +3513,64 @@ body.dark-mode-body .btn-close {
   padding: 30px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
