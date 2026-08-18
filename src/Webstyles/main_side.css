@@ -1173,7 +1173,97 @@ a.sidebar-link:hover::after {
   color: #ccc;
 }
 
+/* ── Profile Settings — avatar, buttons, inputs ─────────── */
+.settings-profile-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 0;
+}
 
+.settings-avatar-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #dee2e6;
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.settings-avatar-wrapper:hover {
+  border-color: #0d6efd;
+}
+
+.settings-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.settings-avatar-placeholder {
+  color: #999;
+  font-size: 0.82rem;
+}
+
+/* Text-only button (Change photo) */
+.settings-btn-text {
+  background: none;
+  border: none;
+  color: #0d6efd;
+  font-size: 0.82rem;
+  margin-top: 0.6rem;
+  cursor: pointer;
+}
+.settings-btn-text:hover {
+  text-decoration: underline;
+}
+
+/* Primary action button */
+.settings-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.settings-btn-primary {
+  background: #0d6efd;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+.settings-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Form layout for the username section */
+.settings-form-group {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 0 1.2rem;
+}
+
+.settings-input {
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+  box-sizing: border-box;
+}
+
+/* Feedback messages */
+.settings-msg {
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+}
+.settings-msg-green { color: #198754; }
+.settings-msg-red   { color: #dc3545; }
 
 
 
@@ -1347,6 +1437,36 @@ a.sidebar-link:hover::after {
     transform: rotate(360deg);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
