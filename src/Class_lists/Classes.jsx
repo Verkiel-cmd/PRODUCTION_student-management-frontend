@@ -597,7 +597,7 @@ const handleDeleteClick = (id) => {
               <li>
                 <button
                   href="/"
-                  className="dropdown-item px-3 py-2 text-dark"
+                  className="dropdown-item px-3 py-2 w-100 fs-6 text-start text-dark"
                   onClick={handleLogout}
                 >
                   Logout
