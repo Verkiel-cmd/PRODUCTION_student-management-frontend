@@ -335,18 +335,19 @@ useEffect(() => {
     };
 
 
-const handleDeleteClick = (id) => {
-    setCurrentDeletingId(id);
-    setShowDeleteModal(false);
-    setShowDeleteModal(true);
-  };
+    const handleDeleteClick = (id) => {
+        setCurrentDeletingId(id);
+        //PREMATURE CLOSE
+        //setShowDeleteModal(false);
+        setShowDeleteModal(true);
+    };
 
 
 
- const handleClose = () => {
-    setShowDeleteModal(false);
-    setCurrentDeletingId(null);
-  };
+    const handleClose = () => {
+        setShowDeleteModal(false);
+        setCurrentDeletingId(null);
+    };
 
 
 

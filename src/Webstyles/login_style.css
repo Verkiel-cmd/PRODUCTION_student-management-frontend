@@ -113,6 +113,7 @@ body {
   border-bottom-left-radius: 50px;
   color: white;
   overflow: hidden;
+  overflow-y: auto;
 }
 
 .log-reg-box .form-box form {
