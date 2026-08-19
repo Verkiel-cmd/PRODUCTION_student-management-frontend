@@ -434,7 +434,7 @@ body {
   }
 
   .form-box {
-    display: flex;
+        display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -449,6 +449,11 @@ body {
     box-sizing: border-box;
     overflow: hidden;
     overflow-y: auto;
+    height: auto;
+    max-height: none;
+    scroll-padding-top: 3.75rem;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .log-reg-box.active .form-box.login {

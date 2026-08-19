@@ -3,7 +3,7 @@ import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import '../Webstyles/main_side.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import  config from'./config';
+import config from '../Auth_section/config';
 
 const Forgotpassword = () => {
     const [email, setEmail] = useState('');

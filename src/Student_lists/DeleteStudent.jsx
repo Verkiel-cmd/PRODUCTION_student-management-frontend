@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import config from '../auth_section/config';
+import config from '../Auth_section/config';
 
 function DeleteStudent() {
 

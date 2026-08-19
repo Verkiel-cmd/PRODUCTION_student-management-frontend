@@ -4,7 +4,7 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import googleIcon from '../assets/google-icon.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/login_style.css';
-import config from './config';
+import config from '../Auth_section/config';
 //import usePullToRefresh from '../Hooks/Refreshpull';
 import { useNavigate } from 'react-router-dom';
 import { useMemo } from 'react';
