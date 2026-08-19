@@ -173,7 +173,7 @@ const Frontlog = () => {
         symbol: /[^A-Za-z0-9]/.test(passwordRegister)
     }), [passwordRegister]);
 
-    const allMet = useMemo(() => Object.values(rules).every(Boolean), [rules]);
+    //const allMet = useMemo(() => Object.values(rules).every(Boolean), [rules]);
 
     const strength = useMemo(() => {
         if (passwordRegister.length === 0) {
@@ -296,20 +296,20 @@ const Frontlog = () => {
 };
 
 
-//GOOGLE SIGN IN SAVE SESSION DISPLAY LAST USED EMAIL
-useEffect(() => {
-        const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-        try {
-            const parsedUser = JSON.parse(storedUser);
-            if (parsedUser?.email) {
-                setLastUsedEmail(parsedUser.email);
+    //GOOGLE SIGN IN SAVE SESSION DISPLAY LAST USED EMAIL
+    useEffect(() => {
+            const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            try {
+                const parsedUser = JSON.parse(storedUser);
+                if (parsedUser?.email) {
+                    setLastUsedEmail(parsedUser.email);
+                }
+            } catch (err) {
+                console.error('Failed to parse stored user:', err);
             }
-        } catch (err) {
-            console.error('Failed to parse stored user:', err);
         }
-    }
-}, []);
+    }, []);
 
     const handleGoogleSuccess = async (response) => {
         const token = response.credential;
@@ -626,7 +626,9 @@ useEffect(() => {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     gap: '8px',
-                                    width: '20rem',
+                                    width: '100%',
+                                    maxWidth: '20rem',
+                                    boxSizing: 'border-box',
                                     boxSizing: 'border-box'
                                 }}>
                                     <i className='bx bx-check-circle' style={{ fontSize: '20px' }}></i> {/* Success icon */}
