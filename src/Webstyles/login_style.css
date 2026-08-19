@@ -112,6 +112,13 @@ body {
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
   color: white;
+  overflow: hidden;
+}
+
+.log-reg-box .form-box form {
+  width: 100%;
+  max-width: 20rem;
+  box-sizing: border-box;
 }
 
 .log-reg-box .form-box.login {
