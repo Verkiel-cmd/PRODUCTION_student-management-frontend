@@ -387,6 +387,9 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    position: absolute;
+    padding: 10px;
+    display: none;
   }
 
   .navbar {
@@ -434,7 +437,7 @@ body {
   }
 
   .form-box {
-        display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -509,7 +512,9 @@ body {
 
 @media (max-width: 480px) {
   .header {
+    position: absolute;
     padding: 10px;
+    display: none;
   }
 
   .navbar a {
