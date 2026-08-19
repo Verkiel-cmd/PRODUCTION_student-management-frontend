@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/login_style.css';
 import config from './config';
 import { useNavigate } from 'react-router-dom';
+import { useMemo } from 'react';
 
 // Configure axios defaults
 axios.defaults.withCredentials = true;
@@ -162,6 +163,44 @@ const Frontlog = () => {
                 setIsLoading(false);
             });
     };
+
+    //FUNCTION PASSWORD METER CHECKER
+    const rules = useMemo(() => ({
+        length: passwordRegister.length >= 8,
+        upper: /[A-Z]/.test(passwordRegister),
+        lower: /[a-z]/.test(passwordRegister),
+        number: /[0-9]/.test(passwordRegister),
+        symbol: /[^A-Za-z0-9]/.test(passwordRegister)
+    }), [passwordRegister]);
+
+    const allMet = useMemo(() => Object.values(rules).every(Boolean), [rules]);
+
+    const strength = useMemo(() => {
+        if (passwordRegister.length === 0) {
+        return { percent: 0, label: 'Strength: —', color: '#444' };
+        }
+
+        let score = 0;
+        if (rules.length) score++;
+        if (passwordRegister.length >= 12) score++;
+        if (passwordRegister.length >= 16) score++;
+        if (rules.upper) score++;
+        if (rules.lower) score++;
+        if (rules.number) score++;
+        if (rules.symbol) score++;
+
+        if (score <= 2) return { percent: 33, label: 'Strength: Weak', color: '#e03131' };
+        if (score <= 5) return { percent: 66, label: 'Strength: Medium', color: '#f59f00' };
+        return { percent: 100, label: 'Strength: Strong', color: '#37b24d' };
+    }, [passwordRegister, rules]);
+
+    const requirements = [
+        { key: 'length', text: 'At least 8 characters' },
+        { key: 'upper', text: 'One uppercase letter (A-Z)' },
+        { key: 'lower', text: 'One lowercase letter (a-z)' },
+        { key: 'number', text: 'One number (0-9)' },
+        { key: 'symbol', text: 'One special character (!@#$)' }
+    ];
 
     const handleLoginSubmit = async (event) => {
         event.preventDefault();
@@ -539,6 +578,16 @@ useEffect(() => {
 
 
 
+
+
+
+
+
+
+
+
+
+
                     {/* CUT */}
 
 
@@ -690,10 +739,60 @@ useEffect(() => {
                                 <label className={passwordRegister || isPasswordFocusedRegister ? 'focused' : ''}>Password</label>
                                 <span className="password-toggle" onClick={togglePasswordVisibilityRegister}>
                                     <i className={`fa ${isPasswordVisibleRegister ? 'fa-eye-slash' : 'fa-eye'}`} />
-
                                 </span>
-
                             </div>
+
+                            {/*<div class="strength-label" id="strengthLabel">Strength: —</div>
+
+                                *<ul class="requirement-list" id="requirementList">
+                                    <li class="requirement-item" data-rule="length">
+                                    <span class="requirement-check">✓</span>At least 8 characters
+                                    </li>
+                                    <li class="requirement-item" data-rule="upper">
+                                    <span class="requirement-check">✓</span>One uppercase letter (A-Z)
+                                    </li>
+                                    <li class="requirement-item" data-rule="lower">
+                                    <span class="requirement-check">✓</span>One lowercase letter (a-z)
+                                    </li>
+                                    <li class="requirement-item" data-rule="number">
+                                    <span class="requirement-check">✓</span>One number (0-9)
+                                    </li>
+                                    <li class="requirement-item" data-rule="symbol">
+                                    <span class="requirement-check">✓</span>One special character (!@#$)
+                                    </li>
+                                </ul> */}
+
+                                {/*MODERN PASSWORD CHECKER*/}
+                                {passwordRegister.length > 0 && (
+                                <div className="password-strength">
+                                    <div className="strength-label" style={{ color: strength.color }}>
+                                        {strength.label}
+                                    </div>
+                                    <div className="strength-bar">
+                                        <div
+                                            className="strength-fill"
+                                            style={{
+                                                width: `${strength.percent}%`,
+                                                backgroundColor: strength.color
+                                            }}
+                                        />
+                                    </div>
+                                    <ul className="requirement-list">
+                                        {requirements.map(({ key, text }) => (
+                                            <li
+                                                key={key}
+                                                className={`requirement-item ${rules[key] ? 'met' : ''}`}
+                                            >
+                                                <span className="requirement-check">
+                                                    {rules[key] ? '✓' : '○'}
+                                                </span>
+                                                {text}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
 
                             {/* Display error message if email is invalid */}
                             {NetworkerrorRegister && (
