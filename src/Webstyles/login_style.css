@@ -389,7 +389,7 @@ body {
     width: 100%;
     position: absolute;
     padding: 10px;
-    display: none;
+    /*display: none;*/
   }
 
   .navbar {
@@ -514,7 +514,7 @@ body {
   .header {
     position: absolute;
     padding: 10px;
-    display: none;
+    /*display: none;*/
   }
 
   .navbar a {
