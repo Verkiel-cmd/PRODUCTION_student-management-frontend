@@ -63,7 +63,15 @@ function Settings() {
       } finally {
           setSavingUsername(false);
       }
-  };
+    };
+
+    //FETCH FOR SPINNERS
+    //useEffect(() => {
+    //fetchData();
+    //}, []);
+
+    //const { pulling, refreshing } = usePullToRefresh(fetchData);
+    //FETCH FOR SPINNERS
 
 
     const handleFileChange = (e) => {
@@ -126,18 +134,32 @@ function Settings() {
             setUploading(false);
         }
     };
-
-    useEffect(() => {
-        fetch(`${config.API_URL}/api/user-details`, {
-            credentials: 'include'
-        })
-        .then(res => res.json())
-        .then(data => {
+    //DETAILES FETCH
+    const { pulling, refreshing } = usePullToRefresh(async () => {
+        try {
+            const res = await fetch(`${config.API_URL}/api/user-details`, {
+                credentials: 'include'
+            });
+            const data = await res.json();
             if (data.success && data.user.username) setUsername(data.user.username);
             if (data.success && data.user.profile_picture) setPreview(data.user.profile_picture);
-        })
-        .catch(() => {});
+        } catch (err) {
+            console.error('Error refreshing user details:', err);
+        }
+    });
+    //DETAILES FETCH
+
+    //FOR USE DATA SET PREVIEW
+    useEffect(() => {
+    fetch(`${config.API_URL}/api/user-details`, { credentials: 'include' })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success && data.user.username) setUsername(data.user.username);
+        if (data.success && data.user.profile_picture) setPreview(data.user.profile_picture);
+    })
+    .catch(() => {});
     }, []);
+    //DETAILES FETCH
 
 
     useEffect(() => {
@@ -149,6 +171,17 @@ return (
 
   
       <div className="settings-page">
+
+          {/*ADD HERE — list_table opens */}
+          {(pulling || refreshing) && (
+            <div className="pull-refresh">
+              <div className="spinner"></div>
+              <span className="pull-text">
+                {refreshing ? 'Refreshing...' : 'Pull to refresh'}
+              </span>
+            </div>
+          )}
+
             {/* Close button — top right, always visible */}
             <button
               className="settings-close-btn"

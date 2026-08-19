@@ -5,7 +5,7 @@ import googleIcon from '../assets/google-icon.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/login_style.css';
 import config from './config';
-import usePullToRefresh from '../Hooks/Refreshpull';
+//import usePullToRefresh from '../Hooks/Refreshpull';
 import { useNavigate } from 'react-router-dom';
 import { useMemo } from 'react';
 

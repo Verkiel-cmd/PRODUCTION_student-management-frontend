@@ -961,6 +961,42 @@ a.sidebar-link:hover::after {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== PROFILE USERNAME STYLES ================================================================================*/
 .profile-btn {
   width: auto;
@@ -1007,6 +1043,33 @@ a.sidebar-link:hover::after {
     padding-right: 0;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1386,6 +1449,31 @@ a.sidebar-link:hover::after {
 .settings-msg-red   { color: #dc3545; }
 
 
+/*PULL REFRESH SPINNER*/
+/* Pull-to-refresh indicator */
+.pull-refresh {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px;
+  gap: 10px;
+  transition: opacity 0.3s ease;
+}
+.pull-refresh .spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin89345 0.8s linear infinite;
+}
+
+.pull-refresh .pull-text {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
 
 
 
@@ -1748,6 +1836,83 @@ a.sidebar-link:hover::after {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*===== DROPDOWN MENU STYLES ================================================================================*/
 .dropdown-menu .dropdown-item {
   transition: all 0.3s ease;
@@ -1782,6 +1947,66 @@ a.sidebar-link:hover::after {
   pointer-events: auto !important;
   position: absolute !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2553,6 +2778,30 @@ input:checked + .slider:before {
 .position-fixed.top-0.end-0.mt-2.me-3 button {
   pointer-events: auto !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3523,6 +3772,30 @@ body.dark-mode-body .btn-close {
   padding: 30px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

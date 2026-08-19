@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/main_side.css';
 import  config from'../Auth_section/config';
 import Chart from 'chart.js/auto';
-import usePullToRefresh from '../Hooks/Refreshpull';
+//import usePullToRefresh from '../Hooks/Refreshpull';
 let barChartInstance = null;
 
 function Dashboard() {

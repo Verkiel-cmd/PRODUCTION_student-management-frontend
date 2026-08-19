@@ -137,7 +137,6 @@ useEffect(() => {
   };
 
   // Fetch students data
-  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(`${config.API_URL}/students?search=${searchTerm}`);
@@ -149,8 +148,11 @@ useEffect(() => {
         setError('Error fetching student data.');
       }
     };
-    fetchData();
-  }, [searchTerm]); // Only re-fetch when searchTerm changes
+    useEffect(() => {
+  fetchData();
+}, []);
+
+const { pulling, refreshing } = usePullToRefresh(fetchData);
 
   // Fetch user details
   useEffect(() => {
@@ -375,6 +377,16 @@ useEffect(() => {
         <div className="list_table" 
         style={{ 
           background: darkMode ? '#1a1a1a' : 'white', }}>
+
+          {/* ADD HERE — list_table opens */}
+          {(pulling || refreshing) && (
+            <div className="pull-refresh">
+              <div className="spinner"></div>
+              <span className="pull-text">
+                {refreshing ? 'Refreshing...' : 'Pull to refresh'}
+              </span>
+            </div>
+          )}
 
           <h5 className="text-start" 
            style={{ 
