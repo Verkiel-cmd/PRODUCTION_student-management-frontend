@@ -183,11 +183,20 @@ useEffect(() => {
         }
     };
 
+   //FETCH FOR SPINNERS
+     const { pulling, refreshing } = usePullToRefresh(fetchClasses);
 
     useEffect(() => {
         console.log('Component mounted, fetching classes...');
         fetchClasses();
     }, []);
+    
+    //FETCH FOR SPINNERS
+
+    //useEffect(() => {
+        //console.log('Component mounted, fetching classes...');
+        //fetchClasses();
+    //}, []);
 
    
 
@@ -611,6 +620,16 @@ useEffect(() => {
 
                     <div className="container_class">
 
+                        {/*ADD HERE — right after list_table opens */}
+                        {(pulling || refreshing) && (
+                            <div className="pull-refresh">
+                            <div className="spinner"></div>
+                            <span className="pull-text">
+                                {refreshing ? 'Refreshing...' : 'Pull to refresh'}
+                            </span>
+                            </div>
+                        )}
+
                         {/* Success Message */}
                         {successMessage && (
                             <div className="row mb-3">
@@ -798,7 +817,6 @@ useEffect(() => {
                         style={{ 
                         background: darkMode ? '#1a1a1a' : 'white', }}>
 
-                            
                         <h5 className="text-start " 
                         style={{ 
                             paddingTop: '10px', 
