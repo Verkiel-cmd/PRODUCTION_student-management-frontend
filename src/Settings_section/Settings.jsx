@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState, useRef } from 'react';
 import '../Webstyles/main_side.css';
 import config from '../Auth_section/config';
+import usePullToRefresh from '../Hooks/Refreshpull';
 
 function Settings() {
 

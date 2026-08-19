@@ -5,6 +5,7 @@ import '../Webstyles/main_side.css';
 import DeleteModal from './DeleteModel';
 import config from '../Auth_section/config';
 import axios from 'axios';
+import usePullToRefresh from '../Hooks/Refreshpull';
 
 function ListStud() {
   const [students, setStudents] = useState([]);
