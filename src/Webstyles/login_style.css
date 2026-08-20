@@ -449,14 +449,11 @@ body {
     margin-right: -60vh;
   }
 
-  .log-reg-box .form-box {     /* needs same specificity as desktop rule */
-      align-items: stretch;     /* was center content now starts from top */
+  .log-reg-box .form-box {        /* needs same specificity as desktop rule */
+    justify-content: flex-start; /* was: center content now starts at top */
+    align-items: center;         /* KEEP this horizontal centering stays */
   }
 
-  .log-reg-box .form-box form {
-      margin-top: auto;         /* pushes form to top when short stays at top when tall */
-  }
-  
   .form-box {
     display: flex;
     flex-direction: column;
