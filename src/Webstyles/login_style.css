@@ -450,8 +450,8 @@ body {
   }
 
   .log-reg-box .form-box {        /* needs same specificity as desktop rule */
-    justify-content: flex-start; /* was: center content now starts at top */
-    align-items: center;         /* KEEP this horizontal centering stays */
+    justify-content: flex-start; /* center content now starts at top */
+    align-items: center;         /*horizontal centering stays */
   }
 
   .form-box {
@@ -481,6 +481,7 @@ body {
   }
 
   .form-box h2 {
+    padding-top: 2rem;
     font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
