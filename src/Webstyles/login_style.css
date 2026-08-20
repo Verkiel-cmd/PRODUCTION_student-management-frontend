@@ -467,7 +467,6 @@ body {
     overflow-y: auto;
     height: auto;
     max-height: none;
-    scroll-padding-top: 3.75rem;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
   }
