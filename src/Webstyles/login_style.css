@@ -379,7 +379,7 @@ body {
 }
 
 /*MOBILE DEVICE*/
-
+/*—————————————————————————————————————————————————————————————————————————————*/
 @media (max-width: 1080px) {
     body {
     overflow: hidden;
@@ -533,6 +533,8 @@ body {
   }
 }
 
+/*MUCH SMALLER SCALE MOBILE DEVICE*/
+/*—————————————————————————————————————————————————————————————————————————————*/
 @media (max-width: 480px) {
   .header {
     position: absolute;
