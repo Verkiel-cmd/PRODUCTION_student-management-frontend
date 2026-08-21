@@ -620,7 +620,7 @@ useEffect(() => {
 
                     <div className="container_class">
 
-                        {/*ADD HERE — right after list_table opens */}
+                        {/*REFRESHER — right after list_table opens */}
                         {(pulling || refreshing) && (
                             <div className="pull-refresh">
                             <div className="spinner"></div>

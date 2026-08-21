@@ -172,7 +172,7 @@ return (
   
       <div className="settings-page">
 
-          {/*ADD HERE — list_table opens */}
+          {/*REFRESHER — list_table opens */}
           {(pulling || refreshing) && (
             <div className="pull-refresh">
               <div className="spinner"></div>
