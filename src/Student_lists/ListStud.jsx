@@ -378,7 +378,7 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
         style={{ 
           background: darkMode ? '#1a1a1a' : 'white', }}>
 
-          {/* ADD HERE — list_table opens */}
+          {/*REFRESHER — list_table opens */}
           {(pulling || refreshing) && (
             <div className="pull-refresh">
               <div className="spinner"></div>
