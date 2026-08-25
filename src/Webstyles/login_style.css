@@ -97,6 +97,8 @@ body {
   right: 60vh;
 }
 
+/* REGISTER FORM MUCH WEB SCALE MOBILE DEVICE */
+/*—————————————————————————————————————————————————————————————————————————————*/
 .log-reg-box .form-box {
   position: absolute;
   display: flex;
@@ -114,6 +116,7 @@ body {
   color: white;
   overflow: hidden;
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .log-reg-box .form-box form {
@@ -454,6 +457,8 @@ body {
     align-items: center;         /* horizontal centering stays */
   }
 
+/* REGISTER FORM MUCH SMALLER SCALE MOBILE DEVICE */
+/*—————————————————————————————————————————————————————————————————————————————*/
   .form-box {
     display: flex;
     flex-direction: column;
