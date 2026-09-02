@@ -107,7 +107,7 @@ body {
   margin-top: 5vh;
   padding-top: 13vh;
   width: 100%;
-  height: 90vh;
+  height: 95vh;
   background: transparent;
   backdrop-filter: blur(20px);
   border-top-right-radius: 50px;
@@ -538,6 +538,9 @@ body {
     gap: 15px;
   }
 }
+/* REGISTER FORM MUCH SMALLER SCALE MOBILE DEVICE */
+/*—————————————————————————————————————————————————————————————————————————————*/
+
 
 /*MUCH SMALLER SCALE MOBILE DEVICE*/
 /*—————————————————————————————————————————————————————————————————————————————*/
@@ -592,7 +595,6 @@ body {
     margin: 8px 0;
   }
 }
-
 
 
 
