@@ -208,6 +208,7 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
 
         <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""} ${darkMode ? "dark-mode" : ""}`}>
           <aside id="sidebar" className={isSidebarExpanded ? "expand" : ""}>
+            
           <div className="sidebar-top"> {/* NEW container — non-scrollable */}
           <div className="d-flex">
             <button id="toggle-btn" type="button" onClick={toggleSidebar}>
@@ -218,6 +219,7 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
             </div>
           </div>
         </div>{/* NEW container — non-scrollable */}
+
           <ul className="sidebar-nav">
 
           <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Dashboard" : ""} >
@@ -250,6 +252,12 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
                 <i className={`lni lni-chevron-${isAuthDropdownOpen ? 'up' : 'down'}`} style={{ fontSize: '0.75rem', marginLeft: '-3rem' }}></i>
               )}
             </a>
+
+            {/**<!--————————————————————————————————————————————————————————————————————————————————————————————————————————————
+                    ———————————————————————————————————————————————————————————————————————————————————————————————————————————— --> */}
+            {/*<!-- Section where you can adjust the padding all sides using the class "sidebar-dropdown" on wrapped "<ul>" does not work
+                     if you directly apply on "sidebar-item" cos it was wrappped by parent class named "sidebar-dropdown" so use the selector "sidebar-dropdown .sidebar-item" -->*/}
+
             <ul className={`sidebar-dropdown list-unstyled ${isAuthDropdownOpen ? 'show' : ''}`}>
               <li className="sidebar-item">
                 <a href="#" className="sidebar-link">Login</a>
@@ -259,6 +267,9 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
               </li>
             </ul>
           </li>
+
+          {/**  <!-- ———————————————————————————————————————————————————————————————————————————————————————————————————————————
+                     ——————————————————————————————————————————————————————————————————————————————————————————————————————————— --> */}
 
           <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Multi" : ""}>
             <a href="#" className="sidebar-link has-dropdown" onClick={handleMultiDropdownClick}>
