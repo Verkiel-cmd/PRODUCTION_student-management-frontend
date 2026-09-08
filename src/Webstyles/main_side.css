@@ -355,10 +355,14 @@ a.sidebar-link:hover::after {
     padding-left: 1.5rem;
 
 }
-/*FOR NAV LINKS DROPDOWN*/
+
+/*——————————————————NAV LINKS DROPDOWN ADJUSTMENT STYLES—————————————————————————————————————————————————————————————————————————————————*/
+/*———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*/
 .sidebar-dropdown .sidebar-link {
   padding-left: 4.3rem;
 }
+/*———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*/
+
 .sidebar-item {
     margin: 10px 0;
 }
@@ -3434,8 +3438,7 @@ body.dark-mode-body .btn-close {
         left: 0;*/
         left: -100%;
         width: 15rem;
-        width: 4.5rem;
-        min-width: 4.5rem;
+        min-width: 15rem;
         overflow: hidden;
         z-index: 1000;
         transition: left 0.5s cubic-bezier(0.65, 0, 0.35, 1);
