@@ -132,7 +132,8 @@ const Frontlog = () => {
     const userData = {
         id: response.data.userId,
         username: response.data.username,
-        email: response.data.email
+        email: response.data.email,
+        role: response.data.role
     };
     setLoggedInUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
@@ -227,7 +228,8 @@ const Frontlog = () => {
                 const userData = {
                     id: response.data.userId,
                     username: response.data.username,
-                    email: email
+                    email: email,
+                    role: response.data.role
                 };
                 localStorage.setItem('user', JSON.stringify(userData));
                 setLoggedInUser(userData);
@@ -331,7 +333,8 @@ const Frontlog = () => {
                  id: res.data.userId,          
                  username: res.data.username,   
                  email: res.data.email,         
-                 picture: res.data.picture 
+                 picture: res.data.picture,
+                 role: res.data.role
             };
             localStorage.setItem('user', JSON.stringify(userData));
             setLoggedInUser(userData);
