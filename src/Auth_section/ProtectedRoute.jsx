@@ -15,6 +15,7 @@ const ProtectedRoute = ({ children }) => {
 
         if (res.data.authenticated && res.data.user) {
           localStorage.setItem('user', JSON.stringify(res.data.user));
+          setIsAuthenticated(true);
         }
       } catch (err) {
         console.error('Auth check failed:', err);

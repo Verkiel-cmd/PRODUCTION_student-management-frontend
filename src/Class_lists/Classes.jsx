@@ -8,11 +8,13 @@ import '../Webstyles/bootstrapError_style.css';
 import config from '../Auth_section/config'; // Adjust the path as needed
 import usePullToRefresh from '../Hooks/Refreshpull';
 import useAuth from '../Hooks/UseAuth';
-const { isAdmin } = useAuth();
 
 
 
 function Classes() {
+
+    const { isAdmin } = useAuth();
+
     const [classes, setClasses] = useState([]);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [isSidebarExpanded, setIsSidebarExpanded] = useState(() => localStorage.getItem("sidebarState") === "expanded");
@@ -26,6 +28,7 @@ function Classes() {
     const closeBtnRef = useRef(null);
     /* darkmode state - UNUSED/USED-VARIABLE RECYCLED */
     const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkModeState") === "enabled");
+
     
     /*darkmode*/
     //const [showSettings, setShowSettings] = useState(false);

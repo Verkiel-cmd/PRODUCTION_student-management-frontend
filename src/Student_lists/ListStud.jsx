@@ -7,9 +7,13 @@ import config from '../Auth_section/config';
 import axios from 'axios';
 import usePullToRefresh from '../Hooks/Refreshpull';
 import useAuth from '../Hooks/UseAuth';
-const { isAdmin } = useAuth();
+import { useCallback } from 'react';
+
 
 function ListStud() {
+
+  const { isAdmin } = useAuth();
+
   const [students, setStudents] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredStudents, setFilteredStudents] = useState([]);
@@ -139,7 +143,7 @@ useEffect(() => {
   };
 
   // Fetch students data
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
       try {
         const response = await fetch(`${config.API_URL}/students?search=${searchTerm}`);
         const data = await response.json();
@@ -149,10 +153,11 @@ useEffect(() => {
         console.error(error);
         setError('Error fetching student data.');
       }
-    };
+    }, [searchTerm]);
+
     useEffect(() => {
-  fetchData();
-}, []);
+      fetchData();
+    }, [fetchData]);
 
 const { pulling, refreshing } = usePullToRefresh(fetchData);
 
