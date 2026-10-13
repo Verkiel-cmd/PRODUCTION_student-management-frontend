@@ -7,6 +7,8 @@ import '../Webstyles/main_side.css';
 import '../Webstyles/bootstrapError_style.css';
 import config from '../Auth_section/config'; // Adjust the path as needed
 import usePullToRefresh from '../Hooks/Refreshpull';
+import useAuth from '../Hooks/UseAuth';
+const { isAdmin } = useAuth();
 
 
 
@@ -654,7 +656,8 @@ useEffect(() => {
 
 
 
-
+                     {isAdmin && (
+                              <>
                         <h2 className="fw-bold text-start mb-4" >Add Class</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="row mb-3 fw-medium">
@@ -811,6 +814,8 @@ useEffect(() => {
 
                             </div>
                         </form>
+                        </>
+                     )}
                     </div>
                 </div>
 
@@ -856,7 +861,7 @@ useEffect(() => {
                                 <th >Class Name</th>
                                 <th >Class Teacher</th>
                                 <th >Student Limit</th>
-                                <th >Actions</th>
+                                {isAdmin && <th>Actions</th>}
                             </tr>
                         </thead>
                         <tbody>
@@ -867,10 +872,12 @@ useEffect(() => {
                                         <td className="cell-name">{cls.classname}</td>
                                         <td className="cell-teacher">{cls.classteacher}</td>
                                         <td className="cell-limit">{cls.studentlimit}</td>
-                                        <td style={{ display: 'flex', gap: '10px' }}>
-                                            <Button variant="primary" size="sm" onClick={() => handleEdit(cls.classid)}>Update</Button>
-                                            <Button variant="danger" size="sm" onClick={() => handleDeleteClick(cls.classid)}>Delete</Button>
-                                        </td>
+                                        {isAdmin && (
+                                            <td style={{ display: 'flex', gap: '10px' }}>
+                                                <Button variant="primary" size="sm" onClick={() => handleEdit(cls.classid)}>Update</Button>
+                                                <Button variant="danger" size="sm" onClick={() => handleDeleteClick(cls.classid)}>Delete</Button>
+                                            </td>
+                                        )}
                                     </tr>
                                 ))
                             ) : (

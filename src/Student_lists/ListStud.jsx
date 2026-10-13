@@ -6,6 +6,8 @@ import DeleteModal from './DeleteModel';
 import config from '../Auth_section/config';
 import axios from 'axios';
 import usePullToRefresh from '../Hooks/Refreshpull';
+import useAuth from '../Hooks/UseAuth';
+const { isAdmin } = useAuth();
 
 function ListStud() {
   const [students, setStudents] = useState([]);
@@ -411,10 +413,11 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
           <div className="gap" 
           style={{ 
             marginBottom: '-15px', }}>
-
-            <Link className="btn btn-primary d-flex justify-content-center align-items-center" to="/Student_lists/CreateStudent" role="button">
-              New Student
-            </Link>
+              {isAdmin && (
+                <Link className="btn btn-primary d-flex justify-content-center align-items-center" to="/Student_lists/CreateStudent" role="button">
+                  New Student
+                </Link>
+              )}
             <br />
           </div>
 
@@ -475,7 +478,7 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
                   <th>Phone</th>
                   <th>Address</th>
                   <th>Created At</th>
-                  <th>Action</th>
+                  {isAdmin && <th>Action</th>}
                 </tr>
               </thead>
               <tbody>
@@ -559,27 +562,26 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
                         {new Date(student.created_at).toLocaleDateString()}
                         </span>
                         </td>
-                      <td>
-                        <div className="d-flex align-items-center">
-                          <Link className="btn btn-primary btn-sm me-2 d-flex justify-content-center align-items-center" to={`/Student_lists/UpdateStudent/${student.id}`}>
-                            Update
-                          </Link>
+
+                        {isAdmin && (
+                          <td>
+                            <div className="d-flex align-items-center">
+                              <Link className="btn btn-primary btn-sm me-2 d-flex justify-content-center align-items-center" to={`/Student_lists/UpdateStudent/${student.id}`}>
+                                Update
+                              </Link>
                           <button
                             className="btn btn-danger mt-"
                             onClick={() => handleDeleteClick(student.id)}
                           >
-
                             Delete
-
                           </button>
                         </div>
-
                       </td>
+                        )}
+
 
                     </tr>
                   ))
-
-
                 ) : (
 
                   <tr>

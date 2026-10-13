@@ -12,7 +12,10 @@ const ProtectedRoute = ({ children }) => {
         const res = await axios.get('https://student-management-backend-a2q4.onrender.com/auth/validate', {
           withCredentials: true
         });
-        setIsAuthenticated(res.data.authenticated);
+
+        if (res.data.authenticated && res.data.user) {
+          localStorage.setItem('user', JSON.stringify(res.data.user));
+        }
       } catch (err) {
         console.error('Auth check failed:', err);
       } finally {
@@ -26,7 +29,7 @@ const ProtectedRoute = ({ children }) => {
   if (!authChecked) return null; // or loader/spinner
 
   if (!isAuthenticated) {
-    return <Navigate to="/auth_section/Frontlog" replace />;
+    return <Navigate to="/Auth_section/Frontlog" replace />;
   }
 
   return children;
