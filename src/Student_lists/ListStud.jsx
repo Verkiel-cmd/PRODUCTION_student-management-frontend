@@ -58,12 +58,12 @@ useEffect(() => {
     try {
       await axios.post(`${config.API_URL}/logout`, {}, { withCredentials: true });
       localStorage.removeItem('user');
-      navigate('/auth_section/Frontlog', { replace: true });
+      navigate('/Auth_section/Frontlog', { replace: true });
     } catch (error) {
       console.error('Error during logout:', error);
       // Still clear local storage and redirect even if the API call fails
       localStorage.removeItem('user');
-      navigate('/auth_section/Frontlog', { replace: true });
+      navigate('/Auth_section/Frontlog', { replace: true });
     }
   };
 

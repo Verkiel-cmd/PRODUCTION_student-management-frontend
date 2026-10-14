@@ -62,7 +62,7 @@ useEffect(() => {
       sessionStorage.clear();
 
       // Redirect to login page
-      navigate('/auth_section/Frontlog');
+      navigate('/Auth_section/Frontlog');
     } catch (error) {
       console.error('Logout failed:', error);
     }
