@@ -15,6 +15,7 @@ import ProtectedRoute from './Auth_section/ProtectedRoute';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import InviteAdmin from './Admin_section/InviteAdmin';
 import AdminOnlyRoute from './Auth_section/AdminOnlyRoute';
+import SuperAdminPanel from './Admin_section/SuperAdminPanel';
 
 
 
@@ -88,6 +89,17 @@ root.render(
             </ProtectedRoute>
           }
           />
+
+          <Route
+          path="/Admin_section/SuperAdminPanel"
+          element={
+            <ProtectedRoute>
+              <AdminOnlyRoute>
+                <SuperAdminPanel />
+              </AdminOnlyRoute>
+            </ProtectedRoute>
+          }
+        />
 
           <Route
           path="/Admin_section/InviteAdmin"
