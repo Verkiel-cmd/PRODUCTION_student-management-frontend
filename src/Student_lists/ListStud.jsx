@@ -90,6 +90,7 @@ useEffect(() => {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include', 
       });
 
       if (!response.ok) {
@@ -145,7 +146,9 @@ useEffect(() => {
   // Fetch students data
     const fetchData = useCallback(async () => {
       try {
-        const response = await fetch(`${config.API_URL}/students?search=${searchTerm}`);
+        const response = await fetch(`${config.API_URL}/students?search=${searchTerm}`, {
+            credentials: 'include',  // ← ADD THIS OPTION
+        });
         const data = await response.json();
         setStudents(data);
         setFilteredStudents(data);
