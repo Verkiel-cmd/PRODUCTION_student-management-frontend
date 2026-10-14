@@ -13,6 +13,8 @@ import Settings from './Settings_section/Settings';
 import Forgotpassword from './Auth_section/Forgotpassword';
 import ProtectedRoute from './Auth_section/ProtectedRoute'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import InviteAdmin from './Admin_section/InviteAdmin';
+import AdminOnlyRoute from './Auth_section/AdminOnlyRoute';
 
 
 
@@ -86,6 +88,17 @@ root.render(
             </ProtectedRoute>
           }
           />
+
+          <Route
+          path="/Admin_section/InviteAdmin"
+          element={
+            <ProtectedRoute>
+              <AdminOnlyRoute>
+                <InviteAdmin />
+            </AdminOnlyRoute>
+          </ProtectedRoute>
+        }
+      />
         </Routes>
       </BrowserRouter>
     </GoogleOAuthProvider>

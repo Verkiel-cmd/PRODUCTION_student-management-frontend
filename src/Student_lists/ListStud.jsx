@@ -243,6 +243,17 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
             </Link>
           </li>
 
+          {/* ──────────────── ADMIN HERE ──────────────── */}
+          {isAdmin && (
+            <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Invite Admin" : ""}>
+              <Link to="/Admin_section/InviteAdmin" className="sidebar-link">
+                <i className="lni lni-user-plus"></i>
+                <span>Invite Admin</span>
+              </Link>
+            </li>
+          )}
+          {/* ───────────────────────────────────────────── */}
+
 
           <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Lists" : ""}>
             <Link to="/Student_lists/ListStud" className="sidebar-link">

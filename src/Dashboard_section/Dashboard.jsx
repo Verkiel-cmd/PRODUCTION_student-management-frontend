@@ -4,10 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/main_side.css';
 import  config from'../Auth_section/config';
 import Chart from 'chart.js/auto';
+import useAuth from '../Hooks/UseAuth'; 
 //import usePullToRefresh from '../Hooks/Refreshpull';
 let barChartInstance = null;
 
 function Dashboard() {
+
+  const { isAdmin } = useAuth(); 
+
   const [totalStudents, setTotalStudents] = useState(0);
   const [totalClass, setTotalClass] = useState(0);
   const [error, setError] = useState(null);
@@ -294,6 +298,17 @@ useEffect(() => {
                  <span>Classes</span>
                </Link>
              </li>
+
+              {/* ──────────────── ADMIN HERE ──────────────── */}
+              {isAdmin && (
+                <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Invite Admin" : ""}>
+                  <Link to="/Admin_section/InviteAdmin" className="sidebar-link">
+                    <i className="lni lni-user-plus"></i>
+                    <span>Invite Admin</span>
+                  </Link>
+                </li>
+              )}
+              {/* ───────────────────────────────────────────── */}
    
    
              <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Lists" : ""}>
