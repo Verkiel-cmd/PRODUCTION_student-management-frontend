@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
+import config from '../Auth_section/config'; 
 
 const ProtectedRoute = ({ children }) => {
   const [authChecked, setAuthChecked] = useState(false);
@@ -9,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get('https://student-management-backend-a2q4.onrender.com/auth/validate', {
+        const res = await axios.get(`${config.API_URL}/auth/validate`, {
           withCredentials: true
         });
 
