@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState, useRef } from 'react';
-import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as bootstrap from 'bootstrap';
 import '../Webstyles/main_side.css';
@@ -8,6 +7,7 @@ import '../Webstyles/bootstrapError_style.css';
 import config from '../Auth_section/config'; // Adjust the path as needed
 import usePullToRefresh from '../Hooks/Refreshpull';
 import useAuth from '../Hooks/UseAuth';
+import DeleteClassModel from './DeleteClassModel';
 
 
 
@@ -376,7 +376,7 @@ useEffect(() => {
     */
 
 
-    const confirmDelete = async () => {
+    const handleDelete = async () => {
         const id = currentDeletingId;
 
         if (!id) {
@@ -408,10 +408,9 @@ useEffect(() => {
                 prevClasses.filter((cls) => cls.classid !== id)
             );
 
-
-
-            const deleteModal = bootstrap.Modal.getInstance(document.getElementById('deleteModal'));
-            deleteModal.hide();
+            //Modal transtion off after clicking delete or performed it
+            handleClose();
+            
         } catch (error) {
             console.error('Error in handleDelete:', error);
             setErrorMessage('Error while deleting class: ' + error.message);
@@ -914,75 +913,23 @@ useEffect(() => {
                             )}
                         </tbody>
                     </table>
+
+                    {/* Delete Confirmation Modal */}
+                    <DeleteClassModel
+                    show={showDeleteModal}
+                    handleClose={handleClose}
+                    handleDelete={handleDelete}
+                    classId={currentDeletingId}
+                    darkMode={darkMode}
+                    />
                     
                 </div>
-
-              
-
             </div>
-
             <div className="doggy">
                 <h1>scroll_test</h1>
             </div>
         </div>
-            
-            {/* ====== SETTINGS MODAL ======
-            {showSettings && (
-                    <div
-                        className="settings-modal-overlay"
-                        onClick={() => setShowSettings(false)}
-                    >
-                        <div
-                        className="settings-modal-content"
-                        onClick={(e) => e.stopPropagation()}
-                        style={{
-                            backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
-                            color: darkMode ? '#ffffff' : '#000000'
-                        }}
-                        >
-                        <h3>Appearance Settings</h3>
-
-                        <p className="dark-mode-enable mt-3">
-                            {darkMode ? "Dark Mode Enabled 🌙" : "Light Mode Enabled ☀️"}
-                        </p>
-
-
-                        <label className="switch">
-                            <input type="checkbox" checked={darkMode} onChange={toggleDark} />
-                            <span className="slider"></span>
-                        </label>
-
-                    
-                        <button
-                            onClick={() => setShowSettings(false)}
-                            className="btn btn-secondary mt-3"
-                        >
-                            Close
-                        </button>
-                        </div>
-                    </div>
-                    )}*/}
-
-
-    {/* React Bootstrap Modal */}
-      <Modal show={showDeleteModal} onHide={handleClose}>
-        <Modal.Header closeButton style={{
-                backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
-                color: darkMode ? '#ffffff' : '#000000',
-                borderColor: darkMode ? '#333' : '#dee2e6'
-              }}>
-          <Modal.Title>Confirm Deletion</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Are you sure you want to delete this class?
-        </Modal.Body>
-        <Modal.Footer className="d-flex flex-row flex-nowrap justify-content-end gap-2">
-          <Button variant="danger" onClick={confirmDelete}>Delete</Button>
-          <Button variant="primary" onClick={handleClose}>Cancel</Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
-
+  </div>
   );
 }
 
