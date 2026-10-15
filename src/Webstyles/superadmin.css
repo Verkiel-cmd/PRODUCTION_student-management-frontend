@@ -1,0 +1,411 @@
+/* Super Admin Panel */
+
+.super-admin-panel {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  height: 100dvh;          /* body is locked by global CSS, so scroll here */
+  overflow-y: auto;
+}
+
+.super-admin-panel .super-admin-box {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #fff;
+  color: #212529;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.super-admin-panel .super-admin-box h2 {
+  margin: 0 0 1rem;
+  padding: 0;
+  text-align: center;
+  color: #212529;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.super-admin-panel .super-admin-description {
+  margin: 0 0 1.5rem;
+  color: #666;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.super-admin-panel .super-admin-error {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  color: #e53935;
+  background: #fdeaea;
+  border: 1px solid #e53935;
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+.super-admin-panel .super-admin-loading {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: #666;
+}
+
+/* ---------- Table (desktop) ---------- */
+.super-admin-panel .super-admin-table-wrapper {
+  overflow-x: auto;
+}
+
+.super-admin-panel .super-admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.super-admin-panel .super-admin-table th {
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #212529 !important;
+  background: #f8f9fa !important;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.super-admin-panel .super-admin-table tbody tr,
+.super-admin-panel .super-admin-table tbody td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: #212529 !important;
+  background: #fff !important;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.super-admin-panel .super-admin-table tbody tr {
+  padding: 0;
+}
+
+.super-admin-panel .super-admin-table tbody td.muted {
+  color: #666 !important;
+}
+
+.super-admin-panel .super-admin-table tr.empty-row td {
+  padding: 2rem 1rem;
+  text-align: center;
+  white-space: normal;
+  color: #666 !important;
+}
+
+/* ---------- Buttons ---------- */
+.super-admin-panel .super-admin-action-btn {
+  padding: 0.5rem 1.25rem;
+  color: #fff !important;
+  background: #dc3545 !important;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.super-admin-panel .super-admin-action-btn:hover:not(:disabled) {
+  background: #c82333 !important;
+}
+
+.super-admin-panel .super-admin-action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.super-admin-panel .super-admin-current-user {
+  color: #666;
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
+.super-admin-panel .super-admin-invite-section {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.super-admin-panel .dashboard-button {
+  margin-top: 0.75rem;
+}
+
+.super-admin-panel .super-admin-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 1rem;
+  color: #000;
+  background: paleturquoise;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- Mobile: each row becomes a roomy card ---------- */
+@media (max-width: 600px) {
+  .super-admin-panel {
+    padding: 12px 10px;
+  }
+
+  .super-admin-panel .super-admin-box {
+    padding: 16px;
+  }
+
+  .super-admin-panel .super-admin-box h2 {
+    font-size: 1.25rem;
+  }
+
+  .super-admin-panel .super-admin-description {
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .super-admin-panel .super-admin-table-wrapper {
+    overflow-x: visible;
+  }
+
+  .super-admin-panel .super-admin-table,
+  .super-admin-panel .super-admin-table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .super-admin-panel .super-admin-table thead {
+    display: none;
+  }
+
+  .super-admin-panel .super-admin-table tbody tr {
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 14px;
+    padding: 10px 14px;
+    background: #f8f9fa !important;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+  }
+
+  .super-admin-panel .super-admin-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 7px 0;
+    text-align: right;
+    font-size: 13px;
+    white-space: normal;
+    word-break: break-word;
+    background: transparent !important;
+    border: none;
+  }
+
+  .super-admin-panel .super-admin-table tbody td::before {
+    content: attr(data-label);
+    flex-shrink: 0;
+    font-weight: 600;
+    text-align: left;
+    color: #212529;
+  }
+
+  /* Actions: its own full-width row with plenty of space */
+  .super-admin-panel .super-admin-table tbody td:last-child {
+    display: block;
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px solid #dee2e6;
+  }
+
+  .super-admin-panel .super-admin-table tbody td:last-child::before {
+    content: none;
+  }
+
+  .super-admin-panel .super-admin-action-btn {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    padding: 0 12px;
+    font-size: 14px;
+    white-space: normal;
+  }
+
+  .super-admin-panel .super-admin-current-user {
+    display: block;
+    text-align: center;
+  }
+
+  .super-admin-panel .super-admin-table tr.empty-row td {
+    display: block;
+    text-align: center;
+  }
+
+  .super-admin-panel .super-admin-table tr.empty-row td::before {
+    content: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Dark mode ===== */
+.dark-mode .super-admin-panel .super-admin-box {
+  background: #1e1e1e;
+  color: #f5f5f5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+.dark-mode .super-admin-panel .super-admin-box h2 { 
+    color: #f5f5f5; 
+}
+.dark-mode .super-admin-panel .super-admin-description,
+.dark-mode .super-admin-panel .super-admin-loading,
+.dark-mode .super-admin-panel .super-admin-current-user { 
+    color: #aaa; 
+}
+.dark-mode .super-admin-panel .super-admin-error { 
+    background: #3a1a1a; color: #ff6b6b; 
+}
+
+.dark-mode .super-admin-panel .super-admin-table th {
+  background: #2d2d2d !important;
+  color: #f5f5f5 !important;
+  border-bottom-color: #444;
+}
+.dark-mode .super-admin-panel .super-admin-table tbody tr,
+.dark-mode .super-admin-panel .super-admin-table tbody td {
+  background: #1e1e1e !important;
+  padding: 1rem;
+  color: #f5f5f5 !important;
+  border-bottom-color: #444;
+}
+.dark-mode .super-admin-panel .super-admin-table tbody td.muted,
+.dark-mode .super-admin-panel .super-admin-table tr.empty-row td { 
+    color: #aaa !important; 
+}
+
+.dark-mode .super-admin-panel .super-admin-invite-section { 
+    border-top-color: #444; 
+}
+
+@media (max-width: 600px) {
+  .dark-mode .super-admin-panel .super-admin-table tbody tr {
+    background: #2a2a2a !important;
+    border-color: #444;
+  }
+  .dark-mode .super-admin-panel .super-admin-table tbody td::before { 
+    color: #f5f5f5; 
+}
+}

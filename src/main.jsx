@@ -43,7 +43,9 @@ root.render(
             path="/Student_lists/CreateStudent"
             element={
               <ProtectedRoute>
+                <AdminOnlyRoute>
                 <CreateStudent />
+                </AdminOnlyRoute>
               </ProtectedRoute>
             }
           />
@@ -51,7 +53,9 @@ root.render(
             path="/Student_lists/UpdateStudent/:id"
             element={
               <ProtectedRoute>
-                <UpdateStudent />
+                <AdminOnlyRoute>
+                <UpdateStudent/>
+                </AdminOnlyRoute>
               </ProtectedRoute>
             }
           />
