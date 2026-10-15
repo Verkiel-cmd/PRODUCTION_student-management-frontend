@@ -636,7 +636,7 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
     </div>
                 
             
-              );
-            }
+  );
+}
 
 export default ListStud;
