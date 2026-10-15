@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/main_side.css';
 import config from'../Auth_section/config';
 import Chart from 'chart.js/auto';
-import axios from 'axios';
+//import axios from 'axios';
 import useAuth from '../Hooks/UseAuth'; 
 //import usePullToRefresh from '../Hooks/Refreshpull';
 let barChartInstance = null;
@@ -144,7 +144,7 @@ useEffect(() => {
         const response = await fetch(`${config.API_URL}/class-students`, {
         credentials: 'include',
       });
-      
+
         console.log('Response status:', response.status);
 
         if (!response.ok) {
