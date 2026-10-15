@@ -2,8 +2,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Webstyles/main_side.css';
-import  config from'../Auth_section/config';
+import config from'../Auth_section/config';
 import Chart from 'chart.js/auto';
+import axios from 'axios';
 import useAuth from '../Hooks/UseAuth'; 
 //import usePullToRefresh from '../Hooks/Refreshpull';
 let barChartInstance = null;
@@ -114,7 +115,10 @@ useEffect(() => {
     const fetchTotalStudents = async () => {
       try {
         console.log('Fetching total students...');
-        const response = await fetch(`${config.API_URL}/total-students`);
+        const response = await fetch(`${config.API_URL}/total-students`, {
+          credentials: 'include',
+        });
+
         console.log('Response status:', response.status);
 
         if (!response.ok) {
@@ -137,7 +141,10 @@ useEffect(() => {
     const fetchTotalClasses = async () => {
       try {
         console.log('Fetching total students...');
-        const response = await fetch(`${config.API_URL}/class-students`);
+        const response = await fetch(`${config.API_URL}/class-students`, {
+        credentials: 'include',
+      });
+      
         console.log('Response status:', response.status);
 
         if (!response.ok) {

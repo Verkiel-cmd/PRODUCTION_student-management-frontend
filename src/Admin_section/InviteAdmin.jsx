@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import config from '../Auth_section/config';
-import '../Webstyles/login_style.css';
+import '../Webstyles/inviteadmin.css';
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = config.API_URL;
@@ -82,80 +82,72 @@ const InviteAdmin = () => {
   };
 
   return (
-    <div className="log-reg-box" style={{ maxWidth: '480px', margin: '60px auto' }}>
-      <div className="form-box register" style={{ opacity: 1, transform: 'none', pointerEvents: 'auto' }}>
-        <form onSubmit={handleSubmit}>
-          <h2>Invite New Admin</h2>
-          
-          {success && (
-            <div style={{color:'green',marginBottom:'16px',padding:'10px',background:'#e8f5e9',borderRadius:'8px',border:'1px solid #4caf50'}}>
-              {success}
+    <div className="invite-page">
+    <div className="invite-card">
+      <form onSubmit={handleSubmit} noValidate>
+        <h2 className="invite-title">Invite New Admin</h2>
+        <p className="invite-subtitle">Create a sub-admin account. They can log in right away.</p>
+
+        {success && <div className="invite-alert invite-alert-success">{success}</div>}
+        {errors.submit && <div className="invite-alert invite-alert-error">{errors.submit}</div>}
+
+        <div className={`invite-field ${errors.username ? 'has-error' : ''}`}>
+          <i className="bx bx-user-circle"></i>
+          <input name="username" value={form.username} onChange={handleChange} placeholder="Username" />
+          {errors.username && <span className="invite-error-text">{errors.username}</span>}
+        </div>
+
+        <div className={`invite-field ${errors.email ? 'has-error' : ''}`}>
+          <i className="bx bxs-envelope"></i>
+          <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="Email" />
+          {errors.email && <span className="invite-error-text">{errors.email}</span>}
+        </div>
+
+        <div className={`invite-field ${errors.password ? 'has-error' : ''}`}>
+          <i className="bx bx-lock-alt"></i>
+          <input name="password" type="password" value={form.password} onChange={handleChange} placeholder="Password" />
+          {errors.password && <span className="invite-error-text">{errors.password}</span>}
+        </div>
+
+        <div className={`invite-field ${errors.confirmPassword ? 'has-error' : ''}`}>
+          <i className="bx bx-lock-alt"></i>
+          <input name="confirmPassword" type="password" value={form.confirmPassword} onChange={handleChange} placeholder="Confirm Password" />
+          {errors.confirmPassword && <span className="invite-error-text">{errors.confirmPassword}</span>}
+        </div>
+
+        {form.password && (
+          <div className="invite-strength">
+            <div className="invite-strength-label" style={{ color: strength.color }}>{strength.label}</div>
+            <div className="invite-strength-bar">
+              <div className="invite-strength-fill" style={{ width: `${strength.percent}%`, backgroundColor: strength.color }} />
             </div>
-          )}
-          
-          {errors.submit && (
-            <div style={{color:'red',marginBottom:'16px',padding:'10px',background:'#fdeaea',borderRadius:'8px',border:'1px solid #e53935'}}>
-              {errors.submit}
-            </div>
-          )}
-
-          <div className="input-box">
-            <span className="icon"><i className="bx bx-user-circle"></i></span>
-            <input name="username" value={form.username} onChange={handleChange} placeholder="Username" required />
-            {errors.username && <span style={{color:'red',fontSize:'12px',marginTop:'4px',display:'block'}}>{errors.username}</span>}
+            <ul className="invite-rules">
+              {[
+                { key: 'length', text: '8+ chars', met: rules.length },
+                { key: 'upper', text: 'Uppercase', met: rules.upper },
+                { key: 'lower', text: 'Lowercase', met: rules.lower },
+                { key: 'number', text: 'Number', met: rules.number },
+                { key: 'symbol', text: 'Symbol', met: rules.symbol }
+              ].map(r => (
+                <li key={r.key} className={`invite-rule ${r.met ? 'met' : ''}`}>
+                  <span className="invite-rule-check">{r.met ? '✓' : '○'}</span>{r.text}
+                </li>
+              ))}
+            </ul>
           </div>
+        )}
 
-          <div className="input-box">
-            <span className="icon"><i className="bx bxs-envelope"></i></span>
-            <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="Email" required />
-            {errors.email && <span style={{color:'red',fontSize:'12px',marginTop:'4px',display:'block'}}>{errors.email}</span>}
-          </div>
+        <button type="submit" className="invite-btn" disabled={loading}>
+          {loading ? 'Inviting...' : 'Invite Admin'}
+        </button>
 
-          <div className="input-box">
-            <span className="icon"><i className="bx bx-lock-alt"></i></span>
-            <input name="password" type="password" value={form.password} onChange={handleChange} placeholder="Password" required />
-            {errors.password && <span style={{color:'red',fontSize:'12px',marginTop:'4px',display:'block'}}>{errors.password}</span>}
-          </div>
-
-          <div className="input-box">
-            <span className="icon"><i className="bx bx-lock-alt"></i></span>
-            <input name="confirmPassword" type="password" value={form.confirmPassword} onChange={handleChange} placeholder="Confirm Password" required />
-            {errors.confirmPassword && <span style={{color:'red',fontSize:'12px',marginTop:'4px',display:'block'}}>{errors.confirmPassword}</span>}
-          </div>
-
-          {form.password && (
-            <div className="password-strength" style={{marginBottom:'16px'}}>
-              <div className="strength-label" style={{color: strength.color}}>{strength.label}</div>
-              <div className="strength-bar"><div className="strength-fill" style={{width:`${strength.percent}%`,backgroundColor:strength.color}}/></div>
-              <ul className="requirement-list">
-                {[
-                  {key:'length',text:'8+ chars',met:rules.length},
-                  {key:'upper',text:'Uppercase',met:rules.upper},
-                  {key:'lower',text:'Lowercase',met:rules.lower},
-                  {key:'number',text:'Number',met:rules.number},
-                  {key:'symbol',text:'Symbol',met:rules.symbol}
-                ].map(r => (
-                  <li key={r.key} className={`requirement-item ${r.met?'met':''}`}>
-                    <span className="requirement-check">{r.met?'✓':'○'}</span>{r.text}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <button type="submit" className="btn" disabled={loading} style={{width:'100%'}}>
-            {loading ? 'Inviting...' : 'Invite Admin'}
-          </button>
-
-          <p style={{textAlign:'center',marginTop:'16px',color:'#666'}}>
-            <button type="button" onClick={() => navigate('/dashboard_section/Dashboard')} style={{background:'none',border:'none',color:'#007bff',cursor:'pointer'}}>
-              ← Back to Dashboard
-            </button>
-          </p>
-        </form>
-      </div>
+        <button type="button" className="invite-btn invite-btn-back" onClick={() => navigate('/dashboard_section/Dashboard')}>
+          ← Back to Dashboard
+        </button>
+      </form>
     </div>
-  );
+  </div>
+);
 };
 
 export default InviteAdmin;

@@ -67,7 +67,10 @@ function UpdateStudent() {
   useEffect(() => {
     const fetchStudentData = async () => {
       try {
-        const response = await fetch(`${config.API_URL}/students/${id}`);
+        const response = await fetch(`${config.API_URL}/students/${id}`, {
+          credentials: 'include',
+        });
+
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -154,6 +157,7 @@ function UpdateStudent() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify(student),
       });
 

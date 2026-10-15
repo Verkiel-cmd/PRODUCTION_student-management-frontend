@@ -170,6 +170,7 @@ useEffect(() => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                credentials: 'include'
             });
 
             console.log('Response status:', response.status);
@@ -272,6 +273,7 @@ useEffect(() => {
 
                 const response = await fetch(url, {
                     method: method,
+                    credentials: 'include',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(classData),
                 });
@@ -390,6 +392,7 @@ useEffect(() => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                credentials: 'include'
             });
 
             if (!response.ok) {
