@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import * as bootstrap from 'bootstrap';
+import { Button } from 'react-bootstrap';
 import '../Webstyles/main_side.css';
 import '../Webstyles/bootstrapError_style.css';
 import config from '../Auth_section/config'; // Adjust the path as needed
@@ -922,7 +922,7 @@ useEffect(() => {
                     classId={currentDeletingId}
                     darkMode={darkMode}
                     />
-                    
+
                 </div>
             </div>
             <div className="doggy">

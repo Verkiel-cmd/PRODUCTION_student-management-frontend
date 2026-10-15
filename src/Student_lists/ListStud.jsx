@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 import '../Webstyles/main_side.css';
 import DeleteModal from './DeleteModel';
 import config from '../Auth_section/config';
@@ -597,19 +598,11 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
                         {isAdmin && (
                           <td>
                             <div className="d-flex align-items-center">
-                              <Link className="btn btn-primary btn-sm me-2 d-flex justify-content-center align-items-center" to={`/Student_lists/UpdateStudent/${student.id}`}>
-                                Update
-                              </Link>
-                          <button
-                            className="btn btn-danger mt-"
-                            onClick={() => handleDeleteClick(student.id)}
-                          >
-                            Delete
-                          </button>
+                              <Button className="btn btn-primary btn-sm me-2 d-flex justify-content-center align-items-center" to={`/Student_lists/UpdateStudent/${student.id}`}>Update</Button>
+                             <Button className="btn btn-danger mt-" onClick={() => handleDeleteClick(student.id)}>Delete</Button>
                         </div>
                       </td>
                         )}
-
 
                     </tr>
                   ))
@@ -633,7 +626,7 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
               studentId={studentToDelete}
               darkMode={darkMode}
             />
-            
+
           </div>
         </div>
         <div className="doggy">
