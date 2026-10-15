@@ -151,7 +151,10 @@ function Settings() {
 
     //FOR USE DATA SET PREVIEW
     useEffect(() => {
-    fetch(`${config.API_URL}/api/user-details`, { credentials: 'include' })
+    fetch(`${config.API_URL}/api/user-details`, { 
+        credentials: 'include' 
+    })
+
     .then(res => res.json())
     .then(data => {
         if (data.success && data.user.username) setUsername(data.user.username);
