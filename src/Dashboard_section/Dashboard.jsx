@@ -311,7 +311,7 @@ useEffect(() => {
                 <>
                   <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Invite Admin" : ""}>
                     <Link to="/Admin_section/InviteAdmin" className="sidebar-link">
-                      <i className="lni lni-user-plus"></i>
+                      <i className="bx bx-user-plus"></i>
                       <span>Invite Admin</span>
                     </Link>
                   </li>
