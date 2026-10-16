@@ -214,9 +214,15 @@
 
 /* ---------- Mobile ---------- */
 @media (max-width: 600px) {
-  .invite-page { padding: 12px 10px; }
-  .invite-card { padding: 16px; }
-  .invite-rules { grid-template-columns: 1fr; }
+  .invite-page { 
+    padding: 12px 10px; 
+  }
+  .invite-card { 
+    padding: 16px; 
+  }
+  .invite-rules { 
+    grid-template-columns: 1fr; 
+  }
 }
 
 
