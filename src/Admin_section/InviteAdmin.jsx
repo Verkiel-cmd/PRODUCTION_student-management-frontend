@@ -44,16 +44,29 @@ const InviteAdmin = () => {
   };
 
   const validate = () => {
-    const newErrors = {};
+  const newErrors = {};
+
+  if (!form.email.trim()) newErrors.email = 'Email required';
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) newErrors.email = 'Invalid email';
+
+  if (form.password) {
     if (!form.username.trim()) newErrors.username = 'Username required';
-    if (!form.email.trim()) newErrors.email = 'Email required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) newErrors.email = 'Invalid email';
-    if (!form.password) newErrors.password = 'Password required';
-    else if (form.password.length < 8) newErrors.password = 'Min 8 characters';
+    if (form.password.length < 8) newErrors.password = 'Min 8 characters';
+    if (!/[A-Z]/.test(form.password) || !/[a-z]/.test(form.password) ||
+        !/[0-9]/.test(form.password) || !/[^A-Za-z0-9]/.test(form.password))
+      newErrors.password = 'Upper, lower, number, and symbol required';
     if (form.password !== form.confirmPassword) newErrors.confirmPassword = 'Passwords must match';
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  }
+
+  setErrors(newErrors);
+  return Object.keys(newErrors).length === 0;
+};
+
+  {!form.password && (
+    <div className="invite-alert invite-danger-middle">
+      Note: leave Create Password empty to promote an existing user to sub-admin.
+    </div>
+  )}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,23 +76,47 @@ const InviteAdmin = () => {
     setSuccess('');
     
     try {
-      const res = await axios.post('/admin/invite', {
+
+     if (!form.password) {
+      const res = await axios.post('/admin/promote', {
+        email: form.email.trim().toLowerCase()
+      });
+
+      if (res.data.success) {
+        setSuccess(`Promoted "${res.data.admin.username}" to sub-admin. They still use their original password.`);
+        setForm({ 
+          username: '',
+          email: '',
+          password: '',
+          confirmPassword: ''
+        });
+      }
+      
+      } else {
+        const res = await axios.post('/admin/invite', {
         username: form.username.trim(),
         email: form.email.trim().toLowerCase(),
         password: form.password
       });
-      
+
       if (res.data.success) {
         setSuccess(`Admin "${res.data.admin.username}" created! They can now log in.`);
-        setForm({ username: '', email: '', password: '', confirmPassword: '' });
+        setForm({ 
+          username: '', 
+          email: '', 
+          password: '', 
+          confirmPassword: '' 
+        });
       }
-    } catch (err) {
-      const msg = err.response?.data?.message || 'Failed to invite admin';
-      setErrors({ submit: msg });
-    } finally {
-      setLoading(false);
     }
-  };
+    
+  } catch (err) {
+    setErrors({ submit: err.response?.data?.message || 'Failed to process admin action' });
+  } finally {
+    setLoading(false);
+  }
+    
+};
 
   return (
     <div className="invite-page">
