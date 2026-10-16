@@ -62,11 +62,6 @@ const InviteAdmin = () => {
   return Object.keys(newErrors).length === 0;
 };
 
-  {!form.password && (
-    <div className="invite-alert invite-danger-middle">
-      Note: leave Create Password empty to promote an existing user to sub-admin.
-    </div>
-  )}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -145,6 +140,12 @@ const InviteAdmin = () => {
           <input name="password" type="password" value={form.password} onChange={handleChange} placeholder="Password" />
           {errors.password && <span className="invite-error-text">{errors.password}</span>}
         </div>
+
+        {!form.password && (
+          <div className="invite-alert invite-danger-middle">
+            Note: leave Create Password empty to promote an existing user to sub-admin.
+          </div>
+        )}
 
         <div className={`invite-field ${errors.confirmPassword ? 'has-error' : ''}`}>
           <i className="bx bx-lock-alt"></i>
