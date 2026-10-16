@@ -55,6 +55,13 @@
     border: 1px solid #e53935; 
 }
 
+/* ---------- Danger ---------- */
+.invite-danger-middle{
+  color: #ebda46; 
+  background: #e8f5e9;
+  border: 1px solid #a79815; 
+}
+
 /* ---------- Inputs ---------- */
 .invite-field {
   position: relative;
