@@ -7,6 +7,8 @@ import  config from'../Auth_section/config';
 
 function UpdateStudent() {
 
+  console.log('BUILD CHECK v3');
+
   
 
   const { id } = useParams();

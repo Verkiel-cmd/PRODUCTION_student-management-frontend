@@ -13,6 +13,8 @@ import { useCallback } from 'react';
 
 function ListStud() {
 
+    console.log('BUILD CHECK v3');
+
   const { isAdmin } = useAuth();
 
   const [students, setStudents] = useState([]);
