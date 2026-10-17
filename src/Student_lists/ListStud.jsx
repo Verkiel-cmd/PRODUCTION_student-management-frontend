@@ -600,7 +600,7 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
                         {isAdmin && (
                           <td>
                             <div className="d-flex align-items-center">
-                              <Button className="btn btn-primary btn-sm me-2 d-flex justify-content-center align-items-center" to={`/Student_lists/UpdateStudent/${student.id}`}>Update</Button>
+                              <Button className="btn btn-primary btn-sm me-2 d-flex justify-content-center align-items-center" onClick={() => navigate(`/Student_lists/UpdateStudent/${student.id}`)}>Update</Button>
                              <Button className="btn btn-danger mt-" onClick={() => handleDeleteClick(student.id)}>Delete</Button>
                         </div>
                       </td>
