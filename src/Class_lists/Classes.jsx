@@ -892,12 +892,12 @@ useEffect(() => {
                             {classes.length > 0 ? (
                                 classes.map((cls) => (
                                     <tr key={cls.classid}>
-                                        <td className="cell-id">{cls.classid}</td>
-                                        <td className="cell-name">{cls.classname}</td>
-                                        <td className="cell-teacher">{cls.classteacher}</td>
-                                        <td className="cell-limit">{cls.studentlimit}</td>
+                                        <td className="cell-id"      data-label="Class ID">{cls.classid}</td>
+                                        <td className="cell-name"    data-label="Class Name">{cls.classname}</td>
+                                        <td className="cell-teacher" data-label="Class Teacher">{cls.classteacher}</td>
+                                        <td className="cell-limit"   data-label="Student Limit">{cls.studentlimit}</td>
                                         {isAdmin && (
-                                            <td style={{ display: 'flex', gap: '10px' }}>
+                                            <td className="cell-actions" data-label="Actions">
                                                 <Button variant="primary" size="sm" onClick={() => handleEdit(cls.classid)}>Update</Button>
                                                 <Button variant="danger" size="sm" onClick={() => handleDeleteClick(cls.classid)}>Delete</Button>
                                             </td>

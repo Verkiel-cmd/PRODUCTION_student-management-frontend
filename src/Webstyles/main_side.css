@@ -3994,3 +3994,288 @@ body.dark-mode-body .btn-close {
     padding-top: 900px;
     padding-left: 300px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   RESPONSIVE TABLE → CARD LAYOUT  (max-width: 991px)
+   ------------------------------------------------------------
+   PORTED + ADAPTED from the board-project snippet.
+
+   WHY IT NEEDS ADAPTING FOR THIS APP:
+   • This app uses BOOTSTRAP's `.table` class. Bootstrap's
+     `.table > :not(caption) > * > *` rule has specificity
+     (0,1,1) and sets padding / background-color /
+     border-bottom-width / box-shadow on every tr/td.
+     Every rule below is written as `.table tbody td` (0,1,2)
+     so it actually wins.
+   • This app has NO css variables (--surface, --border,
+     --radius, --shadow-sm, --muted) → literal hex used.
+   • The wrappers here are `.list_table` and `.class_list`,
+     not `.table-box`.
+   • `.action-btn`, `.delete-btn`, `.status-select`,
+     `.note-input`, `.save-note-btn`, `.logout-board` belong
+     to a different project and are NOT included.
+
+   REQUIRES: every <td> in the tbody must carry a `data-label`
+   attribute — that is what CSS reads to print the column name
+   on mobile. See the JSX edits below.
+   ============================================================ */
+@media (max-width: 991px) {
+
+  /* ---------- 1. table collapses into a stack of blocks ---------- */
+  .table,
+  .table tbody,
+  .table tbody tr,
+  .table tbody td {
+    display: block;
+  }
+
+  .table thead {
+    display: none;              /* names come back via ::before */
+  }
+
+  /* ---------- 2. the wrapper must stop being a scroll box ---------- */
+  .list_table .table-responsive,
+  .class_list .table-responsive {
+    overflow: visible !important;   /* beats inline overflowY:'auto'  */
+    max-height: none !important;    /* beats inline maxHeight:'700px' */
+    /* DELETE the two lines above if you WANT to keep the
+       700px internal scroll box on mobile. */
+  }
+
+  /* ---------- 3. each row becomes a card ---------- */
+  .table tbody tr {
+    padding: .7rem .9rem;
+    margin-bottom: .75rem;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+  }
+
+  /* ---------- 4. each cell becomes a "LABEL : value" line ---------- */
+  .table tbody td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .5rem 0;
+    background: transparent;
+    border-bottom: 1px dashed #e0e0e0;
+    box-shadow: none;             /* kill Bootstrap's inset shadow  */
+    text-align: right;
+    white-space: normal;
+    word-break: break-word;
+
+    /* >>> THE ACTUAL OVERFLOW FIX <<<
+       Without wrapping, the Actions cell sets the min-content
+       width of the whole table, the page scrolls sideways and
+       the content gets clipped. Wrapping lets the controls flow
+       onto extra lines. */
+    flex-wrap: wrap;
+  }
+
+  .table tbody td:last-child {
+    border-bottom: none;
+  }
+
+  /* ---------- 5. the label injected from data-label ---------- */
+  .table tbody td::before {
+    content: attr(data-label);
+    flex: none;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #666;
+    text-align: left;
+  }
+
+  /* ---------- 6. actions cell ---------- */
+  .table tbody td.cell-actions {
+    justify-content: flex-start;
+    gap: .5rem;
+  }
+
+  /* push the "ACTIONS" label onto its own line */
+  .table tbody td.cell-actions::before {
+    flex-basis: 100%;
+    margin-bottom: .35rem;
+  }
+
+  /* the inner .d-flex wrapper must be allowed to wrap too */
+  .table tbody td.cell-actions .d-flex {
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+
+/* ---------- 7. empty / error rows ----------
+     These are the only cells in the app that carry a colspan
+     (React renders colSpan="7" -> colspan="7"), so a plain
+     attribute selector finds them without touching the JSX.
+     display:block is what lets your textAlign:'center' work. */
+  .table tbody td[colspan] {
+    display: block;
+    text-align: center;
+  }
+
+  .table tbody td[colspan]::before {
+    content: none;
+  }
+
+  /* ---------- 8. the desktop cell was centre-aligned ---------- */
+  .table tbody td.cell-date {
+    text-align: right;
+  }
+
+  /* ---------- 9. dark mode ---------- */
+  .dark-mode .table tbody tr {
+    border-color: #333 !important;
+  }
+
+  .dark-mode .table tbody td::before {
+    color: #aaa;
+  }
+}

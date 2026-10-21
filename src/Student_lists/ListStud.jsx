@@ -586,19 +586,19 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
                 {filteredStudents.length > 0 ? (
                   filteredStudents.map((student) => (
                     <tr key={student.id}>
-                      <td className="cell-id">{student.id}</td>
-                      <td className="cell-name">{student.name}</td>
-                      <td className="cell-email">{student.email}</td>
-                      <td className="cell-phone">{student.phone}</td>
-                      <td className="cell-address">{student.address}</td>
-                       <td className="cell-date">
+                      <td className="cell-id"     data-label="ID">{student.id}</td>
+                      <td className="cell-name"   data-label="Name">{student.name}</td>
+                      <td className="cell-email"  data-label="Email">{student.email}</td>
+                      <td className="cell-phone"  data-label="Phone">{student.phone}</td>
+                      <td className="cell-address" data-label="Address">{student.address}</td>
+                      <td className="cell-date"   data-label="Created At">
                          <span className="date-pill">
                         {new Date(student.created_at).toLocaleDateString()}
                         </span>
                         </td>
 
                         {isAdmin && (
-                          <td>
+                          <td className="cell-actions" data-label="Actions">
                             <div className="d-flex align-items-center">
                               <Button className="btn btn-primary btn-sm me-2 d-flex justify-content-center align-items-center" onClick={() => navigate(`/Student_lists/UpdateStudent/${student.id}`)}>Update</Button>
                              <Button className="btn btn-danger mt-" onClick={() => handleDeleteClick(student.id)}>Delete</Button>
