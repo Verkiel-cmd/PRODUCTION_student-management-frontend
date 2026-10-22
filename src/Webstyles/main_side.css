@@ -2444,11 +2444,10 @@ a.sidebar-link:hover::after {
 }
 
 .btn.btn-danger {
-    background-color: gray;
+    background-color: #696969;   /* real red */
 }
-
 .btn.btn-danger:hover {
-    background-color: #BF0000;
+    background-color: #c82333;   /* darker red on hover */
 }
 
 .btn.btn-secondary {
