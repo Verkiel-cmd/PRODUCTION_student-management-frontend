@@ -10,6 +10,7 @@ import UpdateStudent from './Student_lists/UpdateStudent';
 import Dashboard from './Dashboard_section/Dashboard';
 import Classes from './Class_lists/Classes';
 import Settings from './Settings_section/Settings';
+import Notification from './Notification/Notification';
 import Forgotpassword from './Auth_section/Forgotpassword';
 import ProtectedRoute from './Auth_section/ProtectedRoute'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -81,6 +82,15 @@ root.render(
             element={
             <ProtectedRoute>
               <Settings />
+            </ProtectedRoute>
+          } 
+        />
+
+        <Route 
+            path="/Notification/Notification"
+            element={
+            <ProtectedRoute>
+              <Notification />
             </ProtectedRoute>
           } 
         />

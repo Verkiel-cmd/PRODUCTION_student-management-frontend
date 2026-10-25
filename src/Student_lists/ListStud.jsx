@@ -13,9 +13,15 @@ import { useCallback } from 'react';
 
 function ListStud() {
 
-    console.log('BUILD CHECK v3');
+  console.log('BUILD CHECK v3');
 
   const { isAdmin } = useAuth();
+
+  const [notifs, setnotifs] = useState([]);
+  const [isNotifOpen, setIsNotifOpen] = useState(false);
+  
+  const [lastSeen, setLastSeen] = useState(() => Number(localStorage.getItem('notifLastSeen')) || 0);
+  const unreadCount = notifs.filter(n => new Date(n.createdAt).getTime() > lastSeen).length;
 
   const [students, setStudents] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -148,6 +154,22 @@ useEffect(() => {
       return newState;
     });
   };
+
+  const toggleNotifDropdown = () => {
+  setIsNotifOpen(prev => !prev);
+  setIsProfileDropdownOpen(false);
+
+  // ADD: opening the bell marks everything as seen
+  const newest = Math.max(0, ...notifs.map(n => new Date(n.createdAt).getTime()));
+  localStorage.setItem('notifLastSeen', String(newest));
+  setLastSeen(newest);
+};
+
+// ADD: click a notification -> close the menu and go to its page
+const handleNotifClick = (n) => {
+  setIsNotifOpen(false);
+  navigate(n.type === 'class' ? '/Class_lists/Classes' : '/Student_lists/ListStud');
+};
 
   // Fetch students data
     const fetchData = useCallback(async () => {
@@ -326,7 +348,7 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
 
 
           <li className="sidebar-item" data-tooltip={!isSidebarExpanded ? "Notification" : ""}>
-            <a href="#" className="sidebar-link">
+            <a href="/Notification/Notification" className="sidebar-link">
               <i className="lni lni-popup"></i>
               <span>Notification</span>
             </a>
@@ -359,8 +381,26 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
         
 
 
-        {/*PROFILE USERNAME DESIGN AND DROPDOWN*/}
-        <div className="position-fixed top-0 end-0 mt-2 me-3" style={{ zIndex: 3100 }}>
+        <div className="position-fixed top-0 end-0 mt-2 me-3 d-flex align-items-start gap-2 notif-row" style={{ zIndex: 3100 }}>
+
+    
+
+
+        {/* SAME AS ListStud: one position-fixed div, no extra row around it */}
+        <div className="position-fixed top-0 end-0 mt-2 me-3 notif-top" style={{ zIndex: 3100 }}>
+
+        {/* ADD 1: BELL BUTTON. Goes first, so it sits left of the profile button */}
+            {/* BELL: plain CSS classes only */}
+            <button type="button" className="notif-bell" onClick={toggleNotifDropdown} aria-label="Notifications">
+            <i className="lni lni-popup"></i>
+           {/* CHANGED: was notifs.length. Now only unread ones count, and it hides at 0 */}
+            {unreadCount > 0 && (
+            <span className="notif-badge">{unreadCount > 99 ? '99+' : unreadCount}</span>
+            )}
+            
+            </button>
+        {/* END ADD 1 */}
+
           {/* Profile Button */}
           <button
             className="profile-btn d-flex justify-between align-items-center px-3 py-2 rounded shadow-lg bg-white text-dark border border-gray-300"
@@ -385,6 +425,7 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
           </button>
           
 
+         
           {/* Dropdown Menu */}
           {isProfileDropdownOpen && (
             <ul
@@ -415,6 +456,34 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
           )}
         </div>
 
+
+         {/* ADD 2: NOTIFICATION DROPDOWN. It is position: fixed in CSS, so it doesn't affect the layout */}
+          {isNotifOpen && (
+            <div className="notif-menu">
+              <div className="notif-menu-title">Notifications</div>
+              {notifs.length === 0 && <div className="notif-menu-item">No notifications yet.</div>}
+              {notifs.map((n, i) => (
+
+                // CHANGED: was a plain <div>. Now a <button> so it's clickable and keyboard accessible
+                <button
+                    key={i}
+                    type="button"
+                    className="notif-menu-item notif-menu-click"
+                    onClick={() => handleNotifClick(n)}
+                >
+                    <strong>{n.message}</strong>
+                    <small>{new Date(n.createdAt).toLocaleString()}</small>
+                </button>
+                ))}
+                </div>
+          )}
+          {/* END ADD 2 */}
+
+        </div>
+        {/* the profile div closes HERE, before the list */}
+        
+
+        
         
 
 

@@ -822,6 +822,12 @@ a.sidebar-link:hover::after {
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.20);
   padding: 30px;
 }
+.parent-container-statistics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 5.3rem 2rem 0 7rem; /* top-bar height + sidebar width */
+}
 
 
 
@@ -3373,6 +3379,15 @@ body.dark-mode-body .btn-close {
 
 
 /*===== TOP TITLE RESPOSIVE DESIGN ==============================*/
+
+@media (min-width: 800px) and (max-width: 900px) {
+    .title {
+        padding: 0.6rem 7rem 0 0;
+        font-size: 1.2rem;
+        letter-spacing: 10px;
+    }
+}
+
 @media (min-width: 700px) and (max-width: 800px) {
     .title {
         padding: 0.6rem 5rem 0 0;
@@ -3383,48 +3398,32 @@ body.dark-mode-body .btn-close {
 
 @media (min-width: 600px) and (max-width: 700px) {
     .title {
-        padding: 0.6rem 4rem 0 0;
-        font-size: 1rem;
-        letter-spacing: 10px;
+        padding: 0.6rem 7rem 0 0;
+        font-size: 0.7rem;
+        letter-spacing: 7px;
     }
 }
 
 @media (min-width: 500px) and (max-width: 600px) {
     .title {
-        padding: 0.6rem 4rem 0 0;
-        font-size: 1rem;
-        letter-spacing: 5px;
+        padding: 0.6rem 7rem 0 0;
+        font-size: 0.7rem;
+        letter-spacing: 7px;
     }
 }
 
 @media (min-width: 400px) and (max-width: 500px) {
     .title {
-        padding: 0.6rem 4rem 0 0;
-        font-size: 0.8rem;
-        letter-spacing: 2px;
-    }
-}
-
-@media (min-width: 390px) and (max-width: 400px) {
-    .title {
-        padding: 0.6rem 4rem 0 0;
-        font-size: 0.7rem;
-        letter-spacing: 2px;
-    }
-}
-
-@media (max-width: 389px) {
-    .title {
-        padding: 0.6rem 4rem 0 0;
-        font-size: 0.6rem;
-        letter-spacing: 2px;
-    }
-}
-
-@media (max-width: 384px) {
-    .title {
-        padding: 0.6rem 4rem 0 0;
+        padding: 0.6rem 7rem 0 0;
         font-size: 0.5rem;
+        letter-spacing: 2px;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 400px) {
+    .title {
+        padding: 0.6rem 7.4rem 0 0;
+        font-size: 0.3rem;
         letter-spacing: 2px;
     }
 }
