@@ -296,6 +296,25 @@ useEffect(() => {
   };
 }, []);
 
+useEffect(() => {
+// HTML: Fetch and render notifications
+async function loadNotifications() {
+  try {
+    const res = await fetch('/notification', { 
+        credentials: 'include' 
+    });
+
+    const data = await res.json();
+    setnotifs(data.data || []);
+  } catch (e) {
+    console.error('Failed to load notifications:', e); 
+}
+}
+
+  loadNotifications();
+  }, []);
+
+
   return (
 
                <div className={`wrapper ${isSidebarExpanded ? "expanded" : ""}`}>
