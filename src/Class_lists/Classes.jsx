@@ -634,7 +634,7 @@ async function loadNotifications() {
     
                     
 
-         <div className="position-fixed top-0 end-0 mt-2 me-3 d-flex align-items-start gap-2 notif-row" style={{ zIndex: 3100 }}>
+        <div className="position-fixed top-0 end-0 mt-2 me-3 d-flex align-items-start gap-2 notif-row" style={{ zIndex: 3100 }}>
 
     
 
