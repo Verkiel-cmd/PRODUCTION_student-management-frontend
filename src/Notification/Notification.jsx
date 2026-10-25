@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import config from '../Auth_section/config';
+//import config from '../Auth_section/config';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/UseAuth'; 
 import '../Webstyles/notification.css';
+import axios from 'axios';
 
 
 function Notification() {
