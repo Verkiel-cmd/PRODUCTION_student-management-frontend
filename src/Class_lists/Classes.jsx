@@ -474,7 +474,7 @@ useEffect(() => {
         const data = await res.json();
         if (data.user) {
           setLoggedInUser(data.user);
-          localStorage.setIgstem('user', JSON.stringify(data.user));
+          localStorage.setItem('user', JSON.stringify(data.user));
         } else {
           throw new Error('No user data in response');
         }
