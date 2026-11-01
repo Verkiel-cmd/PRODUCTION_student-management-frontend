@@ -474,7 +474,7 @@ useEffect(() => {
         const data = await res.json();
         if (data.user) {
           setLoggedInUser(data.user);
-          localStorage.setItem('user', JSON.stringify(data.user));
+          localStorage.setIgstem('user', JSON.stringify(data.user));
         } else {
           throw new Error('No user data in response');
         }
@@ -489,11 +489,17 @@ useEffect(() => {
     fetchUserDetails();
   }, [navigate]); // Add navigate to dependencies
 
-  useEffect(() => {
-// HTML: Fetch and render notifications
+
+
+
+//api fetch for record notifs using configs
+useEffect(() => {
+
+let active = true;
+  
 async function loadNotifications() {
   try {
-    const res = await fetch('/notification', { 
+    const res = await fetch(`${config.API_URL}/notification`, { 
         credentials: 'include' 
     });
 
@@ -504,8 +510,14 @@ async function loadNotifications() {
 }
 }
 
-  loadNotifications();
-  }, []);
+  loadNotifications(); //fetch when the page opens
+  const timer = window.setInterval(loadNotifications, 1000);
+
+  return () => {
+    active = false;
+    window.clearInterval(timer);
+  };
+}, []);
 
 
 
@@ -988,9 +1000,11 @@ async function loadNotifications() {
                                         <td className="cell-teacher" data-label="Class Teacher">{cls.classteacher}</td>
                                         <td className="cell-limit"   data-label="Student Limit">{cls.studentlimit}</td>
                                         {isAdmin && (
-                                            <td className="cell-actions" data-label="Actions">
+                                             <td className="cell-actions" data-label="Actions">
+                                                <div className="d-flex align-items-center gap-2">
                                                 <Button variant="primary" size="sm" onClick={() => handleEdit(cls.classid)}>Update</Button>
                                                 <Button variant="danger" size="sm" onClick={() => handleDeleteClick(cls.classid)}>Delete</Button>
+                                                </div>
                                             </td>
                                         )}
                                     </tr>

@@ -296,11 +296,15 @@ useEffect(() => {
   };
 }, []);
 
+
+//api fetch for record notifs using configs
 useEffect(() => {
-// HTML: Fetch and render notifications
+
+let active = true;
+  
 async function loadNotifications() {
   try {
-    const res = await fetch('/notification', { 
+    const res = await fetch(`${config.API_URL}/notification`, { 
         credentials: 'include' 
     });
 
@@ -311,8 +315,14 @@ async function loadNotifications() {
 }
 }
 
-  loadNotifications();
-  }, []);
+  loadNotifications(); //fetch when the page opens
+  const timer = window.setInterval(loadNotifications, 1000);
+
+  return () => {
+    active = false;
+    window.clearInterval(timer);
+  };
+}, []);
 
 
   return (

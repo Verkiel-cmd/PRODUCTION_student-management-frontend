@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/UseAuth'; 
 import '../Webstyles/notification.css';
+import config from '../Auth_section/config';
 import axios from 'axios';
 
 
@@ -179,12 +180,14 @@ const handleNotifClick = (n) => {
   }, [navigate]); // Add navigate to dependencies
   
 
-
+//api fetch for record notifs using configs
 useEffect(() => {
-// HTML: Fetch and render notifications
+
+let active = true;
+  
 async function loadNotifications() {
   try {
-    const res = await fetch('/notification', { 
+    const res = await fetch(`${config.API_URL}/notification`, { 
         credentials: 'include' 
     });
 
@@ -195,8 +198,14 @@ async function loadNotifications() {
 }
 }
 
-  loadNotifications();
-  }, []);
+  loadNotifications(); //fetch when the page opens
+  const timer = window.setInterval(loadNotifications, 1000);
+
+  return () => {
+    active = false;
+    window.clearInterval(timer);
+  };
+}, []);
 
 
 

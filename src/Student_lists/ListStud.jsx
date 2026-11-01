@@ -241,11 +241,17 @@ const { pulling, refreshing } = usePullToRefresh(fetchData);
     fetchUserDetails();
   }, [navigate]); // Add navigate to dependencies
 
-  useEffect(() => {
-// HTML: Fetch and render notifications
+
+
+
+//api fetch for record notifs using configs
+useEffect(() => {
+
+let active = true;
+  
 async function loadNotifications() {
   try {
-    const res = await fetch('/notification', { 
+    const res = await fetch(`${config.API_URL}/notification`, { 
         credentials: 'include' 
     });
 
@@ -256,8 +262,14 @@ async function loadNotifications() {
 }
 }
 
-  loadNotifications();
-  }, []);
+  loadNotifications(); //fetch when the page opens
+  const timer = window.setInterval(loadNotifications, 1000);
+
+  return () => {
+    active = false;
+    window.clearInterval(timer);
+  };
+}, []);
 
 
   return (
@@ -688,8 +700,8 @@ async function loadNotifications() {
                         {isAdmin && (
                           <td className="cell-actions" data-label="Actions">
                             <div className="d-flex align-items-center gap-2">
-                              <Button variant="primary" className="btn btn-primary btn-sm" onClick={() => navigate(`/Student_lists/UpdateStudent/${student.id}`)}>Update</Button>
-                             <Button variant="danger" className="btn btn-danger btn-sm" onClick={() => handleDeleteClick(student.id)}>Delete</Button>
+                             <Button variant="primary" className="btn btn-primary btn-sm me-2 d-flex justify-content-center align-items-center" onClick={() => navigate(`/Student_lists/UpdateStudent/${student.id}`)}>Update</Button>
+                             <Button variant="danger" className="btn btn-danger mt-" onClick={() => handleDeleteClick(student.id)}>Delete</Button>
                         </div>
                       </td>
                         )}
