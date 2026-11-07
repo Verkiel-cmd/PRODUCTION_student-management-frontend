@@ -785,19 +785,20 @@ async function loadNotifications() {
 
                      {isAdmin && (
                               <>
-                        <h2 className="fw-bold text-start mb-4" >Add Class</h2>
+                          <h2 className="fw-bold text-start mb-4" >Add Class</h2>
                         <form onSubmit={handleSubmit}>
-                            <div className="row mb-3 fw-medium">
-                                <label className="col-sm-0 col-form-label text-start">Class Name</label>
-                                <div className="col-sm-0">
+                
+                                <div className="float-field">
                                     <input
                                         type="text"
+                                        id="classname"
+                                        placeholder=" "
                                         className={`form-control ${isError ? 'is-invalid' : ''}`}
                                         value={classname}
                                         onChange={(e) => {
                                             setClassname(e.target.value);
-                                            setIsError(false); // Clear error when user starts typing
-                                            // Only reset touched if input is not empty
+                                            setIsError(false); 
+                                            
                                             if (e.target.value.trim()) {
                                                 setTouched(false);
                                             }
@@ -810,14 +811,14 @@ async function loadNotifications() {
                                             }
                                         }}
                                     />
+                                     <label htmlFor="classname">Class Name</label>
                                     {touched && !classname.trim() && (
                                         <div className="invalid-feedback">
                                             Class name cannot be empty
                                         </div>
                                     )}
-
                                 </div>
-                            </div>
+                           
 
 
 
@@ -840,11 +841,15 @@ async function loadNotifications() {
 
 
 
-                            <div className="row mb-3 fw-medium">
-                                <label className="col-sm-0 col-form-label text-start">Class Teacher</label>
-                                <div className="col-sm-0">
+                            
+                                
+
+
+                                <div className="float-field">
                                     <input
                                         type="text"
+                                        id="classname"
+                                        placeholder=" "
                                         className={`form-control ${isError ? 'is-invalid' : ''}`} // Dynamically add 'is-invalid'
                                         value={classteacher}
                                         onChange={(e) => {
@@ -862,11 +867,12 @@ async function loadNotifications() {
                                         }}
                                     />
                                     {/* Show the error message if field is empty and touched */}
+                                     <label htmlFor="classname">Class teacher</label>
                                     {touched && !classteacher.trim() && (
                                         <div className="invalid-feedback">Class Teacher cannot be empty</div>
                                     )}
                                 </div>
-                            </div>
+                       
 
 
 
@@ -889,11 +895,12 @@ async function loadNotifications() {
 
 
 
-                            <div className="row mb-3 fw-medium">
-                                <label className="col-sm-0 col-form-label text-start">Student Limit</label>
-                                <div className="col-sm-0">
+                                
+                                    <div className="float-field">
                                     <input
                                         type="text"
+                                        id="classname"
+                                        placeholder=" "
                                         className={`form-control ${isError ? 'is-invalid' : ''}`} // Dynamically add 'is-invalid'
                                         value={studentlimit}
                                         onChange={(e) => {
@@ -911,11 +918,11 @@ async function loadNotifications() {
                                         }}
                                     />
                                     {/* Show the error message if field is empty and touched */}
+                                     <label htmlFor="classname">Class limit</label>
                                     {touched && !studentlimit.trim() && (
                                         <div className="invalid-feedback">Student Limit cannot be empty</div>
                                     )}
                                 </div>
-                            </div>
 
 
 

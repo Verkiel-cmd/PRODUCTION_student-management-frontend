@@ -180,11 +180,13 @@ function CreateStudent() {
 
       <h2 className='fw-bold'>New Student</h2>
       <form onSubmit={handleSubmit}>
-        <div className="row mb-3 fw-medium">
-          <label className="col-sm-0 col-form-label">Name</label>
-          <div className="col-sm-6">
-            <input
+
+
+      <div className="float-field">
+          <input
               type="text"
+              id="classname"
+              placeholder=" "
               className={`form-control ${isError ? 'is-invalid' : ''}`}
               value={name}
               onChange={(e) => {
@@ -202,11 +204,12 @@ function CreateStudent() {
               }}
             />
             {/* Display error message if the field is empty and touched */}
+            <label htmlFor="classname">Name</label>
             {touched && !name.trim() && (
               <div className="invalid-feedback">Name cannot be empty</div>
             )}
           </div>
-        </div>
+        
 
 
 
@@ -223,11 +226,11 @@ function CreateStudent() {
 
 
 
-        <div className="row mb-3 fw-medium">
-          <label className="col-sm-0 col-form-label">Email</label>
-          <div className="col-sm-6">
-            <input
-              type="email"
+      <div className="float-field">
+          <input
+              type="text"
+              id="classname"
+              placeholder=" "
               className={`form-control ${isError ? 'is-invalid' : ''}`}
               value={email}
               onChange={(e) => {
@@ -245,11 +248,10 @@ function CreateStudent() {
               }}
             />
             {/* Display error message for empty or invalid email */}
+            <label htmlFor="classname">Email</label>
             {touched && !email.trim() && (
               <div className="invalid-feedback">Email cannot be empty</div>
             )}
-
-          </div>
         </div>
 
 
@@ -267,11 +269,11 @@ function CreateStudent() {
 
 
 
-        <div className="row mb-3 fw-medium">
-          <label className="col-sm-0 col-form-label">Phone</label>
-          <div className="col-sm-6">
-            <input
+      <div className="float-field">
+          <input
               type="text"
+              id="classname"
+              placeholder=" "
               className={`form-control ${isError ? 'is-invalid' : ''}`} // Add 'is-invalid' dynamically
               value={phone}
               onChange={(e) => {
@@ -289,11 +291,12 @@ function CreateStudent() {
               }}
             />
             {/* Display error message for empty or invalid email */}
+            <label htmlFor="classname">Phone</label>
             {touched && !phone.trim() && (
               <div className="invalid-feedback">Phone cannot be empty</div>
             )}
           </div>
-        </div>
+       
 
 
 
@@ -310,11 +313,11 @@ function CreateStudent() {
 
 
 
-        <div className="row mb-3 fw-medium">
-          <label className="col-sm-0 col-form-label">Address</label>
-          <div className="col-sm-6">
-            <input
+      <div className="float-field">
+          <input
               type="text"
+              id="classname"
+              placeholder=" "
               className={`form-control ${isError ? 'is-invalid' : ''}`}
               value={address}
               onChange={(e) => {
@@ -332,11 +335,12 @@ function CreateStudent() {
               }}
             />
             {/* Display error message for empty or invalid email */}
+            <label htmlFor="classname">Address</label>
             {touched && !address.trim() && (
               <div className="invalid-feedback">Address cannot be empty</div>
             )}
           </div>
-        </div>
+        
 
 
 

@@ -211,17 +211,16 @@ function UpdateStudent() {
 
 
 
-
-      <h2 className='fw-bold'>Update Student</h2>
+ <h2 className='fw-bold'>Update Student</h2>
 
       <form onSubmit={handleSubmit}>
         <input type="hidden" name="id" value={student.id} />
 
-        <div className="row mb-3 fw-medium">
-          <label className="col-sm-0 col-form-label">Name</label>
-          <div className="col-sm-6">
-            <input
+      <div className="float-field">
+          <input
               type="text"
+              id="classname"
+              placeholder=" "
               className={`form-control ${isError ? 'is-invalid' : ''}`} // Dynamically add 'is-invalid'
               name="name"
               value={student.name}
@@ -240,11 +239,12 @@ function UpdateStudent() {
               }}
             />
             {/* Display error message*/}
+            <label htmlFor="classname">Name</label>
             {touched && !student.name.trim() && (
               <div className="invalid-feedback">Name cannot be empty</div>
             )}
           </div>
-        </div>
+        
 
 
 
@@ -261,11 +261,11 @@ function UpdateStudent() {
 
 
 
-        <div className="row mb-3 fw-medium ">
-          <label className="col-sm-0 col-form-label">Email</label>
-          <div className="col-sm-6">
-            <input
+      <div className="float-field">
+          <input
               type="email"
+              id="classname"
+              placeholder=" "
               className={`form-control ${isError ? 'is-invalid' : ''}`} // Dynamically add 'is-invalid'
               name="email"
               value={student.email}
@@ -284,11 +284,12 @@ function UpdateStudent() {
               }}
             />
             {/* Display error message*/}
+            <label htmlFor="classname">Email</label>
             {touched && !student.email.trim() && (
               <div className="invalid-feedback">Email cannot be empty</div>
             )}
           </div>
-        </div>
+        
 
 
 
@@ -305,11 +306,11 @@ function UpdateStudent() {
 
 
 
-        <div className="row mb-3 fw-medium">
-          <label className="col-sm-0 col-form-label">Phone</label>
-          <div className="col-sm-6">
-            <input
+      <div className="float-field">
+          <input
               type="text"
+              id="classname"
+              placeholder=" "
               className={`form-control ${isError ? 'is-invalid' : ''}`} // Dynamically add 'is-invalid'
               name="phone"
               value={student.phone}
@@ -328,11 +329,12 @@ function UpdateStudent() {
               }}
             />
             {/* Display error message*/}
+            <label htmlFor="classname">Phone</label>
             {touched && !student.phone.trim() && (
               <div className="invalid-feedback">Phone cannot be empty</div>
             )}
           </div>
-        </div>
+        
 
 
 
@@ -349,11 +351,11 @@ function UpdateStudent() {
 
 
 
-        <div className="row mb-3 fw-medium">
-          <label className="col-sm-0 col-form-label">Address</label>
-          <div className="col-sm-6">
-            <input
+      <div className="float-field">
+          <input
               type="text"
+              id="classname"
+              placeholder=" "
               className={`form-control ${isError ? 'is-invalid' : ''}`} // Dynamically add 'is-invalid'
               name="address"
               value={student.address}
@@ -373,11 +375,12 @@ function UpdateStudent() {
               }}
             />
             {/* Display error message  */}
+            <label htmlFor="classname">Address</label>
             {touched && !student.address.trim() && (
               <div className="invalid-feedback">Address cannot be empty</div>
             )}
           </div>
-        </div>
+        
 
 
 
