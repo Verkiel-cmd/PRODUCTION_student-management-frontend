@@ -256,19 +256,23 @@ async function loadNotifications() {
     });
 
     const data = await res.json();
-    setnotifs(data.data || []);
+     if (active) {
+      setnotifs(data.data || []);
+    }
   } catch (e) {
-    console.error('Failed to load notifications:', e); 
-}
+    if (active) {
+      console.error('Failed to load notifications:', e);
+    }
+  }
 }
 
-  loadNotifications(); //fetch when the page opens
-  const timer = window.setInterval(loadNotifications, 1000);
+loadNotifications();
+const timer = window.setInterval(loadNotifications, 1000);
 
-  return () => {
-    active = false;
-    window.clearInterval(timer);
-  };
+return () => {
+  active = false;
+  window.clearInterval(timer);
+};
 }, []);
 
 
